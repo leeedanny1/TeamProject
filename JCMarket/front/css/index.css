@@ -1,0 +1,109 @@
+/* 헤더 */
+/* 헤더 배경 지정 */
+header{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+/* 상단 헤더 */
+/* 상단 헤더 컨테이너 */
+.t_header{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 */
+.t_header .h_logo{
+    font-size: 40px;
+}
+
+/* 검색박스 */
+.t_header .h_search{
+    padding-left: 20px;
+    width: 50%;
+    height: 40px;
+
+    border: 2px solid rgb(247, 47, 51);
+    box-sizing: border-box;
+}
+
+/* 인포 */
+.t_header .h_info > li{
+    /* font-size: 15px; */
+}
+.t_header .h_info > li > a{
+    padding: 0 10px;
+    font-size: 20px;
+}
+
+
+/* 하단헤더 */
+.b_header{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* 카테고리 부분 */
+.b_header .h_category li{
+    margin-right: 3%;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+.b_header .h_category li a{
+    padding: 0 10px;
+    font-size: 20px;
+}
+
+/* 로그인부분 */
+.b_header .h_sign li a{
+    padding: 0 10px;
+    font-size: 20px;
+}
+
+
+
+/* ******************** */
+/* 메인 */
+.wrap section{
+    width: 100%;
+}
+/* 광고배너 */
+.ad_images{
+    width: 3000px;
+    background-color: blueviolet;
+}
+
+
+
+/* 공지사항 바로가기 배너 */
+.notice_banner{
+    width: 3000px;
+    background-color: blueviolet;
+}
+
+
+
+/* 인기상품 */
+.hot_item{
+
+}
+
+
+
+/* 최근상품 */
+.new_item{
+
+}
+
+
+
+/* 사기꾼공유 */
+.community{
+
+}
