@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <!-- header -->
     <header>
         <!-- 헤더 내부 wrap -->
         <main class="wrap">
@@ -52,37 +53,215 @@
         </main>
     </header>
 
-    <main class="wrap">
+
+
+    <!-- main content -->
+    <main class="wrap main">
         <!-- 광고배너 -->
         <section class="ad_images">
             이부분에 광고 배너 넣을것입니다. <br>
-            아니 근데 왜 클래스명은 ad_banner로 하면 안보이는거지 <br>
             나중에 움직이는 사진 해서 height 대신 width로..
         </section>
 
         <!-- 공지사항 바로가기 배너 -->
         <section class="notice_banner">
-            
+            공지사항 바로가기 이미지
         </section>
 
         <!-- 인기상품 -->
-        <section class="hot_item">
-
+        <!-- 하트 만들어서 판매중인 상품중에 하트 높은 순서대로 정렬 -->
+        <section class="sale_item">
+            <h2 class="section_name">인기상품</h2>
+            <!-- 개별 아이템 박스컨테이너 -->
+            <ul class="item_container">
+                <!-- 아이템들 -->
+                <li class="item_list">
+                    <!-- 상품사진 -->
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <!-- 상품이름 -->
+                    <p class="item_name">상품 이름입니다.</p>
+                    <!-- 상품 가격과 올린 시간 -->
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <!-- 최근상품 -->
-        <section class="new_item">
-
-        </section>
-
-        <!-- 사기꾼공유 -->
-        <section class="community">
-
+        <section class="sale_item">
+            <h2 class="section_name">최근상품</h2>
+            <!-- 개별 아이템 박스컨테이너 -->
+            <ul class="item_container">
+                <!-- 아이템들 -->
+                <li class="item_list">
+                    <!-- 상품사진 -->
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <!-- 상품이름 -->
+                    <p class="item_name">상품 이름입니다.</p>
+                    <!-- 상품 가격과 올린 시간 -->
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+                <li class="item_list">
+                    <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                    <p class="item_name">상품 이름입니다.</p>
+                    <ul class="item_info">
+                        <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                        <li><span class="item_time">1시간 전</span></li>
+                    </ul>
+                </li>
+            </ul>
         </section>
     </main>
 
+
+
+    <!-- footer -->
     <footer>
-        
+        <main class="wrap">
+            푸터<br>
+            dsfdsfsd <br>
+        </main>
     </footer>
     
 </body>

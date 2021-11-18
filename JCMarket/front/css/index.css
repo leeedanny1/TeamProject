@@ -68,14 +68,27 @@ header{
 
 
 
+
+
 /* ******************** */
 /* 메인 */
-.wrap section{
+.main section{
+    margin-bottom: 70px;
     width: 100%;
 }
+
+/* 섹션별 이름 */
+.section_name {
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+
+
 /* 광고배너 */
 .ad_images{
-    width: 3000px;
+    height: 300px;
+
     background-color: blueviolet;
 }
 
@@ -83,27 +96,62 @@ header{
 
 /* 공지사항 바로가기 배너 */
 .notice_banner{
-    width: 3000px;
-    background-color: blueviolet;
+    height: 200px;
+
+    background-color: bisque;
 }
 
 
 
-/* 인기상품 */
-.hot_item{
+/* 인기상품과 최근상품 */
+.sale_item{
+    background-color: cadetblue;
+}
 
+/* 상품 아이템 박스 컨테이너*/
+.sale_item .item_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* 상품 아이템들 */
+.item_container .item_list{
+    margin-bottom: 10px;
+    width: 19%;
+    padding: 1%;
+    border: 1px solid;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* 상품사진 */
+.item_list .item_photo{
+    width: 100%;
+    height: 172px;
+}
+/* 상품이름 */
+.item_list .item_name{
+    margin: 5px 0 10px;
+}
+/* 상품가격 */
+.item_list .item_info .item_price strong{
+    font-size: 18px;
+}
+/* 올린시간 */
+.item_list .item_info .item_time{
+    font-size: 12px;
 }
 
 
 
-/* 최근상품 */
-.new_item{
-
-}
 
 
-
-/* 사기꾼공유 */
-.community{
-
+/* ******************** */
+/* 푸터 */
+/* 푸터 배경 */
+footer{
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
 }
