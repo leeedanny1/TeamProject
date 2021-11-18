@@ -1,0 +1,17 @@
+/* 로그인, 회원가입 공통 CSS */
+
+body{
+    background-color:  rgb(240, 240, 240);
+}
+/* 컨테이너 */
+.sign_container{
+    margin: 100px auto;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 6px 0px;
+}
