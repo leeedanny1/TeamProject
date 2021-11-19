@@ -18,6 +18,23 @@ DROP DATABASE IF EXISTS `jcmarket`;
 CREATE DATABASE IF NOT EXISTS `jcmarket` /*!40100 DEFAULT CHARACTER SET utf8mb3 */;
 USE `jcmarket`;
 
+-- 테이블 jcmarket.border_comments 구조 내보내기
+DROP TABLE IF EXISTS `border_comments`;
+CREATE TABLE IF NOT EXISTS `border_comments` (
+  `border_code` int(11) NOT NULL,
+  `border_comments_code` int(11) NOT NULL,
+  `border_comments_writer` varchar(50) NOT NULL,
+  `border_comments_content` text NOT NULL,
+  `create_date` date NOT NULL,
+  `update_date` date NOT NULL,
+  PRIMARY KEY (`border_comments_code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+
+-- 테이블 데이터 jcmarket.border_comments:~0 rows (대략적) 내보내기
+DELETE FROM `border_comments`;
+/*!40000 ALTER TABLE `border_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `border_comments` ENABLE KEYS */;
+
 -- 테이블 jcmarket.border_dtl 구조 내보내기
 DROP TABLE IF EXISTS `border_dtl`;
 CREATE TABLE IF NOT EXISTS `border_dtl` (
@@ -39,7 +56,7 @@ DELETE FROM `border_dtl`;
 DROP TABLE IF EXISTS `border_mst`;
 CREATE TABLE IF NOT EXISTS `border_mst` (
   `border_code` int(11) NOT NULL,
-  `border_content` varchar(50) DEFAULT NULL,
+  `border_title` varchar(50) DEFAULT NULL,
   `border_writer` varchar(50) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `update_date` date DEFAULT NULL,
@@ -50,6 +67,23 @@ CREATE TABLE IF NOT EXISTS `border_mst` (
 DELETE FROM `border_mst`;
 /*!40000 ALTER TABLE `border_mst` DISABLE KEYS */;
 /*!40000 ALTER TABLE `border_mst` ENABLE KEYS */;
+
+-- 테이블 jcmarket.notice_comments 구조 내보내기
+DROP TABLE IF EXISTS `notice_comments`;
+CREATE TABLE IF NOT EXISTS `notice_comments` (
+  `notice_code` int(11) NOT NULL,
+  `notice_comments_code` int(11) NOT NULL,
+  `notice_comments_writer` varchar(50) NOT NULL,
+  `notice_comments_content` text NOT NULL,
+  `create_date` date NOT NULL,
+  `update_date` date NOT NULL,
+  PRIMARY KEY (`notice_comments_code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+
+-- 테이블 데이터 jcmarket.notice_comments:~0 rows (대략적) 내보내기
+DELETE FROM `notice_comments`;
+/*!40000 ALTER TABLE `notice_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notice_comments` ENABLE KEYS */;
 
 -- 테이블 jcmarket.notice_dtl 구조 내보내기
 DROP TABLE IF EXISTS `notice_dtl`;
@@ -72,7 +106,7 @@ DELETE FROM `notice_dtl`;
 DROP TABLE IF EXISTS `notice_mst`;
 CREATE TABLE IF NOT EXISTS `notice_mst` (
   `notice_code` int(11) NOT NULL,
-  `notice_content` varchar(50) DEFAULT NULL,
+  `notice_title` varchar(50) DEFAULT NULL,
   `notice_writer` varchar(50) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `update_date` date DEFAULT NULL,
@@ -99,11 +133,30 @@ DELETE FROM `phonenumber_mst`;
 /*!40000 ALTER TABLE `phonenumber_mst` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phonenumber_mst` ENABLE KEYS */;
 
+-- 테이블 jcmarket.product_comments 구조 내보내기
+DROP TABLE IF EXISTS `product_comments`;
+CREATE TABLE IF NOT EXISTS `product_comments` (
+  `product_code` int(11) NOT NULL,
+  `product_comments_code` int(11) NOT NULL,
+  `product_comments_writer` varchar(50) NOT NULL,
+  `product_comments_content` text NOT NULL,
+  `create_date` date NOT NULL,
+  `update_date` date NOT NULL,
+  PRIMARY KEY (`product_comments_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- 테이블 데이터 jcmarket.product_comments:~0 rows (대략적) 내보내기
+DELETE FROM `product_comments`;
+/*!40000 ALTER TABLE `product_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_comments` ENABLE KEYS */;
+
 -- 테이블 jcmarket.product_dtl 구조 내보내기
 DROP TABLE IF EXISTS `product_dtl`;
 CREATE TABLE IF NOT EXISTS `product_dtl` (
   `product_code` int(11) NOT NULL,
   `product_content` text DEFAULT NULL,
+  `product_cost` text DEFAULT NULL,
+  `product_address` text DEFAULT NULL,
   `originFileNames` varchar(500) DEFAULT NULL,
   `tempFileNames` varchar(500) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
@@ -120,7 +173,7 @@ DELETE FROM `product_dtl`;
 DROP TABLE IF EXISTS `product_mst`;
 CREATE TABLE IF NOT EXISTS `product_mst` (
   `product_code` int(11) NOT NULL,
-  `product_content` varchar(50) DEFAULT NULL,
+  `product_title` varchar(50) DEFAULT NULL,
   `product_writer` varchar(50) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `update_date` date DEFAULT NULL,
