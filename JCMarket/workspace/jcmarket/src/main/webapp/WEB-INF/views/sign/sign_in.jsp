@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,5 +26,6 @@
             <button type="submit" class="submit_btn">로그인</button>
         </form>
     </main>
+    <script src="../js/sign_in/sign_in.js"></script>
 </body>
 </html>
