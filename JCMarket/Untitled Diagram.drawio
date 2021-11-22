@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-11-22T09:37:58.167Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="fS67b519uuRRPM_lYPkB" version="15.8.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-22T09:40:12.505Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="AM9XMZ6c8ZgijJ1FOm8O" version="15.8.3" type="github">
   <diagram id="lz88FH4PyTVV9fNXospb" name="Page-1">
-    <mxGraphModel dx="2844" dy="1588" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2370" dy="1323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -321,6 +321,12 @@
             <mxPoint y="1520" as="sourcePoint" />
             <mxPoint x="1159.9999999999995" y="1520" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="qAjAHDMqoRNYj5DkWeto-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=24;" edge="1" parent="1" source="qAjAHDMqoRNYj5DkWeto-124" target="qAjAHDMqoRNYj5DkWeto-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qAjAHDMqoRNYj5DkWeto-124" value="임의접근시&lt;br&gt;회원가입" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="960" y="1000" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
