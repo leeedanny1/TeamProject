@@ -4,8 +4,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.springboot.jcmarket.domain.user.User;
 
+import lombok.Data;
+
+@Data
 public class SignUpDto {
-	 private String user_id;
+	    private String user_id;
 	    private String user_password;
 	    private String user_name;
 	    private String user_phone;

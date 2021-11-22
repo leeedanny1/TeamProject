@@ -19,7 +19,7 @@ public class User {
 		private String user_phone;
 		private String user_nickname;
 		private String role;
-		private String provider;
+//		private String provider;
 		private Date createdate;
 		private Date updatedate;
 }

@@ -9,20 +9,20 @@
 			count(pm.phone_number) + count(um.user_phone) as result
 		from
 			phonenumber_mst pm
-			left outer join user_mst um on(um.user_phone = pm.phone_number and um.user_name = pm.phone_user_name)
+			left outer join user_mst um on(um.user_phone = pm.phone_number and um.user_name = pm.phone_name)
 		where
 			pm.phone_number = #{user_phone}
-			and pm.phone_user_name = #{user_name}
+			and pm.phone_name = #{user_name}
        
   </select>
   
   <select id = "idCheck" resultType="Integer">
       select
-             count(user_email)
+             count(user_id)
          from
              user_mst
          where
-             user_email = #{signUpId}
+             user_id = #{signUpId}
   </select>
   
   <select id ="nicknameCheck"  resultType="Integer">
@@ -35,5 +35,22 @@
              user_nickname = #{signUpNickname};
  </select>
  
+ <insert id="signUp" parameterType="com.springboot.jcmarket.domain.user.User">
+		insert into
+			user_mst
+		values(
+			#{user_id},
+			#{user_password},
+			#{user_name},
+			#{user_phone},
+			#{user_nickname},
+			0,
+			0,
+			#{role},
+			now(),
+			now()
+		)
+	</insert>
+	
   
   </mapper>
