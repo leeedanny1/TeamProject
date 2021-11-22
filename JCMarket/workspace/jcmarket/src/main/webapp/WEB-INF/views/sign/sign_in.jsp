@@ -10,22 +10,22 @@
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sign/sign.css">
-    
+    <script src="../js/sign_in.js" defer></script>
 </head>
 <body>
-    <main class="sign_container">
+     <main class="sign_container">
         <h1 class="sign_name">JC마켓 로그인</h1>
-        <form action="" class="sign_form">
-            <input type="email" name="" id="" placeholder="ID" autofocus>
+        <div action="" class="sign_form">
+            <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID"  autofocus>
 
             <p class="e_msg">아이디를 입력해 주세요</p>
 
-            <input type="password" name="" id="" placeholder="PASSWORD">
+            <input type="password"class="item_ip" name="user_password" id="user_password" placeholder="PASSWORD">
             <p class="e_msg">비밀번호를 입력해 주세요</p>
 
-            <button type="submit" class="submit_btn">로그인</button>
-        </form>
+            <button type="button" class="submit_btn">로그인</button>
+        </div>
     </main>
-    <script src="../js/sign_in/sign_in.js"></script>
+ 
 </body>
 </html>

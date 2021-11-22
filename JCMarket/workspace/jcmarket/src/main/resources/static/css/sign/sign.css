@@ -75,6 +75,7 @@ body{
 .e_msg{
     width: 90%;
     color: red;
+    display:none;
 }
 /* 성공메시지 */
 .s_msg{

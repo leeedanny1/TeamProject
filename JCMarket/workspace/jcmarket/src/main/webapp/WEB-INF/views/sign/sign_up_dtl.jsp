@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
     <script src="../js/sign_up_dtl.js" defer></script>
+
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
@@ -56,6 +57,8 @@
 
             <button type="button" class="submit_btn">회원가입</button>
         </div>
+          <script src="js/sign_in.js"></script>
     </main>
+   
 </body>
 </html>
