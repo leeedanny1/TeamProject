@@ -31,8 +31,6 @@ body{
 /* 폼 */
 .sign_form {
     margin: 50px 0 30px;
-    width: 400px;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -51,7 +49,7 @@ body{
 .sign_form input {
     padding-left: 10px;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid black;
 }
 
 /* 버튼 디자인 */
@@ -59,9 +57,12 @@ body{
     height: 70px;
     color: white;
     border: none;
-    background-color: rgba(247, 47, 50);
-    /* js구현 할 때 opacity: 1; 로 바꾸면 됨 */
-    opacity: 0.3;
+    background-color: rgba(247, 47, 50, 0.3);
+}
+
+.disabled {
+	 opacity: 0.3;
+     pointer-events : none;
 }
 /* input입력이 완료된 경우 */
 /* .sign_form .submit_btn{
@@ -75,14 +76,19 @@ body{
 .e_msg{
     width: 90%;
     color: red;
+    display:none;
 }
 /* 성공메시지 */
 .s_msg{
     width: 90%;
     color: green;
+    display:none;
 }
-.msg {
-    width: 90%;
-    color: red;
-    
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
 }

@@ -2,8 +2,7 @@
 .check_section{
     position: relative;
     width: 100%;
-    
-   
+    text-align: center;
 }
 .check_btn{
     position: absolute;
@@ -15,14 +14,6 @@
     border: none;
     border-bottom: 1px solid white;
     color: white;
-    background-color: rgba(247, 47, 50);
-    opacity: 0.3;
-}
 
-.invisible {
-    display: none;
-}
-
-.visible {
-    display: block;
+    background-color: rgba(247, 47, 50, 0.3);
 }
