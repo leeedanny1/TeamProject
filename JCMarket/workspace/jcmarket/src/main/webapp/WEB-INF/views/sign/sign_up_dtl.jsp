@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
     <script src="../js/sign_up_dtl.js" defer></script>
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     

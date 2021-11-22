@@ -1,5 +1,5 @@
 package com.springboot.jcmarket.web.dto.auth;
 
-public class SignupRepDto {
+public class SignUpRepDto {
 
 }
