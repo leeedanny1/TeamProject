@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
-    <script src="../js/signUp.js" defer></script>
+    <script src="../js/sign_up_dtl.js" defer></script>
 </head>
 <body>
     
