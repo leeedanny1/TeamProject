@@ -10,6 +10,7 @@
 }
 
 
+
 /* 태그 스타일 지정 */
 a{
     text-decoration: none;
@@ -21,6 +22,12 @@ ol, ul{
     justify-content: space-between;
     align-items: center;
 }
+
+input{
+    outline: none;
+    width: 100%;
+}
+
 
 
 /* wrap설정 */
