@@ -14,9 +14,9 @@
 </head>
 <body>
     <!-- header -->
+
+  
     	 <jsp:include page="../include/header.jsp"/> 
-
-
 
     <!-- main content -->
     <main class="wrap main">
