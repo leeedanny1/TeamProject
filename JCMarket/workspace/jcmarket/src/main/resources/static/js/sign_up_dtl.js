@@ -114,7 +114,6 @@ function checkNameFormat(input) {
     clearMsg(input);
     signUpData.user_name = input.value;
     return true;
-    
 }
 
 //전화번호 정규식 체크
