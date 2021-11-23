@@ -61,6 +61,7 @@
 
 /* 상품정보 */
 .b_item_info .item_info_dtl{
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -78,6 +79,7 @@
 
 /* 연락정보 */
 .b_item_info .item_info_btn{
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
 }
