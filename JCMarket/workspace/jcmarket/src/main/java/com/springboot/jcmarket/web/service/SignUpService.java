@@ -9,5 +9,5 @@ public interface SignUpService {
 	  public int idCheck(String SignUpId);
 	  public int nicknameCheck(String signUpNickname);	
 	  public int signUp(SignUpDto signUpDto);
-	  public User getUser(String signUpEmail);
+	  public User getUser(String user_id);
 }

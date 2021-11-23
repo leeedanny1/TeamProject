@@ -38,8 +38,8 @@ public class SignUpServiceImpl implements SignUpService{
 	}
 
 	@Override
-	public User getUser(String signUpEmail) {
-		return userRepository.getUser(signUpEmail);
+	public User getUser(String user_id) {
+		return userRepository.getUser(user_id);
 	}
 
 	
