@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -42,11 +43,18 @@
                     <li><a href="#">JAVA</a></li>
                     <li><a href="#">Security</a></li>
                 </ul>
-                <!-- 로그인, 회원가입 -->
+            <!-- 로그인, 회원가입 -->
+            <c:choose>
+             <c:if test="">
                 <ul class="h_sign">
                     <li><a href="sign/sign_in_select.html">로그인</a></li>
                     <li><a href="sign/sign_up_phone.html">회원가입</a></li>
                 </ul>
+                </c:if>
+               <c:otherwise>
+                    <li><a href=""></a></li>
+               </c:otherwise>
+           </c:choose>
             </section>
         </main>
     </header>
