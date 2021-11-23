@@ -88,3 +88,29 @@
     width: 30%;
     height: 50px;
 }
+
+
+
+
+
+/* 하단 아이템 정보 */
+.b_container{
+    margin-top: 50px;
+    width: 100%;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* 상품정보 이름 */
+.b_container .item_dtl_name{
+    font-size: 20px;
+    padding: 40px 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 상품상세정보 */
+.b_container .item_dtl{
+    margin: 50px 0 100px;
+}
