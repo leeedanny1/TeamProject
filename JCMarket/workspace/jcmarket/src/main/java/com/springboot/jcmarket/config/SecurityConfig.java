@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration //IoC 등록
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
