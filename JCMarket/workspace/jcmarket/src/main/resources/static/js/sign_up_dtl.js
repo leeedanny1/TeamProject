@@ -359,19 +359,28 @@ function onSubmit(submitBtn,submitBtnIndex) {
        } 
 	}
   }else if(submitBtnIndex == 1) {
-  console.log(checkIdResult);
-   console.log(checkNicknameResult);
-   console.log(checkPasswordResult);
-	   if(checkIdResult == 0 && checkNicknameResult == 0 && checkPasswordResult == 0) {
-		 alert('값을 입력해 주세요! ');
-	}else if(checkIdResult ==1 && checkNicknameResult == 1 && checkPasswordResult == 1) {
-		  if(confirm('입력하신 정보로 회원가입을 진행하시겠습니까?')){
+	console.log(checkIdResult)
+    console.log(checkNicknameResult)
+	
+    if(checkIdResult == 0 || checkNicknameResult == 0) {
+		   alert('중복확인을 진행해 주세요!')
+    }else if(checkIdResult == 2 || checkNicknameResult == 2){
+	      if(testIdValue != inputs[submitBtnIndex + 1].value || testNickNameValue != inputs[submitBtnIndex +4].value){
+		       alert(' 다시 인증을 진행해주세요.  ');
+	}
+
+	}else if(checkIdResult == 1 || checkNicknameResult == 1) {
+		
+		 if(testIdValue != inputs[submitBtnIndex + 1].value || testNickNameValue != inputs[submitBtnIndex +4].value){
+			 alert('값이 변경 되었습니다. 다시 인증을 진행해주세요.  ');
+		}
+		 else{
+			if(confirm('입력하신 정보로 회원가입을 진행하시겠습니까?')){
 			signUp();
 		}
-    }else {
-		 alert('중복확인을 진행해주세요!');
+    }
 	}
 }
-     
-}
+ }    
+
 	     
