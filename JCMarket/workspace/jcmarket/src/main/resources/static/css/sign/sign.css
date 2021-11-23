@@ -60,8 +60,7 @@ body{
     color: white;
     border: none;
     background-color: rgba(247, 47, 50);
-    /* js구현 할 때 opacity: 1; 로 바꾸면 됨 */
-   /*   opacity: 0.3;*/
+   	opacity: 0.3;
 }
 /* input입력이 완료된 경우 */
 /* .sign_form .submit_btn{

@@ -10,22 +10,18 @@ function msgservice(i){
             e_msg[i].style.display = 'none';
         }
 }
-
-
 item_ip[0].onkeypress = () => {
 	if(window.event.keyCode == 13){
 		window.event.preventDefault();
 		item_ip[1].focus();
 	}
 }
-
 item_ip[1].onkeypress = () => {
 	if(window.event.keyCode == 13){
 		window.event.preventDefault();
 		// signInService();
 	}
 }
-
 for(let i=0;i<item_ip.length;i++){
 
     item_ip[i].onblur =()=>{
