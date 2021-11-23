@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SignInController {
 	@RequestMapping(value="sign-in" ,method = RequestMethod.GET)
 	public String index() {
-		return "sign/sign_in";
+		return "sign_in/sign_in";
 	}
 }

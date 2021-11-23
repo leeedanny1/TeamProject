@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <header>
         <!-- 헤더 내부 wrap -->
         <main class="wrap">
@@ -30,12 +32,23 @@
                     <li><a href="#">Security</a></li>
                 </ul>
                 <!-- 로그인, 회원가입 -->
+                <c:choose>
+                   <c:when test="${empty login_user}">
                 <ul class="h_sign">
-                    <li><a href="sign/sign_in_select.html">로그인</a></li>
-                    <li><a href="sign/sign_up_phone.html">회원가입</a></li>
+                    <li><a href="sign-in">로그인</a></li>
+                    <li><a href="sign-up">회원가입</a></li>
                 </ul>
+                </c:when>
+                <c:otherwise>
+                 <ul class="h_sign">
+                     <li><a href="/update">${login_user.user_nickname }</a></li>
+                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+                 </ul>
+                </c:otherwise>
+                </c:choose>
             </section>
         </main>
     </header>
+   
 </body>
 </html>
