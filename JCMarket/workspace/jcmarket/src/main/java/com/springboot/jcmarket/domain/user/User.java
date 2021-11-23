@@ -20,11 +20,7 @@ public class User {
 		private int buy_count;
 		private int sell_count;
 		private String role;
-<<<<<<< HEAD
 		private String provider;
-=======
-	    private String provider;
->>>>>>> 09b81f3ec0b37c6026bea4c359d5b3b3ed0842cd
 		private Date createdate;
 		private Date updatedate;
 }
