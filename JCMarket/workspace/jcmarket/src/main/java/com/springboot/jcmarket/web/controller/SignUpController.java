@@ -3,6 +3,7 @@ package com.springboot.jcmarket.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,10 +25,11 @@ public class SignUpController {
 
 	@ResponseBody
 	@PostMapping("/phone-check")
-	public Object phoneCheck(SignUpDto signUpDto) {
-		return signUpService.phoneCheck(signUpDto);
+	public String phoneCheck(@RequestBody SignUpDto signUpDto) {
+		
+		 return Integer.toString(signUpService.phoneCheck(signUpDto));
 	}
-
+	
 	@ResponseBody
 	@GetMapping("/id-check")
 	public String idCheck(@RequestParam String signUpId) {
@@ -37,7 +39,14 @@ public class SignUpController {
 	@ResponseBody
 	@GetMapping("nickname-check")
 	public String nicknameCheck(@RequestParam String signUpNickname) {
-		System.out.println(signUpNickname);
+		
 		return Integer.toString(signUpService.nicknameCheck(signUpNickname));
+	}
+	
+	@ResponseBody
+	@PostMapping("sign-up")
+	public String signUp(@RequestBody SignUpDto signUpDto) {
+		System.out.println(signUpDto);
+		return Integer.toString(signUpService.signUp(signUpDto));
 	}
 }

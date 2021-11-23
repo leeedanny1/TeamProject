@@ -8,5 +8,6 @@ import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 public interface UserRepository {
 	  public int phoneCheck(SignUpDto signUpDto);
 	  public int idCheck(String signUpId);
-	  public int nicknameCheck(String signUpNickname);	
+	  public int nicknameCheck(String signUpNickname);
+	  public int signUp(User user);
 }

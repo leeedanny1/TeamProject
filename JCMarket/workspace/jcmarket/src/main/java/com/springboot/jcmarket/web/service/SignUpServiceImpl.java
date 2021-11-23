@@ -29,6 +29,14 @@ public class SignUpServiceImpl implements SignUpService{
 		return userRepository.nicknameCheck(signUpNickname);
 	}
 
+	@Override
+	public int signUp(SignUpDto signUpDto) {
+		User user = signUpDto.toEntity();
+		user.setRole("ROLE_USER");
+		System.out.println(user);
+		return userRepository.signUp(user);
+	}
+
 	
    
 	

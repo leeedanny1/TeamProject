@@ -36,18 +36,18 @@
 
 
         <div class="sign_form  invisible">
-            <input type="text" name="" id="" value="인증받은 이름" readonly>
+            <input type="text" name="" id="" class="user_info" value="인증받은 이름" readonly>
             <section class="check_section">
                 <input type="email" class="input" name="" id="" placeholder="아이디" autofocus>
                 <button type="button" class="check_btn">아이디 중복 확인</button>
             </section>
-           
+            
 
             <input type="password" name="" class="input" id="" placeholder="비밀번호">
            
             <input type="password" name="" id="" class="input" placeholder="비밀번호 확인">
           
-            <input type="text" name="" id="" value="인증받은 전화번호" readonly>
+            <input type="text" name="" id="" class="user_info" value="인증받은 전화번호" readonly>
 
             <section class="check_section">
                 <input type="text" name="" id="" class="input" placeholder="별명">

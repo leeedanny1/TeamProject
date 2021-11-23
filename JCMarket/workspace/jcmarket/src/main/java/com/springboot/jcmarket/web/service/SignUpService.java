@@ -7,5 +7,5 @@ public interface SignUpService {
 	  public int phoneCheck(SignUpDto signUpDto);
 	  public int idCheck(String SignUpId);
 	  public int nicknameCheck(String signUpNickname);	
-	
+	  public int signUp(SignUpDto signUpDto);
 }
