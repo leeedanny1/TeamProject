@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/include/include.css">
-    <link rel="stylesheet" href="../css/border/border_reset.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/include/include.css">
+    <link rel="stylesheet" href="/css/border/border_reset.css">
 </head>
 <body>
         <!-- header -->
@@ -42,7 +42,7 @@
                     </ul>
                     <!-- 로그인, 회원가입 -->
                     <ul class="h_sign">
-                        <li><a href="sign/sign_in_select.html">로그인</a></li>
+                        <li><a href="/sign/sign_in_select.html">로그인</a></li>
                         <li><a href="sign/sign_up_phone.html">회원가입</a></li>
                     </ul>
                 </section>
@@ -54,7 +54,7 @@
         <!-- main content -->
         <main class="wrap main">
             <h1 class="page_name">JC Market 공지사항</h1>
-            <div class="notice_header">
+            <section class="notice_header">
                 <ul>
                     <li class="notice_num">번호</li>
                     <li class="notice_title">제목</li>
@@ -62,9 +62,9 @@
                     <li class="notice_date">작성일</li>
                     <li class="notice_count">조회수</li>
                 </ul>
-            </div>
+            </section>
 
-            <div class="notice_main">
+            <section class="notice_main">
             	<c:forEach var="notice" items="${noticeList }">
             		<a href="/notice/${notice.notice_code }">
 	                    <!-- <ul>
@@ -90,16 +90,16 @@
 	                    </ul>
 	                </a>
             	</c:forEach>
-            </div>
+            </section>
 
-            <div class="notice_footer">
+            <section class="notice_footer">
                 <c:if test="${not empty login_user }">
-                    <div class="notice_insert_div">
-                     <button type="button" class="notice_insert_button" onclick="location.href='/notice/insert'">글쓰기</button>
-                    </div>
+                    <section class="btn_container">
+                        <button type="button" class="notice_insert_button" onclick="location.href='/notice/notice_insert.html'">글쓰기</button>
+                    </section>
                 </c:if>
 
-                <ul>
+                <ul class="page_num_area">
                     <a href="/notice/list/${noticeBean.startPage - 1 eq 0 ? 1 : noticeBean.pageNumber - 1 }"><li><i class="fas fa-arrow-circle-left"></i></li></a>
                     
                     <c:forEach var="i" begin="${noticeBean.startPage }" end="${noticeBean.endPage }">
@@ -108,7 +108,7 @@
                     
                     <a href="/notice/list/${noticeBean.totalPage eq noticeBean.pageNumber ? noticeBean.totalPage : noticeBean.pageNumber + 1 }"><li><i class="fas fa-arrow-circle-right"></i></li></a>
                 </ul>
-         </div>
+         </section>
         </main>
     
     

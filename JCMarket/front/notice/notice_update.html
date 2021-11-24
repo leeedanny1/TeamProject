@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 : 수정하기</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/include/include.css">
-    <link rel="stylesheet" href="../css/border/border_reset.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/include/include.css">
+    <link rel="stylesheet" href="/css/border/border_reset.css">
 </head>
 <body>
         <!-- header -->
@@ -65,13 +65,30 @@
                     <li>작성일</li>
                     <li>2021-11-23</li>
                 </ul>
-                <ul class="file_ul">
-                    <li class="file_li">첨부파일</li>
-                    <li class="file_insert"><input type="file" multiple="multiple" name="file" required></li>
-                </ul>
                 <ul class="content_ul">
                     <li>
                         <textarea class="notice_content" name="notice_content"></textarea>
+                    </li>
+                </ul>
+
+                <ul class="file_ul_dtl">
+                	<li>첨부파일</li>
+                </ul>
+                <ul class="file_ul_dtl">
+                    <li>
+                        <input type="file" multiple="multiple" name="notice_file">
+                    </li>
+                </ul>
+                <ul class="file_ul_dtl">
+                    <li class="file_list">
+                        <c:forEach var="fileBean" items="${fileList }">
+                            <div class="item-file">
+                                <input type="hidden" name="originFileNames" value="${fileBean.originFileName }">
+                                <input type="hidden" name="tempFileNames" value="${fileBean.tempFileName }">
+                                <label class="file-name">${fileBean.originFileName }</label>
+                                <div class="file-dbtn"><i class="far fa-times-circle"></i></div>
+                            </div>                            
+                        </c:forEach>
                     </li>
                 </ul>
 

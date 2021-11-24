@@ -31,6 +31,10 @@
 #insert_form{
     margin-top: 50px;
 }
+/* 리스트 */
+.notice_header{
+    margin-top: 50px;
+}
 
 #insert_form ul{
     box-sizing: border-box;
@@ -79,6 +83,13 @@
 /* 디테일페이지 첨부파일 */
 .file_ul_dtl li{
     width: 100%;
+}
+
+
+/* 업데이트 페이지 첨부파일 */
+.item-file{
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -157,4 +168,11 @@
 /* 이전글 다음글 부분 */
 .notice_pre_next .next_title, .notice_pre_next .pre_title{
     width: 25%;
+}
+
+
+
+/* 페이지 번호 부분 */
+.page_num_area{
+    margin-bottom: 50px;
 }
