@@ -60,7 +60,7 @@
 	      from
 	       user_mst
 	      where
-	       user_id = #{user_id}  
+	       user_id = #{user_id}
 	
    </select>
 	
