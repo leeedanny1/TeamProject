@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sign/sign.css">
-    <script src="../js/sign_in.js" defer></script>
+    <script src="../js/sign_in/sign_in.js" defer></script>
 </head>
 <body>
      <main class="sign_container">

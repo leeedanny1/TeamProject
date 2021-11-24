@@ -358,10 +358,8 @@ function onSubmit(submitBtn,submitBtnIndex) {
        } 
 	}
   }else if(submitBtnIndex == 1) {
-	console.log(checkIdResult)
-    console.log(checkNicknameResult)
 	
-    if(checkIdResult == 0 || checkNicknameResult == 0) {
+	 if(checkIdResult == 0 || checkNicknameResult == 0) {
 		   alert('중복확인을 진행해 주세요!')
     }else if(checkIdResult == 2 || checkNicknameResult == 2){
 	      if(testIdValue != inputs[submitBtnIndex + 1].value || testNickNameValue != inputs[submitBtnIndex +4].value){
