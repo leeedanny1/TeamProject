@@ -53,7 +53,23 @@
 }
 .title_insert{
     width: 75%;
+    display: flex;
+    justify-content: space-around;
 }
+.title_insert button{
+    background-color: rgba(247, 47, 51, 0.4);
+    color: white;
+    border: none;
+    width: 45%;
+}
+.ti_4 button{
+    border: none;
+    width: 20%;
+}
+.title_insert button:hover{
+    background-color: rgb(247, 47, 51);
+}
+
 .title_ul li input {
     box-sizing: border-box;
     border: none;
