@@ -33,6 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.anyRequest() //antMatchers 외에 모든요청
 		.permitAll() //요청이 없어도 된다(모든 권한을 부여한다.)
 		.and()
+		 .logout()
+		.logoutUrl("/logout")
+		.logoutSuccessUrl("/")
+		.invalidateHttpSession(true).deleteCookies("JSESSIONID")
+		.and()
 		.formLogin() //로그인 페이지 커스텀
 		.loginPage("/sign-in") //get
 		.usernameParameter("user_id")
