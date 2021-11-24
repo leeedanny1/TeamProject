@@ -25,6 +25,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+		System.out.println(userRequest.getClientRegistration());
+		System.out.println(userRequest.getAccessToken());
+		System.out.println(super.loadUser(userRequest).getAttributes());
 		OAuth2User oauth2user=super.loadUser(userRequest);
 		Map<String,Object> attributes = oauth2user.getAttributes();
 		String provider = userRequest.getClientRegistration().getRegistrationId();
@@ -38,12 +41,14 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			providerId=UUID.randomUUID().toString().replaceAll("-", "");
 		}
 		String user_id= provider+"_"+providerId;
+		System.out.println(user_id);
 		User userEntity = userrepository.getUser(user_id);
-		if(userEntity==null) {//처음로그인한것
+		System.out.println(userEntity);
+		if(userEntity==null) {
 			OAuth2UserDto oauth2userdto= OAuth2UserDto.builder().user_id(user_id).user_password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
-					.user_name((String)attributes.get("user_name")).user_phone((String)attributes.get("user_phone")).user_nickname((String)attributes.get("user_nickname"))
-					.role((String)attributes.get("role-user")).provider((String)attributes.get(provider)).build();
-			userrepository.signUp(userEntity);
+				.user_name((String)attributes.get("name")).role("ROLE_USER").provider(provider).build();
+			userEntity = oauth2userdto.toEntity();
+			System.out.println(userEntity);
 		}
 
 		return new PrincipalDetails(userEntity,attributes);

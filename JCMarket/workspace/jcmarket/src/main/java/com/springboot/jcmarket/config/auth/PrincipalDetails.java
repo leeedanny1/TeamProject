@@ -15,14 +15,20 @@ import lombok.Data;
 @Data
 public class PrincipalDetails implements UserDetails, OAuth2User {
 	private static final long serialVersionUID = 1L;
+	
 	private User user;
+	
 	private Map<String, Object> attributes;
+	
 	public PrincipalDetails(User user) {
 		this.user=user;
 	}//일반로그인
+	
 	public PrincipalDetails(User user, Map<String, Object> attributes) {
 		this.attributes = attributes;
 		this.user = user;
+		System.out.println(attributes);
+		System.out.println(user);
 	}
 
 	@Override
@@ -81,7 +87,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	@Override
 	public String getName() {
-		return (String) attributes.get("user_id");
+		return user.getUser_name();
 	}
 
 }

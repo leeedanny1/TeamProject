@@ -3,12 +3,11 @@ package com.springboot.jcmarket.web.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,10 +22,16 @@ public class AuthController {
 
 	private final SignUpService signUpService;
 
-	@GetMapping("/sign_in")
+	@GetMapping("/sign-in-select")
+	public String signInSelect() {
+		
+		return "sign_in/sign_in_select";
+	}
+	@GetMapping("/sign-in")
 	public String signIn() {
 		return "sign_in/sign_in";
 	}
+	
 
 	
 	@GetMapping("/sign-up")
@@ -65,6 +70,4 @@ public class AuthController {
 
 		return Integer.toString(result);
 	}
-
-
 }

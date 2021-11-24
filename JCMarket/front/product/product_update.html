@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품등록 : 상품수정</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/include/include.css">
+    <link rel="stylesheet" href="/css/border/border_reset.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <!-- 헤더 내부 wrap -->
+        <main class="wrap">
+            <!-- 로고와 검색창 들어가는 부분 -->
+            <section class="t_header">
+                <!-- 로고 -->
+                <a href="/index.html">
+                    <h1 class="h_logo">JC마켓</h1>
+                </a>
+                <!-- 검색박스 -->
+                <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
+                <!-- 인포 -->
+                <ul class="h_info">
+                    <li><a href="">판매하기</a></li>
+                    <li>|</li>
+                    <li><a href="">내상점</a></li>
+                    <li>|</li>
+                    <li><a href="">JC톡</a></li>
+                </ul>
+            </section>
+
+            <!-- 카테고리와 로그인 들어가는 부분 -->
+            <section class="b_header">
+                <!-- 카테고리 -->
+                <ul class="h_category">
+                    <li><a href="/notice/notice.html">Notice</a></li>
+                    <li><a href="/product/hot_product.html">Hot&nbspItems</a></li>
+                    <li><a href="/product/new_product.html">New&nbspItems</a></li>
+                    <li><a href="/product/product_insert.html">Selling&nbspItems</a></li>
+                </ul>
+                <!-- 로그인, 회원가입 -->
+                <ul class="h_sign">
+                    <li><a href="/sign/sign_in_select.html">로그인</a></li>
+                    <li><a href="/sign/sign_up_dtl.html">회원가입</a></li>
+                </ul>
+            </section>
+        </main>
+    </header>
+
+
+
+    <!-- main content -->
+    <main class="wrap main">
+        <h1 class="page_name">상품수정</h1>
+        <form id="insert_form">
+            <ul class="title_ul">
+                <li class="title_name">상품명</li>
+                <li class="title_insert"><input type="text" class="title" name="title"></li>
+            </ul>
+            <ul class="title_ul">
+                <li class="title_name">상품가격(숫자만 입력)</li>
+                <li class="title_insert"><input type="number" class="title" name="title"></li>
+            </ul>
+            <ul class="title_ul">
+                <li class="title_name">상품상태</li>
+                <li class="title_insert ti_4">
+                    <button>새상품</button>
+                    <button>S급</button>
+                    <button>A급</button>
+                    <button>B급</button>
+                </li>
+            </ul>
+            <ul class="title_ul">
+                <li class="title_name">교환여부</li>
+                <li class="title_insert">
+                    <button>교환 가능</button>
+                    <button>교환 불가</button>
+                </li>
+            </ul>
+            <ul class="title_ul">
+                <li class="title_name">배송비</li>
+                <li class="title_insert">
+                    <button>판매자 부담</button>
+                    <button>구매자 부담</button>
+                </li>
+            </ul>
+            <ul class="info_ul">
+                <li>작성자</li>
+                <li>관리자</li>
+                <li>작성일</li>
+                <li>2021-11-23</li>
+            </ul>
+            <ul class="content_ul">
+                <li>
+                    <textarea class="notice_content" name="notice_content"></textarea>
+                </li>
+            </ul>
+
+
+            <ul class="file_ul_dtl">
+                <li>사진등록</li>
+            </ul>
+            <ul class="file_ul_dtl">
+                <li>
+                    <input type="file" multiple="multiple" name="notice_file">
+                </li>
+            </ul>
+            <ul class="file_ul_dtl">
+                <li class="file_list">
+                    <c:forEach var="fileBean" items="${fileList }">
+                        <div class="item-file">
+                            <input type="hidden" name="originFileNames" value="${fileBean.originFileName }">
+                            <input type="hidden" name="tempFileNames" value="${fileBean.tempFileName }">
+                            <label class="file-name">${fileBean.originFileName }</label>
+                            <div class="file-dbtn"><i class="far fa-times-circle"></i></div>
+                        </div>
+                    </c:forEach>
+                </li>
+            </ul>
+
+            <section class="btn_container">
+                <button type="button" class="submit">수정완료</button>
+                <button type="button">수정취소</button>
+            </section>
+        </form>
+    </main>
+
+
+
+    <!-- footer -->
+    <footer>
+        <main class="wrap">
+            푸터<br>
+            dsfdsfsd <br>
+        </main>
+    </footer>
+
+
+    <!-- fontawesome CDN -->
+    <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

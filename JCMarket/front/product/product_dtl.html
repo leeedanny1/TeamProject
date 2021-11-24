@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC마켓 : 상품 상세정보</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/include/include.css">
-    <link rel="stylesheet" href="../css/border/border_reset.css">
-    <link rel="stylesheet" href="../css/border/product_dtl.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/include/include.css">
+    <link rel="stylesheet" href="/css/border/border_reset.css">
+    <link rel="stylesheet" href="/css/product/product_dtl.css">
 </head>
+
 <body>
     <!-- header -->
     <header>
@@ -19,7 +21,9 @@
             <!-- 로고와 검색창 들어가는 부분 -->
             <section class="t_header">
                 <!-- 로고 -->
-                <a href="#"><h1 class="h_logo">JC마켓</h1></a>
+                <a href="#">
+                    <h1 class="h_logo">JC마켓</h1>
+                </a>
                 <!-- 검색박스 -->
                 <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
                 <!-- 인포 -->
@@ -76,6 +80,8 @@
                     </ul>
                     <!-- 상품정보 -->
                     <article class="item_info_dtl">
+                        <h4>판매자</h4>
+                        <span>판매자 닉네임</span>
                         <h4>상품상태</h4>
                         <span>새상품</span>
                         <h4>교환여부</h4>
@@ -95,14 +101,15 @@
 
         <section class="b_container">
             <h2 class="item_dtl_name">상품정보</h2>
-            <pre class="item_dtl">김준일강사님수업 1시간 이용권입니다.<br>유효기간은 2021년 12월 31일 까지입니다.<br>유효기간이 얼마 남지 않아서 100만원에 급처합니다.</pre>
+            <pre
+                class="item_dtl">김준일강사님수업 1시간 이용권입니다.<br>유효기간은 2021년 12월 31일 까지입니다.<br>유효기간이 얼마 남지 않아서 100만원에 급처합니다.</pre>
             <article class="list_btn_container">
-                <button type="button" class="list_btn">수정</button>
+                <button type="button" class="list_btn" onclick="location.href='/product/product_update.html'">수정</button>
                 <button type="button" class="list_btn">삭제</button>
-                <button type="button" class="list_btn">목록</button>
+                <button type="button" class="list_btn" onclick="location.href='/product/new_product.html'">목록</button>
             </article>
         </section>
-        
+
     </main>
 
 
@@ -114,10 +121,11 @@
             dsfdsfsd <br>
         </main>
     </footer>
-    
+
 
 
     <!-- fontawesome CDN -->
     <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

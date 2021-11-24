@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+
+
 <!DOCTYPE html>
 
 <header>
@@ -33,18 +40,18 @@
                 </ul>
                 <!-- 로그인, 회원가입 -->
                 <c:choose>
-                   <c:when test="${empty login_user}">
-                <ul class="h_sign">
-                    <li><a href="sign-in">로그인</a></li>
-                    <li><a href="sign-up">회원가입</a></li>
-                </ul>
-                </c:when>
-                <c:otherwise>
-                 <ul class="h_sign">
-                     <li><a href="/update">${login_user.user_nickname }</a></li>
-                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
-                 </ul>
-                </c:otherwise>
+                   <c:when test="${empty principal.user}">
+		                <ul class="h_sign">
+		                    <li><a href="sign-in-select">로그인</a></li>
+		                    <li><a href="sign-up">회원가입</a></li>
+		                </ul>
+                	</c:when>
+                	<c:otherwise>
+		                 <ul class="h_sign">
+		                     <li><a href="/update">${principal.user.user_nickname }</a></li>
+		                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+		                 </ul>
+                	</c:otherwise>
                 </c:choose>
             </section>
         </main>

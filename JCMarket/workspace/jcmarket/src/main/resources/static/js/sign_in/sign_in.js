@@ -2,8 +2,11 @@ const submit_btn=document.querySelector('.submit_btn');
 const item_ip=document.querySelectorAll('.item_ip');
 const e_msg= document.querySelectorAll('.e_msg');
 
+var signInData = {
+	user_id: '',
+	user_password: '',
+}
 function msgservice(i){
-   console.log(item_ip[i]);
         if(item_ip[i].value.length==0){
             e_msg[i].style.display = 'block';
         }else {
