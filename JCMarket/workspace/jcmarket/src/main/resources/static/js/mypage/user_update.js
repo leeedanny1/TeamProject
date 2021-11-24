@@ -11,10 +11,11 @@ var updateData = {
     user_nickname: ''
 }
 
-var checkNicknameResult;
+var checkNicknameResult = 0 ;
 var passwordFormatResult;
 var nicknameFormatResult;
-var checkPasswordResult;
+var checkPasswordResult = 0;
+
 
 //blur input 
 inputs.forEach((input, inputIndex) => {
@@ -91,6 +92,9 @@ submit_btn.addEventListener('click', () => {
         serviceConfirm(1, '닉네임');
         return;
     }
+    if(checkNicknameResult == 0) {
+	  
+}
 
 });
 
