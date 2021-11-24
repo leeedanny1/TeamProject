@@ -18,10 +18,9 @@
         <h1 class="login_name">JC마켓 로그인</h1>
         <p>로그인 수단을 선택해 주세요</p>
         <section class="login_option">
-            <button>구글 계정으로 로그인</article>
-            <button>네이버 계정으로 로그인</button>
-            <button>Facebook 계정으로 로그인</button>
-            <button onclick="location.href='sign_in.html'">JC마켓 계정으로 로그인</button>
+              <button onclick= "location.href= '/oauth2/authorization/google'">구글 계정으로 로그인</article>
+            <button onclick= "location.href= '/oauth2/authorization/naver'">네이버 계정으로 로그인</button>
+            <button onclick="location.href='sign-in'">JC마켓 계정으로 로그인</button>
         </section>
     </main>
 </body>

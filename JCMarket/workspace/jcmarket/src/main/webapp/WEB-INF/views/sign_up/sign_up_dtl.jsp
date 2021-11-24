@@ -57,7 +57,7 @@
 
             <button type="button" class="submit_btn">회원가입</button>
         </div>
-          <script src="js/sign_in.js"></script>
+       
     </main>
    
 </body>

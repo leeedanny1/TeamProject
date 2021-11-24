@@ -52,7 +52,6 @@
 			now()
 		)
 	</insert>
-	
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
 	      select
 	        user_id,user_password,user_name, user_phone, user_nickname, 
@@ -62,7 +61,5 @@
 	      where
 	       user_id = #{user_id}
 	
-   </select>
-	
-  
+	</select>
   </mapper>
