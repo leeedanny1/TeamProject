@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.6.4-MariaDB - mariadb.org binary distribution
+-- 서버 버전:                        10.6.5-MariaDB - mariadb.org binary distribution
 -- 서버 OS:                        Win64
 -- HeidiSQL 버전:                  11.3.0.6295
 -- --------------------------------------------------------
@@ -30,10 +30,7 @@ CREATE TABLE IF NOT EXISTS `border_comments` (
   PRIMARY KEY (`border_comments_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.border_comments:~0 rows (대략적) 내보내기
-DELETE FROM `border_comments`;
-/*!40000 ALTER TABLE `border_comments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `border_comments` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.border_dtl 구조 내보내기
 DROP TABLE IF EXISTS `border_dtl`;
@@ -47,10 +44,7 @@ CREATE TABLE IF NOT EXISTS `border_dtl` (
   PRIMARY KEY (`border_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.border_dtl:~0 rows (대략적) 내보내기
-DELETE FROM `border_dtl`;
-/*!40000 ALTER TABLE `border_dtl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `border_dtl` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.border_mst 구조 내보내기
 DROP TABLE IF EXISTS `border_mst`;
@@ -63,10 +57,7 @@ CREATE TABLE IF NOT EXISTS `border_mst` (
   PRIMARY KEY (`border_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.border_mst:~0 rows (대략적) 내보내기
-DELETE FROM `border_mst`;
-/*!40000 ALTER TABLE `border_mst` DISABLE KEYS */;
-/*!40000 ALTER TABLE `border_mst` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.notice_comments 구조 내보내기
 DROP TABLE IF EXISTS `notice_comments`;
@@ -80,10 +71,7 @@ CREATE TABLE IF NOT EXISTS `notice_comments` (
   PRIMARY KEY (`notice_comments_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.notice_comments:~0 rows (대략적) 내보내기
-DELETE FROM `notice_comments`;
-/*!40000 ALTER TABLE `notice_comments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notice_comments` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.notice_dtl 구조 내보내기
 DROP TABLE IF EXISTS `notice_dtl`;
@@ -97,10 +85,7 @@ CREATE TABLE IF NOT EXISTS `notice_dtl` (
   PRIMARY KEY (`notice_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 jcmarket.notice_dtl:~0 rows (대략적) 내보내기
-DELETE FROM `notice_dtl`;
-/*!40000 ALTER TABLE `notice_dtl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notice_dtl` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.notice_mst 구조 내보내기
 DROP TABLE IF EXISTS `notice_mst`;
@@ -113,10 +98,7 @@ CREATE TABLE IF NOT EXISTS `notice_mst` (
   PRIMARY KEY (`notice_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 jcmarket.notice_mst:~0 rows (대략적) 내보내기
-DELETE FROM `notice_mst`;
-/*!40000 ALTER TABLE `notice_mst` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notice_mst` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.phonenumber_mst 구조 내보내기
 DROP TABLE IF EXISTS `phonenumber_mst`;
@@ -128,31 +110,27 @@ CREATE TABLE IF NOT EXISTS `phonenumber_mst` (
   PRIMARY KEY (`phone_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 jcmarket.phonenumber_mst:~1 rows (대략적) 내보내기
-DELETE FROM `phonenumber_mst`;
-/*!40000 ALTER TABLE `phonenumber_mst` DISABLE KEYS */;
-INSERT INTO `phonenumber_mst` (`phone_number`, `phone_name`, `create_date`, `update_date`) VALUES
-	('01063998524', '전보석', '2021-11-24', '2021-11-24');
-/*!40000 ALTER TABLE `phonenumber_mst` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.product_dtl 구조 내보내기
 DROP TABLE IF EXISTS `product_dtl`;
 CREATE TABLE IF NOT EXISTS `product_dtl` (
-  `product_code` int(11) NOT NULL,
-  `product_content` text DEFAULT NULL,
-  `product_cost` text DEFAULT NULL,
-  `product_address` text DEFAULT NULL,
-  `originFileNames` varchar(500) DEFAULT NULL,
-  `tempFileNames` varchar(500) DEFAULT NULL,
-  `create_date` date DEFAULT NULL,
-  `update_date` date DEFAULT NULL,
-  PRIMARY KEY (`product_code`) USING BTREE
+  `item_code` int(11) NOT NULL,
+  `item_name` varchar(50) NOT NULL DEFAULT '',
+  `item_content` varchar(50) NOT NULL DEFAULT '',
+  `item_price` varchar(50) NOT NULL DEFAULT '',
+  `item_stat` varchar(50) NOT NULL DEFAULT '',
+  `item_change` varchar(50) NOT NULL DEFAULT '',
+  `item_delivery` varchar(50) NOT NULL DEFAULT '',
+  `user_id` varchar(50) NOT NULL DEFAULT '',
+  `originFileNames` varchar(500) NOT NULL,
+  `tempFileNames` varchar(500) NOT NULL,
+  `create_date` date NOT NULL,
+  `update_date` date NOT NULL,
+  PRIMARY KEY (`item_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.product_dtl:~0 rows (대략적) 내보내기
-DELETE FROM `product_dtl`;
-/*!40000 ALTER TABLE `product_dtl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_dtl` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.product_mst 구조 내보내기
 DROP TABLE IF EXISTS `product_mst`;
@@ -165,10 +143,7 @@ CREATE TABLE IF NOT EXISTS `product_mst` (
   PRIMARY KEY (`product_code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 jcmarket.product_mst:~0 rows (대략적) 내보내기
-DELETE FROM `product_mst`;
-/*!40000 ALTER TABLE `product_mst` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_mst` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 jcmarket.user_mst 구조 내보내기
 DROP TABLE IF EXISTS `user_mst`;
@@ -187,13 +162,7 @@ CREATE TABLE IF NOT EXISTS `user_mst` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- 테이블 데이터 jcmarket.user_mst:~2 rows (대략적) 내보내기
-DELETE FROM `user_mst`;
-/*!40000 ALTER TABLE `user_mst` DISABLE KEYS */;
-INSERT INTO `user_mst` (`user_id`, `user_password`, `user_name`, `user_phone`, `user_nickname`, `buy_count`, `sell_count`, `role`, `provider`, `create_date`, `update_date`) VALUES
-	('admin', '111', '관리자', '0100000000', '관리자', 1, 1, 'admin', '', '2021-11-22', '2021-11-22'),
-	('ekfdlf1', '$2a$10$askKN45VBpKeT9RTzVr1jOO6gi6Vl4JsknlhWEoBLqoIjaA8fOT2a', '전보석', '01063998524', '석보석보', 0, 0, 'ROLE_USER', '', '2021-11-24', '2021-11-24');
-/*!40000 ALTER TABLE `user_mst` ENABLE KEYS */;
+-- 내보낼 데이터가 선택되어 있지 않습니다.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

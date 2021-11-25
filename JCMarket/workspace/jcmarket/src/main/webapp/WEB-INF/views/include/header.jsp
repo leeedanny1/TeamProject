@@ -16,7 +16,7 @@
             <!-- 로고와 검색창 들어가는 부분 -->
             <section class="t_header">
                 <!-- 로고 -->
-                <a href="/index"><h1 class="h_logo">JC마켓</h1></a>
+                <a href="/"><h1 class="h_logo">JC마켓</h1></a>
                 <!-- 검색박스 -->
                 <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
                 <!-- 인포 -->
