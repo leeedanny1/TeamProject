@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC마켓 : JC마켓 회원가입</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/sign/sign.css">
-    <link rel="stylesheet" href="../css/sign/sign_up.css">
-    <script src="../js/sign_up/sign_up_dtl.js" defer></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/sign/sign.css">
+    <link rel="stylesheet" href="/css/sign/sign_up.css">
+    <script src="/js/sign_up/sign_up_dtl.js" defer></script>
 
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>

@@ -33,7 +33,7 @@
         <!-- 인기상품 -->
         <!-- 하트 만들어서 판매중인 상품중에 하트 높은 순서대로 정렬 -->
         <section class="sale_item">
-            <a href="/product/hot_product.html"><h2 class="section_name">인기상품</h2></a>
+            <a href="/items/hot"><h2 class="section_name">인기상품</h2></a>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var="notice" items="${noticeList }" class="item_container">
@@ -126,7 +126,7 @@
 
         <!-- 최근상품 -->
         <section class="sale_item">
-            <a href="/product/new_product.html"><h2 class="section_name">최근상품</h2></a>
+            <a href="/items/new"><h2 class="section_name">최근상품</h2></a>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var="notice" items="${noticeList }" class="item_container">

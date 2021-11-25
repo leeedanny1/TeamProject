@@ -123,7 +123,7 @@
             <c:if test="${not empty login_user }">
                 <section class="btn_container">
                     <button type="button" class="notice_insert_button"
-                        onclick="location.href='/product/product_insert.html'">상품등록</button>
+                        onclick="location.href='/items/sale'">상품등록</button>
                 </section>
             </c:if>
 

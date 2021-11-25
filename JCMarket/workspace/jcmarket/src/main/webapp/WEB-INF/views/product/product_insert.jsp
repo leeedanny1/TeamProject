@@ -25,11 +25,11 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">상품명</li>
-                <li class="title_insert"><input type="text" class="title" name="title"></li>
+                <li class="title_insert"><input type="text" class="title" name="title" placeholder="상품명을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name select_name">상품가격(숫자만 입력)</li>
-                <li class="title_insert"><input type="number" class="title" name="title"></li>
+                <li class="title_insert"><input type="number" class="title" name="title" placeholder="상품 가격을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">상품상태</li>
@@ -66,7 +66,7 @@
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" name="notice_content"></textarea>
+                    <textarea class="notice_content" name="notice_content" placeholder="상품 설명을 입력하세요."></textarea>
                 </li>
             </ul>
 
