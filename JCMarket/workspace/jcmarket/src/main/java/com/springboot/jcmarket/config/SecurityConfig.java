@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.and()
 		.oauth2Login()
 		.loginPage("/auth/signin")//로그인할주소
+		.defaultSuccessUrl("/sign-up-social")
 		.userInfoEndpoint()
 		.userService(principaloauth2userservice);
 	}

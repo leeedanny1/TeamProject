@@ -18,20 +18,22 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class AuthController {
+public class SignController {
 
 	private final SignUpService signUpService;
 
 	@GetMapping("/sign-in-select")
 	public String signInSelect() {
-		
 		return "sign_in/sign_in_select";
 	}
 	@GetMapping("/sign-in")
 	public String signIn() {
 		return "sign_in/sign_in";
 	}
-	
+	@GetMapping("/sign-up-social")
+	public String signUpSocial() {
+		return "sign_up/sign_up_social";
+	}
     
 	
 	@GetMapping("/sign-up")
