@@ -1,5 +1,6 @@
 package com.springboot.jcmarket.web.service;
 
+
 import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.user.User;
@@ -20,8 +21,9 @@ public class SignUpServiceImpl implements SignUpService{
 	}
 
 	@Override
-	public int idCheck(String SignUpId) {
-		return userRepository.idCheck(SignUpId);
+	public int idCheck(SignUpDto signUpDto) {
+		User user = signUpDto.toEntity();
+		return userRepository.idCheck(user);
 	}
 
 	@Override
@@ -42,11 +44,7 @@ public class SignUpServiceImpl implements SignUpService{
 		return userRepository.getUser(user_id);
 	}
 
-	
 
-	
-   
-	
 
 }
 

@@ -3,7 +3,6 @@ package com.springboot.jcmarket.web.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springboot.jcmarket.domain.user.User;
 import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 import com.springboot.jcmarket.web.service.SignUpService;
 
@@ -50,8 +50,8 @@ public class SignController {
 
 	@ResponseBody
 	@GetMapping("/id-check")
-	public String idCheck(@RequestParam String signUpId) {
-		return Integer.toString(signUpService.idCheck(signUpId));
+	public String idCheck(@RequestBody SignUpDto signUpDto) {
+		return Integer.toString(signUpService.idCheck(signUpDto));
 	}
 
 	@ResponseBody
