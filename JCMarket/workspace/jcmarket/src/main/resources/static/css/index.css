@@ -46,7 +46,8 @@
 
 /* 인기상품과 최근상품 */
 .sale_item{
-    background-color: cadetblue;
+    padding-top: 5px;
+    border-top: 1px solid black;
 }
 
 /* 상품 아이템 박스 컨테이너*/
