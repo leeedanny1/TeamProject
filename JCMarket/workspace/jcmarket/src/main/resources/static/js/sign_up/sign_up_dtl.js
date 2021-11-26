@@ -24,10 +24,6 @@ var tempNickNameValue= '';
 var tempPasswordValue = '';
 var checkEmptyResult = false;
 
- console.log(idCheckResult);
-	 console.log(passwordCheckResult);
-	 console.log(checkNicknameResult);
-
 //blur될때는 빈값체크만, password는 정규식검사와 일치여부 체크 까지 
 //input blur될때 빈값체크, password일치여부 체크 
 inputs.forEach((input, inputIndex) => {
@@ -38,23 +34,6 @@ inputs.forEach((input, inputIndex) => {
 });
 
 
-
-//비밀번호 일치여부 확인하기전의 검사 
-function checkPasswordService(input, inputIndex) {
-	
-	  checkEmptyResult = checkEmpty(input,inputIndex);
-		 if(checkEmptyResult == true){
-			if(inputIndex == 2) {
-				if(!checkPasswordFormat(inputs[inputIndex -1].value, input.value, input)){
-					passwordCheckResult = 2; //비밀번호 형식이 맞지 않으면 2  
-				}else {
-					passwordCheckResult = 1; //형식이 맞으면 다시 1을 넣어줌 
-				}
-			}else if(inputIndex == 3) {
-				checkRepassword(inputs[inputIndex -1].value, input.value, input);
-			}
-		} 
-}
 
 
 //중복확인 버튼클릭시 
@@ -88,6 +67,9 @@ check_btns.forEach((check_btn, checkIndex) => {
 }
 });
 });
+
+
+//다음버튼,회원가입 버튼클릭 시 
 submit_btn.addEventListener('click', ()=> {
 	inputs.forEach((input, inputIndex) => {
 	   	checkEmpty(input, inputIndex);
@@ -123,29 +105,6 @@ submit_btn.addEventListener('click', ()=> {
 	}
 	}
 	
-	
-
-		
-	
-	   
-		
-	
-		
-		
-		/*}else {
-			if(passwordCheckResult == 2){
-				return;     //아이디, 닉네임 중복확인을 한 상태에서 아이디값 닉네임 값이 변경되지 않았을 때 비밀번호값이  바뀌었는지 체크 
-			}
-			if(confirm('입력하신 정보로 회원가입을 진행하시겠습니까? ')){
-				signUp();
-			}*/
-		
-	
-	
-	 
-	 console.log(idCheckResult);
-	 console.log(passwordCheckResult);
-	 console.log(checkNicknameResult);
 });
 
 
@@ -203,6 +162,42 @@ function checkEmpty(input, checkIndex) {
 	
 	 return true;
 	}
+	
+
+//비밀번호 일치여부 확인하기전의 검사 
+function checkPasswordService(input, inputIndex) {
+	
+	  checkEmptyResult = checkEmpty(input,inputIndex);
+		 if(checkEmptyResult == true){
+			if(inputIndex == 2) {
+				if(!checkPasswordFormat(inputs[inputIndex -1].value, input.value, input)){
+					passwordCheckResult = 2; //비밀번호 형식이 맞지 않으면 2  
+				}else {
+					passwordCheckResult = 1; //형식이 맞으면 다시 1을 넣어줌 
+				}
+			}else if(inputIndex == 3) {
+				checkRepassword(inputs[inputIndex -1].value, input.value, input);
+			}
+		} 
+}
+
+
+//비밀번호 일치 체크 
+function checkRepassword(password, repassword, input) {
+	 
+	  if(password != repassword) {
+		 passwordCheckResult = 2;
+		  msgService(input, '비밀번호가 일치하지 않습니다. ', 0);
+		  testPasswordValue = input.value;
+		 
+		  return;
+	}else {
+		  passwordCheckResult = 1;
+		  signUpData.user_password = input.value;
+		  return;
+	}
+  	
+}
 
 
 //전화번호 정규식 체크
@@ -232,71 +227,6 @@ function CheckIdFormat(input) {
 }
 }
   
-  
-//전화번호 인증
-function checkPhone(input) {
-	 
-	 console.log('checkPhone: ' + input.value)
-     $.ajax({
-	   type: "get",
-	   url: "phone-check",
-	   data: {
-		 phoneNumber : input.value
-	   },
-	   dataType: "text",
-	   success: function(data) {
-	        authCode= data;
-	        tempPasswordValue = input.value;
-	        signUpData.user_phone = input.value;
-	        phoneCheckResult = 1;
-	},
-	error: function(){
-		phoneCheckResult = 2;
-		alert("오류가발생하였습니다 다시시도해주세요.");
-	}
-})
-
-}
-
-//휴대폰 인증번호 일치여부 확인
-function checkAuth(input) {
-	
-	console.log('checkAuth: ' +  signUpData.user_phone)
-	 let authNumber = input.value;
-	 if(authCode == authNumber) {
-		  alert('인증완료하였습니다. ');
-		 user_info.value = signUpData.user_phone;
-		  sign_form[0].classList.add('invisible');
-	      sign_form[1].classList.remove('invisible');
-	}else {
-		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
-	}
-}
-
-//아이디 중복확인 
-function  checkId(input) {
-     $.ajax({
-	    type: "post",
-	    url: "id-check",
-	    data: JSON.stringify(signUpData),
-        contentType: "application/json;charset=UTF-8",
-        dataType : "text",
-		success: function(data) {
-			if(data == 1){
-				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `, 0);
-				idCheckResult = 2;
-			}else if(data == 0) {
-				msgService(input,  '사용가능한 아이디 입니다.', 1);
-				signUpData.user_id = input.value;
-				tempIdValue = input.value;
-				idCheckResult = 1;
-			}
-		},
-		error: function() {
-			alert('오류가 발생했습니다. 다시시도해주세요. ');
-		}
-})
-}
 
 //비밀번호 정규식 체크 
 function checkPasswordFormat(id, password, input) {
@@ -329,6 +259,7 @@ function checkPasswordFormat(id, password, input) {
 	return true;
 
 }
+  
 
 //닉네임 정규식 체크 
 function checkNicknameFormat(input) {
@@ -345,7 +276,73 @@ function checkNicknameFormat(input) {
 }  
      checkNickname(input);
      return true;
+}
+
+
+//휴대폰 인증번호 일치여부 확인
+function checkAuth(input) {
+	
+	console.log('checkAuth: ' +  signUpData.user_phone)
+	 let authNumber = input.value;
+	 if(authCode == authNumber) {
+		  alert('인증완료하였습니다. ');
+		 user_info.value = signUpData.user_phone;
+		  sign_form[0].classList.add('invisible');
+	      sign_form[1].classList.remove('invisible');
+	}else {
+		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
+	}
+}
+
+  
+//전화번호 인증
+function checkPhone(input) {
 	 
+	 console.log('checkPhone: ' + input.value)
+     $.ajax({
+	   type: "get",
+	   url: "phone-check",
+	   data: {
+		 phoneNumber : input.value
+	   },
+	   dataType: "text",
+	   success: function(data) {
+	        authCode= data;
+	        tempPasswordValue = input.value;
+	        signUpData.user_phone = input.value;
+	        phoneCheckResult = 1;
+	},
+	error: function(){
+		phoneCheckResult = 2;
+		alert("오류가발생하였습니다 다시시도해주세요.");
+	}
+})
+
+}
+
+//아이디 중복확인 
+function  checkId(input) {
+     $.ajax({
+	    type: "post",
+	    url: "id-check",
+	    data: JSON.stringify(signUpData),
+        contentType: "application/json;charset=UTF-8",
+        dataType : "text",
+		success: function(data) {
+			if(data == 1){
+				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `, 0);
+				idCheckResult = 2;
+			}else if(data == 0) {
+				msgService(input,  '사용가능한 아이디 입니다.', 1);
+				signUpData.user_id = input.value;
+				tempIdValue = input.value;
+				idCheckResult = 1;
+			}
+		},
+		error: function() {
+			alert('오류가 발생했습니다. 다시시도해주세요. ');
+		}
+})
 }
 
 //닉네임 중복확인 
@@ -375,25 +372,6 @@ function checkNickname(input) {
 	})
 }
 
-
-
-//비밀번호 일치 체크 
-function checkRepassword(password, repassword, input) {
-	 
-	  if(password != repassword) {
-		 passwordCheckResult = 2;
-		  msgService(input, '비밀번호가 일치하지 않습니다. ', 0);
-		  testPasswordValue = input.value;
-		 
-		  return;
-	}else {
-		  passwordCheckResult = 1;
-		  signUpData.user_password = input.value;
-		  return;
-	}
-  	
-}
-
    
 
 // 메세지 제거
@@ -403,7 +381,6 @@ function clearMsg(input) {
         input.nextElementSibling.remove();
     }
 }
-
 
 
 //메세지 만들어서 추가
