@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springboot.jcmarket.domain.user.User;
 import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 import com.springboot.jcmarket.web.service.SignUpService;
 
@@ -18,22 +19,24 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class AuthController {
+public class SignController {
 
 	private final SignUpService signUpService;
 	
 
 	@GetMapping("/sign-in-select")
 	public String signInSelect() {
-		
 		return "sign_in/sign_in_select";
 	}
 	@GetMapping("/sign-in")
 	public String signIn() {
 		return "sign_in/sign_in";
 	}
-	
-
+	@GetMapping("/sign-up-social")
+	public String signUpSocial() {
+		return "sign_up/sign_up_social";
+	}
+    
 	
 	@GetMapping("/sign-up")
 	public String signUp() {
@@ -52,8 +55,8 @@ public class AuthController {
 	}
 	@ResponseBody
 	@GetMapping("/id-check")
-	public String idCheck(@RequestParam String signUpId) {
-		return Integer.toString(signUpService.idCheck(signUpId));
+	public String idCheck(@RequestBody SignUpDto signUpDto) {
+		return Integer.toString(signUpService.idCheck(signUpDto));
 	}
 
 	@ResponseBody

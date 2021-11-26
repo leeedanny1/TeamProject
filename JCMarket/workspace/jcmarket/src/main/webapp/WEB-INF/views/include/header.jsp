@@ -9,14 +9,14 @@
 
 
 <!DOCTYPE html>
-
-<header>
+<!-- header -->
+    <header>
         <!-- 헤더 내부 wrap -->
         <main class="wrap">
             <!-- 로고와 검색창 들어가는 부분 -->
             <section class="t_header">
                 <!-- 로고 -->
-                <a href="#"><h1 class="h_logo">JC마켓</h1></a>
+                <a href="/"><h1 class="h_logo">JC마켓</h1></a>
                 <!-- 검색박스 -->
                 <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
                 <!-- 인포 -->
@@ -33,17 +33,17 @@
             <section class="b_header">
                 <!-- 카테고리 -->
                 <ul class="h_category">
-                    <li><a href="#">Spring</a></li>
-                    <li><a href="#">Boot</a></li>
-                    <li><a href="#">JAVA</a></li>
-                    <li><a href="#">Security</a></li>
+                    <li><a href="/notice/notice">Notice</a></li>
+                    <li><a href="/items/hot">Hot&nbspItems</a></li>
+                    <li><a href="/items/new">New&nbspItems</a></li>
+                    <li><a href="/items/sale">Selling&nbspItems</a></li>
                 </ul>
                 <!-- 로그인, 회원가입 -->
                 <c:choose>
                    <c:when test="${empty principal.user}">
 		                <ul class="h_sign">
-		                    <li><a href="sign-in-select">로그인</a></li>
-		                    <li><a href="sign-up">회원가입</a></li>
+		                    <li><a href="/sign-in-select">로그인</a></li>
+		                    <li><a href="/sign-up">회원가입</a></li>
 		                </ul>
                 	</c:when>
                 	<c:otherwise>

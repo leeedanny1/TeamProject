@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC마켓 : JC마켓 계정로그인</title>
 
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/sign/sign.css">
-    <script src="../js/sign_in/sign_in.js" defer></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/sign/sign.css">
+    <script src="/js/sign_in/sign_in.js" defer></script>
 </head>
 <body>
 	<form action="/sign-in" method="post">

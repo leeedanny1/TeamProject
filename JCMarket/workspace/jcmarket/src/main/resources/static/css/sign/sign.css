@@ -60,40 +60,20 @@ body{
     color: white;
     border: none;
     background-color: rgba(247, 47, 50);
-   	opacity: 0.3;
+    /* js구현 할 때 opacity: 1; 로 바꾸면 됨 */
+    opacity: 0.3;
 }
 /* input입력이 완료된 경우 */
 /* .sign_form .submit_btn{
     background-color: rgb(247, 47, 50);
 } */
+  
 
-/* 처음 submit_btn 비활성화  */
-.disabled {
-	 opacity: 0.3;
-     pointer-events : none;
-}
+
 
 /* 에러메시지 */
 .e_msg{
     width: 90%;
     color: red;
     display:none;
-}
-/* 성공메시지 */
-.s_msg{
-    width: 90%;
-    color: green;
-}
-.msg {
-    width: 90%;
-    color: red;
-    
-}
-
-.invisible {
-    display: none;
-}
-
-.visible {
-    display: block;
 }
