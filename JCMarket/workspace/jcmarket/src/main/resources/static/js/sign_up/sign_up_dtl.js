@@ -237,12 +237,11 @@ function checkAuth(input) {
 //아이디 중복확인 
 function  checkId(input) {
      $.ajax({
-	    type: "get",
+	    type: "post",
 	    url: "id-check",
-	    data: {
-		  signUpId : input.value
-		},
-		dataType : "text",
+	    data: JSON.stringify(signUpData),
+        contentType: "application/json;charset=UTF-8",
+        dataType : "text",
 		success: function(data) {
 			if(data == 1){
 				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `, 0);

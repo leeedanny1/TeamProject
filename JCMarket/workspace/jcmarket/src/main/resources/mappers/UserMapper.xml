@@ -16,7 +16,7 @@
        
   </select>
   
-  <select id = "idCheck" resultType="Integer">
+  <select id = "idCheck" parameterType="com.springboot.jcmarket.domain.user.User"  resultType="Integer">
       select
              count(user_id)
          from

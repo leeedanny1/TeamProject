@@ -54,8 +54,9 @@ public class SignController {
 		return authenticationCode;
 	}
 	@ResponseBody
-	@GetMapping("/id-check")
+	@PostMapping("/id-check")
 	public String idCheck(@RequestBody SignUpDto signUpDto) {
+		System.out.println(signUpDto);
 		return Integer.toString(signUpService.idCheck(signUpDto));
 	}
 
