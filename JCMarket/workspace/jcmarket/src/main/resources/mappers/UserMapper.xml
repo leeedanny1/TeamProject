@@ -62,4 +62,17 @@
 	       user_id = #{user_id}
 	
 	</select>
+	
+	 <update id = "updateUser" parameterType="com.springboot.jcmarket.domain.user.User">
+	      update
+	       user_mst
+	      set
+	       user_password = #{user_password},
+	       user_nickname = #{user_nickname}
+	      where
+	       user_id = #{user_id}
+	
+	
+	</update>  
+	
   </mapper>

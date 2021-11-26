@@ -11,4 +11,6 @@ public interface SignUpService {
 	  public int nicknameCheck(String signUpNickname);	
 	  public int signUp(SignUpDto signUpDto);
 	  public User getUser(String user_id);
+	  public String createAuthenticationCode();
+	  public String  sendAuthenticationCode(String phoneNumber);
 }

@@ -1,0 +1,9 @@
+diff a/JCMarket/workspace/jcmarket/src/main/java/com/springboot/jcmarket/config/SecurityConfig.java b/JCMarket/workspace/jcmarket/src/main/java/com/springboot/jcmarket/config/SecurityConfig.java	(rejected hunks)
+@@ -49,7 +49,6 @@
+ 		.oauth2Login()
+ 		.loginPage("/auth/signin")//로그인할주소
+ 		.userInfoEndpoint()
+-		.userService(principaloauth2userservice);
+ 		.userService(principaloauth2userservice)
+ 		.and()
+ 		.defaultSuccessUrl("/sign-up-social");
