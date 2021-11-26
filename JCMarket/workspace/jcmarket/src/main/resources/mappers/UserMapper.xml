@@ -22,7 +22,7 @@
          from
              user_mst
          where
-             user_id = #{signUpId}
+             user_id = #{user_id}
   </select>
   
   <select id ="nicknameCheck"  resultType="Integer">

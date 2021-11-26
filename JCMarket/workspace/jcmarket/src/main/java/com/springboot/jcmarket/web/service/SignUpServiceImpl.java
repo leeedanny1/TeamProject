@@ -1,14 +1,12 @@
 package com.springboot.jcmarket.web.service;
 
-<<<<<<< HEAD
+
 
 import java.util.HashMap;
 import java.util.Random;
-
-=======
 import java.util.HashMap;
 import java.util.Random;
->>>>>>> 37067b2d9cc2ed5d7ecd4c7f24f2db42a5c4715d
+
 
 import org.springframework.stereotype.Service;
 
@@ -58,10 +56,6 @@ public class SignUpServiceImpl implements SignUpService{
 		return userRepository.getUser(user_id);
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 37067b2d9cc2ed5d7ecd4c7f24f2db42a5c4715d
 	@Override
 	public String createAuthenticationCode() {
 		String authenticationCode =""; 
@@ -94,10 +88,6 @@ public class SignUpServiceImpl implements SignUpService{
 		
 		return authenticationCode;
 	}
-<<<<<<< HEAD
-=======
-	
 
->>>>>>> 37067b2d9cc2ed5d7ecd4c7f24f2db42a5c4715d
 }
 
