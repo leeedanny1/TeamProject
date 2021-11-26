@@ -1,10 +1,7 @@
 package com.springboot.jcmarket.web.service;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Random;
-=======
->>>>>>> b3f9c57042ed96089d9acb82837d54d1e33ab9df
 
 import org.springframework.stereotype.Service;
 
@@ -45,11 +42,8 @@ public class SignUpServiceImpl implements SignUpService{
 	public int signUp(SignUpDto signUpDto) {
 		User user = signUpDto.toEntity();
 		user.setRole("ROLE_USER");
-<<<<<<< HEAD
+
 		return userRepository.signUp(user);
-=======
-	    return userRepository.signUp(user);
->>>>>>> 3d4fdea2da75920309164d5d47469f3804ac0050
 	}
 
 	@Override
@@ -57,7 +51,6 @@ public class SignUpServiceImpl implements SignUpService{
 		return userRepository.getUser(user_id);
 	}
 
-<<<<<<< HEAD
 	@Override
 	public String createAuthenticationCode() {
 		String authenticationCode =""; 
@@ -91,9 +84,6 @@ public class SignUpServiceImpl implements SignUpService{
 		return authenticationCode;
 	}
 	
-=======
 
-
->>>>>>> b3f9c57042ed96089d9acb82837d54d1e33ab9df
 }
 
