@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
   
 	@GetMapping({"/","/index"})
-     public String index(HttpServletRequest request) {
+     public String index(HttpServletRequest request ) {
 		return "index/index";
      }
-	 
+
 	@GetMapping("/logout")
 	 public String logout(HttpServletRequest request) {
 		 HttpSession session = request.getSession();
@@ -22,5 +22,6 @@ public class IndexController {
 		 
 		 return "redirect:index/index";
 	 }
+	
 }
 	

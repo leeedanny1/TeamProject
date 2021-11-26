@@ -23,7 +23,7 @@ public class AuthSignUpServiceImpl implements AuthSignUpService  {
 			return 2;
 		}else {
 			user.setUser_password(new BCryptPasswordEncoder().encode(user.getUser_password()));
-			user.setRole("General member");
+			user.setRole("Generalmember");
 			int signupResult = userrepository.signUp(user);
 			return signupResult;
 		}
