@@ -35,7 +35,6 @@ inputs.forEach((input, inputIndex) => {
 
 
 
-
 //중복확인 버튼클릭시 
 check_btns.forEach((check_btn, checkIndex) => {
 
