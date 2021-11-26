@@ -46,9 +46,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		System.out.println(userEntity);
 		if(userEntity==null) {
 			OAuth2UserDto oauth2userdto= OAuth2UserDto.builder().user_id(user_id).user_password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
-				.user_name((String)attributes.get("name")).role("ROLE_USER").provider(provider).build();
+				.user_name((String)attributes.get("name")).role("Generalmember").provider(provider).build();
 			userEntity = oauth2userdto.toEntity();
 			System.out.println(userEntity);
+			userrepository.signUp(userEntity);
 		}
 
 		return new PrincipalDetails(userEntity,attributes);

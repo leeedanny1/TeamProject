@@ -5,6 +5,10 @@
     
    
 }
+.phone_check {
+	height: 100px;
+}
+
 .check_btn{
     position: absolute;
     top: 20px;
@@ -25,4 +29,12 @@
 
 .visible {
     display: block;
+}
+
+.error_msg {
+  color: rgba(247, 47, 50);
+}
+
+.success_msg {
+ color: #006400;
 }

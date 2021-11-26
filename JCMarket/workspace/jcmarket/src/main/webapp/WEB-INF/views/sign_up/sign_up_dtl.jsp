@@ -24,19 +24,19 @@
         <span class="sign_exp">회원가입을 위해 전화번호 인증을 진행 해 주세요</span>
 
 
-        <div class="sign_form">
-            <input type="text" name="" class="input" id="" placeholder="이름" autofocus>
+        <div class="sign_form phone_check  invisible">
+          
            
             <section class="check_section">
-                <input type="tel" name="" class="input" id="" placeholder="전화번호">
+                <input type="tel" name="" class="input" id="" placeholder="'-'을 빼고 입력해주세요. ">
                 <button type="button" class="check_btn">전화번호 인증</button>
             </section>
-            <button type="button" class="submit_btn">다음</button>
+       
         </div>
 
 
-        <div class="sign_form  invisible">
-            <input type="text" name="" id="" class="user_info" value="인증받은 이름" readonly>
+        <div class="sign_form ">
+            <input type="text" name="" id="" class="user_info" value="" readonly>
             <section class="check_section">
                 <input type="email" class="input" name="" id="" placeholder="아이디" autofocus>
                 <button type="button" class="check_btn">아이디 중복 확인</button>
@@ -47,7 +47,7 @@
            
             <input type="password" name="" id="" class="input" placeholder="비밀번호 확인">
           
-            <input type="text" name="" id="" class="user_info" value="인증받은 전화번호" readonly>
+            
 
             <section class="check_section">
                 <input type="text" name="" id="" class="input" placeholder="별명">

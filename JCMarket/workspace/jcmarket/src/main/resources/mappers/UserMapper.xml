@@ -16,13 +16,13 @@
        
   </select>
   
-  <select id = "idCheck" resultType="Integer">
+  <select id = "idCheck" parameterType="com.springboot.jcmarket.domain.user.User" resultType="Integer">
       select
              count(user_id)
          from
              user_mst
          where
-             user_id = #{signUpId}
+             user_id = #{user_id}
   </select>
   
   <select id ="nicknameCheck"  resultType="Integer">
@@ -47,7 +47,7 @@
 			0,
 			0,
 			#{role},
-			'',
+			#{provider},
 			now(),
 			now()
 		)
@@ -62,4 +62,17 @@
 	       user_id = #{user_id}
 	
 	</select>
+	
+	 <update id = "updateUser" parameterType="com.springboot.jcmarket.domain.user.User">
+	      update
+	       user_mst
+	      set
+	       user_password = #{user_password},
+	       user_nickname = #{user_nickname}
+	      where
+	       user_id = #{user_id}
+	
+	
+	</update>  
+	
   </mapper>
