@@ -16,13 +16,13 @@
        
   </select>
   
-  <select id = "idCheck" resultType="Integer">
+  <select id = "idCheck" parameterType="com.springboot.jcmarket.domain.user.User" resultType="Integer">
       select
              count(user_id)
          from
              user_mst
          where
-             user_id = #{signUpId}
+             user_id = #{user_id}
   </select>
   
   <select id ="nicknameCheck"  resultType="Integer">
@@ -47,7 +47,7 @@
 			0,
 			0,
 			#{role},
-			'',
+			#{provider},
 			now(),
 			now()
 		)

@@ -195,13 +195,13 @@ function CheckIdFormat(input) {
 
 //아이디 중복확인 
 function  checkId(input) {
+	signUpData.user_id = input.value;
      $.ajax({
-	    type: "get",
-	    url: "id-check",
-	    data: {
-		  signUpId : input.value
-		},
-		dataType : "text",
+	    type: "post",
+	    url: "/id-check",
+	    data: JSON.stringify(signUpData),
+	    contentType: "application/json; charset=utf-8",
+	    dataType : "text",
 		success: function(data) {
 			if(data == 1){
 				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `);
@@ -250,7 +250,6 @@ function checkPasswordFormat(id, password, input) {
 	return true;
 
 }
-
 //비밀번호 일치 체크 
 function checkRepassword(password, repassword, input) {
 	  if(password != repassword) {
@@ -331,7 +330,6 @@ function signUp() {
 		error: function() {
 			alert('오류가 발생했습니다. 다시시도해주세요. ');
 		}
-		
 	})
 }
 
@@ -358,7 +356,7 @@ function onSubmit(submitBtn,submitBtnIndex) {
        } 
 	}
   }else if(submitBtnIndex == 1) {
-	
+
 	 if(checkIdResult == 0 || checkNicknameResult == 0) {
 		   alert('중복확인을 진행해 주세요!')
     }else if(checkIdResult == 2 || checkNicknameResult == 2){
@@ -377,7 +375,7 @@ function onSubmit(submitBtn,submitBtnIndex) {
 		}
     }
 	}
-}
+} 
  }    
 
 	     

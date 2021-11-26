@@ -17,6 +17,7 @@ public class SignUpServiceImpl implements SignUpService{
 
 	@Override
 	public int phoneCheck(SignUpDto signUpDto) {
+
 		return userRepository.phoneCheck(signUpDto);
 	}
 
@@ -35,7 +36,6 @@ public class SignUpServiceImpl implements SignUpService{
 	public int signUp(SignUpDto signUpDto) {
 		User user = signUpDto.toEntity();
 		user.setRole("ROLE_USER");
-		System.out.println(user);
 		return userRepository.signUp(user);
 	}
 
