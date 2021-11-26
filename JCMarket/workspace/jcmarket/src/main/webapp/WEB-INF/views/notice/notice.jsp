@@ -64,7 +64,7 @@
             <c:if test="${not empty login_user }">
                 <section class="btn_container">
                     <button type="button" class="notice_insert_button"
-                        onclick="location.href='/notice/notice_insert.html'">글쓰기</button>
+                        onclick="location.href='/notice/write'">글쓰기</button>
                 </section>
             </c:if>
 

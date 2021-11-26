@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<!DOCTYPE html>
+
 <html lang="ko">
 
 <head>
@@ -11,12 +15,13 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
-
 
 
     <!-- main content -->
@@ -25,13 +30,13 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="title" name="title"></li>
+                <li class="title_insert"><input type="text" class="title" name="title" placeholder="공지사항 제목을 입력하세요"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
                 <li>관리자</li>
                 <li>작성일</li>
-                <li>2021-11-23</li>
+                <li>0<fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>
@@ -59,6 +64,8 @@
             dsfdsfsd <br>
         </main>
     </footer>
+    
+    <script src="/js/notice/notice_insert.js"></script>
 </body>
 
 </html>
