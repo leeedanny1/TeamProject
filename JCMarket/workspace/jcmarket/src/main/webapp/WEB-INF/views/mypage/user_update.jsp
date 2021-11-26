@@ -25,9 +25,9 @@
         <form class="sign_form">
                 
            
-                <input type="text" name="" class="user_info" id="" value="전보석" readonly>
-                <input type="text" name="" class="user_info" id="" value="01000000000"  readonly>
-                <input type="email" value = "seokbo" class="user_info" readonly>
+                <input type="text" name="" class="user_info" id="" value="강경완" readonly>
+                <input type="text" name="" class="user_info" id="" value="01034012679"  readonly>
+                <input type="email" value = "gig2010" class="user_info" readonly>
                   
                
                 <input type="password"   class="input"name="id" id="" placeholder="비밀번호">

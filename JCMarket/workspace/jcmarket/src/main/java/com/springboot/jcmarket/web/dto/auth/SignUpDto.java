@@ -22,7 +22,6 @@ public class SignUpDto {
 					.user_phone(user_phone) 
 					.user_nickname(user_nickname)
 					.build(); 
-	     
 	}
 
 }

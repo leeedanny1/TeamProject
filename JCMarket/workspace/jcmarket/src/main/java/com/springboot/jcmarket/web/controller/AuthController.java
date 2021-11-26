@@ -3,9 +3,9 @@ package com.springboot.jcmarket.web.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 
 	private final SignUpService signUpService;
+	
 
 	@GetMapping("/sign-in-select")
 	public String signInSelect() {
@@ -39,13 +40,16 @@ public class AuthController {
 		return "sign_up/sign_up_dtl";
 	}
 
+	
 	@ResponseBody
-	@PostMapping("/phone-check")
-	public String phoneCheck(@RequestBody SignUpDto signUpDto) {
-
-		return Integer.toString(signUpService.phoneCheck(signUpDto));
+	@GetMapping("phone-check")
+	public String sendSMS(String phoneNumber) { 
+		
+		System.out.println(phoneNumber);
+		String authenticationCode=null;
+		authenticationCode= signUpService.sendAuthenticationCode(phoneNumber);
+		return authenticationCode;
 	}
-
 	@ResponseBody
 	@GetMapping("/id-check")
 	public String idCheck(@RequestParam String signUpId) {
