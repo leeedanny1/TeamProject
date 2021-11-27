@@ -45,7 +45,7 @@ check_btns.forEach((check_btn, checkIndex) => {
 	    if(checkEmpty(inputs[checkIndex],checkIndex)) {
 		 //전화번호 체크버튼이고 그 값이 비어있지않고 인증번호가날라왔을 때 
 		  if(phoneCheckResult == 1){
-			checkAuth(inputs[checkIndex - 1]);
+			checkAuth(inputs[checkIndex]);
 			 return;
 		 }
 		 checkPhoneFormat(inputs[0]);
@@ -280,8 +280,8 @@ function checkNicknameFormat(input) {
 
 //휴대폰 인증번호 일치여부 확인
 function checkAuth(input) {
+	console.log(input)
 	
-	console.log('checkAuth: ' +  signUpData.user_phone)
 	 let authNumber = input.value;
 	 if(authCode == authNumber) {
 		  alert('인증완료하였습니다. ');
@@ -371,8 +371,7 @@ function checkNickname(input) {
 	})
 }
 
-   
-
+  
 // 메세지 제거
 function clearMsg(input) {
     

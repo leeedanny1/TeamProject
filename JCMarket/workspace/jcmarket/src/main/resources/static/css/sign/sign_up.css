@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.phone_check {
+	width: 100%;
+	height: 90px;
+}
+
 
 .check_btn{
     position: absolute;

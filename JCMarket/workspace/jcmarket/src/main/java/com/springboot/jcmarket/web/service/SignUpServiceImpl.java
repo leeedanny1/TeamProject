@@ -23,8 +23,8 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SignUpServiceImpl implements SignUpService{
 
 	private final UserRepository userRepository;
-	private final String API_KEY="NCS2W4TTYRCVBYM7";
-	private final String API_SECRET="8F7FRPZ5QPWDQQOZZMWRNJIDWFXGVN54";
+	private final String API_KEY="NCSS4EZCKKW2BKM1";
+	private final String API_SECRET="TQFH2HX1HXGNLVFZ5QIASVWBUG72FD5P";
 
 	@Override
 	public int phoneCheck(SignUpDto signUpDto) {
@@ -75,7 +75,7 @@ public class SignUpServiceImpl implements SignUpService{
 		String authenticationCode=createAuthenticationCode();
 		HashMap<String , String> params= new HashMap<String,String>();
 		params.put("to", phoneNumber);//누구에게
-		params.put("from","01034012679");//누가 보낼거냐?
+		params.put("from","01063998524");//누가 보낼거냐?
 		params.put("type", "SMS");
 		params.put("text", "jc마켓 가입 인증번호 "+authenticationCode+" 입니다");
 		params.put("app_version", "jcmarket app 1.1");
