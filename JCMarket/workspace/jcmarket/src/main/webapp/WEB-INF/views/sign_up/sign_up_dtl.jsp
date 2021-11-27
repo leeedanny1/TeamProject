@@ -34,8 +34,8 @@
        
         </div>
 
+        <div class="sign_form  invisible">
 
-        <div class="sign_form invisible">
             <input type="text" name="" id="" class="user_info" value="" readonly>
             <section class="check_section">
                 <input type="email" class="input" name="" id="" placeholder="아이디" autofocus>

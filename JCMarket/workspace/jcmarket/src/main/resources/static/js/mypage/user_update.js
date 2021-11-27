@@ -12,6 +12,14 @@ var updateData = {
     user_nickname: ''
 }
 
+const arrNickname = ['아프리카청춘이다', '벼랑위의당뇨', '거져줄게잘사가','넌네게목욕값을줬어',
+                      '돈들어손내놔','닮은살걀','아무리생강캐도난마늘', '신밧드의보험', '오즈의맙소사', '짱구는옷말려',
+                      '짱구는목말러', '티끌모아파산', '메뚜기3분요리', '달려야하니', '흔들린우동', '이쑤신장군',
+                      '순대렐라', '추적60인분','반지하의제왕', '오드리될뻔', '옥수수콧수염차', '명란젓코난',
+                      '축구싶냐농구있네', '가문의영광굴비', '조선왕조씰룩쌜룩' ]
+     const arrNicknameIndex =  Math.floor(Math.random()*26);
+inputs[2].value = arrNickname[arrNicknameIndex];
+
 var checkPasswordResult = 0;
 var checkNicknameResult = 0;
 var checkEmptyResult;

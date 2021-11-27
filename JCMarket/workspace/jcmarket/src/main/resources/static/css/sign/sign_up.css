@@ -2,26 +2,30 @@
 .check_section{
     position: relative;
     width: 100%;
-    
    
+    text-align: center;
 }
 #provider{
 	text-transform:uppercase;
 }
+
+
 .phone_check {
-	height: 100px;
+	width: 100%;
+	height: 90px;
 }
+
 
 .check_btn{
     position: absolute;
     top: 20px;
     right: 5%;
-
     padding: 0 5px;
     height: 30px;
     border: none;
     border-bottom: 1px solid white;
     color: white;
+
     background-color: rgba(247, 47, 50);
     opacity: 0.3;
 }
