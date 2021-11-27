@@ -61,6 +61,7 @@ public class SignController {
 	@ResponseBody
 	@PostMapping("/id-check")
 	public String idCheck(@RequestBody SignUpDto signUpDto) {
+		System.out.println(signUpDto);
 		return Integer.toString(signUpService.idCheck(signUpDto));
 	}
 

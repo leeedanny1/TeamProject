@@ -1,7 +1,12 @@
 package com.springboot.jcmarket.web.service;
 
+
+
 import java.util.HashMap;
 import java.util.Random;
+import java.util.HashMap;
+import java.util.Random;
+
 
 import org.springframework.stereotype.Service;
 
@@ -83,7 +88,6 @@ public class SignUpServiceImpl implements SignUpService{
 		
 		return authenticationCode;
 	}
-	
 
 }
 
