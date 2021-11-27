@@ -1,7 +1,5 @@
 package com.springboot.jcmarket.domain.notice;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +15,8 @@ public class NoticeDtl {
 	private String notice_content;
 	private String originFileNames;
 	private String tempFileNames;
-	private Date create_date;
-	private Date update_date;
+	private String create_date;
+	private String update_date;
 	
 
 }
