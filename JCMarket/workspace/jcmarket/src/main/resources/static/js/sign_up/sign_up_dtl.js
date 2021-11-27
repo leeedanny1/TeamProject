@@ -4,6 +4,7 @@ const sign_form = document.querySelectorAll('.sign_form');
 const user_info = document.querySelector('.user_info');
 const submit_btn = document.querySelector('.submit_btn');
 
+user_info.value = '01034012679';
 
 var signUpData = {
     user_id:'',
@@ -226,72 +227,6 @@ function CheckIdFormat(input) {
 }
   
 
-  
-//전화번호 인증
-function checkPhone(input) {
-	 
-	 console.log('checkPhone: ' + input.value)
-     $.ajax({
-	   type: "get",
-	   url: "phone-check",
-	   data: {
-		 phoneNumber : input.value
-	   },
-	   dataType: "text",
-	   success: function(data) {
-	        authCode= data;
-	        signUpData.user_phone = input.value;
-	        phoneCheckResult = 1;
-	},
-	error: function(){
-		phoneCheckResult = 2;
-		alert("오류가발생하였습니다 다시시도해주세요.");
-	}
-})
-
-}
-
-//휴대폰 인증번호 일치여부 확인
-function checkAuth(input) {
-	
-	console.log('checkAuth: ' +  signUpData.user_phone)
-	 let authNumber = input.value;
-	 if(authCode == authNumber) {
-		  alert('인증완료하였습니다. ');
-		 user_info.value = signUpData.user_phone;
-		  sign_form[0].classList.add('invisible');
-	      sign_form[1].classList.remove('invisible');
-	}else {
-		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
-	}
-}
-
-//아이디 중복확인 
-function  checkId(input) {
-     $.ajax({
-	    type: "post",
-	    url: "id-check",
-	    data: JSON.stringify(signUpData),
-	    contentType: "application/json;charset=UTF-8",
-		dataType : "text",
-		success: function(data) {
-			if(data == 1){
-				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `, 0);
-				idCheckResult = 2;
-			}else if(data == 0) {
-				msgService(input,  '사용가능한 아이디 입니다.', 1);
-				signUpData.user_id = input.value;
-				testIdValue = input.value;
-				idCheckResult = 1;
-			}
-		},
-		error: function() {
-			alert('오류가 발생했습니다. 다시시도해주세요. ');
-		}
-})
-}
-
-
 //비밀번호 정규식 체크 
 function checkPasswordFormat(id, password, input) {
 	
@@ -345,12 +280,12 @@ function checkNicknameFormat(input) {
 
 //휴대폰 인증번호 일치여부 확인
 function checkAuth(input) {
-	console.log(input)
-	
+	 console.log(input)
+	 console.log(' signUpData.user_phone: ' + signUpData.user_phone);
 	 let authNumber = input.value;
 	 if(authCode == authNumber) {
 		  alert('인증완료하였습니다. ');
-		 user_info.value = signUpData.user_phone;
+		  user_info.value = signUpData.user_phone;
 		  sign_form[0].classList.add('invisible');
 	      sign_form[1].classList.remove('invisible');
 	}else {
@@ -362,7 +297,7 @@ function checkAuth(input) {
 //전화번호 인증
 function checkPhone(input) {
 	 
-	 console.log('checkPhone: ' + input.value)
+	 console.log('checkPhone: ' + input);
      $.ajax({
 	   type: "get",
 	   url: "phone-check",
@@ -372,8 +307,8 @@ function checkPhone(input) {
 	   dataType: "text",
 	   success: function(data) {
 	        authCode= data;
-	        tempPasswordValue = input.value;
 	        signUpData.user_phone = input.value;
+	        tempPasswordValue = input.value;
 	        phoneCheckResult = 1;
 	},
 	error: function(){
