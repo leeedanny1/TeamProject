@@ -4,7 +4,6 @@ const sign_form = document.querySelectorAll('.sign_form');
 const user_info = document.querySelector('.user_info');
 const submit_btn = document.querySelector('.submit_btn');
 
-user_info.value = '01034012679';
 
 var signUpData = {
     user_id:'',
@@ -241,7 +240,6 @@ function  checkId(input) {
 	    url: "id-check",
 	    data: JSON.stringify(signUpData),
 	    contentType: "application/json;charset=UTF-8",
-	    
 		dataType : "text",
 		success: function(data) {
 			if(data == 1){

@@ -24,7 +24,7 @@
         <span class="sign_exp">회원가입을 위해 전화번호 인증을 진행 해 주세요</span>
 
 
-        <div class="sign_form phone_check  invisible">
+        <div class="sign_form phone_check  ">
           
            
             <section class="check_section">
@@ -35,7 +35,7 @@
         </div>
 
 
-        <div class="sign_form ">
+        <div class="sign_form invisible">
             <input type="text" name="" id="" class="user_info" value="" readonly>
             <section class="check_section">
                 <input type="email" class="input" name="" id="" placeholder="아이디" autofocus>

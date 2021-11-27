@@ -17,11 +17,11 @@ private final UserRepository userrepository;
 	@Override
 	public UserDetails loadUserByUsername(String user_id) throws UsernameNotFoundException {
 		User userEntity = userrepository.getUser(user_id);
+	
 		if(userEntity==null) {
 			return null;
 		}else {
-			UserDetails principaldetails = new PrincipalDetails(userEntity);
-			System.out.println(principaldetails);
+			UserDetails principaldetails = new PrincipalDetails(userEntity);			
 			return principaldetails;
 		}
 	}

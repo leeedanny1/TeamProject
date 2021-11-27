@@ -5,6 +5,9 @@
     
    
 }
+#provider{
+	text-transform:uppercase;
+}
 .phone_check {
 	height: 100px;
 }

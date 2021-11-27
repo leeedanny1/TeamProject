@@ -21,8 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class SignController {
 
 	private final SignUpService signUpService;
-	
-
 
 	@GetMapping("/sign-in-select")
 	public String signInSelect() {
@@ -34,14 +32,14 @@ public class SignController {
 	}
 	@GetMapping("/sign-up-social")
 	public String signUpSocial(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		if(principalDetails.getUser().getUser_nickname()==null){
-			return "sign_up/sign_up_social";
-		}else {
-		return " redirect:/";
-	}
+		if(principalDetails != null){
+			 System.out.println("세션에 등록됨");
+			 if(principalDetails.getUser().getUser_nickname() == null || principalDetails.getUser().getUser_nickname().equals("")) {
+				 return "sign_up/sign_up_social";
+			 }
+		}
+		return "redirect:/";
 }
-
-	
 	@GetMapping("/sign-up")
 	public String signUp() {
 		return "sign_up/sign_up_dtl";
