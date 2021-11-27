@@ -333,11 +333,14 @@ function checkNicknameFormat(input) {
 	  msgService(input, '공백을 포함할 수 없습니다. ');
 	 
 	  return false;
-     }else if(nickname.length < 2 || nickname.length > 13 ||  /[`~!@#$%^&*|\\\'\";,.:\/?]/gi.test(nickname) == true){
-	  msgService(input, '2~13이내의 영문과 숫자만 사용 가능합니다. ');
+     }else if(nickname.length < 2 || nickname.length > 13){
+	  msgService(input, '2~13이내로 사용가능합니다. ');
 	 
       return false;
-}  
+}else if( /[`~!@#$%^&*|\\\'\";:\/?]/gi.test(nickname)){
+	 msgService(input, '특수문자는 사용하실수없습니다. ');
+	  return false;
+} 
      checkNickname(input);
      return true;
 }
