@@ -1,9 +1,25 @@
 package com.springboot.jcmarket.web.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.domain.product.Product;
+
+import com.springboot.jcmarket.web.dto.product.ProductDto;
+
+import com.springboot.jcmarket.web.service.productService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RequestMapping("/items")
 @Controller
 public class ProductController {
@@ -11,6 +27,8 @@ public class ProductController {
 /*
  * 페이지 연결
  */
+	private final productService productService;
+	
 	
 //	hot-items 연결
 	@GetMapping("/hot")
@@ -29,4 +47,19 @@ public class ProductController {
 	public String sale() {
 		return "product/product_insert";
 	}
+	
+	@GetMapping("/purchase")
+	public String purchase() {
+		return "product/purchase";
+	}
+	
+	@ResponseBody
+	@PostMapping("/add-like")
+	public String addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+	    ProductDto productDto = new ProductDto();
+	    productDto.setUser_id(principal.getUser().getId());
+	    productDto.setItem_code(productId);
+	 	System.out.println(principal);
+	    return Integer.toString(productService.addLike(productDto));
+	} 
 }

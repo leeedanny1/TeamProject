@@ -132,42 +132,6 @@ submit_btn.addEventListener('click', () => {
 }
 }//end of //닉네임값은 있는데 중복확인을 안했거나, 중복확인실패 , 중복성공 이 세가지중하나와  비밀번호 값이 없을 때 
 
-    
-/*	//비밀번호 값, 닉네임 값이 둘다 없을때 
-    }else if(inputs[0].value.length == 0 && inputs[1].value.length == 0 && inputs[2].value.length == 0){
-            console.log('둘다 없을 때: ' + updateData.user_password + updateData.user_nickname);
-	         if(confirm('변경할 값이 없습니다. 그대로 진행하시겠습니까?')) {
-		        alert('회원수정이 완료되었습니다. ');
-		        location.replace('/index');
-		        }
-	//비밀번호와 비밀번호 확인에 값이 있고 비밀번호 일치체크도 통과된 상태에서 닉네임 값이 입력되지 않았을때 	        
-	}else if(checkPasswordResult == 1 && inputs[2].value.length == 0) {
-			console.log('닉네임 없을때 : ' + updateData.user_password + updateData.user_nickname);
-				 if(confirm('닉네임이 입력되지 않았습니다. 그대로 진행하시겠습니까? ')) {
-					 signUp();
-				}
-			*/	
-	/*//네임중복확인을 하지않았거나 인증에 실패했는데 닉네임에 값이 있다면 다시 인증 유도 	
-	}else if(checkNicknameResult == 0 || checkNicknameResult == 2) {
-		  if(inputs[2].value.length !=  0){
-			 alert('닉네임 인증을 진행해주세요. ');
-		   }
-	    }else if(checkPasswordResult == 1 || checkNicknameResult == 1){
-		   if(tempNicknameValue != inputs[2].value){
-			    checkNicknameResult = 2;
-				alert('닉네임 값이 변경되었습니다. 다시 인증을 진행해 주세요.');
-				
-		//닉네임인증을 한 상태에서 값을 변경안하고 비밀번호 값이 없을 때 
-		   }else if(inputs[0].value.length == 0) {
-			console.log('비밀번호 없을때 : ' + updateData.user_password + updateData.user_nickname);
-				if(confirm('비밀번호 값이 입력되지 않았습니다. 그대로 진행하시겠습니까? ')) {
-					 signUp();
-				}
-			}
-	*/  
-		
-		
-		
 });
 
 

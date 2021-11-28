@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
     <link rel="stylesheet" href="/css/product/product.css">
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src = "/js/product/purchase.js" defer></script>
 </head>
 
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
-
+    
 
 
     <!-- main content -->
@@ -56,7 +58,7 @@
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
-                        <button type="button"><i class="fas fa-heart"></i> 찜 0</button>
+                        <button class = "like_button" value ="2" type="button"><i class="fas fa-heart"></i> 찜 <span class="like_count">0</span></button>
                         <button type="button">연락하기</button>
                     </article>
                 </article>
