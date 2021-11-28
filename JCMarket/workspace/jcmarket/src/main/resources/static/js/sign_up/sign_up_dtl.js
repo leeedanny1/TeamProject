@@ -4,8 +4,6 @@ const sign_form = document.querySelectorAll('.sign_form');
 const user_info = document.querySelector('.user_info');
 const submit_btn = document.querySelector('.submit_btn');
 
-user_info.value = '01034012679';
-
 var signUpData = {
     user_id:'',
     user_password: '',
@@ -13,13 +11,24 @@ var signUpData = {
     user_phone: '',
     user_nickname:''
  }
+ 
+ 
+const arrNickname = ['아프리카청춘이다', '벼랑위의당뇨', '거져줄게잘사가','넌네게목욕값을줬어',
+                      '돈들어손내놔','닮은살걀','아무리생강캐도난마늘', '신밧드의보험', '오즈의맙소사', '짱구는옷말려',
+                      '짱구는목말러', '티끌모아파산', '메뚜기3분요리', '달려야하니', '흔들린우동', '이쑤신장군',
+                      '순대렐라', '추적60인분','반지하의제왕', '오드리될뻔', '옥수수콧수염차', '명란젓코난',
+                      '축구싶냐농구있네', '가문의영광굴비', '조선왕조씰룩쌜룩' ]
+     const arrNicknameIndex =  Math.floor(Math.random()*26);
+
 
 var authCode= "";
 var phoneCheckResult = 0; 
 var idCheckResult = 0;
 var passwordCheckResult = 0;
 var  checkNicknameResult = 0;
+var checkNameResult = 0;    //name은 0(입력안했을 때 )1(정규식체크 성공)과 2(정규식체크 실패) 
 var tempIdValue = ''; 
+var tempPhoneValue = '';
 var tempNickNameValue= '';
 var tempPasswordValue = '';
 var checkEmptyResult = false;
@@ -30,6 +39,7 @@ inputs.forEach((input, inputIndex) => {
 	input.addEventListener('blur', () => {
 		checkEmpty(input,inputIndex);
 		checkPasswordService(input, inputIndex);
+		checkNameService(input, inputIndex);
 	});
 });
 
@@ -70,9 +80,12 @@ check_btns.forEach((check_btn, checkIndex) => {
 
 //다음버튼,회원가입 버튼클릭 시 
 submit_btn.addEventListener('click', ()=> {
+	console.log('passwordCheckResult: ' + passwordCheckResult);
+   
 	inputs.forEach((input, inputIndex) => {
 	   	checkEmpty(input, inputIndex);
 	   	checkPasswordService(input, inputIndex);
+	   	checkNameService(input, inputIndex);
 	   	
 	});
 	//중복확인 안하거나 틀렸을때 
@@ -87,17 +100,16 @@ submit_btn.addEventListener('click', ()=> {
 			alert('닉네임 중복확인을 진행해주세요. ');
 		}
 	//중복확인 했을 때 
-	}else if(idCheckResult == 1 || checkNicknameResult == 1 || passwordCheckResult == 1) {
+	}else if(idCheckResult == 1 || checkNicknameResult == 1 || checkNameResult == 1) {
 		 if(tempIdValue != inputs[1].value) {
 			idCheckResult = 2;
 			alert('아이디 값이 변경되었습니다 다시 인증을 해주세요.');
 		}else if(tempNickNameValue != inputs[4].value) {
 		   checkNicknameResult = 2;
 		   alert('닉네임 값이 변경 되었습니다 다시 인증을 해주세요. ');
-	
+	    }
 	}
-	}
-	if(idCheckResult == 1 && checkNicknameResult == 1 && passwordCheckResult == 1){
+	if(idCheckResult == 1 && checkNicknameResult == 1 && passwordCheckResult == 1 && checkNameResult == 1){
 			if(confirm('입력하신 정보로 회원가입을 진행하시겠습니까? ')){
 			  signUp();
 			
@@ -155,12 +167,26 @@ function checkEmpty(input, checkIndex) {
 				checkNicknameResult = 0;
 				msgService(input, '닉네임을 입력해주세요. ', 0);
 				
-		   }
-		return false;
+		   }else if(checkIndex == 5){
+			  checkNameResult = 0;
+			  msgService(input, '이름을 입력해주세요. ', 0);
+		}
+ 		return false;
 	}
 	
 	 return true;
 	}
+
+//이름 정규식 확인하기전의 검사 
+function checkNameService(input, inputIndex) {
+	if(inputIndex == 5) {
+	 checkEmptyResult = checkEmpty(input,inputIndex);
+	 if(checkEmptyResult == true) {
+		 checkNameFormat(input);
+	}
+}
+}	
+	
 	
 
 //비밀번호 일치여부 확인하기전의 검사 
@@ -169,11 +195,8 @@ function checkPasswordService(input, inputIndex) {
 	  checkEmptyResult = checkEmpty(input,inputIndex);
 		 if(checkEmptyResult == true){
 			if(inputIndex == 2) {
-				if(!checkPasswordFormat(inputs[inputIndex -1].value, input.value, input)){
-					passwordCheckResult = 2; //비밀번호 형식이 맞지 않으면 2  
-				}else {
-					passwordCheckResult = 1; //형식이 맞으면 다시 1을 넣어줌 
-				}
+			checkPasswordFormat(inputs[inputIndex -1].value, input.value, input)
+				
 			}else if(inputIndex == 3) {
 				checkRepassword(inputs[inputIndex -1].value, input.value, input);
 			}
@@ -206,7 +229,9 @@ function checkPhoneFormat(input) {
 	   msgService(input, '전화번호를 정확히 입력해 주세요.' , 0);
 	   return;
 	 }
-	 checkPhone(input);
+	 
+	 tempPhoneValue = input.value;  // inputs[0].value = '' 이걸 해주기때문에 input을 넘기면 checkPhone(input)의 input.value는 null이된다.
+	 checkPhone(input);             //그래서 보내기전에 미리 tempPhoneValue안에 유저의 전화번호를 저장해둔다 .
 	 inputs[0].value = '';
 	 inputs[0].focus();
 	 inputs[0].placeholder = '인증번호를 입력해 주세요. ';
@@ -221,6 +246,7 @@ function CheckIdFormat(input) {
             msgService(input, '아이디는 6~20자 영문자 또는 숫자이어야 합니다.', 0);
             return;
         }else {
+	        signUpData.user_id = input.value;
 	        checkId(input);
 	        return true;
 }
@@ -278,6 +304,21 @@ function checkNicknameFormat(input) {
 }
 
 
+//이름 정규식 체크
+function checkNameFormat(input) {
+	console.log('input.value: ' + input.value);
+	  let reg_name = /^[가-힣]+$/;
+	 if(!reg_name.test(input.value)){
+		checkNameResult = 2;
+	    msgService(input, '이름을 정확히 입력해주세요.', 0);
+	    return false;
+    }
+    checkNameResult = 1;
+    signUpData.user_name = input.value;
+    return true;
+}
+
+
 //휴대폰 인증번호 일치여부 확인
 function checkAuth(input) {
 	 console.log(input)
@@ -285,8 +326,9 @@ function checkAuth(input) {
 	 let authNumber = input.value;
 	 if(authCode == authNumber) {
 		  alert('인증완료하였습니다. ');
-		  user_info.value = signUpData.user_phone;
-		  sign_form[0].classList.add('invisible');
+	  user_info.value = signUpData.user_phone;
+	  inputs[4].value = arrNickname[arrNicknameIndex];
+		  sign_form[0].classList.add('invisible'); 
 	      sign_form[1].classList.remove('invisible');
 	}else {
 		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
@@ -307,7 +349,9 @@ function checkPhone(input) {
 	   dataType: "text",
 	   success: function(data) {
 	        authCode= data;
-	        signUpData.user_phone = input.value;
+	        signUpData.user_phone = tempPhoneValue; //checkPhoneFormat에서 tempPhoneValue에 저장해놓은 유저의 전화번호의 값을
+		                                        //인증번호가 일치할때만 signUpData.user_phone에 값을 넣어준다. 
+		                                       //유저가 입력한 인증번호가 일치하지 않을때에는 넣어주면 안된다.( signUpData.user_phone는 데이터베이스로 넘어가는 값이기 떄문 ) 
 	        tempPasswordValue = input.value;
 	        phoneCheckResult = 1;
 	},
@@ -330,6 +374,7 @@ function  checkId(input) {
 		success: function(data) {
 			if(data == 1){
 				msgService(input,  `${input.value} 은(는) 이미 존재하는 아이디 입니다. `, 0);
+				signUpData.user_id = '';
 				idCheckResult = 2;
 			}else if(data == 0) {
 				msgService(input,  '사용가능한 아이디 입니다.', 1);

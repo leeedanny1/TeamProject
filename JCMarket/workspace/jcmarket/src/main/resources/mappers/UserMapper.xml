@@ -39,7 +39,8 @@
 		insert into
 			user_mst
 		values(
-			#{user_id},
+		    0,
+		    #{user_id},
 			#{user_password},
 			#{user_name},
 			#{user_phone},
@@ -54,7 +55,7 @@
 	</insert>
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
 	      select
-	        user_id,user_password,user_name, user_phone, user_nickname, 
+	        id, user_id,user_password,user_name, user_phone, user_nickname, 
 	        buy_count, sell_count, role, provider, create_date, update_date
 	      from
 	       user_mst

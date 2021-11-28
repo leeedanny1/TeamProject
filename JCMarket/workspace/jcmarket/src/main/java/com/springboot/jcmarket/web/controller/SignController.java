@@ -65,8 +65,8 @@ public class SignController {
 
 	@ResponseBody
 	@GetMapping("nickname-check")
-	public String nicknameCheck(@RequestParam String signUpNickname) {
-
+	public String nicknameCheck(@RequestParam String signUpNickname) { 
+        System.out.println("signUpNickname: " + signUpNickname);
 		return Integer.toString(signUpService.nicknameCheck(signUpNickname));
 	}
 
