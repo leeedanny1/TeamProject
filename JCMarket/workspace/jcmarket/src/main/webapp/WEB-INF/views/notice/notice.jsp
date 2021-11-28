@@ -43,19 +43,13 @@
 	                        <li class="notice_count">${notice.notice_count }</li>
 	                    </ul> -->
                     <ul>
-                        <li class="notice_num">1</li>
+                        <li class="notice_num">5</li>
                         <li class="notice_title">공지사항1</li>
                         <li class="notice_writer">관리자</li>
                         <li class="notice_date">2021-11-23</li>
                         <li class="notice_count">50</li>
                     </ul>
-                    <ul>
-                        <li class="notice_num">2</li>
-                        <li class="notice_title">공지사항2</li>
-                        <li class="notice_writer">관리자</li>
-                        <li class="notice_date">2021-11-23</li>
-                        <li class="notice_count">50</li>
-                    </ul>
+
                 </a>
             </c:forEach>
         </section>
