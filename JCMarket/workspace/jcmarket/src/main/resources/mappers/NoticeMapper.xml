@@ -5,19 +5,15 @@
   
   <mapper namespace="com.springboot.jcmarket.domain.notice.NoticeRepository">
   
-	<select id="getNotice" resultType="com.springboot.jcmarket.web.dto.notice.NoticeDto">
+	<select id="getNoticeAll" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT
-			nm.notice_code,
-			nm.notice_title,
-			nm.notice_writer,
-			nm.notice_date,
-			nm.notice_count
+			notice_code,
+			notice_title,
+			notice_writer,
+			notice_date,
+			notice_count
 		FROM
-			notice_mst nm
-		WHERE
-			nm.notice_code = 1
-		LIMIT
-			1;
+			notice_mst
 	</select>
 
 

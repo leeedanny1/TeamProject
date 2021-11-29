@@ -55,7 +55,8 @@
 	</insert>
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
 	      select
-	        id, user_id,user_password,user_name, user_phone, user_nickname, 
+	        id,user_id,user_password,user_name, user_phone, user_nickname, 
+
 	        buy_count, sell_count, role, provider, create_date, update_date
 	      from
 	       user_mst
@@ -73,7 +74,16 @@
 	      where
 	       user_id = #{user_id}
 	
-	
 	</update>  
+	<update id= "socailupdate" parameterType="com.springboot.jcmarket.domain.user.User">
+   update
+	       user_mst
+	      set
+	       user_phone = #{user_phone},
+	       user_nickname = #{user_nickname}
+	      where
+	       user_id = #{user_id}
+	
+	</update>
 	
   </mapper>

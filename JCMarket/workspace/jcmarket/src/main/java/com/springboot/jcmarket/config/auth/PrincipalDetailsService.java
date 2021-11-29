@@ -17,7 +17,7 @@ private final UserRepository userrepository;
 	@Override
 	public UserDetails loadUserByUsername(String user_id) throws UsernameNotFoundException {
 		User userEntity = userrepository.getUser(user_id);
-	
+
 		if(userEntity==null) {
 			return null;
 		}else {

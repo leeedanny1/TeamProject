@@ -21,12 +21,13 @@
 </head>
 <body>
 	<main class="sign_container">
-		<h1 class="sign_name">${principal.user.provider }로 JC마켓 회원가입</h1>
+		<h1 class="sign_name">구글로 JC마켓 회원가입</h1>
 		<span class="sign_exp">회원가입을 위해 상세 정보를 입력 해 주세요</span>
 		<form action="" class="sign_form">
-			<input type="text" class="user_info" name="" id="" value="${principal.user.user_name} "
+			<input type="text" name="" id="" value="${principal.user.user_name} "
 				readonly>
-			
+				 <input type="text" name="" id="provider" 
+				value="${principal.user.provider} 로 회원가입" readonly>
 				
 			<section class="check_section">
 				<input type="tel" name="" class="input" id=""placeholder="'-'을 빼고 입력해주세요. ">

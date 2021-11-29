@@ -39,6 +39,7 @@
             <section class="check_section">
                 <input type="email" class="input" name="" id="" placeholder="아이디" autofocus>
                 <button type="button" class="check_btn">아이디 중복 확인</button>
+                
             </section>
             
 

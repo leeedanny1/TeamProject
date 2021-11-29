@@ -30,6 +30,7 @@ var checkNameResult = 0;    //name은 0(입력안했을 때 )1(정규식체크 �
 var tempIdValue = ''; 
 var tempPhoneValue = '';
 var tempNickNameValue= '';
+var tempPhoneValue='';
 var tempPasswordValue = '';
 var checkEmptyResult = false;
 
@@ -235,7 +236,7 @@ function checkPhoneFormat(input) {
 	 inputs[0].value = '';
 	 inputs[0].focus();
 	 inputs[0].placeholder = '인증번호를 입력해 주세요. ';
-	 check_btns[0].textContent = '인증확인 '
+	 check_btns[0].textContent = '인증확인 ';
 	
 }
 
