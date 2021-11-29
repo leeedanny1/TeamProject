@@ -33,5 +33,6 @@
 		ORDER BY nm.notice_code desc
 	</select>
 
+
 	
   </mapper>

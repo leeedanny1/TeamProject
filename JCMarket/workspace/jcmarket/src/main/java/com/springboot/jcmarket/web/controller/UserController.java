@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,18 +32,14 @@ public class UserController {
 
 	
 	@ResponseBody
-	@PostMapping("/update")
-	public String update(@RequestBody SignUpDto signUpDto , @AuthenticationPrincipal PrincipalDetails prDetails) {
-		int update=userService.updateUser(signUpDto);
+	@PutMapping("/update")
+	public String update(@RequestBody SignUpDto signUpDto) {
+
 		User user = signUpService.getUser(signUpDto.getUser_id());
 		if (signUpDto.getUser_password() == "") {
 			signUpDto.setUser_password(user.getUser_password());
 		} else if (signUpDto.getUser_nickname() == "") {
 			signUpDto.setUser_nickname(user.getUser_nickname());
-		}
-		if(update==1) {
-			  prDetails.getUser().setUser_nickname(signUpDto.getUser_nickname());
-			  prDetails.getUser().setUser_phone(signUpDto.getUser_phone());		
 		}
 		return  Integer.toString(userService.updateUser(signUpDto));
 	

@@ -10,7 +10,7 @@
         values 
         (
          0,
-         2,
+         #{user_id},
          #{item_code},
          now()
         )
@@ -18,8 +18,45 @@
      </insert>
       
       
+    <delete id = "deleteLike" parameterType="com.springboot.jcmarket.domain.product.Product">
+       delete
+        from
+         product_like
+       where
+        user_id = #{user_id} and item_code = #{item_code}  
+    
+    </delete>
   
-  
+    <update id = "upLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+       update
+        product_mst
+       set
+        like_count = #{like_count} + 1
+       where
+        item_code = #{item_code}
+    
+    </update>
+    
+     <update id = "downLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+       update
+        product_mst
+       set
+        like_count = #{like_count} - 1
+       where
+        item_code = #{item_code}
+    
+    </update>
+    
+    <select id = "getLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="Integer">
+      select
+        like_count
+      from
+        product_mst
+      where
+        item_code = #{item_code}
+     
+    </select>
+    
   
   
   

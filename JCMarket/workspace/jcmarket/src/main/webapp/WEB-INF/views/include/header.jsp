@@ -48,7 +48,7 @@
                 	</c:when>
                 	<c:otherwise>
 		                 <ul class="h_sign">
-		                     <li><a href="/update">${principal.user.user_nickname }</a></li>
+		                     <li><a href="/update/">${principal.user.user_nickname }</a></li>
 		                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
 		                 </ul>
                 	</c:otherwise>

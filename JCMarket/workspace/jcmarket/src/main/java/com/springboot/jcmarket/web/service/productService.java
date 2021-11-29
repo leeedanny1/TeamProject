@@ -1,7 +1,8 @@
 package com.springboot.jcmarket.web.service;
 
-import com.springboot.jcmarket.web.dto.product.ProductDto;
+import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
 public interface productService {
-    public int addLike(ProductDto productDto);
+    public ProductLikeDto addLike(ProductLikeDto productLikeDto);
+    public ProductLikeDto deleteLike(ProductLikeDto productLikeDto);
 }
