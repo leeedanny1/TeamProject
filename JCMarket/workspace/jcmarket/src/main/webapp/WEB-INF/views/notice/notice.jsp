@@ -35,19 +35,19 @@
         <section class="notice_main">
             <c:forEach var="notice" items="${noticeList }">
                 <a href="/notice/${notice.notice_code }">
-                    <!-- <ul>
-	                        <li class="notice_num">${notice.notice_code }</li>
-	                        <li class="notice_title">${notice.notice_title }</li>
-	                        <li class="notice_writer">${notice.notice_writer }</li>
-	                        <li class="notice_date">${notice.notice_date }</li>
-	                        <li class="notice_count">${notice.notice_count }</li>
-	                    </ul> -->
                     <ul>
-                        <li class="notice_num">5</li>
-                        <li class="notice_title">공지사항1</li>
-                        <li class="notice_writer">관리자</li>
-                        <li class="notice_date">2021-11-23</li>
-                        <li class="notice_count">50</li>
+                        <li class="notice_num">${notice.notice_code }</li>
+                        <li class="notice_title">${notice.notice_title }</li>
+                        <li class="notice_writer">${notice.notice_writer }</li>
+                        <li class="notice_date">${notice.notice_date }</li>
+                        <li class="notice_count">${notice.notice_count }</li>
+                    </ul>
+                    <ul>
+                        <li class="notice_num">${notice.notice_code }</li>
+                        <li class="notice_title">${notice.notice_title }</li>
+                        <li class="notice_writer">${notice.notice_writer }</li>
+                        <li class="notice_date">${notice.notice_date }</li>
+                        <li class="notice_count">${notice.notice_count }</li>
                     </ul>
 
                 </a>
