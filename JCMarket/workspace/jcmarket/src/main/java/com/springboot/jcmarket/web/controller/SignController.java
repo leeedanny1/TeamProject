@@ -77,7 +77,8 @@ public class SignController {
 	@ResponseBody
 	@PostMapping("sign-up")
 	public String signUp(@RequestBody SignUpDto signUpDto, HttpServletRequest request) {
-	  return Integer.toString(signUpService.signUp(signUpDto));
+	
+		return Integer.toString(signUpService.signUp(signUpDto));
 	}
 	@ResponseBody
 	@PostMapping("social-sign-update")
@@ -86,10 +87,10 @@ public class SignController {
 		System.out.println(signUpdto);
 		int update=signUpService.socailupdate(signUpdto);
 		if(update==1) {
-			/*
-			 * prDetails.getUser().setUser_nickname(signUpdto);
-			 * prDetails.getUser().setUser_phone(signUpdto);
-			 */
+	
+			  prDetails.getUser().setUser_nickname(signUpdto.getUser_nickname());
+			  prDetails.getUser().setUser_phone(signUpdto.getUser_phone());
+	
 			
 		}
 		return Integer.toString(signUpService.socailupdate(signUpdto));
