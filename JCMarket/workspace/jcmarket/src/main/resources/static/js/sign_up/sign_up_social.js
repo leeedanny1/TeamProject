@@ -74,13 +74,13 @@ function checkPhone(input) {
 
 }
 
+
 function checkAuth(input) {
 	console.log(input)
 
 	let authNumber = input.value;
 	if (authCode == authNumber) {
 		alert('인증완료하였습니다. ');
-		 signUpData.user_phone = input.value;
 	} else {
 		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
 	}
@@ -124,8 +124,9 @@ function checkEmpty(input, checkIndex) {
 	return true;
 }
 
-submit_btn.onclick=()=>{
-	socailupdate();
+submit_btn.onclick=(input)=>{
+	socailupdate(input);
+	alert(input);
 }
 //닉네임 정규식 체크 
 function checkNicknameFormat(input) {
@@ -196,13 +197,14 @@ function msgService(input, msgContent, msgIndex) {
 }
 function socailupdate(input) {
      $.ajax({
-	   type: "put",
+	   type: "post",
 	   url: "social-sign-update",
 	   data: JSON.stringify(signUpData),
 		contentType: "application/json;charset=UTF-8",
 	 	 dataType: "text",
 	   success: function(data) {
-	        phoneCheckResult = 1;
+	       alert('회원수정을 완료하였습니다.  ');
+				location.replace('index');
 	},
 	error: function(){
 		phoneCheckResult = 2;

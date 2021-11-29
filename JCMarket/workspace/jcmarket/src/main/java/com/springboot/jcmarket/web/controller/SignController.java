@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.domain.user.User;
 import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 import com.springboot.jcmarket.web.service.SignUpService;
 
@@ -78,10 +79,20 @@ public class SignController {
 	public String signUp(@RequestBody SignUpDto signUpDto, HttpServletRequest request) {
 	  return Integer.toString(signUpService.signUp(signUpDto));
 	}
-	@PutMapping("social-sign-update")
-	public String SocialsignUpdate(@RequestBody SignUpDto signUpdto) {
+	@ResponseBody
+	@PostMapping("social-sign-update")
+	public String SocialsignUpdate(@RequestBody SignUpDto signUpdto, @AuthenticationPrincipal PrincipalDetails prDetails) {
+		signUpdto.setUser_id(prDetails.getUser().getUser_id());
 		System.out.println(signUpdto);
+		int update=signUpService.socailupdate(signUpdto);
+		if(update==1) {
+			/*
+			 * prDetails.getUser().setUser_nickname(signUpdto);
+			 * prDetails.getUser().setUser_phone(signUpdto);
+			 */
+			
+		}
 		return Integer.toString(signUpService.socailupdate(signUpdto));
 	}
-	
+
 }

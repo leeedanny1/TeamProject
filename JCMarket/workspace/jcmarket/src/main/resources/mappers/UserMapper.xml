@@ -39,8 +39,6 @@
 		insert into
 			user_mst
 		values(
-			0,
-			#{user_id},
 		    0,
 		    #{user_id},
 			#{user_password},
@@ -78,9 +76,13 @@
 	
 	</update>  
 	<update id= "socailupdate" parameterType="com.springboot.jcmarket.domain.user.User">
-	UPDATE user_mst SET user_nickname=#{user_nickname},user_phone=#{user_phone}
-		WHERE 
-			user_id = #{user_id}
+   update
+	       user_mst
+	      set
+	       user_phone = #{user_phone},
+	       user_nickname = #{user_nickname}
+	      where
+	       user_id = #{user_id}
 	
 	</update>
 	
