@@ -1,0 +1,22 @@
+package com.springboot.jcmarket.domain.notice;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
+public class NoticeDtl {
+	
+	private int notice_code;
+	private String notice_content;
+	private String originFileNames;
+	private String tempFileNames;
+	private String create_date;
+	private String update_date;
+	
+
+}

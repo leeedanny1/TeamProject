@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JC마켓 : JC마켓 회원정보수</title>
+    <title>JC마켓 : JC마켓 회원정보수정 </title>
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
-    <script src="../js/mypage/user_update.js" defer></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script src="../js/mypage/user_update.js" defer></script>
 </head>
 <body>
     
@@ -24,10 +31,9 @@
 
         <form class="sign_form">
                 
-           
-                <input type="text" name="" class="user_info" id="" value="강경완" readonly>
-                <input type="text" name="" class="user_info" id="" value="01034012679"  readonly>
-                <input type="email" value = "gig2010" class="user_info" readonly>
+                <input type="text" name="" class="user_info" id="" value= "${principal.user.user_name}" readonly>
+                <input type="text" name="" class="user_info" id="" value="${principal.user.user_phone}" readonly>
+                <input type="email" value = "${principal.user.user_id}" class="user_info" readonly>
                   
                
                 <input type="password"   class="input"name="id" id="" placeholder="비밀번호">

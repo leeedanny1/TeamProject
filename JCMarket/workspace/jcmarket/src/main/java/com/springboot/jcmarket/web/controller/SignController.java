@@ -41,7 +41,10 @@ public class SignController {
 		return "redirect:/";
 }
 	@GetMapping("/sign-up")
-	public String signUp() {
+	public String signUp(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if(principalDetails != null) {
+			return "redirect: /";
+		}
 		return "sign_up/sign_up_dtl";
 	}
 	
@@ -65,8 +68,8 @@ public class SignController {
 
 	@ResponseBody
 	@GetMapping("nickname-check")
-	public String nicknameCheck(@RequestParam String signUpNickname) {
-
+	public String nicknameCheck(@RequestParam String signUpNickname) { 
+        System.out.println("signUpNickname: " + signUpNickname);
 		return Integer.toString(signUpService.nicknameCheck(signUpNickname));
 	}
 
