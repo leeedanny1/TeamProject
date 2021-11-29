@@ -262,7 +262,7 @@ function checkNickname(input) {
 //업데이트
 function update() {
 	$.ajax({
-		type: "post",
+		type: "put",
 		url: "update",
 		data: JSON.stringify(updateData),
 		contentType: "application/json;charset=UTF-8",

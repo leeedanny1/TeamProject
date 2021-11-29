@@ -19,7 +19,7 @@ const arrNickname = ['아프리카청춘이다', '벼랑위의당뇨', '거져�
                       '순대렐라', '추적60인분','반지하의제왕', '오드리될뻔', '옥수수콧수염차', '명란젓코난',
                       '축구싶냐농구있네', '가문의영광굴비', '조선왕조씰룩쌜룩' ]
      const arrNicknameIndex =  Math.floor(Math.random()*26);
-
+    
 
 var authCode= "";
 var phoneCheckResult = 0; 
