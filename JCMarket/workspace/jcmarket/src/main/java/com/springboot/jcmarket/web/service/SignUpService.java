@@ -13,4 +13,5 @@ public interface SignUpService {
 	  public User getUser(String user_id);
 	  public String createAuthenticationCode();
 	  public String  sendAuthenticationCode(String phoneNumber);
+	  public int socailupdate(SignUpDto signUpDto);
 }

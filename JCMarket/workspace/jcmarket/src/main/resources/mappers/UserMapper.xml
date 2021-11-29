@@ -39,6 +39,7 @@
 		insert into
 			user_mst
 		values(
+			0,
 			#{user_id},
 			#{user_password},
 			#{user_name},
@@ -54,7 +55,7 @@
 	</insert>
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
 	      select
-	        user_id,user_password,user_name, user_phone, user_nickname, 
+	        id,user_id,user_password,user_name, user_phone, user_nickname, 
 	        buy_count, sell_count, role, provider, create_date, update_date
 	      from
 	       user_mst
@@ -72,7 +73,12 @@
 	      where
 	       user_id = #{user_id}
 	
-	
 	</update>  
+	<update id= "socailupdate" parameterType="com.springboot.jcmarket.domain.user.User">
+	UPDATE user_mst SET user_nickname=#{user_nickname},user_phone=#{user_phone}
+		WHERE 
+			user_id = #{user_id}
+	
+	</update>
 	
   </mapper>

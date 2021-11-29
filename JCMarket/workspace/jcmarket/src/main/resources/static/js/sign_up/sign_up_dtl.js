@@ -20,6 +20,7 @@ var passwordCheckResult = 0;
 var  checkNicknameResult = 0;
 var tempIdValue = ''; 
 var tempNickNameValue= '';
+var tempPhoneValue='';
 var tempPasswordValue = '';
 var checkEmptyResult = false;
 
