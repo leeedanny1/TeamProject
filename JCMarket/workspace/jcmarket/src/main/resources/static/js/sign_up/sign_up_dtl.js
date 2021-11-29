@@ -236,7 +236,7 @@ function checkPhoneFormat(input) {
 	 inputs[0].value = '';
 	 inputs[0].focus();
 	 inputs[0].placeholder = '인증번호를 입력해 주세요. ';
-	 check_btns[0].textContent = '인증확인 '
+	 check_btns[0].textContent = '인증확인 ';
 	
 }
 
