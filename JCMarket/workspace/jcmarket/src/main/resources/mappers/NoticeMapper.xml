@@ -5,6 +5,7 @@
   
   <mapper namespace="com.springboot.jcmarket.domain.notice.NoticeRepository">
   
+  	<!-- 공지사항 리스트 가져오는것 -->
 	<select id="getNoticeAll" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT
 			notice_code,
@@ -14,6 +15,22 @@
 			notice_count
 		FROM
 			notice_mst
+		ORDER BY nm.notice_code desc
+	</select>
+	<!-- 공지사항 디테일 가져옴 -->
+	<select id="getNotice" resultType="com.springboot.jcmarket.domain.notice.Notice">
+		SELECT
+			nm.notice_code,
+			nm.notice_title,
+			nm.notice_writer,
+			nm.notice_date,
+			nd.notice_content,
+			nd.originFileNames,
+			nd.tempFileNames
+		FROM
+			notice_mst nm
+			LEFT OUTER JOIN notice_dtl nd ON(nm.notice_code = nd.notice_code)
+		ORDER BY nm.notice_code desc
 	</select>
 
 	

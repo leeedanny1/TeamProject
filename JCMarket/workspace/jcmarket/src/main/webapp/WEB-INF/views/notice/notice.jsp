@@ -42,13 +42,6 @@
                         <li class="notice_date">${notice.notice_date }</li>
                         <li class="notice_count">${notice.notice_count }</li>
                     </ul>
-                    <ul>
-                        <li class="notice_num">${notice.notice_code }</li>
-                        <li class="notice_title">${notice.notice_title }</li>
-                        <li class="notice_writer">${notice.notice_writer }</li>
-                        <li class="notice_date">${notice.notice_date }</li>
-                        <li class="notice_count">${notice.notice_count }</li>
-                    </ul>
 
                 </a>
             </c:forEach>

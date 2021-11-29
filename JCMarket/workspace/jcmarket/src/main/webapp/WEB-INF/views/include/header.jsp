@@ -33,7 +33,7 @@
             <section class="b_header">
                 <!-- 카테고리 -->
                 <ul class="h_category">
-                    <li><a href="/notice/notice">Notice</a></li>
+                    <li><a href="/notice/list">Notice</a></li>
                     <li><a href="/items/hot">Hot&nbspItems</a></li>
                     <li><a href="/items/new">New&nbspItems</a></li>
                     <li><a href="/items/sale">Selling&nbspItems</a></li>
