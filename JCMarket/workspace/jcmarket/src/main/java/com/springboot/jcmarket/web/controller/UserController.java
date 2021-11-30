@@ -33,20 +33,15 @@ public class UserController {
 	
 	@ResponseBody
 	@PutMapping("/update")
+
 	public String update(@RequestBody SignUpDto signUpDto , @AuthenticationPrincipal PrincipalDetails prDetails) {
-		int update=userService.updateUser(signUpDto);
 		User user = signUpService.getUser(signUpDto.getUser_id());
 		if (signUpDto.getUser_password() == "") {
 			signUpDto.setUser_password(user.getUser_password());
 		} else if (signUpDto.getUser_nickname() == "") {
 			signUpDto.setUser_nickname(user.getUser_nickname());
 		}
-		if(update==1) {
-			  prDetails.getUser().setUser_nickname(signUpDto.getUser_nickname());
-			  prDetails.getUser().setUser_phone(signUpDto.getUser_phone());		
-		}
 		return  Integer.toString(userService.updateUser(signUpDto));
 	
-      
 	}
 }

@@ -14,6 +14,7 @@ public class Product {
     private int item_code;
     private String item_title;
     private String item_writer;
+    private int like_count;
     private int item_price;
     private String item_content;
     private String item_start;

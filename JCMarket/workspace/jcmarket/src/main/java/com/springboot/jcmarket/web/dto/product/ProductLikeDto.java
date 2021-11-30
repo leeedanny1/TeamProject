@@ -11,11 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ProductDto {
-     
+public class ProductLikeDto {
+    
 	private int id;
 	private int user_id;
 	private int item_code;
+	private int like_count;
+	private int like_result;
 	private String create_date;
 	
 	public Product toEntity() {
@@ -23,6 +25,7 @@ public class ProductDto {
 					.id(id)
 					.user_id(user_id)
 					.item_code(item_code)
+					.like_count(like_count)
 					.create_date(create_date)
 					.build(); 
 	     
