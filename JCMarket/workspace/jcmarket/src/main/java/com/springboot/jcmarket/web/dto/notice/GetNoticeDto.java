@@ -11,13 +11,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class NoticeDto {
+public class GetNoticeDto {
 	
 	private int notice_code;
 	private String notice_title;
 	private String notice_writer;
-	private LocalDateTime notice_date;
 	private int notice_count;
-	
-
+	private LocalDateTime notice_date;
+	private LocalDateTime update_date;
+	private String notice_content;
+	private String originFileNames;
+	private String tempFileNames;
 }

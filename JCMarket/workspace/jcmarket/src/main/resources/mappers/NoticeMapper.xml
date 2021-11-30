@@ -15,23 +15,30 @@
 			notice_count
 		FROM
 			notice_mst
-		ORDER BY nm.notice_code desc
+		ORDER BY notice_code desc
 	</select>
+	
 	<!-- 공지사항 디테일 가져옴 -->
 	<select id="getNotice" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT
 			nm.notice_code,
 			nm.notice_title,
 			nm.notice_writer,
+			nm.notice_count,
 			nm.notice_date,
+			nd.update_date,
 			nd.notice_content,
 			nd.originFileNames,
 			nd.tempFileNames
 		FROM
 			notice_mst nm
-			LEFT OUTER JOIN notice_dtl nd ON(nm.notice_code = nd.notice_code)
-		ORDER BY nm.notice_code desc
+			LEFT OUTER JOIN notice_dtl nd ON(nd.notice_code = nm.notice_code)
+		WHERE
+			nm.notice_code = 1
+		LIMIT
+			1;
 	</select>
+
 
 
 	
