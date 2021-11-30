@@ -42,7 +42,7 @@ public class SignController {
 		return "redirect:/";
 }
 	@GetMapping("/sign-up")
-	public String signUp() {
+	
 	public String signUp(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		if(principalDetails != null) {
 			return "redirect: /";

@@ -43,6 +43,5 @@ public class UserController {
 		}
 		return  Integer.toString(userService.updateUser(signUpDto));
 	
-      
 	}
 }
