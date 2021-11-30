@@ -81,7 +81,7 @@ public class SignController {
 		return Integer.toString(signUpService.signUp(signUpDto));
 	}
 	@ResponseBody
-	@PostMapping("social-sign-update")
+	@PutMapping("social-sign-update")
 	public String SocialsignUpdate(@RequestBody SignUpDto signUpdto, @AuthenticationPrincipal PrincipalDetails prDetails) {
 		signUpdto.setUser_id(prDetails.getUser().getUser_id());
 		System.out.println(signUpdto);

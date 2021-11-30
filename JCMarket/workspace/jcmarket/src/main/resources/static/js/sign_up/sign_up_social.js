@@ -197,7 +197,7 @@ function msgService(input, msgContent, msgIndex) {
 }
 function socailupdate(input) {
      $.ajax({
-	   type: "post",
+	   type: "put",
 	   url: "social-sign-update",
 	   data: JSON.stringify(signUpData),
 		contentType: "application/json;charset=UTF-8",
