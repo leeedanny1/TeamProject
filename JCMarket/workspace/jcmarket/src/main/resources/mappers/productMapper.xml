@@ -9,9 +9,8 @@
          product_like
         values 
         (
-         0,
-         #{user_id},
          #{item_code},
+         #{user_id},
          now()
         )
 
@@ -31,7 +30,7 @@
        update
         product_mst
        set
-        like_count = #{like_count} + 1
+        like_count=like_count + 1
        where
         item_code = #{item_code}
     
@@ -41,7 +40,7 @@
        update
         product_mst
        set
-        like_count = #{like_count} - 1
+        like_count = like_count- 1
        where
         item_code = #{item_code}
     
@@ -56,6 +55,20 @@
         item_code = #{item_code}
      
     </select>
+    
+     <select id = "getProduct" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="com.springboot.jcmarket.domain.product.Product">
+     select
+ 	  *
+     from
+	  product_mst pm
+	  left outer join product_dtl pd on(pd.item_code = pm.item_code)
+	  left outer join product_like pl on(pl.item_code = pm.item_code  and user_id = #{user_id})
+     where
+      pm.item_code = #{item_code};
+     
+    </select>
+    
+   
     
   
   

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 
 <head>
@@ -20,8 +21,7 @@
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
-    
-
+    <input type = "hidden" id = "user_id" value ="${items.user_id }">
 
     <!-- main content -->
     <main class="wrap main">
@@ -48,7 +48,7 @@
                     <!-- 상품정보 -->
                     <article class="item_info_dtl">
                         <h4>판매자</h4>
-                        <span>판매자 닉네임</span>
+                        <span>${items.item_writer }</span>
                         <h4>상품상태</h4>
                         <span>새상품</span>
                         <h4>교환여부</h4>
@@ -58,7 +58,7 @@
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
-                        <button class = "like_button" value ="2" type="button"><i class="fas fa-heart"></i> 찜 <span class="like_count">0</span></button>
+                        <button class = "like_button" value ="2" type="button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${items.like_count}</span></button>
                         <button type="button">연락하기</button>
                     </article>
                 </article>

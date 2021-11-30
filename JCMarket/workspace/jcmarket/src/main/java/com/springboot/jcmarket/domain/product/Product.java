@@ -1,16 +1,21 @@
 package com.springboot.jcmarket.domain.product;
 
 
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 public class Product {
 	
-	private int id;
-	private int user_id;
+    private int user_id;
     private int item_code;
     private String item_title;
     private String item_writer;
