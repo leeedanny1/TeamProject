@@ -32,6 +32,7 @@ like_button.addEventListener('click', () => {
 
 //좋아요 추가 
 function addLike() {
+	
 	//modelAndView로 받아와서 el로 like_button.value에 product아이디 값을 저장해두고
 	//버튼클릭시 그 값을 받아온다. 
 	 let productId = like_button.value;
@@ -44,6 +45,9 @@ function addLike() {
 		},
 		dataType: "text",
 		success: function(data) {
+			let productLikeDto = JSON.parse(data);
+			console.log(123);
+			console.log(data);
 			if(data == 1) {
 				msgService('찜하기가 완료되었습니다');
 			}
@@ -52,8 +56,7 @@ function addLike() {
 			
 		}
 		});
-			  
-	
+			 
 }
 
 //좋아요 삭제  

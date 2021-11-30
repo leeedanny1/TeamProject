@@ -55,19 +55,24 @@ public class ProductController {
 
 	@ResponseBody
 	@PostMapping("/add-like")
-	public String addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+	public Object addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+		System.out.println("productId: " + productId);
 		ProductLikeDto productLikeDto = new ProductLikeDto();
-		
 		productLikeDto.setItem_code(productId);
-		return "0";
+		productLikeDto.setId(principal.getUser().getId());
+		
+		System.out.println("result: " + productService.addLike(productLikeDto));
+		return productLikeDto;
 	}
 
 	@ResponseBody
 	@DeleteMapping("/delete-like")
-	public String deleteLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+	public Object deleteLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+		
 		ProductLikeDto productLikeDto = new ProductLikeDto();
 		productLikeDto.setItem_code(productId);
-	    return "0";
+		productLikeDto.setId(principal.getUser().getId());
+		return productLikeDto;
 	}
 
 }

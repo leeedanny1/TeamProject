@@ -12,11 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ProductLikeDto {
-     
+    
 	private int id;
 	private int user_id;
 	private int item_code;
 	private int like_count;
+	private int like_result;
 	private String create_date;
 	
 	public Product toEntity() {
