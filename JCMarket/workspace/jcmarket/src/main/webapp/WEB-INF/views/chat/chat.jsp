@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +16,15 @@
     <div class="wrap">
     <div class="chat">
         <div class="list">
-            <ul>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-             
-            </ul>
-       
+         	<c:forEach var="chatlist" items="${chatList }">
+            		<a href="">
+	                    <ul>
+	                         <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo">
+	                        <li class="notice_title">${product.item_title}</li>
+	                    </ul>
+	                </a>
+            	</c:forEach>
+                
         </div>
         <div class="chatting">
             <ul>
