@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <html lang="ko">
 
 <head>
@@ -25,13 +27,19 @@
         <section id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert">제목입니다</li>
+                <li class="title_insert">${notice_dtl.notice_title}</li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <li>관리자</li>
+                <li>${notice_dtl.notice_writer}</li>
+                <li>조회수</li>
+                <li>${notice_dtl.notice_count}</li>
+            </ul>
+            <ul class="info_ul">
                 <li>작성일</li>
-                <li>2021-11-23</li>
+                <li>${notice_dtl.notice_date}</li>
+                <li>수정일</li>
+                <li>${notice_dtl.update_date}</li>
             </ul>
 
             <ul class="content_ul">
@@ -45,6 +53,7 @@
             </ul>
             <ul class="file_ul_dtl">
                 <li>
+                <!-- 
                     <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                         <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
                             ${fileBean.originFileName }
@@ -53,6 +62,7 @@
                             /
                         </c:if>
                     </c:forEach>
+                     -->
                 </li>
             </ul>
 
@@ -68,19 +78,23 @@
         <div class="notice_pre_next">
             <ul class="notice_next">
                 <li class="next_title">다음 글</li>
+                <!-- 
                 <c:if test="${notice.nextNotice_code ne 0}">
                     <a href="notice/${notice.nextNotice_code }">
                         <li>${notice.nextNotice_title }</li>
                     </a>
                 </c:if>
+                 -->
             </ul>
             <ul class="notice_pre">
                 <li class="pre_title">이전 글</li>
+                <!--
                 <c:if test="${notice.preNotice_code ne 0}">
                     <a href="notice/${notice.preNotice_code }">
                         <li>${notice.preNotice_title }</li>
                     </a>
                 </c:if>
+                 -->
             </ul>
         </div>
     </main>
