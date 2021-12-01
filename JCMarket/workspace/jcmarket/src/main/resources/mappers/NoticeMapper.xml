@@ -34,6 +34,51 @@
 		LIMIT
 			1;
 	</select>
+	
+	
+	
+	
+	<!-- 공지사항 등록 -->
+	<insert id="noticeMstInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		INSERT INTO
+			notice_mst(
+				notice_title,
+				notice_writer,
+				notice_date,
+				notice_count
+			)
+		VALUES(
+			#{notice_title},
+			"닉네임 가져와야 함",
+			NOW(),
+			0
+		);	
+	</insert>
+	<select id="getInsetNoticeCode" resultType="com.springboot.jcmarket.domain.notice.Notice">
+	SELECT
+		max(notice_code) AS notice_code
+	FROM
+		notice_mst
+	</select>
+	<update id="noticeDtlInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		UPDATE
+			notice_dtl
+		SET
+			notice_content = #{notice_content},
+			originFileNames = #{originFileNames},
+			tempFileNames = #{tempFileNames}
+		WHERE
+			notice_code = #{notice_code}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete">
+		DELETE
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code}
+	</delete>
 
 
 

@@ -30,13 +30,13 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="title" name="title" placeholder="공지사항 제목을 입력하세요"></li>
+                <li class="title_insert"><input type="text" class="title" name="notice_title" placeholder="공지사항 제목을 입력하세요"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
                 <li>관리자</li>
                 <li>작성일</li>
-                <li>0<fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></li>
+                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>
@@ -49,8 +49,8 @@
             </ul>
 
             <section class="btn_container">
-                <button type="button" class="submit">작성완료</button>
-                <button type="reset">다시쓰기</button>
+                <button type="button" class="notice_insert_button">작성완료</button>
+                <button type="button" class="notice_cancel_button">작성취소</button>
             </section>
         </form>
     </main>

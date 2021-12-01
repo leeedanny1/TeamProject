@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -27,6 +29,9 @@
     <main class="wrap main">
         <h1 class="page_name">공지사항</h1>
         <section id="insert_form">
+        	<input type="hidden" id="notice_code" value="${notice_dtl.notice_code }">
+        	<input type="hidden" id="notice_title" value="${notice_dtl.notice_title }">
+        
             <ul class="title_ul">
                 <li class="title_name">제목</li>
                 <li class="title_insert">${notice_dtl.notice_title}</li>
@@ -74,7 +79,7 @@
 
         <article class="list_btn_container">
             <button type="button" class="list_btn" onclick="location.href='/notice/notice_update.html'">수정</button>
-            <button type="button" class="list_btn">삭제</button>
+            <button type="button" class="list_btn notice_delete_btn">삭제</button>
             <button type="button" class="list_btn" onclick="location.href='/notice/list'">목록</button>
         </article>
 
@@ -112,6 +117,10 @@
             dsfdsfsd <br>
         </main>
     </footer>
+    
+
+
+    <script src="/js/notice/notice.js"></script>
 </body>
 
 </html>
