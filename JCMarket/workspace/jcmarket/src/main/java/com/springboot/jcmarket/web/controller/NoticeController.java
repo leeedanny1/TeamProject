@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.domain.notice.Notice;
-import com.springboot.jcmarket.web.dto.notice.GetNoticeDto;
 import com.springboot.jcmarket.web.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;

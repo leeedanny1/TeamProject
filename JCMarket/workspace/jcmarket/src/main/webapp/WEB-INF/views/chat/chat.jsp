@@ -19,7 +19,6 @@
          	<c:forEach var="chatlist" items="${chatList }">
             		<a href="">
 	                    <ul>
-	                         <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo">
 	                        <li class="notice_title">${product.item_title}</li>
 	                    </ul>
 	                </a>
