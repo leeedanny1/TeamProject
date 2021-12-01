@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -39,10 +42,10 @@
                         <li class="notice_num">${notice.notice_code }</li>
                         <li class="notice_title">${notice.notice_title }</li>
                         <li class="notice_writer">${notice.notice_writer }</li>
-                        <li class="notice_date">${notice.notice_date }</li>
+                        <fmt:parseDate value="${notice.notice_date }" var="insertDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+                        <li class="notice_date"><fmt:formatDate value="${insertDate }" pattern="yyyy-MM-dd"/></li>
                         <li class="notice_count">${notice.notice_count }</li>
                     </ul>
-
                 </a>
             </c:forEach>
         </section>
