@@ -2,6 +2,7 @@ package com.springboot.jcmarket.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.domain.product.Product;
@@ -48,21 +50,41 @@ public class ProductController {
 		return "product/product_insert";
 	}
 
-	@GetMapping("/purchase")
-	public String purchase() {
-		return "product/purchase";
+//	@GetMapping("/purchase")
+//	public String purchase() {
+//		return "product/purchase";
+//	}
+	
+//상품가져오기 테스트중  
+	@GetMapping("/purchase/{item_code}")
+	public ModelAndView getProduct(@PathVariable int item_code,  @AuthenticationPrincipal PrincipalDetails principal) {
+		System.out.println("code: " + item_code);
+		ProductLikeDto productLikeDto = new ProductLikeDto();
+		productLikeDto.setItem_code(item_code);
+		if(principal != null) {
+			productLikeDto.setUser_id(principal.getUser().getId());
+		}
+		
+		ModelAndView mav = new ModelAndView("product/purchase");
+		
+		mav.addObject("items", productService.getProduct(productLikeDto));
+		return mav;
 	}
+	
 
 	@ResponseBody
 	@PostMapping("/add-like")
 	public Object addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+		if(principal == null) {
+			return "2";
+		}
+		
 		System.out.println("productId: " + productId);
 		ProductLikeDto productLikeDto = new ProductLikeDto();
 		productLikeDto.setItem_code(productId);
-		productLikeDto.setId(principal.getUser().getId());
-		
-		System.out.println("result: " + productService.addLike(productLikeDto));
-		return productLikeDto;
+	    
+		productLikeDto.setUser_id(principal.getUser().getId());
+		return  productService.addLike(productLikeDto);
 	}
 
 	@ResponseBody
@@ -71,8 +93,8 @@ public class ProductController {
 		
 		ProductLikeDto productLikeDto = new ProductLikeDto();
 		productLikeDto.setItem_code(productId);
-		productLikeDto.setId(principal.getUser().getId());
-		return productLikeDto;
+		productLikeDto.setUser_id(principal.getUser().getId());
+		return productService.deleteLike(productLikeDto);
 	}
 
 }
