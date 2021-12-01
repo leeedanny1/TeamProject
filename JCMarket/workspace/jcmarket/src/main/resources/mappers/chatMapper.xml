@@ -9,4 +9,5 @@
   	<select id = "getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat">
   		select * from chat_dtl
   	</select>
+ 
   </mapper>

@@ -11,6 +11,8 @@
     <title>Document</title>
   
     <link rel="stylesheet" href="/css/chat/chat.css">
+     <script src="/js/chat/chat.js" defer></script>
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -38,7 +40,7 @@
             </ul>
             <div class="msgbox">
                 <textarea class="msginput" value="asdfa"></textarea>
-                <button class="submitbtn">전 송</button>
+                <button type="submit" class="submitbtn">전 송</button>
             </div>
         </div>
      
