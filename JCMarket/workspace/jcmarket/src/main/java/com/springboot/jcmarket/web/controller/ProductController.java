@@ -2,12 +2,12 @@ package com.springboot.jcmarket.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.domain.product.Product;
-
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
 import com.springboot.jcmarket.web.service.productService;
@@ -55,7 +54,8 @@ public class ProductController {
 //		return "product/purchase";
 //	}
 	
-//상품가져오기 테스트중  
+@SuppressWarnings("null")
+	//상품가져오기 테스트중  
 	@GetMapping("/purchase/{item_code}")
 	public ModelAndView getProduct(@PathVariable int item_code,  @AuthenticationPrincipal PrincipalDetails principal) {
 		System.out.println("code: " + item_code);
@@ -66,8 +66,13 @@ public class ProductController {
 		}
 		
 		ModelAndView mav = new ModelAndView("product/purchase");
-		
-		mav.addObject("items", productService.getProduct(productLikeDto));
+		Product product = productService.getProduct(productLikeDto);
+//		if(product == null) {
+//			product.setLike_flag(1);
+//		}else {
+//			product.setLike_flag(2);
+//		}
+		mav.addObject("items", product);
 		return mav;
 	}
 	
