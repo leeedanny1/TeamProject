@@ -4,6 +4,8 @@ const inputs = document.querySelectorAll('.input');
 const submit_btn = document.querySelector('.submit_btn');
 const check_btn = document.querySelector('.check_btn');
 
+
+
 var updateData = {
     user_id: user_info[2].value,
     user_password: '',

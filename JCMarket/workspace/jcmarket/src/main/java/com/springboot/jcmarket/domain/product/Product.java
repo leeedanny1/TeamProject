@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Product {
 	
+	private int like_flag;
     private int user_id;
     private int item_code;
     private String item_title;
