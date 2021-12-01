@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +11,21 @@
     <title>Document</title>
   
     <link rel="stylesheet" href="/css/chat/chat.css">
+     <script src="/js/chat/chat.js" defer></script>
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <div class="wrap">
     <div class="chat">
         <div class="list">
-            <ul>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-                <a><li>aaa</li></a>
-             
-            </ul>
-       
+         	<c:forEach var="chatlist" items="${chatList }">
+            		<a href="">
+	                    <ul>
+	                        <li class="notice_title">${product.item_title}</li>
+	                    </ul>
+	                </a>
+            	</c:forEach>
+                
         </div>
         <div class="chatting">
             <ul>
@@ -37,7 +40,7 @@
             </ul>
             <div class="msgbox">
                 <textarea class="msginput" value="asdfa"></textarea>
-                <button class="submitbtn">전 송</button>
+                <button type="submit" class="submitbtn">전 송</button>
             </div>
         </div>
      

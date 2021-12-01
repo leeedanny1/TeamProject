@@ -22,7 +22,7 @@ public class ProductLikeDto {
 	
 	public Product toEntity() {
 		  return Product.builder()
-					.id(id)
+					
 					.user_id(user_id)
 					.item_code(item_code)
 					.like_count(like_count)

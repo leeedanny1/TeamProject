@@ -123,7 +123,7 @@
 	color : #FF0000;
 }
 
-.msg {
+.add_msg {
 	
 	text-align: center;
 	padding: 2px 4px;
@@ -132,6 +132,17 @@
 	width: 168px;
 	height: 20px;
 	background-color: #6DD6DD;
+}
+
+.delete_msg{
+   text-align: center;
+	padding: 2px 4px;
+	border-radius: 8px;
+	margin-top : 10px;
+	width: 168px;
+	height: 20px;
+	background-color: #FF0000;
+	
 }
 
 .invisible {
