@@ -3,6 +3,7 @@ package com.springboot.jcmarket.web.service;
 import java.util.List;
 
 import com.springboot.jcmarket.domain.notice.Notice;
+import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
 
 public interface NoticeService {
 
@@ -14,4 +15,14 @@ public interface NoticeService {
 
 //	공지사항 디테일 페이지
 	public Notice getNoticeDtl(int notice_code);
+	
+	
+	
+//	공지사항 등록
+	public int noticeInsert(NoticeInsertDto noticeInsertDto);
+	
+//	공지사항 수정
+	
+//	공지사항 삭제
+	public int noticeDelete(int notice_code);
 }

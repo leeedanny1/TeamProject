@@ -51,12 +51,19 @@
         </section>
 
         <section class="notice_footer">
+        	<!-- 테스트용 -->
+        	<section class="btn_container">
+                    <button type="button" class="notice_insert_button"
+                        onclick="location.href='/notice/write'">글쓰기</button>
+            </section>
+            <!-- 나중에 해제 
             <c:if test="${not empty login_user }">
                 <section class="btn_container">
                     <button type="button" class="notice_insert_button"
                         onclick="location.href='/notice/write'">글쓰기</button>
                 </section>
             </c:if>
+            -->
 
             <ul class="page_num_area">
                 <a href="/notice/list/${noticeBean.startPage - 1 eq 0 ? 1 : noticeBean.pageNumber - 1 }">
