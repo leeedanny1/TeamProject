@@ -4,19 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.springboot.jcmarket.domain.chat.ChatRepository">
   	<select id="getChatListAll"  resultType="com.springboot.jcmarket.domain.chat.Chat">
-  		SELECT * FROM chat_mst where buyer_nickname =#{user_nickname} or seller_nickname = #{user_nickname}
+  	SELECT * FROM chat_mst cm LEFT OUTER JOIN user_mst um ON(um.id=cm.buyer_id or um.id=cm.seller_id) LEFT OUTER JOIN product_mst pm
+			ON(pm.item_code=cm.item_code) WHERE um.user_nickname=#{user_nickname} 
+
+
   	</select>
-  	<select id = "getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat">
- 		select
-			cd.chat_index, cd.chat_content
-			where buyer_nickname = #{buyer_nickname} or seller_nickname = #{seller_nickname} 
+  	<select id = "getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat" parameterType="com.springboot.jcmarket.domain.chat.Chat">
+	select
+			*		
 		from
-			chat_dtl cd
-			left outer join chat_mst cm on(cm.buyer_nickname = cd.buyer_nickname AND  cm.item_code = cd.item_code AND cm.seller_nickname=cd.seller_nickname)
-			
+				chat_dtl cd
+			left outer join chat_mst cm on(cm.buyer_id = cd.buyer_id aND  cm.item_code = cd.item_code AND cm.seller_id=cd.seller_id)
+			where 
+				cd.buyer_id = #{buyer_id} and cd.seller_id=#{seller_id} and cd.item_code= #{item_code}
   	</select>
-  	<select id=""> 
+  	<insert id=""> 
   		select 
-  	</select>
+  	</insert>
  
   </mapper>
