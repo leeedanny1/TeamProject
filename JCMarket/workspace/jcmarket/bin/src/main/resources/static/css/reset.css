@@ -1,0 +1,39 @@
+/* 기본 스타일 설정 */
+
+/* 레이아웃 */
+*{
+    margin: 0;
+    padding: 0;
+
+    font-family: "맑은 고딕";
+    font-size: 16px;
+}
+
+
+
+/* 태그 스타일 지정 */
+a{
+    text-decoration: none;
+    color: black;
+}
+ol, ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input{
+    outline: none;
+    width: 100%;
+}
+
+
+
+/* wrap설정 */
+.wrap{
+    margin: 0 auto;
+    width: 1024px;
+
+    /* background-color: rgba(0, 255, 255, 0.3); */
+}

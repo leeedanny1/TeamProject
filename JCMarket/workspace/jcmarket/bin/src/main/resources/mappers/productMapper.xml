@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.springboot.jcmarket.domain.product.ProductRepository">
+     <insert id = "addLike"  parameterType="com.springboot.jcmarket.domain.product.Product">
+        insert into
+         product_like
+        values 
+        (
+         #{item_code},
+         #{user_id},
+         now()
+        )
+
+     </insert>
+      
+      
+    <delete id = "deleteLike" parameterType="com.springboot.jcmarket.domain.product.Product">
+       delete
+        from
+         product_like
+       where
+        user_id = #{user_id} and item_code = #{item_code}  
+    
+    </delete>
+  
+    <update id = "upLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+       update
+        product_mst
+       set
+        like_count=like_count + 1
+       where
+        item_code = #{item_code}
+    
+    </update>
+    
+     <update id = "downLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+       update
+        product_mst
+       set
+        like_count = like_count- 1
+       where
+        item_code = #{item_code}
+    
+    </update>
+    
+    <select id = "getLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="Integer">
+      select
+        like_count
+      from
+        product_mst
+      where
+        item_code = #{item_code}
+     
+    </select>
+    
+     <select id = "getProduct" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="com.springboot.jcmarket.domain.product.Product">
+     select
+ 	  *
+     from
+	  product_mst pm
+	  left outer join product_dtl pd on(pd.item_code = pm.item_code)
+	  left outer join product_like pl on(pl.item_code = pm.item_code  and user_id = #{user_id})
+     where
+      pm.item_code = #{item_code};
+     
+    </select>
+    
+   
+    
+  
+  
+  
+  
+  </mapper>

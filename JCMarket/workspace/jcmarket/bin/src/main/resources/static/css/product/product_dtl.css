@@ -1,0 +1,150 @@
+.main{
+    margin-top: 170px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 상단 아이템 정보 */
+.t_container{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* 상품 사진 */
+.t_container .item_photo{
+    width: 40%;
+}
+
+
+
+/* 상품 정보 컨테이너 */
+.t_container .item_info{
+    width: 55%;
+}
+
+/* 상품명 */
+.item_info .t_item_info{
+    border-bottom: 1px solid #ccc;
+}
+.item_info .t_item_info > h3{
+    font-size: 30px;
+}
+.item_info .t_item_info > h4{
+    margin: 10px 0;
+    font-size: 40px;
+}
+.item_info .t_item_info > h4 > span{
+    font-size: 25px;
+}
+
+
+/* 상품간략정보 */
+.t_container .b_item_info{
+
+}
+
+
+/* 상품상태 */
+.b_item_info .item_info_now{
+    display: flex;
+}
+.item_info_now li{
+    margin: 10px 0;
+    width: 25%;
+    text-align: center;
+}
+
+
+/* 상품정보 */
+.b_item_info .item_info_dtl{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.b_item_info .item_info_dtl h4{
+    margin: 10px 0;
+    width: 20%;
+}
+.b_item_info .item_info_dtl span{
+    margin: 10px 0;
+    width: 80%;
+}
+
+
+/* 연락정보 */
+.b_item_info .item_info_btn{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.b_item_info .item_info_btn button{
+    width: 30%;
+    height: 50px;
+}
+
+
+
+
+
+/* 하단 아이템 정보 */
+.b_container{
+    margin-top: 50px;
+    width: 100%;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* 상품정보 이름 */
+.b_container .item_dtl_name{
+    font-size: 30px;
+    padding: 30px 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 상품상세정보 */
+.b_container .item_dtl{
+    margin: 50px 0 100px;
+}
+
+.fa-heart{
+	color : #ccc;
+}
+
+.color--red {
+	color : #FF0000;
+}
+
+.add_msg {
+	
+	text-align: center;
+	padding: 2px 4px;
+	border-radius: 8px;
+	margin-top : 10px;
+	width: 168px;
+	height: 20px;
+	background-color: #6DD6DD;
+}
+
+.delete_msg{
+   text-align: center;
+	padding: 2px 4px;
+	border-radius: 8px;
+	margin-top : 10px;
+	width: 168px;
+	height: 20px;
+	background-color: #FF0000;
+	
+}
+
+.invisible {
+	display: none;
+}

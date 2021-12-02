@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.springboot.jcmarket.domain.notice.NoticeRepository">
+  
+  	<!-- 공지사항 리스트 가져오는것 -->
+	<select id="getNoticeListAll" resultType="com.springboot.jcmarket.domain.notice.Notice">
+		SELECT
+			*
+		FROM
+			notice_mst
+		ORDER BY notice_code desc
+	</select>
+	
+	<!-- 공지사항 디테일 가져옴 -->
+	<select id="getNoticeDtl" resultType="com.springboot.jcmarket.domain.notice.Notice">
+		SELECT
+			nm.notice_code,
+			nm.notice_title,
+			nm.notice_writer,
+			nm.notice_count,
+			nm.notice_date,
+			nd.update_date,
+			nd.notice_content,
+			nd.originFileNames,
+			nd.tempFileNames
+		FROM
+			notice_mst nm
+			LEFT OUTER JOIN notice_dtl nd ON(nd.notice_code = nm.notice_code)
+		WHERE
+			nm.notice_code = #{notice_code}
+		LIMIT
+			1;
+	</select>
+	
+	
+	
+	
+	<!-- 공지사항 등록 -->
+	<insert id="noticeMstInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		INSERT INTO
+			notice_mst(
+				notice_title,
+				notice_writer,
+				notice_date
+			)
+		VALUES(
+			#{notice_title},
+			"닉네임 가져와야 함",
+			NOW()
+		);	
+	</insert>
+	<insert id="noticeDtlInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		INSERT INTO
+			notice_dtl(
+				notice_content,
+				originFileNames,
+				tempFileNames,
+				create_date,
+				update_date
+			)
+		VALUES(
+			#{notice_content},
+			#{originFileNames},
+			#{tempFileNames},
+			(SELECT notice_date FROM notice_mst WHERE notice_code = (SELECT MAX(notice_code) FROM notice_mst)),
+			(SELECT notice_date FROM notice_mst WHERE notice_code = (SELECT MAX(notice_code) FROM notice_mst))
+		)
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id="noticeUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		UPDATE
+			notice_mst
+		SET
+			notice_title = #{notice_title}
+		WHERE
+			notice_code = #{notice_code);
+		
+		UPDATE
+			notice_dtl
+		SET
+			notice_content = #{notice_content},
+			originFileNames = #{originFileNames},
+			tempFileNames = #{tempFileNames},
+			update_date = NOW()
+		WHERE
+			notice_code = #{notice_code};
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete">
+		DELETE
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code}
+	</delete>
+
+
+
+	
+  </mapper>

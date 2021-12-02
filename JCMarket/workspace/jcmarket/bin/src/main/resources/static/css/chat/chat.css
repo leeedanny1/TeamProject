@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    font-family: "맑은 고딕";
+    font-size: 16px;
+}
+
+
+
+/* 태그 스타일 지정 */
+a{
+    text-decoration: none;
+    color: black;
+}
+ol, ul{
+    list-style: none;
+
+}
+
+input{
+    outline: none;
+    width: 100%;
+}
+
+
+
+/* wrap설정 */
+.wrap{
+    margin: 0 auto;
+    width: 1024px;
+
+    /* background-color: rgba(0, 255, 255, 0.3); */
+}
+.wrap{
+    width: 100%;height: 753px;
+    display: flex;
+    background-color: rgb(175, 175, 175);
+    justify-content: center;
+}
+.chat_title{
+	align-items:center;
+	text-align: center;
+}
+.chat{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(175, 175, 175);; 
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.list li{
+    border: 2px solid   rgba(247, 47, 50) ; 
+    width: 100px; height: 100px;
+    background-color: #fff;
+    flex-direction : column;
+}
+.chatmsg{
+    flex-direction: column;
+    display: flex;
+}
+.chatting{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.chatting ul{
+background-color: rgb(142, 191, 231);
+    width: 400px; height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.my{
+    margin-top: 20px;
+    width: 100%;
+     float: left;
+     margin-left: 30px;
+}
+.you{ 
+    margin-right: 30px;
+     float: right;
+}
+.nickname{
+    color: #fff;
+    font-size: 10px;
+}
+.msgbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding :0;
+    margin: 0;
+    width: 100%;
+    
+    background-color: rgb(142, 191, 231);
+}
+.msginput{
+    width: 80%;height: 40px;
+    padding-top: 5px;
+    padding-left: 5px;
+    resize: none;
+    font-size: 15px;
+}
+.submitbtn{
+    width:18.6%;
+    height: 46px;
+    background-color: rgba(247, 47, 50) ;
+    opacity: 0.8;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+}
+.submitbtn:hover{
+    background-color: rgba(247, 47, 50);
+    opacity: 1;
+}
