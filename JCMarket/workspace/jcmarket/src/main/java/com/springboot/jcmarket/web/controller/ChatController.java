@@ -3,8 +3,8 @@ package com.springboot.jcmarket.web.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
@@ -23,15 +23,18 @@ public class ChatController {
 	@GetMapping("/chat")
 	public ModelAndView chatList(@AuthenticationPrincipal PrincipalDetails prDetails) {
 		ModelAndView mav = new ModelAndView("chat/chat");
-		
 		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getUser_nickname()));
+		
 		return mav;
 	}
-	@GetMapping("/chatting")
-	public ModelAndView chattingList() {
+	@GetMapping("/chatting/{item_code}/{buyer_id}")
+	public ModelAndView chattingList(@AuthenticationPrincipal PrincipalDetails prDetails, @PathVariable int item_code,@PathVariable int buyer_id) {
 		ModelAndView mav = new ModelAndView("chat/chat");
-		mav.addObject("chatmsg", chatService.getChatting());
-		System.out.println( chatService.getChatting());
+		mav.addObject("chatmsg", chatService.getChatting(buyer_id,prDetails.getUser().getId(),item_code));
+		System.out.println(item_code);
+		System.out.println(buyer_id);
+		System.out.println(prDetails.getUser().getId());
+		System.out.println(mav);
 		return mav;
 	}
 

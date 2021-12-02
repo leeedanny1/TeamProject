@@ -19,35 +19,27 @@
 		<div class="chat">
 			<div class="list">
 				<c:forEach var="chat" items="${chatList }">
-					<a class="chatlist_btn" href="/chat">
+					<a class="chatlist_btn" href="/chatting/${chat.item_code }/${chat.buyer_id}">
 						<ul>
-							<li class="chat_title">${chat.seller_nickname}님<br>과의 채팅</li>
+							<li class="chat_title"><br>과의 채팅</li>
 						</ul>
 					</a>
 				</c:forEach>
-
 			</div>
 			<div class="chatting">
 			
 				<ul>
 				<c:forEach var="chatmsg1" items="${chatmsg }">
-				<h1>ㄴㅇㄹㅇㄹㅇㄹㅇㄴㄹㄴㅇㄹㅇ:      ${chatmsg1 }</h1>
+		
 					<li>
 						<div class="chatmsg">
 							<h2 class="my">
-								<li>aaa</li>
-								<li><h5 class="nickname">${chatmsg1.buyer_nickname }</h5></li>
+								<li>${chatmsg1.chat_content}</li>
+								<li><h5 class="nickname">${chatmsg1.writer_nickname }</h5></li>
 							</h2>
 						</div>
 					</li>
-					<li>
-						<div class="youchatmsg">
-							<h2 class="you">
-								<li>fasdf</li>
-								<li><h5 class="nickname">${chatmsg1.seller_nickname }</h5></li>
-							</h2>
-						</div>
-					</li>
+					
 					</c:forEach>
 				</ul>
 				<div class="msgbox">

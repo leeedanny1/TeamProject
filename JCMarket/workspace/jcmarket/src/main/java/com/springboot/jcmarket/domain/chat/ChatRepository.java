@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ChatRepository {
 	
 	public List<Chat> getChatListAll(String user_nickname);
-	public List<Chat> getChatting();
+	public List<Chat> getChatting(Chat chat);
 }
