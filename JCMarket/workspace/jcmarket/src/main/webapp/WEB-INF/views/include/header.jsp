@@ -60,6 +60,7 @@
     </main>
 </header>
 
+<!--
 <c:set var="user_id" value="${principal.user.user_id}"></c:set>
 <h1>${user_id }</h1>
 <c:choose>
@@ -85,7 +86,7 @@
         </section>
     </c:otherwise>
 </c:choose>
-
+-->
 
 
 </html>
