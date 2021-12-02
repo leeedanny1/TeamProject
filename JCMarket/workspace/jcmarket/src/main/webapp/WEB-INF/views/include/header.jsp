@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix ="fn" uri ="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
-
+ 
 
 <!DOCTYPE html>
+   
 <!-- header -->
     <header>
         <!-- 헤더 내부 wrap -->
@@ -47,15 +49,40 @@
 		                </ul>
                 	</c:when>
                 	<c:otherwise>
+                	   
 		                 <ul class="h_sign">
-		                     <li><a href="/update">${principal.user.user_nickname }</a></li>
+		                     <li><a class="toUpdatePage">${principal.user.user_nickname }</a></li>
 		                     <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
 		                 </ul>
                 	</c:otherwise>
                 </c:choose>
             </section>
         </main>
+            <c:set var="user_id" value= "${principal.user.user_id}"></c:set>
+            <h1>${user_id }</h1>
+           <c:choose>
+            <c:when test="${fn:length(user_id) < 16}">
+          <section class="check_password invisible">
+          <div class="user_info">
+            <input type="text" value= "${principal.user.user_id}" readonly>
+             <input type="hidden" class= "user_password" value= "${principal.user}" readonly>
+            <input class ="input_password" type="password" class="input" name="id" id="" placeholder="비밀번호확인이 필요합니다. ">
+        </div>
+        <button type="button" class="toUpdatePage_btn">확인</button>
+    </section>
+    </c:when>
+     <c:otherwise>
+     <section class="check_password invisible">
+          <div class="user_info">
+            <input type="hidden" class= "user_password" value= "${principal.user}" readonly>
+            <input class ="input_password" type="password" class="input" name="id" id="" placeholder="비밀번호확인이 필요합니다. ">
+        </div>
+        <button type="button" class="toUpdatePage_btn">확인</button>
+    </section>
+    </c:otherwise>
+   </c:choose>
     </header>
-   
+
+     <script type="text/javascript" src="/js/index/index.js"></script>
 </body>
 </html>

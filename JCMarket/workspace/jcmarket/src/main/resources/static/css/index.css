@@ -87,3 +87,37 @@
 .item_list .item_info .item_time{
     font-size: 12px;
 }
+
+
+.check_password {
+   display: flex;
+   position: fixed;
+   top: 170px;
+   left: 500px;
+   width: 400px;
+   margin: 0 auto;
+}
+input{
+    width: 320px;
+    height: 40px;
+    outline: none;
+    border: none;
+}
+
+.toUpdatePage_btn {
+    border: none;
+    outline: none;
+    width: 80px;
+}
+
+.invisible {
+	display:none;
+}
+.visible {
+	display:block;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;   
+}
