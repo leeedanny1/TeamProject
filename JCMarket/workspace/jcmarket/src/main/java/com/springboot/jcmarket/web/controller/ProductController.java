@@ -54,7 +54,7 @@ public class ProductController {
 //		return "product/purchase";
 //	}
 	
-@SuppressWarnings("null")
+
 	//상품가져오기 테스트중  
 	@GetMapping("/purchase/{item_code}")
 	public ModelAndView getProduct(@PathVariable int item_code,  @AuthenticationPrincipal PrincipalDetails principal) {
@@ -64,15 +64,8 @@ public class ProductController {
 		if(principal != null) {
 			productLikeDto.setUser_id(principal.getUser().getId());
 		}
-		
 		ModelAndView mav = new ModelAndView("product/purchase");
-		Product product = productService.getProduct(productLikeDto);
-//		if(product == null) {
-//			product.setLike_flag(1);
-//		}else {
-//			product.setLike_flag(2);
-//		}
-		mav.addObject("items", product);
+        mav.addObject("items",  productService.getProduct(productLikeDto));
 		return mav;
 	}
 	

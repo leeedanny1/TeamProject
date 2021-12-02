@@ -1,12 +1,13 @@
 package com.springboot.jcmarket.domain.chat;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import com.springboot.jcmarket.web.dto.chat.ChatDto;
 
 @Mapper
 public interface ChatRepository {
 	
-	public Chat getChatList();
-	public Chat getChatting(ChatDto chatdto);
+	public List<Chat> getChatListAll(String user_nickname);
+	public List<Chat> getChatting();
 }

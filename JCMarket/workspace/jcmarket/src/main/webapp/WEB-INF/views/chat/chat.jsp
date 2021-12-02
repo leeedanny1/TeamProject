@@ -1,50 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-    <!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  
-    <link rel="stylesheet" href="/css/chat/chat.css">
-     <script src="/js/chat/chat.js" defer></script>
-     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<link rel="stylesheet" href="/css/chat/chat.css">
+<script src="/js/chat/chat.js" defer></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-    <div class="wrap">
-    <div class="chat">
-        <div class="list">
-         	<c:forEach var="chatlist" items="${chatList }">
-            		<a href="">
-	                    <ul>
-	                        <li class="notice_title">${product.item_title}</li>
-	                    </ul>
-	                </a>
-            	</c:forEach>
-                
-        </div>
-        <div class="chatting">
-            <ul>
-                <h2><li class="my">aaa</li></a>
-                <h2 ><li class="you">aaa</li></a>
-                <h2 class="my"><li>aaa</li></a>
-                <h2 class="you"><li>aaa</li></a>
-                <h2 class="my"><li>aaa</li></a>
-                <h2 class="you"><li>aaa</li></a>
-                <h2 class="my"><li>aaa</li></a>
-                <h2 class="you"><li>aaa</li></a>     
-            </ul>
-            <div class="msgbox">
-                <textarea class="msginput" value="asdfa"></textarea>
-                <button type="submit" class="submitbtn">전 송</button>
-            </div>
-        </div>
-     
-    </div>
-</div>
+	<div class="wrap">
+		<div class="chat">
+			<div class="list">
+				<c:forEach var="chat" items="${chatList }">
+					<a class="chatlist_btn" href="/chat">
+						<ul>
+							<li class="chat_title">${chat.seller_nickname}님<br>과의 채팅</li>
+						</ul>
+					</a>
+				</c:forEach>
+
+			</div>
+			<div class="chatting">
+			
+				<ul>
+				<c:forEach var="chatmsg1" items="${chatmsg }">
+				<h1>ㄴㅇㄹㅇㄹㅇㄹㅇㄴㄹㄴㅇㄹㅇ:      ${chatmsg1 }</h1>
+					<li>
+						<div class="chatmsg">
+							<h2 class="my">
+								<li>aaa</li>
+								<li><h5 class="nickname">${chatmsg1.buyer_nickname }</h5></li>
+							</h2>
+						</div>
+					</li>
+					<li>
+						<div class="youchatmsg">
+							<h2 class="you">
+								<li>fasdf</li>
+								<li><h5 class="nickname">${chatmsg1.seller_nickname }</h5></li>
+							</h2>
+						</div>
+					</li>
+					</c:forEach>
+				</ul>
+				<div class="msgbox">
+					<textarea class="msginput"placeholder="메세지를 입력해주세요"></textarea>
+					<button type="submit" class="submitbtn">전 송</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

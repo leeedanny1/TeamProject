@@ -1,3 +1,7 @@
+.sign_container {
+	height: 600px;
+}
+
 /* 인증버튼 */
 .check_section{
     position: relative;
@@ -43,4 +47,23 @@
 
 .success_msg {
  color: #006400;
+}
+
+.withdraw_btn_section {
+    text-align: right;
+    width: 500px;
+    height: 30px;
+}
+
+.withdraw_btn {
+    margin-top: 37.5px;
+    outline: none;
+     border: none;
+    font-size: 0.7em;
+    width: 60px;
+    height: 25px;
+}
+
+.withdraw_btn:hover {
+    opacity: 0.7;
 }
