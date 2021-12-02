@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Chat {
 	//chat_mst
-	private String seller_id;
-	private String buyer_id;
+	private String seller_nickname;
+	private String buyer_nickname;
 	private int item_code;
 	//chat_dtl
 	private String chat_index;

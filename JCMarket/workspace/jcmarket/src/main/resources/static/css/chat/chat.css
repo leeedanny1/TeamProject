@@ -15,8 +15,7 @@ a{
 }
 ol, ul{
     list-style: none;
-    justify-content: space-between;
-    align-items: center;
+
 }
 
 input{
@@ -39,6 +38,10 @@ input{
     background-color: rgb(175, 175, 175);
     justify-content: center;
 }
+.chat_title{
+	align-items:center;
+	text-align: center;
+}
 .chat{
     width: 50%;
     display: flex;
@@ -47,7 +50,7 @@ input{
 }
 .list{
     display: flex;
-    
+    flex-direction: column;
     background-color: #fff;
 }
 
@@ -57,15 +60,20 @@ input{
     background-color: #fff;
     flex-direction : column;
 }
+.chatmsg{
+    flex-direction: column;
+    display: flex;
+}
 .chatting{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .chatting ul{
-     
-    background-color: rgb(142, 191, 231);
+background-color: rgb(142, 191, 231);
     width: 400px; height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .my{
     margin-top: 20px;
@@ -76,6 +84,10 @@ input{
 .you{ 
     margin-right: 30px;
      float: right;
+}
+.nickname{
+    color: #fff;
+    font-size: 10px;
 }
 .msgbox{
     display: flex;
