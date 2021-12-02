@@ -54,22 +54,23 @@
 			0
 		);	
 	</insert>
-	<select id="getInsetNoticeCode" resultType="com.springboot.jcmarket.domain.notice.Notice">
-	SELECT
-		max(notice_code) AS notice_code
-	FROM
-		notice_mst
-	</select>
-	<update id="noticeDtlInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
-		UPDATE
-			notice_dtl
-		SET
-			notice_content = #{notice_content},
-			originFileNames = #{originFileNames},
-			tempFileNames = #{tempFileNames}
-		WHERE
-			notice_code = #{notice_code}
-	</update>
+	<insert id="noticeDtlInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+		INSERT INTO
+			notice_dtl(
+				notice_content,
+				originFileNames,
+				tempFileNames,
+				create_date,
+				update_date
+			)
+		VALUES(
+			#{notice_content},
+			NULL,
+			NULL,
+			NOW(),
+			NOW()
+		)
+	</insert>
 	
 	<!-- 공지사항 삭제 -->
 	<delete id="noticeDelete">

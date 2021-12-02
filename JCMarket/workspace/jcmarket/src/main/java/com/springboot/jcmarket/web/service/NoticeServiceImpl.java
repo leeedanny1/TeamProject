@@ -50,23 +50,13 @@ public class NoticeServiceImpl implements NoticeService {
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
 		Notice notice = noticeInsertDto.toEntity();
 		
-		System.out.println(notice);
+		int mstResult = 0, dtlResult = 0;
 		
-		int result = 0;
-		if(noticeRepository.noticeMstInsert(notice) == 1) {
-			Notice notice2 = noticeRepository.getInsetNoticeCode();
-			notice.setNotice_code(notice2.getNotice_code());
-			if(noticeRepository.noticeDtlInsert(notice) == 1) {
-				result = 1;
-			} else {
-				System.out.println("NoticeDtlInsert 오류");
-				result = 0;
-			}
-		} else {
-			System.out.println("NoticeMstInsert 오류");
-			result = 0;
+		mstResult = noticeRepository.noticeMstInsert(notice);
+		if(mstResult == 1) {
+			dtlResult = noticeRepository.noticeDtlInsert(notice);
 		}
-		return result;
+		return dtlResult;
 	}	
 	
 	

@@ -44,10 +44,10 @@
             </ul>
             <ul class="info_ul">
                 <li>작성시간</li>
-                <fmt:parseDate value="${notice_dtl.notice_date }" var="insertDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+                <fmt:parseDate value="${notice_dtl.notice_date }" var="insertDate" pattern="yyyy-MM-dd'T'HH:mm"/>
                 <li><fmt:formatDate value="${insertDate }" pattern="yyyy-MM-dd HH:mm"/></li>
                 <li>수정시간</li>
-				<fmt:parseDate value="${notice_dtl.update_date }" var="updateDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+				<fmt:parseDate value="${notice_dtl.update_date }" var="updateDate" pattern="yyyy-MM-dd'T'HH:mm"/>
                 <li><fmt:formatDate value="${updateDate }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>
 
