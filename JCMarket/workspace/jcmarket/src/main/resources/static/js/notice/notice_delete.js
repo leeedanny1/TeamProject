@@ -1,11 +1,12 @@
 const notice_delete_btn = document.querySelector(".notice_delete_btn")
 
 
+
+
 // 공지사항 삭제
 notice_delete_btn.onclick = () => {
     const notice_code = document.querySelector("#notice_code")
     const notice_title = document.querySelector("#notice_title")
-
 
     if (confirm("글 번호: " + notice_code.value + "\n글 제목: " + notice_title.value + "\n해당 공지사항을 정말 삭제하시겠습니까?")) {
         $.ajax({
@@ -26,9 +27,9 @@ notice_delete_btn.onclick = () => {
             }
         })
     } else {
-            alert("공지사항 삭제를 취소하였습니다.")
-        }
+        alert("공지사항 삭제를 취소하였습니다.")
     }
+}
 
 
 

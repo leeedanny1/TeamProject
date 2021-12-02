@@ -78,7 +78,7 @@
         </section>
 
         <article class="list_btn_container">
-            <button type="button" class="list_btn" onclick="location.href='/notice/notice_update.html'">수정</button>
+            <button type="button" class="list_btn notice_update_btn">수정</button>
             <button type="button" class="list_btn notice_delete_btn">삭제</button>
             <button type="button" class="list_btn" onclick="location.href='/notice/list'">목록</button>
         </article>
@@ -120,7 +120,8 @@
     
 
 
-    <script src="/js/notice/notice.js"></script>
+    <script src="/js/notice/notice_dtl.js"></script>
+    <script src="/js/notice/notice_delete.js"></script>
 </body>
 
 </html>

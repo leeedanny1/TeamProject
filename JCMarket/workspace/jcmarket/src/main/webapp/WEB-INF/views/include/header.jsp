@@ -83,6 +83,6 @@
    </c:choose>
     </header>
 
-     <script type="text/javascript" src="/js/index/index.js"></script>
-</body>
+
+
 </html>

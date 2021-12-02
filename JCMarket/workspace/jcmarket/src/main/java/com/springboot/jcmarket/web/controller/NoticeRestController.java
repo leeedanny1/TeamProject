@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
+import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 import com.springboot.jcmarket.web.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,10 +22,12 @@ public class NoticeRestController {
 	
 //	notice 등록
 	@PostMapping("/insert")
-	public String noticeInsert(NoticeInsertDto noticeInsertDto) {
-		System.out.println(noticeInsertDto);
-		return Integer.toString(noticeService.noticeInsert(noticeInsertDto));
+	public String noticeInsert(NoticeDto noticeDto) {
+		return Integer.toString(noticeService.noticeInsert(noticeDto));
 	}
+	
+//	notice 수정
+	
 	
 //	notice 삭제
 	@DeleteMapping("/delete/{notice_code}")

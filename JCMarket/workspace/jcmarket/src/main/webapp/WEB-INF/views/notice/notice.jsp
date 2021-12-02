@@ -54,7 +54,7 @@
         	<!-- 테스트용 -->
         	<section class="btn_container">
                     <button type="button" class="notice_insert_button"
-                        onclick="location.href='/notice/write'">글쓰기</button>
+                        onclick="location.href='/notice/insert'">글쓰기</button>
             </section>
             <!-- 나중에 해제 
             <c:if test="${not empty login_user }">

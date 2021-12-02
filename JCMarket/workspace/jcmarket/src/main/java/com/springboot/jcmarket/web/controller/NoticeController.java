@@ -1,6 +1,9 @@
 package com.springboot.jcmarket.web.controller;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,11 +45,21 @@ public class NoticeController {
 	}
 	
 //	notice글쓰기 연결
-	@GetMapping("/write")
-	public String noticeWrite() {
+	@GetMapping("/insert")
+	public String noticeWrite(Model model) {
+		
+		Date date = new Date();
+		model.addAttribute("now", date);
 		return "notice/notice_insert";
 	}
 	
+//	notice 수정
+	@GetMapping("/update/{notice_code}")
+	public ModelAndView noticeUpdate(@PathVariable int notice_code) {
+		ModelAndView mav = new ModelAndView("notice/notice_update");
+		mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
+		return mav;
+	}
 	
 	
 	

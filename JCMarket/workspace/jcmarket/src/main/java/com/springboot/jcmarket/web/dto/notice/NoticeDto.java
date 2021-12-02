@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class NoticeInsertDto {
+public class NoticeDto {
 	
 	private int notice_code;
 	private String notice_title;
