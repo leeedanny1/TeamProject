@@ -55,7 +55,9 @@ public class NoticeController {
 	
 //	notice 수정
 	@GetMapping("/update/{notice_code}")
-	public ModelAndView noticeUpdate(@PathVariable int notice_code) {
+	public ModelAndView noticeUpdate(Model model, @PathVariable int notice_code) {
+		Date date = new Date();
+		model.addAttribute("now", date);
 		ModelAndView mav = new ModelAndView("notice/notice_update");
 		mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
 		return mav;

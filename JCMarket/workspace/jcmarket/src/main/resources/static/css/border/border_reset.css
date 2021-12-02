@@ -28,7 +28,7 @@
 }
 
 /* 입력 폼 */
-#insert_form{
+#insert_form, #update_form{
     margin-top: 50px;
 }
 /* 리스트 */
@@ -36,10 +36,10 @@
     margin-top: 50px;
 }
 
-#insert_form ul{
+#insert_form ul, #update_form ul{
     box-sizing: border-box;
 }
-#insert_form li{
+#insert_form li, #update_form li{
     border: 1px solid black;
     box-sizing: border-box;
     border-collapse: collapse;

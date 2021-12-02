@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -31,8 +33,8 @@
             <ul class="info_ul">
                 <li>작성자</li>
                 <li>${notice_update.notice_writer }</li>
-                <li>작성일</li>
-                <li>${notice_update.notice_date }</li>
+                <li>수정일</li>
+                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>
             <ul class="content_ul">
                 <li>
