@@ -28,6 +28,7 @@
     <main class="wrap main">
         <h1 class="page_name">공지사항 작성</h1>
         <form id="insert_form">
+        	<input type="hidden" name="notice_code" value="${notice.notice_code }">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
                 <li class="title_insert"><input type="text" class="title" name="notice_title" placeholder="공지사항 제목을 입력하세요"></li>
@@ -36,7 +37,7 @@
                 <li>작성자</li>
                 <li>관리자</li>
                 <li>작성일</li>
-                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></li>
+                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.notice.NoticeRepository;
-import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
+import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -47,28 +47,25 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	
 	@Override
-	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
-		Notice notice = noticeInsertDto.toEntity();
+	public int noticeInsert(NoticeDto noticeDto) {
+		Notice notice = noticeDto.toEntity();
 		
-		System.out.println(notice);
+		int mstResult = 0, dtlResult = 0;
 		
-		int result = 0;
-		if(noticeRepository.noticeMstInsert(notice) == 1) {
-			Notice notice2 = noticeRepository.getInsetNoticeCode();
-			notice.setNotice_code(notice2.getNotice_code());
-			if(noticeRepository.noticeDtlInsert(notice) == 1) {
-				result = 1;
-			} else {
-				System.out.println("NoticeDtlInsert 오류");
-				result = 0;
-			}
-		} else {
-			System.out.println("NoticeMstInsert 오류");
-			result = 0;
+		mstResult = noticeRepository.noticeMstInsert(notice);
+		if(mstResult == 1) {
+			dtlResult = noticeRepository.noticeDtlInsert(notice);
 		}
-		return result;
+		return dtlResult;
 	}	
 	
+	@Override
+	public int noticeUpdate(NoticeDto noticeDto) {
+		Notice notice = noticeDto.toEntity();
+		
+		int result = noticeRepository.noticeUpdate(notice);
+		return 1;
+	}
 	
 	@Override
 	public int noticeDelete(int notice_code) {

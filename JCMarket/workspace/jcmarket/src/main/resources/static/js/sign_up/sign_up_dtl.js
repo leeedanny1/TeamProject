@@ -243,7 +243,7 @@ function checkPhoneFormat(input) {
 //아이디 정규식 체크
 function CheckIdFormat(input) {
 	
-      if(!/^[a-z]+[a-z0-9]{5,19}$/g.test(input.value)) {
+      if(!/^[a-z]+[a-z0-9]{5,15}$/g.test(input.value)) {
             msgService(input, '아이디는 6~20자 영문자 또는 숫자이어야 합니다.', 0);
             return;
         }else {

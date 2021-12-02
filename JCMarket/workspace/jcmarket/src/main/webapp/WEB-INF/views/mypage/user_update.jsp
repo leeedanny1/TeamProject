@@ -46,6 +46,9 @@
                 </section>
 
                 <button type="button" class="submit_btn">회원정보수정</button>
+                <div class="withdraw_btn_section">
+                <button type="button" class="withdraw_btn">회원탈퇴</button>
+                </div>
             </form>
     </main>
 </body>

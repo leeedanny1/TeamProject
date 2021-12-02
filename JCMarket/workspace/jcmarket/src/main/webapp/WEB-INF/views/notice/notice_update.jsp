@@ -22,20 +22,21 @@
     <!-- main content -->
     <main class="wrap main">
         <h1 class="page_name">공지사항 수정</h1>
-        <form id="insert_form">
+        <form id="update_form">
+            <input type="hidden" name="notice_code" value="${notice_update.notice_code }">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="title" name="title"></li>
+                <li class="title_insert"><input type="text" class="title" name="title" value="${notice_update.notice_title }"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <li>관리자</li>
+                <li>${notice_update.notice_writer }</li>
                 <li>작성일</li>
-                <li>2021-11-23</li>
+                <li>${notice_update.notice_date }</li>
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" name="notice_content"></textarea>
+                    <textarea class="notice_content" name="notice_content">${notice_update.notice_content }</textarea>
                 </li>
             </ul>
 
@@ -61,7 +62,7 @@
             </ul>
 
             <section class="btn_container">
-                <button type="button" class="submit">수정완료</button>
+                <button type="button" class="notice_update_button">수정완료</button>
                 <button type="button">수정취소</button>
             </section>
         </form>

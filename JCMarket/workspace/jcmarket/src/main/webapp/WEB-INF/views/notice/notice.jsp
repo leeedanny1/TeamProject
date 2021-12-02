@@ -42,7 +42,7 @@
                         <li class="notice_num">${notice.notice_code }</li>
                         <li class="notice_title">${notice.notice_title }</li>
                         <li class="notice_writer">${notice.notice_writer }</li>
-                        <fmt:parseDate value="${notice.notice_date }" var="insertDate" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+                        <fmt:parseDate value="${notice.notice_date }" var="insertDate" pattern="yyyy-MM-dd'T'HH:mm"/>
                         <li class="notice_date"><fmt:formatDate value="${insertDate }" pattern="yyyy-MM-dd"/></li>
                         <li class="notice_count">${notice.notice_count }</li>
                     </ul>
@@ -54,7 +54,7 @@
         	<!-- 테스트용 -->
         	<section class="btn_container">
                     <button type="button" class="notice_insert_button"
-                        onclick="location.href='/notice/write'">글쓰기</button>
+                        onclick="location.href='/notice/insert'">글쓰기</button>
             </section>
             <!-- 나중에 해제 
             <c:if test="${not empty login_user }">

@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
-
 @Mapper
 public interface NoticeRepository {
 	
@@ -16,12 +14,14 @@ public interface NoticeRepository {
 	
 	
 //	공지사항 등록
-	//마스터테이블 insert. 트리거로 디테일 생성됨.
+	//마스터테이블 insert
 	public int noticeMstInsert(Notice notice);
-	//가장 최근의 code
-	public Notice getInsetNoticeCode();
-	//생성된 디테일 update.
+	//디테일테이블 update
 	public int noticeDtlInsert(Notice notice);
+	
+//	공지사항 수정
+	public int noticeUpdate(Notice notice);
+	
 //	공지사항 삭제
 	public int noticeDelete(int notice_code);
 	

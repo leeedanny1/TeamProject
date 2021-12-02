@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/include/include.css">
     <link rel="stylesheet" href="css/index.css">
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -217,9 +219,10 @@
             </ul>
         </section>
     </main>
-
-
-
+     
+  
+     
+     
     <!-- footer -->
     <footer>
         <main class="wrap">
@@ -228,10 +231,9 @@
         </main>
     </footer>
     
-
-
     <!-- fontawesome CDN -->
     <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>
+   
 </body>
 
 
