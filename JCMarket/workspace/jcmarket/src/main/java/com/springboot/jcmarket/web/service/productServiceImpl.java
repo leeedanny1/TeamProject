@@ -58,8 +58,9 @@ public class productServiceImpl implements productService{
 		  return productRepository.getProduct(product); 
 	}
 
-	
-	
-	
-	
+	@Override
+	public Product searchProduct(String search_content) {
+	      return productRepository.searchProduct(search_content);
+	}
+
 }

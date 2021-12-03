@@ -15,12 +15,14 @@
     <main class="wrap">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
+        
             <!-- 로고 -->
             <a href="/">
                 <h1 class="h_logo">JC마켓</h1>
             </a>
             <!-- 검색박스 -->
             <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
+             <i class="fas fa-search h_search_btn"></i>
             <!-- 인포 -->
             <ul class="h_info">
                 <li><a href="">판매하기</a></li>
