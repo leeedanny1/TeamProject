@@ -2,9 +2,8 @@ package com.springboot.jcmarket.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,5 +47,12 @@ public class UserController {
 		}
 		return  Integer.toString(userService.updateUser(signUpDto));
 	
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/withdraw")
+	public String withdraw(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println(principalDetails.getUser().getId());
+		return Integer.toString(userService.withdraw(principalDetails.getUser().getId()));
 	}
 }

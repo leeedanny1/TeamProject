@@ -87,9 +87,6 @@
     </footer>
 
 
-
-    <!-- fontawesome CDN -->
-    <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

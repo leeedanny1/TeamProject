@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -49,19 +55,12 @@
         </section>
 
         <section class="notice_footer">
-        	<!-- 테스트용 -->
-        	<section class="btn_container">
-                    <button type="button" class="notice_insert_button"
-                        onclick="location.href='/notice/insert'">글쓰기</button>
-            </section>
-            <!-- 나중에 해제 
-            <c:if test="${not empty login_user }">
+            <!-- 권한이 admin 인 경우에만 글쓰기 버튼 활성화 -->
+            <c:if test="${principal.user.role eq 'admin'}">
                 <section class="btn_container">
-                    <button type="button" class="notice_insert_button"
-                        onclick="location.href='/notice/write'">글쓰기</button>
+                    <button type="button" class="notice_insert_button" onclick="location.href='/notice/insert'">글쓰기</button>
                 </section>
             </c:if>
-            -->
 
             <ul class="page_num_area">
                 <a href="/notice/list/${noticeBean.startPage - 1 eq 0 ? 1 : noticeBean.pageNumber - 1 }">

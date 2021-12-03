@@ -19,5 +19,11 @@ public class UserServiceImpl implements UserService{
 		User user = signUpDto.toEntity();
 		return userRepository.updateUser(user);
 	}
+	
+
+	@Override
+	public int withdraw(int id) {
+		return userRepository.withdraw(id);
+	}
 
 }

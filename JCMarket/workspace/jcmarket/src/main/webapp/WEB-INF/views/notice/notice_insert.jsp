@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 
 <!DOCTYPE html>
 
@@ -34,13 +39,14 @@
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <li>관리자</li>
+                <input type="hidden" name="notice_writer" value="${principal.user.user_nickname }">
+                <li name="notice_writer">${principal.user.user_nickname }</li>
                 <li>작성일</li>
                 <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>
-                <li class="file_insert"><input type="file" multiple="multiple" name="file" required></li>
+                <li class="file_insert"><input type="file" multiple="multiple" name="file"></li>
             </ul>
             <ul class="content_ul">
                 <li>

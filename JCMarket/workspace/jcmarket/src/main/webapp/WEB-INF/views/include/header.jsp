@@ -114,5 +114,6 @@
     </c:otherwise>
    </c:choose>
     
-
 </html>
+ <script type="text/javascript" src="/js/index/index.js"></script>
+ <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>

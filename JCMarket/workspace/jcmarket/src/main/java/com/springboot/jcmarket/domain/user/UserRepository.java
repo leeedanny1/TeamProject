@@ -13,4 +13,5 @@ public interface UserRepository {
 	  public User getUser(String user_id);
 	  public int updateUser(User user);
 	  public int socailupdate(User user);
+	  public int withdraw(int id);
 }

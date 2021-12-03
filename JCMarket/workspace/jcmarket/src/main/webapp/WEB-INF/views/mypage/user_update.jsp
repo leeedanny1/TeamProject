@@ -19,18 +19,18 @@
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-      <script src="../js/mypage/user_update.js" defer></script>
+      <script src="/js/mypage/user_update.js" defer></script>
 </head>
 <body>
     
-
+        <input type = "hidden" class = "create_date" value = "${principal.user.create_date}">
         <main class="sign_container">
         <h1 class="sign_name">JC마켓 회원정보수정</h1>
         <span class="sign_exp">회원정보수정을 진행해 주세요.</span>
 
 
         <form class="sign_form">
-                
+                 
                 <input type="text" name="" class="user_info" id="" value= "${principal.user.user_name}" readonly>
                 <input type="text" name="" class="user_info" id="" value="${principal.user.user_phone}" readonly>
                 <input type="email" value = "${principal.user.user_id}" class="user_info" readonly>
@@ -51,5 +51,6 @@
                 </div>
             </form>
     </main>
+   
 </body>
 </html>
