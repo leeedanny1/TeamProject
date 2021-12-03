@@ -8,7 +8,11 @@ const h_search = document.querySelector('.h_search');
 
 
 //검색 아이콘 클릭 시 
-h_search_btn.addEventListener('click', ()=> {
+h_search_btn.addEventListener('click', ()=> {  
+	if(h_search.value.length == 0) {
+		alert('검색어를 입력해 주세요!');
+	    return;
+	}
     location.href = '/items/search/' + h_search.value;
 });
 
