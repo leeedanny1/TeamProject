@@ -16,11 +16,14 @@ public interface NoticeRepository {
 //	공지사항 등록
 	//마스터테이블 insert
 	public int noticeMstInsert(Notice notice);
-	//디테일테이블 update
+	//디테일테이블 insert
 	public int noticeDtlInsert(Notice notice);
 	
 //	공지사항 수정
-	public int noticeUpdate(Notice notice);
+	// 마스터테이블 update
+	public int noticeMstUpdate(Notice notice);
+	// 디테일테이블 update
+	public int noticeDtlUpdate(Notice notice);
 	
 //	공지사항 삭제
 	public int noticeDelete(int notice_code);
