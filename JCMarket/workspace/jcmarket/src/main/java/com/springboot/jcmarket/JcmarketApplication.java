@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JcmarketApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JcmarketApplication.class, args);
+		SpringApplication.run(JcmarketApplication.class,	 args);
 	}
 
 }

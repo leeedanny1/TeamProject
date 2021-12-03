@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Chat {
 	//chat_mst
+
 	
 	private int buyer_id;
 	private int seller_id;
