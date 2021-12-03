@@ -2,6 +2,7 @@ package com.springboot.jcmarket.web.controller;
 
 import java.util.Date;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.web.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -46,11 +48,20 @@ public class NoticeController {
 	
 //	notice글쓰기 연결
 	@GetMapping("/insert")
-	public String noticeWrite(Model model) {
+	public String noticeWrite(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
-		Date date = new Date();
-		model.addAttribute("now", date);
-		return "notice/notice_insert";
+		if(principalDetails == null) {
+			return "redirect:/notice/list";
+		} else if(principalDetails.getUser().getRole() != "admin") {
+			System.out.println(principalDetails.getUser().getRole());
+			System.out.println(principalDetails.getUser().getRole().getClass());
+			return "redirect:/notice/list";
+		} else {
+			Date date = new Date();
+			model.addAttribute("now", date);
+			
+			return "notice/notice_insert";
+		}
 	}
 	
 //	notice 수정
