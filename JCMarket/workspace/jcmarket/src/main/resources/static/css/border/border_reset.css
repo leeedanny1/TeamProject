@@ -1,6 +1,6 @@
 /* 수정, 삭제, 목록 가기 버튼 */
 .list_btn_container{
-    margin: 20px 0 30px;
+    margin: 20px 0 0;
     display: flex;
     justify-content: flex-end;
 }
@@ -197,6 +197,10 @@
     width: 8%;
 }
 
+/* 공지사항 위치 조정 */
+.notice_main_c{
+    margin-top: 50px;
+}
 
 
 
@@ -209,5 +213,5 @@
 
 /* 페이지 번호 부분 */
 .page_num_area{
-    margin-bottom: 50px;
+    margin: 30px 0 50px;
 }

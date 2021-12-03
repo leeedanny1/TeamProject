@@ -30,7 +30,7 @@
 
 
     <!-- main content -->
-    <main class="wrap main">
+    <main class="wrap main notice_main_c">
         <h1 class="page_name">공지사항 작성</h1>
         <form id="insert_form">
             <ul class="title_ul">
