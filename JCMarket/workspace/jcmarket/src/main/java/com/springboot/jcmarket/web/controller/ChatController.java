@@ -30,7 +30,7 @@ public class ChatController {
 	@GetMapping("/chatting/{item_code}/{buyer_id}")
 	public ModelAndView chattingList(@AuthenticationPrincipal PrincipalDetails prDetails, @PathVariable int item_code,@PathVariable int buyer_id) {
 		ModelAndView mav = new ModelAndView("chat/chat");
-		mav.addObject("chatmsg", chatService.getChatting(buyer_id,prDetails.getUser().getId(),item_code));
+		mav.addObject("chatmsg", chatService.getChatting(prDetails.getUser().getId(),buyer_id,item_code));
 		System.out.println(item_code);
 		System.out.println(buyer_id);
 		System.out.println(prDetails.getUser().getId());
