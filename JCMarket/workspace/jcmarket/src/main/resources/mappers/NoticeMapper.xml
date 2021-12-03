@@ -14,6 +14,16 @@
 		ORDER BY notice_code desc
 	</select>
 	
+	<!-- 공지사항 조회수 증가 -->
+	<update id="plusNoticeCount">
+		UPDATE
+			notice_mst
+		SET
+			notice_count = notice_count+1
+		WHERE
+			notice_code = #{notice_code};
+	</update>
+	
 	<!-- 공지사항 디테일 가져옴 -->
 	<select id="getNoticeDtl" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT

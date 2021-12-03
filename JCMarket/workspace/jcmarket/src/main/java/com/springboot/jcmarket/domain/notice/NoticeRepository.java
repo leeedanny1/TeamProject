@@ -9,9 +9,12 @@ public interface NoticeRepository {
 	
 //	전체 공지사항 목록 들고오기
 	public List<Notice> getNoticeListAll();
+	
+//	공지사항 조회수 증가
+	public int plusNoticeCount(int nitice_code);
+	
 //	공지사항 디테일 페이지 가져오기
 	public Notice getNoticeDtl(int notice_code);
-	
 	
 //	공지사항 등록
 	//마스터테이블 insert
