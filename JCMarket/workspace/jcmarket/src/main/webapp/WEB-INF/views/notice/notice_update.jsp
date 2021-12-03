@@ -24,7 +24,7 @@
 
 
     <!-- main content -->
-    <main class="wrap main">
+    <main class="wrap main notice_main_c">
         <h1 class="page_name">공지사항 수정</h1>
         <form id="update_form">
             <input type="hidden" name="notice_code" id="notice_code" value="${notice_update.notice_code }">

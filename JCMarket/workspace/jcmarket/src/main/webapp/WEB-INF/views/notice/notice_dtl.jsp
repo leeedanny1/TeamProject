@@ -31,7 +31,7 @@
 
 
     <!-- main content -->
-    <main class="wrap main">
+    <main class="wrap main notice_main_c">
         <h1 class="page_name">공지사항</h1>
         <section id="insert_form">
         	<input type="hidden" id="notice_code" value="${notice_dtl.notice_code }">
