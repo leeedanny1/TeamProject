@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -78,8 +83,10 @@
         </section>
 
         <article class="list_btn_container">
-            <button type="button" class="list_btn notice_update_btn">수정</button>
-            <button type="button" class="list_btn notice_delete_btn">삭제</button>
+            <c:if test="${principal.user.user_id eq 'admin'}">
+                <button type="button" class="list_btn notice_update_btn">수정</button>
+                <button type="button" class="list_btn notice_delete_btn">삭제</button>
+            </c:if>
             <button type="button" class="list_btn" onclick="location.href='/notice/list'">목록</button>
         </article>
 
