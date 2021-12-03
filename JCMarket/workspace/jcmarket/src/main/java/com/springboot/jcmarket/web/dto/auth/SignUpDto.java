@@ -14,6 +14,7 @@ public class SignUpDto {
 	    private String user_phone;
 	    private String user_nickname;
 	    
+	    
 	 public User toEntity() {
 	     return User.builder()
 					.user_id(user_id)
