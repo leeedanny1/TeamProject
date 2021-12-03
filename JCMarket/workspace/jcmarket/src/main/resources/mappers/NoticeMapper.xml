@@ -45,7 +45,7 @@
 			)
 		VALUES(
 			#{notice_title},
-			"닉네임 가져와야 함",
+			#{notice_writer},
 			NOW()
 		);	
 	</insert>
