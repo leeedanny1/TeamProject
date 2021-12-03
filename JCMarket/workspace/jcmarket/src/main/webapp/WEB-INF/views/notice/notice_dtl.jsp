@@ -83,7 +83,7 @@
         </section>
 
         <article class="list_btn_container">
-            <c:if test="${principal.user.user_id eq 'admin'}">
+            <c:if test="${principal.user.role eq 'admin'}">
                 <button type="button" class="list_btn notice_update_btn">수정</button>
                 <button type="button" class="list_btn notice_delete_btn">삭제</button>
             </c:if>

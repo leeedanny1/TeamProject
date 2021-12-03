@@ -52,9 +52,9 @@ public class NoticeController {
 		
 		if(principalDetails == null) {
 			return "redirect:/notice/list";
-		} else if(principalDetails.getUser().getUser_id() != "admin") {
-			System.out.println(principalDetails.getUser().getUser_id());
-			System.out.println(principalDetails.getUser().getUser_id().getClass());
+		} else if(principalDetails.getUser().getRole() != "admin") {
+			System.out.println(principalDetails.getUser().getRole());
+			System.out.println(principalDetails.getUser().getRole().getClass());
 			return "redirect:/notice/list";
 		} else {
 			Date date = new Date();

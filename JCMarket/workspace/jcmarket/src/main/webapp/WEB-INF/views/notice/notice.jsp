@@ -55,8 +55,8 @@
         </section>
 
         <section class="notice_footer">
-            <!-- 로그인 아이디가 admin 인 경우에만 글쓰기 버튼 활성화 -->
-            <c:if test="${principal.user.user_id eq 'admin'}">
+            <!-- 권한이 admin 인 경우에만 글쓰기 버튼 활성화 -->
+            <c:if test="${principal.user.role eq 'admin'}">
                 <section class="btn_container">
                     <button type="button" class="notice_insert_button" onclick="location.href='/notice/insert'">글쓰기</button>
                 </section>
