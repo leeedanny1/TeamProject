@@ -3,7 +3,9 @@ const inputs = document.querySelectorAll('.input');
 const submit_btn = document.querySelector('.submit_btn');
 const check_btn = document.querySelector('.check_btn');
 const withdraw_btn = document.querySelector('.withdraw_btn');
+const create_date = document.querySelector('.create_date');
 
+console.log(create_date)
 
 var updateData = {
     user_id: user_info[2].value,
@@ -40,7 +42,22 @@ inputs.forEach((input, inputIndex) => {
 });
 
 //회원탈퇴 버튼 클릭 시 
-withdraw_btn.addEventListener('click', () => {
+withdraw_btn.addEventListener('click', () => { 
+	
+	//일주일 후에만 탈퇴가능 
+	let createDate = new Date(create_date.value);
+	let now = new Date();
+    let betweenDays = Math.floor((now.getTime()-createDate.getTime())/1000/60/60/24);
+    //오늘 가입 했을 때 
+    if(betweenDays == 0){
+	  alert('오늘 가입하셨습니다. 탈퇴는 7일 후 가능합니다.');
+	   return;
+    //가입한지 일주일이 안되었을 때 
+    }else if(betweenDays < 7){
+	   alert(`${betweenDays}일 전에 가입하셨습니다. 탈퇴는 7일 후 가능합니다.`); 
+	   return; 
+    }
+    //가입한지 일주일이 경과했을 때 
 	 if(confirm('정말로 회원탈퇴를 하시겠습니까? ')) {
 	     withdraw();
 	}
@@ -51,11 +68,6 @@ withdraw_btn.addEventListener('click', () => {
 
 submit_btn.addEventListener('click', () => {
 	
-	
-	console.log(inputs[0].value.length)
-	console.log(checkNicknameResult);
-	console.log('checkNicknameResult: ' + checkNicknameResult);
-	console.log('checkPasswordResult: ' + checkPasswordResult)
 	inputs.forEach((input, inputIndex) => {
 		//빈값인 상태에서 닉네임 체크를 친행했을 경우 닉네임을 입력해주세요 메시지가 뜬다.
 		//그 상태에서 사용자가 닉네임을 바꾸지 않고 회원정보수정 버튼 클릭 시 위의 메시지를 지우기 위함 
