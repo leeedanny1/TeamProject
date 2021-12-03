@@ -19,7 +19,7 @@
 		<div class="chat">
 			<div class="list">
 				<c:forEach var="chat" items="${chatList }">
-					<a class="chatlist_btn" href="/chatting/${chat.buyer_id}/${chat.seller_id}/${chat.item_code }">
+					<a class="chatlist_btn" href="/chatting/${chat.item_code }/${chat.buyer_id}/${chat.seller_id}">
 						<ul>
 							<li class="chat_title"><br>과의 채팅</li>
 						</ul>

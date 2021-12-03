@@ -29,7 +29,7 @@
                 <li>|</li>
                 <li><a href="">내상점</a></li>
                 <li>|</li>
-                <li><a href="/chat">JC톡</a></li>
+                <li><a href='chat' target='_blank'>JC톡</a></li>
             </ul>
         </section>
 

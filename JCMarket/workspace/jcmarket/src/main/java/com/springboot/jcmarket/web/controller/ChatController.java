@@ -23,25 +23,32 @@ public class ChatController {
 	@GetMapping("/chat")
 	public ModelAndView chatList(@AuthenticationPrincipal PrincipalDetails prDetails) {
 		ModelAndView mav = new ModelAndView("chat/chat");
-		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getUser_nickname()));
+		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
 		
 		return mav;
 	}
-	@GetMapping("/chatting/{buyer_id}/{seller_id}/{item_code}")
+	@GetMapping("/chatting/{item_code}/{buyer_id}/{seller_id}")
 	public ModelAndView chattingList(@AuthenticationPrincipal PrincipalDetails prDetails, @PathVariable int item_code,@PathVariable int buyer_id ,@PathVariable int seller_id) {
 		ModelAndView mav = new ModelAndView("chat/chat");
-		if(buyer_id==prDetails.getUser().getId()){
-			mav.addObject("chatmsg", chatService.getChatting(prDetails.getUser().getId(),seller_id,item_code));
+		System.out.println(prDetails.getUser());
+		System.out.println("id: " + prDetails.getUser().getId());
+		if(prDetails.getUser().getId()==buyer_id){
 			System.out.println("buyer");
-		}else if (seller_id==prDetails.getUser().getId() ) {
-			mav.addObject("chatmsg", chatService.getChatting(prDetails.getUser().getId(),buyer_id,item_code));
+			mav.addObject("chatmsg", chatService.getChatting( seller_id, prDetails.getUser().getId(),item_code));
+			
+		}else if (prDetails.getUser().getId()==seller_id ) {
 			System.out.println("seller");
+			mav.addObject("chatmsg", chatService.getChatting(prDetails.getUser().getId(), buyer_id, item_code));
+			
 		}
-		
-		System.out.println(item_code);
+		System.out.println(seller_id);
 		System.out.println(buyer_id);
+		System.out.println(item_code);
+		
+		
 		System.out.println(prDetails.getUser().getId());
 		System.out.println(mav);
+		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
 		return mav;
 	}
 

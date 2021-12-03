@@ -17,13 +17,13 @@ public class ChatServiceImpl implements ChatService {
 	private List<Chat> getChatListAll;
 	private List<Chat> getChatting;
 
-	public List<Chat> getChatListAll(String user_nickname) {
+	public List<Chat> getChatListAll(int id) {
 
-		return chatRepository.getChatListAll(user_nickname);
+		return chatRepository.getChatListAll(id);
 	}
 
 	@Override
-	public List<Chat> getChatting(int item_code, int buyer_id, int seller_id) {
+	public List<Chat> getChatting(int seller_id, int buyer_id, int item_code) {
 
 		Chat chat = new Chat();
 		chat.setItem_code(item_code);
