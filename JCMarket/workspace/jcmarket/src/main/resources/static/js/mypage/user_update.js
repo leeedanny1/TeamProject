@@ -1,9 +1,8 @@
-const update_form = document.querySelector('.sign_form');
 const user_info = document.querySelectorAll('.user_info');
 const inputs = document.querySelectorAll('.input');
 const submit_btn = document.querySelector('.submit_btn');
 const check_btn = document.querySelector('.check_btn');
-
+const withdraw_btn = document.querySelector('.withdraw_btn');
 
 
 var updateData = {
@@ -40,24 +39,13 @@ inputs.forEach((input, inputIndex) => {
 	});
 });
 
+//회원탈퇴 버튼 클릭 시 
+withdraw_btn.addEventListener('click', () => {
+	 if(confirm('정말로 회원탈퇴를 하시겠습니까? ')) {
+	     withdraw();
+	}
+})
 
-//비밀번호 일치여부 확인하기전의 검사 
-function checkPasswordService(input, inputIndex) {
-	console.log(inputIndex)
-	   checkEmptyResult = checkEmpty(input, inputIndex);
-	   //입력값이 있든없든 패스워드 일치여부를 체크해야한다.
-	   //그렇지 않으면 비밀번호에 값이 있고 비밀번호 확인에 값이 없을 경우에도 그냥 넘어간다.
-	   //수정페이지에서는 입력값이 없어도 넘어가야하기때문
-	 
-	 if(inputIndex == 0) {
-			checkPasswordFormat(updateData.user_id, input.value, input);
-				
-	
-	 }else if(inputIndex == 1) {
-			checkRepassword(inputs[inputIndex -1].value, input.value, input);
-			}
-		
-}
 
 
 
@@ -195,23 +183,6 @@ function checkPasswordFormat(id, password, input) {
 
 }
 
-//비밀번호 일치 체크 
-function checkRepassword(password, repassword, input) {
-   console.log(password);
-    console.log(repassword);
-    if (password != repassword) {
-	  msgService(input, '비밀번호가 일치하지 않습니다. ', 0);
-	 checkPasswordResult = 2;
-	 return false;
-    }
-    if(password.length != 0){
-	   tempPasswordValue = password;
-	    checkPasswordResult = 1;
-        updateData.user_password = input.value;
-        return true;
-        }
-    }
-
 
 
 //닉네임 정규식 체크 
@@ -231,6 +202,44 @@ function checkNicknameFormat(input) {
     checkNickname(input);
     return true;
 }
+
+
+//비밀번호 일치여부 확인하기전의 검사 
+function checkPasswordService(input, inputIndex) {
+	console.log(inputIndex)
+	   checkEmptyResult = checkEmpty(input, inputIndex);
+	   //입력값이 있든없든 패스워드 일치여부를 체크해야한다.
+	   //그렇지 않으면 비밀번호에 값이 있고 비밀번호 확인에 값이 없을 경우에도 그냥 넘어간다.
+	   //수정페이지에서는 입력값이 없어도 넘어가야하기때문
+	 
+	 if(inputIndex == 0) {
+			checkPasswordFormat(updateData.user_id, input.value, input);
+				
+	
+	 }else if(inputIndex == 1) {
+			checkRepassword(inputs[inputIndex -1].value, input.value, input);
+			}
+		
+}
+
+//비밀번호 일치 체크 
+function checkRepassword(password, repassword, input) {
+   console.log(password);
+    console.log(repassword);
+    if (password != repassword) {
+	  msgService(input, '비밀번호가 일치하지 않습니다. ', 0);
+	 checkPasswordResult = 2;
+	 return false;
+    }
+    if(password.length != 0){
+	   tempPasswordValue = password;
+	    checkPasswordResult = 1;
+        updateData.user_password = input.value;
+        return true;
+        }
+    }
+
+
 
 //닉네임 중복확인 
 function checkNickname(input) {
@@ -280,6 +289,28 @@ function update() {
 		},
 		error: function() {
 			  alert('오류가 발생했습니다. 다시시도해주세요. ');
+		}
+		
+		
+	})
+}
+
+//회원탈퇴 진행
+function withdraw() {
+	$.ajax({
+		type:"delete",
+		url: "withdraw",
+		dataType: "text",
+		success:function(data) {
+			if(data == 1) {
+			  alert('탈퇴가 완료되었습니다. 그동안 jc마켓을 이용해주셔서 감사합니다.');
+			  location.replace('/logout');
+			}else if(data == 0) {
+			 alert('탈퇴에 실패하였습니다. 다시 시도해 주세요.');
+			}
+		},
+		error: function() {
+			
 		}
 		
 		
