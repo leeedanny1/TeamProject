@@ -25,7 +25,7 @@
              <i class="fas fa-search h_search_btn"></i>
             <!-- 인포 -->
             <ul class="h_info">
-                <li><a href="">판매하기</a></li>
+                <li><a href="/items/sale">판매하기</a></li>
                 <li>|</li>
                 <li><a href="">내상점</a></li>
                 <li>|</li>
@@ -40,7 +40,6 @@
                 <li><a href="/notice/list">Notice</a></li>
                 <li><a href="/items/hot">Hot&nbspItems</a></li>
                 <li><a href="/items/new">New&nbspItems</a></li>
-                <li><a href="/items/sale">Selling&nbspItems</a></li>
             </ul>
             <!-- 로그인, 회원가입 -->
             <c:choose>
