@@ -94,5 +94,14 @@ public class ProductController {
 		productLikeDto.setUser_id(principal.getUser().getId());
 		return productService.deleteLike(productLikeDto);
 	}
+	
+	@GetMapping("/search/{search_content}")
+	public ModelAndView searchProduct(@PathVariable String search_content) {
+		System.out.println(search_content);
+		ModelAndView mav = new ModelAndView("search/search"); 
+		mav.addObject("products" , productService.searchProduct(search_content));
+		return mav;
+	}
+	
 
 }

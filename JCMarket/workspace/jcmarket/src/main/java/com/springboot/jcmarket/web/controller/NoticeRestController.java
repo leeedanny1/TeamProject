@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,10 @@ public class NoticeRestController {
 	}
 	
 //	notice 수정
-	
+	@PutMapping("/update")
+	public String noticeUpdate(NoticeDto noticeDto) {
+		return Integer.toString(noticeService.noticeUpdate(noticeDto));
+	}
 	
 //	notice 삭제
 	@DeleteMapping("/delete/{notice_code}")

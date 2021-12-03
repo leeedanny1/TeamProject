@@ -12,4 +12,5 @@ public interface ProductRepository {
    public int downLikeCount(Product product);
    public int getLikeCount(Product product);
    public Product getProduct(Product product );  
+   public Product searchProduct(String search_content);
 }

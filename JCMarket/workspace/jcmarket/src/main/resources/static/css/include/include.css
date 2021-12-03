@@ -32,9 +32,15 @@ header{
     padding-left: 20px;
     width: 50%;
     height: 40px;
-
     border: 2px solid rgb(247, 47, 51);
     box-sizing: border-box;
+}
+/*검색 버튼*/
+.h_search_btn {
+	cursor: pointer;
+	position: absolute;
+	top: 42px;
+	left: 880px;
 }
 
 /* 인포 */

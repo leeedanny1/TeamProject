@@ -18,7 +18,7 @@ notice_insert_button.onclick = () => {
             success: function(data){
                 if(data == 1){
                     alert("공지사항 등록이 완료되었습니다.")
-                    location.replace("/notice/" + formData.get("notice_code"))
+                    location.replace("/notice/list")
                 } else {
                     alert("공지사항 등록에 실패하였습니다. (DB오류)")
                 }

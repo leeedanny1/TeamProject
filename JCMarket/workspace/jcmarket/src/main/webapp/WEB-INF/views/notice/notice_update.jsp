@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -25,10 +27,10 @@
     <main class="wrap main">
         <h1 class="page_name">공지사항 수정</h1>
         <form id="update_form">
-            <input type="hidden" name="notice_code" value="${notice_update.notice_code }">
+            <input type="hidden" name="notice_code" id="notice_code" value="${notice_update.notice_code }">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="title" name="title" value="${notice_update.notice_title }"></li>
+                <li class="title_insert"><input type="text" class="notice_title" name="notice_title" value="${notice_update.notice_title }"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
@@ -65,7 +67,7 @@
 
             <section class="btn_container">
                 <button type="button" class="notice_update_button">수정완료</button>
-                <button type="button">수정취소</button>
+                <button type="button" class="notice_cancel_button">수정취소</button>
             </section>
         </form>
     </main>
@@ -79,6 +81,8 @@
             dsfdsfsd <br>
         </main>
     </footer>
+
+    <script src="/js/notice/notice_update.js"></script>
 </body>
 
 </html>

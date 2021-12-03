@@ -15,15 +15,17 @@
     <main class="wrap">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
+        
             <!-- 로고 -->
             <a href="/">
                 <h1 class="h_logo">JC마켓</h1>
             </a>
             <!-- 검색박스 -->
             <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
+             <i class="fas fa-search h_search_btn"></i>
             <!-- 인포 -->
             <ul class="h_info">
-                <li><a href="">판매하기</a></li>
+                <li><a href="/items/sale">판매하기</a></li>
                 <li>|</li>
                 <li><a href="">내상점</a></li>
                 <li>|</li>
@@ -38,7 +40,6 @@
                 <li><a href="/notice/list">Notice</a></li>
                 <li><a href="/items/hot">Hot&nbspItems</a></li>
                 <li><a href="/items/new">New&nbspItems</a></li>
-                <li><a href="/items/sale">Selling&nbspItems</a></li>
             </ul>
             <!-- 로그인, 회원가입 -->
             <c:choose>
@@ -89,6 +90,7 @@
            
     </header>
 
+<!--
 <c:set var="user_id" value="${principal.user.user_id}"></c:set>
 <h1>${user_id }</h1>
 <c:choose>
@@ -114,6 +116,6 @@
         </section>
     </c:otherwise>
 </c:choose>
-
+-->
 
 </html>
