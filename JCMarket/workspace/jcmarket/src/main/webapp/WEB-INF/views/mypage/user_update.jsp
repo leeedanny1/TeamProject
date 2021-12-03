@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../css/sign/sign.css">
     <link rel="stylesheet" href="../css/sign/sign_up.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-      <script src="../js/mypage/user_update.js" defer></script>
+      <script src="/js/mypage/user_update.js" defer></script>
 </head>
 <body>
     
@@ -51,5 +51,6 @@
                 </div>
             </form>
     </main>
+   
 </body>
 </html>

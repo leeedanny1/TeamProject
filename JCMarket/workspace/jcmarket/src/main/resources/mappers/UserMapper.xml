@@ -76,7 +76,7 @@
 	
 	</update>  
 	<update id= "socailupdate" parameterType="com.springboot.jcmarket.domain.user.User">
-   update
+          update
 	       user_mst
 	      set
 	       user_phone = #{user_phone},
@@ -85,5 +85,14 @@
 	       user_id = #{user_id}
 	
 	</update>
+	
+		<delete id ="withdraw">
+	     delete
+          from
+           user_mst
+         where
+           id = #{id}
+
+	</delete>
 	
   </mapper>

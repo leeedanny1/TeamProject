@@ -5,5 +5,6 @@ import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 public interface UserService {
 	
    public int updateUser(SignUpDto signUpDto);
+   public int withdraw(int id);
    
 }
