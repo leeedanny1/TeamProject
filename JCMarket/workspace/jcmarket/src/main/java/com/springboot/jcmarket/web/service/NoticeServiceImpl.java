@@ -19,11 +19,14 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	private List<Notice> noticeListAll;
 
+	
+//	공지사항 가져오기
+	// 모든 공지사항 가져옴
 	@Override
 	public List<Notice> getNoticeListAll() {
 		return noticeRepository.getNoticeListAll();
 	}
-	
+	// 원하는 갯수만큼 노출
 	@Override
 	public List<Notice> getNoticeList(int pageNumber) {
 		noticeListAll = getNoticeListAll();
@@ -39,6 +42,9 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeList;
 	}
 	
+	
+	
+//	디테일 페이지
 	@Override
 	public Notice getNoticeDtl(int notice_code) {
 		return noticeRepository.getNoticeDtl(notice_code);
@@ -46,12 +52,13 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	
 	
+//	공지사항 등록
 	@Override
 	public int noticeInsert(NoticeDto noticeDto) {
 		Notice notice = noticeDto.toEntity();
 		
 		int mstResult = 0, dtlResult = 0;
-		
+
 		mstResult = noticeRepository.noticeMstInsert(notice);
 		if(mstResult == 1) {
 			dtlResult = noticeRepository.noticeDtlInsert(notice);
@@ -59,14 +66,25 @@ public class NoticeServiceImpl implements NoticeService {
 		return dtlResult;
 	}	
 	
+	
+	
+//	공지사항 수정
 	@Override
 	public int noticeUpdate(NoticeDto noticeDto) {
 		Notice notice = noticeDto.toEntity();
 		
-		int result = noticeRepository.noticeUpdate(notice);
-		return 1;
+		int mstResult = 0, dtlResult = 0;
+		
+		mstResult = noticeRepository.noticeMstUpdate(notice);
+		if(mstResult == 1) {
+			dtlResult = noticeRepository.noticeDtlUpdate(notice);
+		}
+		return dtlResult;
 	}
 	
+	
+	
+//	공지사항 삭제
 	@Override
 	public int noticeDelete(int notice_code) {
 		return noticeRepository.noticeDelete(notice_code);

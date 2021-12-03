@@ -20,8 +20,6 @@
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
 
-
-
     <!-- main content -->
     <main class="wrap main">
         <h1 class="page_name">JC Market 공지사항</h1>

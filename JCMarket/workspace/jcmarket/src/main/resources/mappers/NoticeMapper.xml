@@ -34,10 +34,7 @@
 		LIMIT
 			1;
 	</select>
-	
-	
-	
-	
+
 	<!-- 공지사항 등록 -->
 	<insert id="noticeMstInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		INSERT INTO
@@ -71,21 +68,21 @@
 	</insert>
 	
 	<!-- 공지사항 수정 -->
-	<update id="noticeUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+	<update id="noticeMstUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		UPDATE
 			notice_mst
 		SET
 			notice_title = #{notice_title}
 		WHERE
-			notice_code = #{notice_code);
-		
+			notice_code = #{notice_code};
+	</update>
+	<update id="noticeDtlUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		UPDATE
 			notice_dtl
 		SET
 			notice_content = #{notice_content},
 			originFileNames = #{originFileNames},
-			tempFileNames = #{tempFileNames},
-			update_date = NOW()
+			tempFileNames = #{tempFileNames}
 		WHERE
 			notice_code = #{notice_code};
 	</update>
