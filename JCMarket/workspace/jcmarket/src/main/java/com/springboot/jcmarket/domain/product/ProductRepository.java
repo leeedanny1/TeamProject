@@ -1,7 +1,8 @@
 package com.springboot.jcmarket.domain.product;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 
 
 @Mapper
@@ -11,6 +12,6 @@ public interface ProductRepository {
    public int upLikeCount(Product product);
    public int downLikeCount(Product product);
    public int getLikeCount(Product product);
-   public Product getProduct(Product product );  
-   public Product searchProduct(String search_content);
+   public Product getProduct(Product product);  
+   public List<Product> searchProduct(String search_content);
 }

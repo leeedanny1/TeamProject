@@ -1,5 +1,7 @@
 package com.springboot.jcmarket.web.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.product.Product;
@@ -59,7 +61,7 @@ public class productServiceImpl implements productService{
 	}
 
 	@Override
-	public Product searchProduct(String search_content) {
+	public List<Product> searchProduct(String search_content) {
 	      return productRepository.searchProduct(search_content);
 	}
 
