@@ -49,12 +49,9 @@ public class NoticeController {
 //	notice글쓰기 연결
 	@GetMapping("/insert")
 	public String noticeWrite(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		
 		if(principalDetails == null) {
 			return "redirect:/notice/list";
-		} else if(principalDetails.getUser().getRole() != "admin") {
-			System.out.println(principalDetails.getUser().getRole());
-			System.out.println(principalDetails.getUser().getRole().getClass());
+		} else if(!principalDetails.getUser().getRole().equals("admin")) {
 			return "redirect:/notice/list";
 		} else {
 			Date date = new Date();
@@ -66,12 +63,24 @@ public class NoticeController {
 	
 //	notice 수정
 	@GetMapping("/update/{notice_code}")
-	public ModelAndView noticeUpdate(Model model, @PathVariable int notice_code) {
-		Date date = new Date();
-		model.addAttribute("now", date);
-		ModelAndView mav = new ModelAndView("notice/notice_update");
-		mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
-		return mav;
+	public ModelAndView noticeUpdate(Model model, @PathVariable int notice_code, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if(principalDetails == null) {
+			ModelAndView mav = new ModelAndView("redirect:/notice/list");
+			return mav;
+		} else if(!principalDetails.getUser().getRole().equals("admin")) {
+			ModelAndView mav = new ModelAndView("redirect:/notice/list");
+			return mav;
+		} else {
+			Date date = new Date();
+			model.addAttribute("now", date);
+			
+			ModelAndView mav = new ModelAndView("notice/notice_update");
+			mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
+			
+			return mav;
+		}
+		
+		
 	}
 	
 	
