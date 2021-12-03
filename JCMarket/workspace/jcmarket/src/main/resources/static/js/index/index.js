@@ -9,8 +9,7 @@ const h_search = document.querySelector('.h_search');
 
 //검색 아이콘 클릭 시 
 h_search_btn.addEventListener('click', ()=> {
-	console.log(123);
-	location.href = '/items/search/' + h_search.value;
+    location.href = '/items/search/' + h_search.value;
 });
 
 
