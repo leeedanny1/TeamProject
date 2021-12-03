@@ -10,6 +10,7 @@
  	<link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/search/search.css">
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
      <script src="/js/search/search.js" defer></script>
 </head>
@@ -17,14 +18,12 @@
     <jsp:include page="../include/header.jsp"/> 
     
       <main class="wrap main">
-      <section class="sale_item">
-      
+       <section class="sale_item">
+        <ul class="item_container">
       <c:forEach var = "product" items ="${products }">
-       <input type = "hidden" class= "productList" value = "${product.update_date }">
-      <ul class="item_container">
-          <li class="item_list">
+        <li class="item_list">
              <!-- 상품사진 -->
-             <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+             <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
              <!-- 상품이름 -->
              <p class="item_name">${product.item_title }</p>
              <!-- 상품 가격과 올린 시간 -->
@@ -32,9 +31,9 @@
                  <li><span class="item_price"><strong>${product.item_price }</strong>원</span></li>
                  <li><span class="item_time">${product.update_date }</span></li>
              </ul>
-        </ul>     
+        </li>
        </c:forEach>
-       
+         </ul>   
       </section>   
        </main>              
 </body>
