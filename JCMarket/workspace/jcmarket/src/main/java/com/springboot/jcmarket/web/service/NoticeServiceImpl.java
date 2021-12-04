@@ -1,11 +1,13 @@
 package com.springboot.jcmarket.web.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.notice.NoticeRepository;
+import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 
 import lombok.RequiredArgsConstructor;
@@ -16,51 +18,51 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	private final NoticeRepository noticeRepository;
 	
+	private NoticeBean noticeBean;
 	private List<Notice> noticeListAll;
-//	private NoticeBean noticeBean;
 
 	
 //	공지사항 가져오기
+	// 빈 만들기
+	@Override
+	public void setNoticeBean(int pageNumber) {
+		noticeBean = new NoticeBean();
+		noticeBean.setNoticeTotalCount(noticeListAll.size());
+		noticeBean.setPageNumber(pageNumber);
+		noticeBean.setStartIndex();
+		noticeBean.setEndIndex();
+		noticeBean.setTotalPage();
+		noticeBean.setStartPage();
+		noticeBean.setEndPage();
+	}
+	@Override
+	public NoticeBean getNoticeBean() {
+		return noticeBean;
+	}
+	@Override
+	public int parseIntPageNumber(int pageNumber) {
+		return pageNumber;
+	}
 	// 모든 공지사항 가져옴
 	@Override
 	public List<Notice> getNoticeListAll() {
 		return noticeRepository.getNoticeListAll();
 	}
-	// 빈 만들기
-//	@Override
-//	public void setNoticeBean(int pageNumber) {
-//		noticeBean = new NoticeBean();
-//		noticeBean.setNoticeTotalCount(noticeListAll.size());
-//		noticeBean.setPageNumber(pageNumber);
-//		noticeBean.setStartIndex();
-//		noticeBean.setEndIndex();
-//		noticeBean.setTotalPage();
-//		noticeBean.setStartPage();
-//		noticeBean.setEndPage();
-//	}
-//	@Override
-//	public NoticeBean getNoticeBean() {
-//		return noticeBean;
-//	}
-//	@Override
-//	public int parseIntPageNumber(int pageNumber) {
-//		return pageNumber;
-//	}
 	// 원하는 갯수만큼 노출
-//	@Override
-//	public List<Notice> getNoticeList(int pageNumber) {
-//		noticeListAll = getNoticeListAll();
-//		
-//		List<Notice> noticeList = new ArrayList<Notice>();
-//		
-//		setNoticeBean(pageNumber);
-//
-//		for (int i = noticeBean.getStartIndex(); i < noticeBean.getEndIndex()
-//				&& i < noticeBean.getNoticeTotalCount(); i++) {
-//			noticeList.add(noticeListAll.get(i));
-//		}
-//		return noticeList;
-//	}
+	@Override
+	public List<Notice> getNoticeList(int pageNumber) {
+		noticeListAll = getNoticeListAll();
+		
+		List<Notice> noticeList = new ArrayList<Notice>();
+		
+		setNoticeBean(pageNumber);
+
+		for (int i = noticeBean.getStartIndex(); i < noticeBean.getEndIndex()
+				&& i < noticeBean.getNoticeTotalCount(); i++) {
+			noticeList.add(noticeListAll.get(i));
+		}
+		return noticeList;
+	}
 	
 	
 	

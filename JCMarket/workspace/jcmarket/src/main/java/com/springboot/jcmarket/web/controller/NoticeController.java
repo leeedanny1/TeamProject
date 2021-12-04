@@ -23,20 +23,13 @@ public class NoticeController {
 	private final NoticeService noticeService;
 
 	
-//	notice 목록 페이지 연결
-	@GetMapping("/list")
-	public ModelAndView notice() {
+//	목록 번호 만들어서 일정 갯수씩 출력
+	@GetMapping("/list/{page_number}")
+	public ModelAndView notice(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("notice/notice");
-		mav.addObject("noticeList", noticeService.getNoticeListAll());
+		mav.addObject("noticeList", noticeService.getNoticeList(page_number));
 		return mav;
 	}
-//	목록 번호 만들어서 일정 갯수씩 출력
-//	@GetMapping("/list/{page}")
-//	public ModelAndView notice(@PathVariable int page) {
-//		ModelAndView mav = new ModelAndView("notice/notice");
-//		mav.addObject("noticeList", noticeService.getNoticeList());
-//		return mav;
-//	}
 	
 //	notice dtl페이지 연결
 	@GetMapping("/{notice_code}")
