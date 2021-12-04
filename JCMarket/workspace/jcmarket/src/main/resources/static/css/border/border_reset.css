@@ -213,5 +213,6 @@
 
 /* 페이지 번호 부분 */
 .page_num_area{
-    margin: 30px 0 50px;
+    margin: 30px auto 50px;
+    width: 50%;
 }

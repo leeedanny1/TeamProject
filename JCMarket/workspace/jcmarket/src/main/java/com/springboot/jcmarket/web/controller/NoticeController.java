@@ -28,6 +28,7 @@ public class NoticeController {
 	public ModelAndView notice(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("notice/notice");
 		mav.addObject("noticeList", noticeService.getNoticeList(page_number));
+		mav.addObject("noticeBean", noticeService.getNoticeBean());
 		return mav;
 	}
 	
