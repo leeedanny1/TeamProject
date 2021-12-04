@@ -23,9 +23,7 @@
 			update_date desc;
 	</select>
 	
-	<select id="getChatting"
-			resultType="com.springboot.jcmarket.domain.chat.Chat"
-			parameterType="com.springboot.jcmarket.domain.chat.Chat">
+	<select id="getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat"	parameterType="com.springboot.jcmarket.domain.chat.Chat">
 		select
 		 cm.buyer_id, cm.seller_id, cm.item_code,cd.writer_nickname, cd.chat_date ,cd.chat_content
 		from
@@ -34,8 +32,13 @@
 		where
 		cd.buyer_id = #{buyer_id} and cd.seller_id=#{seller_id} and cd.item_code= #{item_code}
 	</select>
-	<insert id="">
-		select
+	
+	<insert id="Chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
+insert into
+			chat_dtl
+		values(  
+		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_nickname},#{chat_content},NOW(),NOW()
+		)
 	</insert>
 
 </mapper>

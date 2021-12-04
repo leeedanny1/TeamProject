@@ -23,7 +23,7 @@ public class Chat {
 	private LocalDateTime update_date;
 	
 	//chat_dtl
-	private String chat_index;
+	private int chat_index;
 	private String chat_content;
 	private String writer_nickname;
 	private String chat_date;

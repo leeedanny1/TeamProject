@@ -18,15 +18,15 @@ public class ChatDto {
 	private String buyer_nickname;
 	private int item_code;
 
-	private String chat_index;
+	private int chat_index;
 	private String chat_content;
 	private String writer_nickname;
 	private String chat_date;
 	private String create_date;
 	
 	public Chat toEntity() {
-		return Chat.builder().buyer_id(buyer_id).
-				seller_id(seller_id).item_code(item_code).chat_index(chat_index)
+		return Chat.builder().item_code(item_code).buyer_id(buyer_id).
+				seller_id(seller_id).chat_index(chat_index)
 				.chat_content(chat_content).writer_nickname(writer_nickname).chat_date(chat_date)
 				.build();
 		

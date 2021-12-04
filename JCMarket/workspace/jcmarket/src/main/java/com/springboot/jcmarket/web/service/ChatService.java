@@ -9,5 +9,5 @@ import com.springboot.jcmarket.web.dto.chat.ChatDto;
 public interface ChatService {
 	public List<Chat> getChatListAll(int id);
 	public List<Chat> getChatting(int seller_id, int buyer_id, int item_code);
-	public int Chatting(ChatDto chatDto);
+	public int Chattinginput(int seller_id, int buyer_id, int item_code,String writer_nickname,String chat_content);
 }
