@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
    protected void configure(HttpSecurity http) throws Exception {
       http.csrf().disable(); //csrf 비활성화         
       http.authorizeRequests()
-      .antMatchers( "/user/**","/chat","/chatting/**")
+      .antMatchers( "/user/**","/chat","/chatting/**","/items/sale")
       .authenticated() //인증이 필요해
       .anyRequest() //antMatchers 외에 모든요청
       .permitAll() //요청이 없어도 된다(모든 권한을 부여한다.)
