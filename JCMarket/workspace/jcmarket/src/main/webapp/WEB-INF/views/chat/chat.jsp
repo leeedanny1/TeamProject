@@ -42,10 +42,13 @@
 					
 					</c:forEach>
 				</ul>
+				<form id="chatting">
 				<div class="msgbox">
 					<textarea class="msginput"placeholder="메세지를 입력해주세요"></textarea>
 					<button type="submit" class="submitbtn">전 송</button>
+					
 				</div>
+				</form>
 			</div>
 
 		</div>

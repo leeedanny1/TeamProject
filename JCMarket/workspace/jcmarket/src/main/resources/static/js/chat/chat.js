@@ -3,16 +3,28 @@ const submitbtn = document.querySelector('.submitbtn');
 const chatlist_btn= document.querySelectorAll('.chatlist_btn');
 
 
+notice_insert_button.onclick = () => {
+    let formData = new FormData(chatting)
+
 msginput.onkeypress = () => {
 	if(window.event.keyCode == 13){
 		window.event.preventDefault();
-		submitmsg();
+		chatting();
 	}
 }
 
 function chatting(){
-	$.ajax({
-		type:"get",
-		url:"chatting",
-	})
+	  $.ajax({
+            type: "put",
+            url: "/chatting",
+            data: formData,
+            enctype: "form-data",
+            processData: false,
+            contentType: false,
+            success: function(data){
+            },
+            error: function(){
+            }
+        })
+}
 }

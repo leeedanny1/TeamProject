@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.chat.Chat;
 import com.springboot.jcmarket.domain.chat.ChatRepository;
+import com.springboot.jcmarket.web.dto.chat.ChatDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,5 +35,11 @@ public class ChatServiceImpl implements ChatService {
 		System.out.println(seller_id);
 		System.out.println(chat);
 		return chatRepository.getChatting(chat);
+	}
+
+	@Override
+	public int Chatting(ChatDto chatDto) {
+		Chat chat =chatDto.toEntity();
+		return chatRepository.Chatting(chat);
 	}
 }
