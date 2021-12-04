@@ -133,6 +133,7 @@
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var="notice" items="${noticeList }" class="item_container">
+               
                     <li class="item_list">
                         <!-- 상품사진 -->
                         <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
