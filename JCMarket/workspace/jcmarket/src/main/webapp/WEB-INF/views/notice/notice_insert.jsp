@@ -46,7 +46,7 @@
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>
-                <li class="file_insert"><input type="file" multiple="multiple" name="file"></li>
+                <li class="file_insert"><input type="file" multiple="multiple" name="notice_file"></li>
             </ul>
             <ul class="content_ul">
                 <li>

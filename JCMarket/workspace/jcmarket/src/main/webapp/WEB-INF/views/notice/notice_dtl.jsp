@@ -67,7 +67,6 @@
             </ul>
             <ul class="file_ul_dtl">
                 <li>
-                <!-- 
                     <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                         <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
                             ${fileBean.originFileName }
@@ -76,7 +75,6 @@
                             /
                         </c:if>
                     </c:forEach>
-                     -->
                 </li>
             </ul>
 

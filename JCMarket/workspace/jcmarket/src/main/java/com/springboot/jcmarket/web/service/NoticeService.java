@@ -3,8 +3,10 @@ package com.springboot.jcmarket.web.service;
 import java.util.List;
 
 import com.springboot.jcmarket.domain.notice.Notice;
+import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
+import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
 
 public interface NoticeService {
 
@@ -19,6 +21,14 @@ public interface NoticeService {
 	// 원하는 갯수만큼 노출
 	public List<Notice> getNoticeList(int pageNumber);
 	
+//	파일 업/다운로드
+	// 파일 업로드
+	public NoticeDto fileUpload(NoticeInsertDto noticeInsertDto);
+	// 파일 리스트 가져오기
+	public List<FileBean> getFileList(Notice notice);
+	// 파일 다운로드
+	public byte[] fileDownload(FileBean fileBean);
+	
 //	공지사항 조회수 증가
 	public void plusNoticeCount(int notice_code);
 	
@@ -26,7 +36,7 @@ public interface NoticeService {
 	public Notice getNoticeDtl(int notice_code);
 	
 //	공지사항 등록
-	public int noticeInsert(NoticeDto noticeDto);
+	public int noticeInsert(NoticeInsertDto noticeInsertDto);
 	
 //	공지사항 수정
 	public int noticeUpdate(NoticeDto noticeDto);

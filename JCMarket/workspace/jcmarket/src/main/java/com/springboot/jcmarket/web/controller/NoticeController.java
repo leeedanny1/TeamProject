@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.web.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,16 @@ public class NoticeController {
 //	notice dtl페이지 연결
 	@GetMapping("/{notice_code}")
 	public ModelAndView noticeDtl(@PathVariable int notice_code) {
+		// 파일 가져오기 위해 dto호출
+		Notice notice = noticeService.getNoticeDtl(notice_code);
+		
+		System.out.println(notice);
+		
 		ModelAndView mav = new ModelAndView("notice/notice_dtl");
 		mav.addObject("notice_dtl", noticeService.getNoticeDtl(notice_code));
+		System.out.println(notice);
+		mav.addObject("fileList", noticeService.getFileList(notice));
+		System.out.println(notice);
 		return mav;
 	}
 	
