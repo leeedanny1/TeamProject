@@ -104,6 +104,7 @@
 /* 디테일페이지 첨부파일 */
 .file_ul_dtl li{
     width: 100%;
+    white-space: normal;
 }
 
 

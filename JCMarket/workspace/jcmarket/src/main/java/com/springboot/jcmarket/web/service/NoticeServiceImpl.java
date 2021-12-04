@@ -87,7 +87,6 @@ public class NoticeServiceImpl implements NoticeService {
 		// 경로지정
 		String filePath = context.getRealPath("/static/fileupload");
 		
-		System.out.println("서비스 - fileupload: " + noticeInsertDto);
 		// insertDto에 있는 notoce_file을 multipartFile로..
 		MultipartFile[] multipartFiles = noticeInsertDto.getNotice_file();
 		
@@ -130,13 +129,8 @@ public class NoticeServiceImpl implements NoticeService {
 		originName.delete(originName.length() - 1, originName.length());
 		tempName.delete(tempName.length() - 1, tempName.length());
 //		파일이름을 저장해서 dto에 저장
-		System.out.println("서비스 - uploadFile의 originFile: " + originName);
-		System.out.println("서비스 - uploadFile의 tempFile: " + tempName);
 		noticeDto.setOriginFileNames(originName.toString());
 		noticeDto.setTempFileNames(tempName.toString());
-		System.out.println("uploadfile에서 값 넣은 후 noticeDto: " + noticeDto);
-//		noticeDto.setOriginFileNames(originName.toString());
-//		noticeDto.setTempFileNames(tempName.toString());
 
 		return noticeDto;
 	}
@@ -205,17 +199,13 @@ public class NoticeServiceImpl implements NoticeService {
 //	공지사항 등록
 	@Override
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
-//		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
-		System.out.println("noticeInsert 서비스에서 불러온 insertDto: " + noticeInsertDto);
 		fileUpload(noticeInsertDto);
 		
 		noticeDto.setNotice_title(noticeInsertDto.getNotice_title());
 		noticeDto.setNotice_writer(noticeInsertDto.getNotice_writer());
 		noticeDto.setNotice_content(noticeInsertDto.getNotice_content());
-		System.out.println("noticeInsert에서 set하고 난 후 notoceDto: " + noticeDto);
 		
 		Notice notice = noticeDto.toEntity();
-		System.out.println("다 끝나고 notice: " + notice);
 		
 		int mstResult = 0, dtlResult = 0;
 
@@ -231,6 +221,10 @@ public class NoticeServiceImpl implements NoticeService {
 //	공지사항 수정
 	@Override
 	public int noticeUpdate(NoticeDto noticeDto) {
+//		파일 업데이트랑 삭제 구현해야 함.
+//		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
+//		fileUpload(noticeInsertDto);
+		
 		Notice notice = noticeDto.toEntity();
 		
 		int mstResult = 0, dtlResult = 0;

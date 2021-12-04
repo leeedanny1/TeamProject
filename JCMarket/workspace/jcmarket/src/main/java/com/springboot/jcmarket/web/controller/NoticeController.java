@@ -74,6 +74,8 @@ public class NoticeController {
 			
 			ModelAndView mav = new ModelAndView("notice/notice_update");
 			mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
+			Notice notice = noticeService.getNoticeDtl(notice_code);
+			mav.addObject("fileList", noticeService.getFileList(notice));
 			
 			return mav;
 		}

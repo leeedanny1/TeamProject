@@ -53,7 +53,6 @@ public class NoticeRestController {
 //	notice 등록
 	@PostMapping("/insert")
 	public String noticeInsert(NoticeInsertDto noticeInsertDto) {
-		System.out.println("컨트롤러에 있는 dto: " + noticeInsertDto);
 		return Integer.toString(noticeService.noticeInsert(noticeInsertDto));
 	}
 	
