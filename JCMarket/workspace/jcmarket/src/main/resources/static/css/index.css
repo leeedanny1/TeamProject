@@ -1,5 +1,9 @@
 /* ******************** */
 /* 메인 */
+header{
+	z-index: 1;
+}
+
 .main{
     margin-top: 150px;
 }
@@ -13,7 +17,6 @@
     margin-bottom: 30px;
     font-size: 25px;
 }
-
 
 
 /* 광고배너 */

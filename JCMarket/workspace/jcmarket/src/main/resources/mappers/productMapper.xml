@@ -70,7 +70,7 @@
     
     <select id ="searchProduct" resultType="com.springboot.jcmarket.domain.product.Product">
       select
-        *
+         pm.item_writer, pm.item_price, pm.create_date, pm.update_date, pd.item_title, pd.item_content
       from
        product_mst pm
       left outer join product_dtl pd on(pd.item_code = pm.item_code)
