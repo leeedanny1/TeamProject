@@ -43,9 +43,9 @@ public class NoticeController {
 	@GetMapping("/insert")
 	public String noticeWrite(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		if(principalDetails == null) {
-			return "redirect:/notice/list";
+			return "redirect:/notice/list/1";
 		} else if(!principalDetails.getUser().getRole().equals("admin")) {
-			return "redirect:/notice/list";
+			return "redirect:/notice/list/1";
 		} else {
 			Date date = new Date();
 			model.addAttribute("now", date);
@@ -58,10 +58,10 @@ public class NoticeController {
 	@GetMapping("/update/{notice_code}")
 	public ModelAndView noticeUpdate(Model model, @PathVariable int notice_code, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		if(principalDetails == null) {
-			ModelAndView mav = new ModelAndView("redirect:/notice/list");
+			ModelAndView mav = new ModelAndView("redirect:/notice/list/1");
 			return mav;
 		} else if(!principalDetails.getUser().getRole().equals("admin")) {
-			ModelAndView mav = new ModelAndView("redirect:/notice/list");
+			ModelAndView mav = new ModelAndView("redirect:/notice/list/1");
 			return mav;
 		} else {
 			Date date = new Date();
