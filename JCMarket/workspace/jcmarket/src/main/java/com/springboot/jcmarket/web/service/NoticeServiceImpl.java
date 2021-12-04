@@ -32,6 +32,8 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	private NoticeBean noticeBean;
 	private List<Notice> noticeListAll;
+	
+	NoticeDto noticeDto = new NoticeDto();
 
 	
 //	공지사항 가져오기
@@ -82,17 +84,21 @@ public class NoticeServiceImpl implements NoticeService {
 	// 파일 업로드
 	@Override
 	public NoticeDto fileUpload(NoticeInsertDto noticeInsertDto) {
+		// 경로지정
 		String filePath = context.getRealPath("/static/fileupload");
-		System.out.println(noticeInsertDto);
+		
+		System.out.println("서비스 - fileupload: " + noticeInsertDto);
+		// insertDto에 있는 notoce_file을 multipartFile로..
 		MultipartFile[] multipartFiles = noticeInsertDto.getNotice_file();
-		NoticeDto noticeDto = new NoticeDto();
+		
+//		NoticeDto noticeDto = new NoticeDto();
 
 		StringBuilder originName = new StringBuilder();
 		StringBuilder tempName = new StringBuilder();
 		
 		for (MultipartFile multipartFile : multipartFiles) {
 			String originFile = multipartFile.getOriginalFilename();
-			// 파일이름이 없다면 바로 dto로 반환
+			// 파일이름이 없다면 바로 dto 반환
 			if (originFile.equals("")) {
 				return noticeDto;
 			}
@@ -119,15 +125,16 @@ public class NoticeServiceImpl implements NoticeService {
 				e.printStackTrace();
 			}
 		}
+		
 //		마지막 파일명의 쉼표 지우기
 		originName.delete(originName.length() - 1, originName.length());
 		tempName.delete(tempName.length() - 1, tempName.length());
 //		파일이름을 저장해서 dto에 저장
-		System.out.println(originName);
-		System.out.println(tempName);
-		noticeDto.toEntity().setOriginFileNames(originName.toString());
-		noticeDto.toEntity().setTempFileNames(tempName.toString());
-		System.out.println(noticeDto);
+		System.out.println("서비스 - uploadFile의 originFile: " + originName);
+		System.out.println("서비스 - uploadFile의 tempFile: " + tempName);
+		noticeDto.setOriginFileNames(originName.toString());
+		noticeDto.setTempFileNames(tempName.toString());
+		System.out.println("uploadfile에서 값 넣은 후 noticeDto: " + noticeDto);
 //		noticeDto.setOriginFileNames(originName.toString());
 //		noticeDto.setTempFileNames(tempName.toString());
 
@@ -199,14 +206,16 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
 //		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
+		System.out.println("noticeInsert 서비스에서 불러온 insertDto: " + noticeInsertDto);
 		fileUpload(noticeInsertDto);
-		System.out.println(noticeInsertDto);
-		NoticeDto noticeDto = new NoticeDto();
+		
 		noticeDto.setNotice_title(noticeInsertDto.getNotice_title());
 		noticeDto.setNotice_writer(noticeInsertDto.getNotice_writer());
 		noticeDto.setNotice_content(noticeInsertDto.getNotice_content());
-		System.out.println(noticeDto);
+		System.out.println("noticeInsert에서 set하고 난 후 notoceDto: " + noticeDto);
+		
 		Notice notice = noticeDto.toEntity();
+		System.out.println("다 끝나고 notice: " + notice);
 		
 		int mstResult = 0, dtlResult = 0;
 
