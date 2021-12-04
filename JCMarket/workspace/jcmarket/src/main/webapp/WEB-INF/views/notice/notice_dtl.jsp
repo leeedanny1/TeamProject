@@ -87,7 +87,7 @@
                 <button type="button" class="list_btn notice_update_btn">수정</button>
                 <button type="button" class="list_btn notice_delete_btn">삭제</button>
             </c:if>
-            <button type="button" class="list_btn" onclick="location.href='/notice/list'">목록</button>
+            <button type="button" class="list_btn" onclick="location.href='/notice/list/1'">목록</button>
         </article>
 
 

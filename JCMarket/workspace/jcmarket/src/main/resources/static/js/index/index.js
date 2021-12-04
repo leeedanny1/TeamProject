@@ -6,7 +6,6 @@ const h_search_btn = document.querySelector('.h_search_btn');
 const h_search = document.querySelector('.h_search');
 
 
-
 //검색 아이콘 클릭 시 
 h_search_btn.addEventListener('click', ()=> {  
 	if(h_search.value.length == 0) {
@@ -17,7 +16,7 @@ h_search_btn.addEventListener('click', ()=> {
 });
 
 
-
+console.log(item_code);
 
 toUpdatePage.addEventListener('click' , () => {
 	check_password.classList.toggle('invisible');

@@ -1,6 +1,8 @@
 package com.springboot.jcmarket.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.web.service.SignUpService;
-import com.springboot.jcmarket.web.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,10 +23,9 @@ public class IndexController {
 	private final SignUpService signUpService;
 	
 	@GetMapping({"/","/index"})
-     public String index(HttpServletRequest request ) {
+     public String index() {
 		return "index/index";
-     }
-	
+	}
 	
 	@ResponseBody
 	@GetMapping("get-password")
@@ -35,9 +35,9 @@ public class IndexController {
 		String user_password = principalDetails.getUser().getUser_password();
 		
 		if(passwordEncoder.matches(input_password, user_password)){
-			return "1";
+			return "1";   
 		}
-		return "2";
+		return "2"; 
 	}
 
 	
