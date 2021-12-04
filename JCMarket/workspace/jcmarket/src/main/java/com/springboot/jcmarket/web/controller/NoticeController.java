@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.web.service.NoticeService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,14 +29,18 @@ public class NoticeController {
 	public ModelAndView notice(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("notice/notice");
 		mav.addObject("noticeList", noticeService.getNoticeList(page_number));
+		mav.addObject("noticeBean", noticeService.getNoticeBean());
 		return mav;
 	}
 	
 //	notice dtl페이지 연결
 	@GetMapping("/{notice_code}")
 	public ModelAndView noticeDtl(@PathVariable int notice_code) {
+		Notice notice = noticeService.getNoticeDtl(notice_code);
+		
 		ModelAndView mav = new ModelAndView("notice/notice_dtl");
 		mav.addObject("notice_dtl", noticeService.getNoticeDtl(notice_code));
+		mav.addObject("fileList", noticeService.getFileList(notice));
 		return mav;
 	}
 	
@@ -69,6 +74,8 @@ public class NoticeController {
 			
 			ModelAndView mav = new ModelAndView("notice/notice_update");
 			mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
+			Notice notice = noticeService.getNoticeDtl(notice_code);
+			mav.addObject("fileList", noticeService.getFileList(notice));
 			
 			return mav;
 		}
