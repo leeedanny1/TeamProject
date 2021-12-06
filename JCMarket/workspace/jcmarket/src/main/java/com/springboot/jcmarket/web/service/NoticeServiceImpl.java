@@ -37,6 +37,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	NoticeDto noticeDto = new NoticeDto();
 	NoticePreNextDto noticePreNextDto = new NoticePreNextDto();
+	NoticeUpdateDto noticeUpdateDto = new NoticeUpdateDto();
 
 //	공지사항 가져오기
 	// 빈 만들기
@@ -187,9 +188,75 @@ public class NoticeServiceImpl implements NoticeService {
 
 	// 파일 수정
 	@Override
+	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames) {
+		StringBuilder buildName = new StringBuilder();
+		
+		for (String fileName : fileNames) {
+			int count = 0;
+			if (deleteFileNames != null) {
+				for (String deleteFileName : deleteFileNames) {
+					if (fileName.equals(deleteFileName)) {
+						count++;
+						break;
+					}
+				}
+			}
+			if (count == 0) {
+				buildName.append(fileName);
+				buildName.append(",");
+			}
+		}
+
+		return buildName;
+	}
+	@Override
 	public NoticeDto fileUpdate(NoticeUpdateDto noticeUpdateDto) {
 
-		return null;
+		StringBuilder originNames = deleteFileName(noticeUpdateDto.getOriginFileNames() ,noticeUpdateDto.getDeleteOriginFileNames());
+		StringBuilder tempNames = deleteFileName(noticeUpdateDto.getTempFileNames(), noticeUpdateDto.getDeleteTempFileNames());
+		
+//	      새로 추가할 파일들
+		MultipartFile[] multipartFiles = noticeUpdateDto.getNotice_file();
+		String filePath = context.getRealPath("/static/fileupload");
+
+		for (MultipartFile multipartFile : multipartFiles) {
+			String originFile = multipartFile.getOriginalFilename();
+			// 새로 추가할 파일이 없다면 for문 중단
+			if (originFile.equals("") || multipartFile == null) {
+	            break;
+	        }
+			// originFile에서 확장자 제거
+			String originFileExtension = originFile.substring(originFile.lastIndexOf("."));
+			// UUID생성하고 확장자 붙이기
+			String tempFile = UUID.randomUUID().toString().replaceAll("-", "") + originFileExtension;
+
+			originNames.append(originFile);
+			originNames.append(",");
+			tempNames.append(tempFile);
+			tempNames.append(",");
+
+			File file = new File(filePath, tempFile);
+			// 경로가 존재하지 않다면 만들어라
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// 콤마 지워주는 작업, set하기
+		if (originNames.length() != 0) {
+			originNames.delete(originNames.length() - 1, originNames.length());
+			tempNames.delete(tempNames.length() - 1, tempNames.length());
+
+			noticeDto.setOriginFileNames(originNames.toString());
+			noticeDto.setTempFileNames(tempNames.toString());
+		}
+
+		return noticeDto;
 	}
 
 	
@@ -251,6 +318,8 @@ public class NoticeServiceImpl implements NoticeService {
 //		파일 업데이트랑 삭제 구현해야 함.
 //		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
 //		fileUpload(noticeInsertDto);
+		
+//		System.out.println(fileUpdate(noticeUpdateDto));
 
 		Notice notice = noticeDto.toEntity();
 

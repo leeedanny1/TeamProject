@@ -55,14 +55,15 @@ header{
 
 /* 상품 아이템 박스 컨테이너*/
 .sale_item .item_container{
+    width: 100%;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 /* 상품 아이템들 */
 .item_container .item_list{
-    margin-bottom: 10px;
+    margin: 0 0.5% 10px;
     width: 19%;
     padding: 1%;
     border: 1px solid;

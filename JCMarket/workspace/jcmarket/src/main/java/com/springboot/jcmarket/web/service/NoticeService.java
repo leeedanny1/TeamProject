@@ -31,6 +31,7 @@ public interface NoticeService {
 	// 파일 다운로드
 	public byte[] fileDownload(FileBean fileBean);
 	// 게시글 수정시 파일 수정
+	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames);
 	public NoticeDto fileUpdate(NoticeUpdateDto noticeUpdateDto);
 	
 //	공지사항 조회수 증가
