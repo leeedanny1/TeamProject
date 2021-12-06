@@ -19,6 +19,7 @@ import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
+import com.springboot.jcmarket.web.dto.notice.NoticePreNextDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,6 +35,7 @@ public class NoticeServiceImpl implements NoticeService {
 	private List<Notice> noticeListAll;
 	
 	NoticeDto noticeDto = new NoticeDto();
+	NoticePreNextDto noticePreNextDto = new NoticePreNextDto();
 
 	
 //	공지사항 가져오기
@@ -192,6 +194,16 @@ public class NoticeServiceImpl implements NoticeService {
 	public Notice getNoticeDtl(int notice_code) {
 		plusNoticeCount(notice_code);
 		return noticeRepository.getNoticeDtl(notice_code);
+	}
+	// 이전글
+	@Override
+	public NoticePreNextDto getPreNotice(int notice_code) {
+		return noticeRepository.getPreNotice(notice_code);
+	}
+	// 다음글
+	@Override
+	public NoticePreNextDto getNextNotice(int notice_code) {
+		return noticeRepository.getNextNotice(notice_code);
 	}
 	
 	

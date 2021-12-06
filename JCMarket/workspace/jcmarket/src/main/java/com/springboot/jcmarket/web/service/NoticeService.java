@@ -7,6 +7,7 @@ import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
+import com.springboot.jcmarket.web.dto.notice.NoticePreNextDto;
 
 public interface NoticeService {
 
@@ -34,6 +35,10 @@ public interface NoticeService {
 	
 //	공지사항 디테일 페이지
 	public Notice getNoticeDtl(int notice_code);
+	// 이전글
+	public NoticePreNextDto getPreNotice(int notice_code);
+	// 다음글
+	public NoticePreNextDto getNextNotice(int notice_code);
 	
 //	공지사항 등록
 	public int noticeInsert(NoticeInsertDto noticeInsertDto);

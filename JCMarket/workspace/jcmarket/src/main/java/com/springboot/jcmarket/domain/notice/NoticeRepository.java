@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.jcmarket.web.dto.notice.NoticePreNextDto;
+
 @Mapper
 public interface NoticeRepository {
 	
@@ -15,6 +17,11 @@ public interface NoticeRepository {
 	
 //	공지사항 디테일 페이지 가져오기
 	public Notice getNoticeDtl(int notice_code);
+	// 이전글
+	public NoticePreNextDto getPreNotice(int notice_code);
+	// 다음글
+	public NoticePreNextDto getNextNotice(int notice_code);
+	
 	
 //	공지사항 등록
 	//마스터테이블 insert

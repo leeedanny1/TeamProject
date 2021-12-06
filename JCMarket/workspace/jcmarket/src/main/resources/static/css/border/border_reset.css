@@ -1,6 +1,6 @@
 /* 수정, 삭제, 목록 가기 버튼 */
 .list_btn_container{
-    margin: 20px 0 0;
+    margin: 30px 0 0;
     display: flex;
     justify-content: flex-end;
 }
@@ -45,9 +45,9 @@
     border-collapse: collapse;
     padding-left: 5px;
 
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden; */
 }
 
 /* 제목라인 */
@@ -104,7 +104,6 @@
 /* 디테일페이지 첨부파일 */
 .file_ul_dtl li{
     width: 100%;
-    white-space: normal;
 }
 
 
@@ -206,8 +205,31 @@
 
 
 /* 이전글 다음글 부분 */
-.notice_pre_next .next_title, .notice_pre_next .pre_title{
-    width: 25%;
+.notice_pre_next{
+    margin: 30px 0 50px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.notice_pre_next ul{
+    display: flex;
+}
+.notice_pre_next .pn_title{
+    width: 15%;
+    text-align: center;
+
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.notice_pre_next .pn_title1{
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.notice_pre_next .pn_content{
+    padding-left: 10px;
+    width: 85%;
+}
+.notice_pre_next .pn_content1{
+    border-bottom: 1px solid #ccc;
 }
 
 

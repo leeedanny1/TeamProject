@@ -61,6 +61,7 @@
                     <pre>${notice_dtl.notice_content}</pre>
                 </li>
             </ul>
+            
             <c:if test="${not empty fileList}">
                 <ul class="file_ul_dtl">
                     <li>첨부파일</li>
@@ -80,6 +81,7 @@
             </c:if>
     </section>
 
+
     <article class="list_btn_container">
         <c:if test="${principal.user.role eq 'admin'}">
             <button type="button" class="list_btn notice_update_btn">수정</button>
@@ -89,28 +91,38 @@
     </article>
 
 
-    <div class="notice_pre_next">
-        <ul class="notice_next">
-            <li class="next_title">다음 글</li>
-            <!-- 
-<c:if test="${notice.nextNotice_code ne 0}">
-<a href="notice/${notice.nextNotice_code }">
-    <li>${notice.nextNotice_title }</li>
-</a>
-</c:if>
--->
+    <article class="notice_pre_next">
+        <ul>
+            <li class="pn_title pn_title1">다음 글</li>
+            <c:choose>
+                <c:when test="${not empty next_notice }">
+                    <li class="pn_content pn_content1">
+                        <a href="/notice/${next_notice.next_code }">
+                            ${next_notice.next_title }
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="pn_content pn_content1">다음글이 없습니다.</li>
+                </c:otherwise>
+            </c:choose>
         </ul>
-        <ul class="notice_pre">
-            <li class="pre_title">이전 글</li>
-            <!--
-<c:if test="${notice.preNotice_code ne 0}">
-<a href="notice/${notice.preNotice_code }">
-    <li>${notice.preNotice_title }</li>
-</a>
-</c:if>
--->
+        <ul>
+            <li class="pn_title">이전 글</li>
+            <c:choose>
+                <c:when test="${not empty pre_notice }">
+                    <li class="pn_content">
+                        <a href="/notice/${pre_notice.pre_code }">
+                            ${pre_notice.pre_title }
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="pn_content">이전글이 없습니다.</li>
+                </c:otherwise>
+            </c:choose>
         </ul>
-    </div>
+    </article>
 </main>
 
 

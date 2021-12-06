@@ -44,6 +44,26 @@
 		LIMIT
 			1;
 	</select>
+	<!-- 이전글 코드랑 제목 가져오기 -->
+	<select id="getPreNotice" resultType="com.springboot.jcmarket.web.dto.notice.NoticePreNextDto">
+		SELECT
+			notice_code AS pre_code,
+			notice_title AS pre_title
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code} - 1;
+	</select>
+	<!-- 이전글 코드랑 제목 가져오기 -->
+	<select id="getNextNotice" resultType="com.springboot.jcmarket.web.dto.notice.NoticePreNextDto">
+		SELECT
+			notice_code AS next_code,
+			notice_title AS next_title
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code} + 1;
+	</select>
 
 	<!-- 공지사항 등록 -->
 	<insert id="noticeMstInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
