@@ -28,26 +28,19 @@ public class ChatController {
 		
 		return mav;
 	}
-	@GetMapping("/chatting/{item_code}/{buyer_id}/{seller_id}")
-	public ModelAndView chattingList(@AuthenticationPrincipal PrincipalDetails prDetails, @PathVariable int item_code,@PathVariable int buyer_id ,@PathVariable int seller_id, ChatDto chatdto) {
-		ModelAndView mav = new ModelAndView("chat/chat");
+	
+	@ResponseBody
+	@PostMapping("/chatting/{roomNumber}")
+	public Object chattingList(@RequestBody ChatDto chatdto, @PathVariable int roomNumber) {
 		System.out.println(chatdto);
-		if(prDetails.getUser().getId()==buyer_id){
-			mav.addObject("chatmsg", chatService.getChatting( seller_id, prDetails.getUser().getId(),item_code));
-			
-		}else if (prDetails.getUser().getId()==seller_id ) {
-			mav.addObject("chatmsg", chatService.getChatting(prDetails.getUser().getId(), buyer_id, item_code));
-			
-		}
-		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
-		System.out.println(prDetails);
-		return mav;
+		return chatService.getChatting(chatdto);
 	}
+	
 	@ResponseBody
 	@PostMapping("/chat-insert")
 	public String chat_insert(@RequestBody ChatDto chatdto) {
-		System.out.println(chatdto);
-		
-		return Integer.toString(chatService.Chattinginput(chatdto.getSeller_id(),chatdto.getBuyer_id(),chatdto.getItem_code(),chatdto.getWriter_nickname(),chatdto.getChat_content()));
+		System.out.println("asdf"+chatdto);
+		chatService.Chattinginput(chatdto);
+		return "";//Integer.toString(chatService.Chattinginput(chatdto.getSeller_id(),chatdto.getBuyer_id(),chatdto.getItem_code(),chatdto.getWriter_nickname(),chatdto.getChat_content()));
 	}
 }

@@ -1,0 +1,8 @@
+.item_list{
+  opacity: 0;
+}
+
+.showItem{
+ opacity:1;
+ transition: all 1700ms;
+}

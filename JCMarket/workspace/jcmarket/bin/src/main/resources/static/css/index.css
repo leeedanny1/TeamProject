@@ -1,5 +1,9 @@
 /* ******************** */
 /* 메인 */
+header{
+	z-index: 1;
+}
+
 .main{
     margin-top: 150px;
 }
@@ -13,7 +17,6 @@
     margin-bottom: 30px;
     font-size: 25px;
 }
-
 
 
 /* 광고배너 */
@@ -110,14 +113,44 @@ input{
     width: 80px;
 }
 
-.invisible {
-	display:none;
+
+.user_info {
+  display: flex;
+  flex-direction: column;   
 }
-.visible {
-	display:block;
+
+.check_password {
+   display: flex;
+   position: fixed;
+   top: 170px;
+   left: 500px;
+   width: 400px;
+   margin: 0 auto;
+}
+input{
+    width: 320px;
+    height: 40px;
+    outline: none;
+    border: none;
+}
+.toUpdatePage {
+	cursor: pointer;
+}
+
+.toUpdatePage_btn {
+	border: none;
+    outline: none;
+    width: 80px;
 }
 
 .user_info {
   display: flex;
   flex-direction: column;   
+}
+
+.invisible {
+	display:none;
+}
+.visible {
+	display:block;
 }

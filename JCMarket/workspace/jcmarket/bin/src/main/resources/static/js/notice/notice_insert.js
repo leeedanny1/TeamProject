@@ -12,13 +12,13 @@ notice_insert_button.onclick = () => {
             type: "post",
             url: "/notice/insert",
             data: formData,
-            enctype: "form-data",
+            enctype: "multipart/form-data",
             processData: false,
             contentType: false,
             success: function(data){
                 if(data == 1){
                     alert("공지사항 등록이 완료되었습니다.")
-                    location.replace("/notice/" + formData.get("notice_code"))
+                    location.replace("/notice/list/1")
                 } else {
                     alert("공지사항 등록에 실패하였습니다. (DB오류)")
                 }
@@ -34,7 +34,7 @@ notice_insert_button.onclick = () => {
 // 공지사항 등록취소 버튼
 notice_cancel_button.onclick = () => {
     if(confirm("공지사항 등록을 취소하고, 공지사항 목록으로 돌아가시겠습니까?")){
-        location.replace("/notice/list")
+        location.replace("/notice/list/1")
     }
 }
 

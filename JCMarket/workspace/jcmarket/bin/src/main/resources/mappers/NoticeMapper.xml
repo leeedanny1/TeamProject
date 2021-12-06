@@ -14,6 +14,16 @@
 		ORDER BY notice_code desc
 	</select>
 	
+	<!-- 공지사항 조회수 증가 -->
+	<update id="plusNoticeCount">
+		UPDATE
+			notice_mst
+		SET
+			notice_count = notice_count+1
+		WHERE
+			notice_code = #{notice_code};
+	</update>
+	
 	<!-- 공지사항 디테일 가져옴 -->
 	<select id="getNoticeDtl" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT
@@ -34,10 +44,27 @@
 		LIMIT
 			1;
 	</select>
-	
-	
-	
-	
+	<!-- 이전글 코드랑 제목 가져오기 -->
+	<select id="getPreNotice" resultType="com.springboot.jcmarket.web.dto.notice.NoticePreNextDto">
+		SELECT
+			notice_code AS pre_code,
+			notice_title AS pre_title
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code} - 1;
+	</select>
+	<!-- 이전글 코드랑 제목 가져오기 -->
+	<select id="getNextNotice" resultType="com.springboot.jcmarket.web.dto.notice.NoticePreNextDto">
+		SELECT
+			notice_code AS next_code,
+			notice_title AS next_title
+		FROM
+			notice_mst
+		WHERE
+			notice_code = #{notice_code} + 1;
+	</select>
+
 	<!-- 공지사항 등록 -->
 	<insert id="noticeMstInsert" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		INSERT INTO
@@ -48,7 +75,7 @@
 			)
 		VALUES(
 			#{notice_title},
-			"닉네임 가져와야 함",
+			#{notice_writer},
 			NOW()
 		);	
 	</insert>
@@ -71,21 +98,21 @@
 	</insert>
 	
 	<!-- 공지사항 수정 -->
-	<update id="noticeUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
+	<update id="noticeMstUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		UPDATE
 			notice_mst
 		SET
 			notice_title = #{notice_title}
 		WHERE
-			notice_code = #{notice_code);
-		
+			notice_code = #{notice_code};
+	</update>
+	<update id="noticeDtlUpdate" parameterType="com.springboot.jcmarket.domain.notice.Notice">
 		UPDATE
 			notice_dtl
 		SET
 			notice_content = #{notice_content},
 			originFileNames = #{originFileNames},
-			tempFileNames = #{tempFileNames},
-			update_date = NOW()
+			tempFileNames = #{tempFileNames}
 		WHERE
 			notice_code = #{notice_code};
 	</update>

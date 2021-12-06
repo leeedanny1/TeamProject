@@ -24,20 +24,28 @@
 	</select>
 	
 	<select id="getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat"	parameterType="com.springboot.jcmarket.domain.chat.Chat">
-		select
-		 cm.buyer_id, cm.seller_id, cm.item_code,cd.writer_nickname, cd.chat_date ,cd.chat_content
-		from
-		chat_dtl cd
-		left outer join chat_mst cm on(cm.buyer_id = cd.buyer_id aND cm.item_code= cd.item_code AND cm.seller_id=cd.seller_id)
-		where
-		cd.buyer_id = #{buyer_id} and cd.seller_id=#{seller_id} and cd.item_code= #{item_code}
+		SELECT
+			cd.item_code,
+			cd.buyer_id,
+			cd.seller_id,
+			cd.chat_index,
+			cd.writer_id,
+			um.user_nickname as writer_nickname,
+			cd.chat_content
+		FROM
+			chat_dtl cd
+			LEFT OUTER JOIN user_mst um ON(um.id = cd.writer_id)
+		WHERE
+			cd.item_code = #{item_code}
+		AND cd.buyer_id = #{buyer_id}
+		AND cd.seller_id = #{seller_id};
 	</select>
 	
 	<insert id="Chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
 insert into
 			chat_dtl
 		values(  
-		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_nickname},#{chat_content},NOW(),NOW()
+		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_id},#{chat_content},NOW(),NOW()
 		)
 	</insert>
 

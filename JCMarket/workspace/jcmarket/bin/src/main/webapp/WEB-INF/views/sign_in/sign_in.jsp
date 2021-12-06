@@ -16,6 +16,7 @@
 	<form action="/sign-in" method="post">
      <main class="sign_container">
         <h1 class="sign_name">JC마켓 로그인</h1>
+
         <div action="" class="sign_form">
             <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID"  autofocus>
 
@@ -24,8 +25,13 @@
             <input type="password"class="item_ip" name="user_password" id="user_password" placeholder="PASSWORD">
             <p class="e_msg">비밀번호를 입력해 주세요</p>
 
+             
             <button type="submit" class="submit_btn">로그인</button>
-            </form>
+            <div class = "find_container">
+             <a href="/find-id" class="find_id">아이디 찾기</a>
+             <a>|</a>
+             <a href="/find-password" class="find_password">비밀번호 찾기</a>
+             </div>
         </div>
     </main>
  

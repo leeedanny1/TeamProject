@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,12 @@
 		<div class="chat">
 			<div class="list">
 				<c:forEach var="chat" items="${chatList }">
-					<a class="chatlist_btn" href="/chatting/${chat.item_code }/${chat.buyer_id}">
+					<a class="chatlist_btn" href="/chatting/${chat.item_code }/${chat.buyer_id}/${chat.seller_id}">
+					<input type="hidden" class="chatinfo" value="${chat.item_code}">
+					<input type="hidden" class="chatinfo" value="${chat.buyer_id}">
+					<input type="hidden" class="chatinfo" value="${chat.seller_id}">
+					<input type="hidden" class="chatinfo" value="${principal.user.user_nickname }">
+		
 						<ul>
 							<li class="chat_title"><br>과의 채팅</li>
 						</ul>
@@ -42,10 +51,14 @@
 					
 					</c:forEach>
 				</ul>
+		
 				<div class="msgbox">
-					<textarea class="msginput"placeholder="메세지를 입력해주세요"></textarea>
-					<button type="submit" class="submitbtn">전 송</button>
+					<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
+					<button type="button" class="submitbtn">전 송</button>
+					
+
 				</div>
+				</form>
 			</div>
 
 		</div>
