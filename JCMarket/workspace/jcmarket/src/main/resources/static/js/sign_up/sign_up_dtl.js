@@ -443,7 +443,7 @@ function clearMsg(input) {
 function msgService(input,msgContent, msgIndex) {
 	const p =document.createElement('p');
     p.textContent = msgContent;
-    //에러메시지 
+    //에러메시지
 	if(msgIndex == 0) {
 	    p.classList.add('error_msg');
 	//성공메시지 

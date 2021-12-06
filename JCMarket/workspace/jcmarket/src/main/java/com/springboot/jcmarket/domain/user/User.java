@@ -1,6 +1,6 @@
 package com.springboot.jcmarket.domain.user;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +23,6 @@ public class User {
 		private int sell_count;
 		private String role;
 		private String provider;
-		private LocalDateTime create_date;
-		private LocalDateTime update_date;
+		private LocalDate create_date;
+		private LocalDate update_date;
 }

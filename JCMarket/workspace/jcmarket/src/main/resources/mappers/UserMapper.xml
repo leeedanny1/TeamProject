@@ -53,6 +53,20 @@
 			now()
 		)
 	</insert>
+	
+	<select id = "findId" parameterType="com.springboot.jcmarket.domain.user.User" resultType="com.springboot.jcmarket.domain.user.User">
+	    select
+	     user_id, create_date
+        from
+	     user_mst
+        where
+	     user_phone = #{user_phone} 
+	     and
+	     user_name = #{user_name}
+	 
+	</select>
+	
+	
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
 	      select
 	        id,user_id,user_password,user_name, user_phone, user_nickname, 

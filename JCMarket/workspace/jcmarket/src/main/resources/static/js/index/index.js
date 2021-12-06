@@ -16,7 +16,7 @@ h_search_btn.addEventListener('click', ()=> {
 });
 
 
-console.log(item_code);
+
 
 toUpdatePage.addEventListener('click' , () => {
 	check_password.classList.toggle('invisible');

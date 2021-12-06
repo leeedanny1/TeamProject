@@ -10,6 +10,7 @@ public interface UserRepository {
 	  public int idCheck(User user);
 	  public int nicknameCheck(String signUpNickname);
 	  public int signUp(User user);
+	  public User findId(User user);
 	  public User getUser(String user_id);
 	  public int updateUser(User user);
 	  public int socailupdate(User user);
