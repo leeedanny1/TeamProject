@@ -1,7 +1,8 @@
 const submit_btn=document.querySelector('.submit_btn');
 const item_ip=document.querySelectorAll('.item_ip');
 const e_msg= document.querySelectorAll('.e_msg');
-
+const find_id = document.querySelector('.find_id');
+const find_password = document.querySelector('.find_password');
 
 var signInData = {
 	user_id: '',
@@ -35,3 +36,12 @@ for(let i=0;i<item_ip.length;i++){
              }
         }
 }
+
+find_id.addEventListener('click', () => {
+	
+});
+
+find_password.addEventListener('click', () => {
+	
+});
+

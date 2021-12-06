@@ -4,6 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.domain.user.User;
 import com.springboot.jcmarket.web.dto.auth.SignUpDto;
+import com.springboot.jcmarket.web.dto.auth.findAccountDto;
 import com.springboot.jcmarket.web.service.SignUpService;
 import com.springboot.jcmarket.web.service.UserService;
 
@@ -29,7 +31,7 @@ public class UserController {
 		return "mypage/user_update";
 	}
 
-	
+	 
 	@ResponseBody
 	@PutMapping("/update")
 	public String update(@RequestBody SignUpDto signUpDto , @AuthenticationPrincipal PrincipalDetails prDetails) {
@@ -47,6 +49,24 @@ public class UserController {
 		}
 		return  Integer.toString(userService.updateUser(signUpDto));
 	
+	}
+	
+	
+	@GetMapping("/find-id")
+	public String findId() {
+		System.out.println(123);
+		return "find_account/find_id";
+	}
+	
+	@GetMapping("/find-password")
+	public String findPassword() {
+		return "find_account/find_password";
+	}
+	
+	@ResponseBody
+	@PostMapping("/find-id")
+	public Object findId(@RequestBody findAccountDto findAccountDto) {
+	   return userService.findId(findAccountDto);
 	}
 	
 	@ResponseBody

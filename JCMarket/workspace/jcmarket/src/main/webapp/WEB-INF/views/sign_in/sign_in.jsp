@@ -25,7 +25,13 @@
             <input type="password"class="item_ip" name="user_password" id="user_password" placeholder="PASSWORD">
             <p class="e_msg">비밀번호를 입력해 주세요</p>
 
+             
             <button type="submit" class="submit_btn">로그인</button>
+            <div class = "find_container">
+             <a href="/find-id" class="find_id">아이디 찾기</a>
+             <a>|</a>
+             <a href="/find-password" class="find_password">비밀번호 찾기</a>
+             </div>
         </div>
     </main>
  
