@@ -25,6 +25,7 @@ public class Product {
 //	dtl
 	private int now_sale;
 	// 0: 판매중, 1: 예약중, 2: 판매완료
+	private int like_count;
 	private int item_price;
 	private int item_stat;
 	// 0: 새상품, 1: S급, 2: A급, 3: B급

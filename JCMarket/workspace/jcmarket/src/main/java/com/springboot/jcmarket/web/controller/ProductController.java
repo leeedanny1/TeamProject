@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
-import com.springboot.jcmarket.web.service.NoticeService;
 import com.springboot.jcmarket.web.service.productService;
 
 import lombok.RequiredArgsConstructor;

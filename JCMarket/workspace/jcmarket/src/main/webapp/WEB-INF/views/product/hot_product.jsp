@@ -37,7 +37,10 @@
                         <!-- 상품사진 -->
                         <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
                         <!-- 상품이름 -->
-                        <p class="item_name">${items.item_title}</p>
+                        <ul class="item_info">
+                            <p class="item_name">${items.item_title}</p>
+                            <p><i class="fas fa-eye"></i> <i class="fas fa-heart"></i> ${items.like_count}</p>
+                        </ul>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
                             <li><span class="item_price">
