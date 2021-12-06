@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
+import com.springboot.jcmarket.web.service.NoticeService;
 import com.springboot.jcmarket.web.service.productService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,16 +29,22 @@ public class ProductController {
 	private final productService productService;
 
 //	hot-items 연결
-	@GetMapping("/hot")
-	public String hotProduct() {
-		return "product/hot_product";
+	@GetMapping("/hot/{page_number}")
+	public ModelAndView hotProduct(@PathVariable int page_number) {
+		ModelAndView mav = new ModelAndView("product/hot_product");
+		mav.addObject("productList", productService.getHotProductList(page_number));
+		System.out.println(productService.getHotProductList(page_number));
+		mav.addObject("productBean", productService.getProductBean());
+		return mav;
 	}
 
 //	new-items 연결
-	@GetMapping("/new")
-	public ModelAndView newProduct() {
+	@GetMapping("/new/{page_number}")
+	public ModelAndView newProduct(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("product/new_product");
-		
+		mav.addObject("productList", productService.getNewProductList(page_number));
+		System.out.println(productService.getNewProductList(page_number));
+		mav.addObject("productBean", productService.getProductBean());
 		return mav;
 	}
 

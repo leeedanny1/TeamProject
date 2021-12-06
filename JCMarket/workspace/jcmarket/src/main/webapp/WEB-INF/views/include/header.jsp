@@ -38,8 +38,8 @@
             <!-- 카테고리 -->
             <ul class="h_category">
                 <li><a href="/notice/list/1">Notice</a></li>
-                <li><a href="/items/hot">Hot&nbspItems</a></li>
-                <li><a href="/items/new">New&nbspItems</a></li>
+                <li><a href="/items/hot/1">Hot&nbspItems</a></li>
+                <li><a href="/items/new/1">New&nbspItems</a></li>
             </ul>
             <!-- 로그인, 회원가입 -->
             <c:choose>

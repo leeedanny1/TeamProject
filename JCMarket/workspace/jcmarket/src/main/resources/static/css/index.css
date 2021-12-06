@@ -59,6 +59,7 @@ header{
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 /* 상품 아이템들 */

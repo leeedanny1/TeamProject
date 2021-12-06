@@ -8,8 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ProductRepository {
 	
-	// 상품목록 가져오기
-	public List<Product> getProductListAll();
+//	상품목록 가져오기
+	// 인기상품
+	public List<Product> getHotProductListAll();
+	// 최근상품
+	public List<Product> getNewProductListAll();
 	
 	
 	

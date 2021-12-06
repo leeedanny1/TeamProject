@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -26,92 +29,20 @@
         <!-- 인기상품 -->
         <!-- 하트 만들어서 판매중인 상품중에 하트 높은 순서대로 정렬 -->
         <section class="sale_item">
-            <a href="/product/hot_product.html">
-                <h2 class="page_name">인기상품</h2>
-            </a>
+            <h2 class="page_name">인기상품</h2>
             <!-- 개별 아이템 박스컨테이너 -->
-            <ul class="item_container item_big_container">
-                <c:forEach var="notice" items="${noticeList }" class="item_container">
-                    <li class="item_list">
+            <ul class="item_container">
+                <c:forEach var="items" items="${productList }">
+                    <li class="item_list" onclick="location.href = '/items/${items.item_code}'">
                         <!-- 상품사진 -->
                         <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
                         <!-- 상품이름 -->
-                        <p class="item_name">상품 이름입니다. 긴 이름도 입력이 됩니다.</p>
+                        <p class="item_name">${items.item_title}</p>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
-                            <li><span class="item_time">1시간 전</span></li>
-                        </ul>
-                    </li>
-                    <li class="item_list">
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
-                        <p class="item_name">상품 이름입니다.</p>
-                        <ul class="item_info">
-                            <li><span class="item_price"><strong>1,000,000</strong>원</span></li>
+                            <li><span class="item_price">
+                                <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
+                            </li>
                             <li><span class="item_time">1시간 전</span></li>
                         </ul>
                     </li>
