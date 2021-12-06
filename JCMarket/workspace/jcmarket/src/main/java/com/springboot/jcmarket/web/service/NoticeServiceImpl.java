@@ -20,24 +20,24 @@ import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
 import com.springboot.jcmarket.web.dto.notice.NoticePreNextDto;
+import com.springboot.jcmarket.web.dto.notice.NoticeUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	private final NoticeRepository noticeRepository;
-	
+
 	private final ServletContext context;
-	
+
 	private NoticeBean noticeBean;
 	private List<Notice> noticeListAll;
-	
+
 	NoticeDto noticeDto = new NoticeDto();
 	NoticePreNextDto noticePreNextDto = new NoticePreNextDto();
 
-	
 //	공지사항 가져오기
 	// 빈 만들기
 	@Override
@@ -51,26 +51,32 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeBean.setStartPage();
 		noticeBean.setEndPage();
 	}
+
 	@Override
 	public NoticeBean getNoticeBean() {
 		return noticeBean;
 	}
+
 	@Override
 	public int parseIntPageNumber(int pageNumber) {
 		return pageNumber;
 	}
+
+	
+	
 	// 모든 공지사항 가져옴
 	@Override
 	public List<Notice> getNoticeListAll() {
 		return noticeRepository.getNoticeListAll();
 	}
+
 	// 원하는 갯수만큼 노출
 	@Override
 	public List<Notice> getNoticeList(int pageNumber) {
 		noticeListAll = getNoticeListAll();
-		
+
 		List<Notice> noticeList = new ArrayList<Notice>();
-		
+
 		setNoticeBean(pageNumber);
 
 		for (int i = noticeBean.getStartIndex(); i < noticeBean.getEndIndex()
@@ -79,7 +85,7 @@ public class NoticeServiceImpl implements NoticeService {
 		}
 		return noticeList;
 	}
-	
+
 	
 	
 //	파일 업/다운로드
@@ -88,15 +94,13 @@ public class NoticeServiceImpl implements NoticeService {
 	public NoticeDto fileUpload(NoticeInsertDto noticeInsertDto) {
 		// 경로지정
 		String filePath = context.getRealPath("/static/fileupload");
-		
+
 		// insertDto에 있는 notoce_file을 multipartFile로..
 		MultipartFile[] multipartFiles = noticeInsertDto.getNotice_file();
-		
-//		NoticeDto noticeDto = new NoticeDto();
 
 		StringBuilder originName = new StringBuilder();
 		StringBuilder tempName = new StringBuilder();
-		
+
 		for (MultipartFile multipartFile : multipartFiles) {
 			String originFile = multipartFile.getOriginalFilename();
 			// 파일이름이 없다면 바로 dto 반환
@@ -126,7 +130,7 @@ public class NoticeServiceImpl implements NoticeService {
 				e.printStackTrace();
 			}
 		}
-		
+
 //		마지막 파일명의 쉼표 지우기
 		originName.delete(originName.length() - 1, originName.length());
 		tempName.delete(tempName.length() - 1, tempName.length());
@@ -136,6 +140,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 		return noticeDto;
 	}
+
 	// 파일 리스트 가져오기
 	@Override
 	public List<FileBean> getFileList(Notice notice) {
@@ -161,15 +166,16 @@ public class NoticeServiceImpl implements NoticeService {
 
 		return fileList;
 	}
+
 	// 파일 다운로드
 	@Override
 	public byte[] fileDownload(FileBean fileBean) {
 		// 파일 경로 설정하고 파일에 이름 담기
 		String filePath = context.getRealPath("/static/fileupload");
 		File file = new File(filePath, fileBean.getTempFileName());
-		
+
 		byte[] fileData = null;
-		
+
 		try {
 			fileData = FileCopyUtils.copyToByteArray(file);
 		} catch (IOException e) {
@@ -178,7 +184,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 		return fileData;
 	}
-	
+
+	// 파일 수정
+	@Override
+	public NoticeDto fileUpdate(NoticeUpdateDto noticeUpdateDto) {
+
+		return null;
+	}
+
 	
 	
 //	조회수 증가
@@ -186,7 +199,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public void plusNoticeCount(int notice_code) {
 		noticeRepository.plusNoticeCount(notice_code);
 	}
-	
+
 	
 	
 //	디테일 페이지
@@ -195,39 +208,41 @@ public class NoticeServiceImpl implements NoticeService {
 		plusNoticeCount(notice_code);
 		return noticeRepository.getNoticeDtl(notice_code);
 	}
+
 	// 이전글
 	@Override
 	public NoticePreNextDto getPreNotice(int notice_code) {
 		return noticeRepository.getPreNotice(notice_code);
 	}
+
 	// 다음글
 	@Override
 	public NoticePreNextDto getNextNotice(int notice_code) {
 		return noticeRepository.getNextNotice(notice_code);
 	}
-	
+
 	
 	
 //	공지사항 등록
 	@Override
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
 		fileUpload(noticeInsertDto);
-		
+
 		noticeDto.setNotice_title(noticeInsertDto.getNotice_title());
 		noticeDto.setNotice_writer(noticeInsertDto.getNotice_writer());
 		noticeDto.setNotice_content(noticeInsertDto.getNotice_content());
-		
+
 		Notice notice = noticeDto.toEntity();
-		
+
 		int mstResult = 0, dtlResult = 0;
 
 		mstResult = noticeRepository.noticeMstInsert(notice);
-		if(mstResult == 1) {
+		if (mstResult == 1) {
 			dtlResult = noticeRepository.noticeDtlInsert(notice);
 		}
 		return dtlResult;
-	}	
-	
+	}
+
 	
 	
 //	공지사항 수정
@@ -236,24 +251,38 @@ public class NoticeServiceImpl implements NoticeService {
 //		파일 업데이트랑 삭제 구현해야 함.
 //		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
 //		fileUpload(noticeInsertDto);
-		
+
 		Notice notice = noticeDto.toEntity();
-		
+
 		int mstResult = 0, dtlResult = 0;
-		
+
 		mstResult = noticeRepository.noticeMstUpdate(notice);
-		if(mstResult == 1) {
+		if (mstResult == 1) {
 			dtlResult = noticeRepository.noticeDtlUpdate(notice);
 		}
 		return dtlResult;
 	}
-	
+
 	
 	
 //	공지사항 삭제
 	@Override
 	public int noticeDelete(int notice_code) {
+		Notice notice = noticeRepository.getNoticeDtl(notice_code);
+		
+		// 첨부파일 경로
+		String filePath = context.getRealPath("/static/fileupload");
+		// 첨부파일을 리스트로 불러옴
+		List<FileBean> fileList = getFileList(notice);
+		
+		if (fileList != null) {
+			for (FileBean fileBean : fileList) {
+				File file = new File(filePath, fileBean.getTempFileName());
+				if (file.exists()) {
+					file.delete();
+				}
+			}
+		}
 		return noticeRepository.noticeDelete(notice_code);
 	}
-
 }

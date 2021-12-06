@@ -68,6 +68,7 @@
                 </ul>
                 <ul class="file_ul_dtl">
                     <li>
+                        <!--
                         <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                             <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
                                 ${fileBean.originFileName }
@@ -75,6 +76,17 @@
                             <c:if test="${not st.last }">
                                 /
                             </c:if>
+                        </c:forEach>
+                        -->
+                        <c:forEach var="fileBean" items="${fileList }" varStatus="st">
+                        <div class="item-file">
+                            <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
+                                ${fileBean.originFileName }
+                            </a>
+                        </div>
+                        <c:if test="${not st.last }">
+                            <hr>
+                        </c:if>
                         </c:forEach>
                     </li>
                 </ul>
@@ -93,7 +105,7 @@
 
     <article class="notice_pre_next">
         <ul>
-            <li class="pn_title pn_title1">다음 글</li>
+            <li class="pn_title pn_title1"><i class="fas fa-arrow-up"></i> 다음 글</li>
             <c:choose>
                 <c:when test="${not empty next_notice }">
                     <li class="pn_content pn_content1">
@@ -108,7 +120,7 @@
             </c:choose>
         </ul>
         <ul>
-            <li class="pn_title">이전 글</li>
+            <li class="pn_title"><i class="fas fa-arrow-down"></i> 이전 글</li>
             <c:choose>
                 <c:when test="${not empty pre_notice }">
                     <li class="pn_content">

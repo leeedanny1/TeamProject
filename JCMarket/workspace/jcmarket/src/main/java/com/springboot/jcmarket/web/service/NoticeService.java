@@ -8,6 +8,7 @@ import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.dto.notice.NoticeDto;
 import com.springboot.jcmarket.web.dto.notice.NoticeInsertDto;
 import com.springboot.jcmarket.web.dto.notice.NoticePreNextDto;
+import com.springboot.jcmarket.web.dto.notice.NoticeUpdateDto;
 
 public interface NoticeService {
 
@@ -29,6 +30,8 @@ public interface NoticeService {
 	public List<FileBean> getFileList(Notice notice);
 	// 파일 다운로드
 	public byte[] fileDownload(FileBean fileBean);
+	// 게시글 수정시 파일 수정
+	public NoticeDto fileUpdate(NoticeUpdateDto noticeUpdateDto);
 	
 //	공지사항 조회수 증가
 	public void plusNoticeCount(int notice_code);

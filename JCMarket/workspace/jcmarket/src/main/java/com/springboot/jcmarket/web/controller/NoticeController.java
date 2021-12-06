@@ -42,9 +42,7 @@ public class NoticeController {
 		mav.addObject("notice_dtl", noticeService.getNoticeDtl(notice_code));
 		mav.addObject("fileList", noticeService.getFileList(notice));
 		mav.addObject("pre_notice", noticeService.getPreNotice(notice_code));
-//		System.out.println(noticeService.getPreNotice(notice_code));
 		mav.addObject("next_notice", noticeService.getNextNotice(notice_code));
-//		System.out.println(noticeService.getNextNotice(notice_code));
 		return mav;
 	}
 	
