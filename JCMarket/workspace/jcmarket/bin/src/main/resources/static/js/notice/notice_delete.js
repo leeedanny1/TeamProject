@@ -16,7 +16,7 @@ notice_delete_btn.onclick = () => {
             success: function (data) {
                 if (data == 1) {
                     alert(notice_code.value + "번 공지사항이 성공적으로 삭제되었습니다.");
-                    location.replace('/notice/list');
+                    location.replace('/notice/list/1');
                 } else if (data == 0) {
                     alert("공지사항 삭제 실패! (DB 처리 오류)")
                 }

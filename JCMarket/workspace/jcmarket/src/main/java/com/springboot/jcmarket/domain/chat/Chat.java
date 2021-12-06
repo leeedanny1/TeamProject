@@ -25,6 +25,7 @@ public class Chat {
 	//chat_dtl
 	private int chat_index;
 	private String chat_content;
+	private int writer_id;
 	private String writer_nickname;
 	private String chat_date;
 	private String create_date;

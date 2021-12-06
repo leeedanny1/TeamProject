@@ -20,6 +20,7 @@ public class ChatDto {
 
 	private int chat_index;
 	private String chat_content;
+	private int writer_id;
 	private String writer_nickname;
 	private String chat_date;
 	private String create_date;
@@ -27,7 +28,7 @@ public class ChatDto {
 	public Chat toEntity() {
 		return Chat.builder().item_code(item_code).buyer_id(buyer_id).
 				seller_id(seller_id).chat_index(chat_index)
-				.chat_content(chat_content).writer_nickname(writer_nickname).chat_date(chat_date)
+				.chat_content(chat_content).chat_date(chat_date)
 				.build();
 		
 	}

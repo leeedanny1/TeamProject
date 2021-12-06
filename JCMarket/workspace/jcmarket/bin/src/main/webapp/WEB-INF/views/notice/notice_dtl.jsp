@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
-<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -26,7 +31,7 @@
 
 
     <!-- main content -->
-    <main class="wrap main">
+    <main class="wrap main notice_main_c">
         <h1 class="page_name">공지사항</h1>
         <section id="insert_form">
         	<input type="hidden" id="notice_code" value="${notice_dtl.notice_code }">
@@ -56,72 +61,84 @@
                     <pre>${notice_dtl.notice_content}</pre>
                 </li>
             </ul>
+            
+            <c:if test="${not empty fileList}">
+                <ul class="file_ul_dtl">
+                    <li>첨부파일</li>
+                </ul>
+                <ul class="file_ul_dtl">
+                    <li>
+                        <c:forEach var="fileBean" items="${fileList }" varStatus="st">
+                            <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
+                                ${fileBean.originFileName }
+                            </a>
+                            <c:if test="${not st.last }">
+                                /
+                            </c:if>
+                        </c:forEach>
+                    </li>
+                </ul>
+            </c:if>
+    </section>
 
-            <ul class="file_ul_dtl">
-                <li>첨부파일</li>
-            </ul>
-            <ul class="file_ul_dtl">
-                <li>
-                <!-- 
-                    <c:forEach var="fileBean" items="${fileList }" varStatus="st">
-                        <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
-                            ${fileBean.originFileName }
-                        </a>
-                        <c:if test="${not st.last }">
-                            /
-                        </c:if>
-                    </c:forEach>
-                     -->
-                </li>
-            </ul>
 
-        </section>
-
-        <article class="list_btn_container">
+    <article class="list_btn_container">
+        <c:if test="${principal.user.role eq 'admin'}">
             <button type="button" class="list_btn notice_update_btn">수정</button>
             <button type="button" class="list_btn notice_delete_btn">삭제</button>
-            <button type="button" class="list_btn" onclick="location.href='/notice/list'">목록</button>
-        </article>
+        </c:if>
+        <button type="button" class="list_btn" onclick="location.href='/notice/list/1'">목록</button>
+    </article>
 
 
-        <div class="notice_pre_next">
-            <ul class="notice_next">
-                <li class="next_title">다음 글</li>
-                <!-- 
-                <c:if test="${notice.nextNotice_code ne 0}">
-                    <a href="notice/${notice.nextNotice_code }">
-                        <li>${notice.nextNotice_title }</li>
-                    </a>
-                </c:if>
-                 -->
-            </ul>
-            <ul class="notice_pre">
-                <li class="pre_title">이전 글</li>
-                <!--
-                <c:if test="${notice.preNotice_code ne 0}">
-                    <a href="notice/${notice.preNotice_code }">
-                        <li>${notice.preNotice_title }</li>
-                    </a>
-                </c:if>
-                 -->
-            </ul>
-        </div>
+    <article class="notice_pre_next">
+        <ul>
+            <li class="pn_title pn_title1">다음 글</li>
+            <c:choose>
+                <c:when test="${not empty next_notice }">
+                    <li class="pn_content pn_content1">
+                        <a href="/notice/${next_notice.next_code }">
+                            ${next_notice.next_title }
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="pn_content pn_content1">다음글이 없습니다.</li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+        <ul>
+            <li class="pn_title">이전 글</li>
+            <c:choose>
+                <c:when test="${not empty pre_notice }">
+                    <li class="pn_content">
+                        <a href="/notice/${pre_notice.pre_code }">
+                            ${pre_notice.pre_title }
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="pn_content">이전글이 없습니다.</li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+    </article>
+</main>
+
+
+
+<!-- footer -->
+<footer>
+    <main class="wrap">
+        푸터<br>
+        dsfdsfsd <br>
     </main>
+</footer>
 
 
 
-    <!-- footer -->
-    <footer>
-        <main class="wrap">
-            푸터<br>
-            dsfdsfsd <br>
-        </main>
-    </footer>
-    
-
-
-    <script src="/js/notice/notice_dtl.js"></script>
-    <script src="/js/notice/notice_delete.js"></script>
+<script src="/js/notice/notice_dtl.js"></script>
+<script src="/js/notice/notice_delete.js"></script>
 </body>
 
 </html>

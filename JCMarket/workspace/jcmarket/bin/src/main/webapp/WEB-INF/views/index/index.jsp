@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC마켓</title>
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/include/include.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/include/include.css">
+    <link rel="stylesheet" href="/css/index.css">
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -132,6 +133,7 @@
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var="notice" items="${noticeList }" class="item_container">
+               
                     <li class="item_list">
                         <!-- 상품사진 -->
                         <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
@@ -219,10 +221,6 @@
             </ul>
         </section>
     </main>
-     
-  
-     
-     
     <!-- footer -->
     <footer>
         <main class="wrap">
@@ -230,10 +228,7 @@
             dsfdsfsd <br>
         </main>
     </footer>
-    
-    <!-- fontawesome CDN -->
-    <script src="https://kit.fontawesome.com/85db88a229.js" crossorigin="anonymous"></script>
-   
+ 
 </body>
 
 

@@ -17,6 +17,21 @@ body{
     box-shadow: rgb(0 0 0 / 10%) 0px 3px 6px 0px;
 }
 
+.find_container {
+	 margin: 40px 6px 12px 0;
+	 width:100%;
+	 text-align: right;
+}
+
+
+.find_id:hover {
+	 text-decoration: underline;
+	 cursor:pointer;
+}
+.find_password:hover {
+	 text-decoration: underline;
+	 cursor:pointer;
+}
 
 /* 페이지 제목 */
 .sign_name {

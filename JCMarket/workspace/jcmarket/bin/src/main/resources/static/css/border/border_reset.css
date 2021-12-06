@@ -1,6 +1,6 @@
 /* 수정, 삭제, 목록 가기 버튼 */
 .list_btn_container{
-    margin: 20px 0 30px;
+    margin: 30px 0 0;
     display: flex;
     justify-content: flex-end;
 }
@@ -43,6 +43,11 @@
     border: 1px solid black;
     box-sizing: border-box;
     border-collapse: collapse;
+    padding-left: 5px;
+
+    /* text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; */
 }
 
 /* 제목라인 */
@@ -161,34 +166,76 @@
     box-sizing: border-box;
     height: 30px;
 }
+.notice_main ul li{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 /* li들 사이즈 지정 */
 .notice_num{
-    width: 10%;
+    width: 8%;
+    text-align: center;
+    border-right: 0.5px solid #ccc;
 }
 .notice_title{
-    width: 60%;
+    width: 57%;
+    padding-left: 3px;
+    border-right: 0.5px solid #ccc;
 }
 .notice_writer{
-    width: 10%;
+    width: 17%;
+    padding-left: 3px;
+    border-right: 0.5px solid #ccc;
 }
 .notice_date{
     width: 10%;
+    text-align: center;
+    border-right: 0.5px solid #ccc;
 }
 .notice_count{
-    width: 10%;
+    text-align: center;
+    width: 8%;
 }
 
+/* 공지사항 위치 조정 */
+.notice_main_c{
+    margin-top: 50px;
+}
 
 
 
 /* 이전글 다음글 부분 */
-.notice_pre_next .next_title, .notice_pre_next .pre_title{
-    width: 25%;
+.notice_pre_next{
+    margin: 30px 0 50px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.notice_pre_next ul{
+    display: flex;
+}
+.notice_pre_next .pn_title{
+    width: 15%;
+    text-align: center;
+
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.notice_pre_next .pn_title1{
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.notice_pre_next .pn_content{
+    padding-left: 10px;
+    width: 85%;
+}
+.notice_pre_next .pn_content1{
+    border-bottom: 1px solid #ccc;
 }
 
 
 
 /* 페이지 번호 부분 */
 .page_num_area{
-    margin-bottom: 50px;
+    margin: 30px auto 50px;
+    width: 50%;
 }

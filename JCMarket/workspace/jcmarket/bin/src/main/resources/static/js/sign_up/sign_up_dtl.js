@@ -81,9 +81,20 @@ check_btns.forEach((check_btn, checkIndex) => {
 
 //다음버튼,회원가입 버튼클릭 시 
 submit_btn.addEventListener('click', ()=> {
-	console.log('passwordCheckResult: ' + passwordCheckResult);
-   
-	inputs.forEach((input, inputIndex) => {
+    onSubmit();
+});
+
+//엔터 클릭시 
+window.addEventListener('keypress', (e) => {
+   if(e.keyCode == 13){
+		onSubmit();
+	}
+});
+
+
+//onSubmit
+function onSubmit() {
+		inputs.forEach((input, inputIndex) => {
 	   	checkEmpty(input, inputIndex);
 	   	checkPasswordService(input, inputIndex);
 	   	checkNameService(input, inputIndex);
@@ -116,8 +127,9 @@ submit_btn.addEventListener('click', ()=> {
 			
 	}
 	}
-	
-});
+}
+
+
 
 
 //회원가입 
@@ -431,7 +443,7 @@ function clearMsg(input) {
 function msgService(input,msgContent, msgIndex) {
 	const p =document.createElement('p');
     p.textContent = msgContent;
-    //에러메시지 
+    //에러메시지
 	if(msgIndex == 0) {
 	    p.classList.add('error_msg');
 	//성공메시지 
