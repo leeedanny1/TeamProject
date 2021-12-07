@@ -17,36 +17,33 @@
 </head>
 <body>
 
-    <main class="sign_container">
+    <main class="sign_container ">
          <h1 class="sign_name">JC마켓 비밀번호 찾기</h1>
         <span class="sign_exp">비밀번호를 찾고자 하는 아이디를 입력해 주세요. </span>
         
-   <div class="sign_form phone_check find_form">
+   <div class="sign_form phone_check find_form ">
           <input type= "text" class="input" placeholder="아이디를 입력해주세요.">
+          
           <button type="button"  class="submit_btn">다음</button>   
         </div> 
   
    
-     
-
-   
-    <div class="sign_form phone_check find_form invisible">
+    <div class="sign_form phone_check find_form invisible ">
           <input type="tel" class="input" id="" placeholder="이름을 입력해주세요.">
+           
           <section class="check_section">
                <input type="tel" class="input" id="" placeholder="'-'을 빼고 입력해주세요. ">
+                 <input type = "hidden" class= "user_info" value ="">
                 <button type="button" class="check_btn">전화번호 인증</button>
            </section>
          <button type="button"  class="submit_btn">다음</button>   
    </div> 
         
     <div class="sign_form find_form invisible">
-        
-          <section class="check_section ">
-               <h1 class="find_id_mag"></h1>
-               <h4 class= "create_date"></h4>
-            </section>
-       
-        </div>   
+         <input type="password" class="input" id="" placeholder="비밀번호를 입력해 주세요.">
+         <input type="password" class="input" id="" placeholder="비밀번호를 한번 더 입력해주세요.">
+          <button type="button"  class="submit_btn">다음</button> 
+    </div>   
          
     </main>
 </body>

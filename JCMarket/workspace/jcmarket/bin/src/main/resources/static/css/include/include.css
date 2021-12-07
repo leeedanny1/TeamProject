@@ -44,12 +44,10 @@ header{
 }
 
 /* 인포 */
-.t_header .h_info > li{
-    /* font-size: 15px; */
-}
-.t_header .h_info > li > a{
+.t_header .h_info > .h_info_btn{
     padding: 0 10px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 

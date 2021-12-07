@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>JC톡</title>
 
 <link rel="stylesheet" href="/css/chat/chat.css">
 <script src="/js/chat/chat.js" defer></script>
@@ -23,23 +23,27 @@
 		<div class="chat">
 			<div class="list">
 				<c:forEach var="chat" items="${chatList }">
-					<a class="chatlist_btn" href="/chatting/${chat.item_code }/${chat.buyer_id}/${chat.seller_id}">
+					<div class="chatlist_btn">
 					<input type="hidden" class="chatinfo" value="${chat.item_code}">
 					<input type="hidden" class="chatinfo" value="${chat.buyer_id}">
 					<input type="hidden" class="chatinfo" value="${chat.seller_id}">
-					<input type="hidden" class="chatinfo" value="${principal.user.user_nickname }">
+					<input type="hidden" class="chatinfo" value="${principal.user.id }">
 		
 						<ul>
 							<li class="chat_title"><br>과의 채팅</li>
 						</ul>
-					</a>
+					</div>
+					<div class= "none">
+					<div class="msgbox">
+					<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
+					<button type="button" class="submitbtn">전 송</button>
+				</div>
+				</div>
 				</c:forEach>
 			</div>
 			<div class="chatting">
 			
 				<ul>
-				<c:forEach var="chatmsg1" items="${chatmsg }">
-		
 					<li>
 						<div class="chatmsg">
 							<h2 class="my">
@@ -48,17 +52,10 @@
 							</h2>
 						</div>
 					</li>
-					
-					</c:forEach>
+						
 				</ul>
 		
-				<div class="msgbox">
-					<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
-					<button type="button" class="submitbtn">전 송</button>
-					
-
-				</div>
-				</form>
+				
 			</div>
 
 		</div>

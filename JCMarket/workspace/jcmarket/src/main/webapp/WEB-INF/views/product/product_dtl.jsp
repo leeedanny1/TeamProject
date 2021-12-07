@@ -96,7 +96,7 @@
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
-                        <button type="button">연락하기</button>
+                        <button type="button" onclick="window.open('/chat')">연락하기</button>
                         <button type="button">구매하기</button>
                     </article>
                 </article>

@@ -54,17 +54,6 @@
 		)
 	</insert>
 	
-	<select id = "findId" parameterType="com.springboot.jcmarket.domain.user.User" resultType="com.springboot.jcmarket.domain.user.User">
-	    select
-	     user_id, create_date
-        from
-	     user_mst
-        where
-	     user_phone = #{user_phone} 
-	     and
-	     user_name = #{user_name}
-	 
-	</select>
 	
 	
 	<select id = "getUser" resultType="com.springboot.jcmarket.domain.user.User">
@@ -79,6 +68,32 @@
 	
 	</select>
 	
+	<select id = "findId" parameterType="com.springboot.jcmarket.domain.user.User" resultType="com.springboot.jcmarket.domain.user.User">
+	    select
+	     user_id, create_date
+        from
+	     user_mst
+        where
+	     user_phone = #{user_phone} 
+	     and
+	     user_name = #{user_name}
+	 
+	</select>
+	
+	
+	<select id = "findPassword" parameterType="com.springboot.jcmarket.domain.user.User" resultType="com.springboot.jcmarket.domain.user.User">
+	  select
+         
+	     user_password, update_date
+        from
+	     user_mst
+        where
+	     user_phone = #{user_phone}
+	     and
+	     user_name = #{user_name}
+	     
+	</select>
+	
 	 <update id = "updateUser" parameterType="com.springboot.jcmarket.domain.user.User">
 	      update
 	       user_mst
@@ -89,6 +104,17 @@
 	       user_id = #{user_id}
 	
 	</update>  
+	 <update id = "updatePassword" parameterType="com.springboot.jcmarket.domain.user.User">
+	      update
+            user_mst
+          set  
+            user_password = #{user_password} 
+          where
+            user_phone = #{user_phone}
+	        and
+	        user_name = #{user_name}
+     
+    </update> 
 	<update id= "socailupdate" parameterType="com.springboot.jcmarket.domain.user.User">
           update
 	       user_mst
