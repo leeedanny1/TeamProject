@@ -21,8 +21,10 @@
                 <h1 class="h_logo">JC마켓</h1>
             </a>
             <!-- 검색박스 -->
+            <div class = "h_search_btn_container">
             <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
             <i class="fas fa-search h_search_btn"></i>
+            </div>
             <!-- 인포 -->
             <ul class="h_info">
                 <li class="h_sale_btn h_info_btn">판매하기</li>
