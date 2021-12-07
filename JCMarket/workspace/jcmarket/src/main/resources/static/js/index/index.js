@@ -5,6 +5,11 @@ const input_password = document.querySelector('.input_password');
 const h_search_btn = document.querySelector('.h_search_btn');
 const h_search = document.querySelector('.h_search');
 
+const h_sale_btn = document.querySelector('.h_sale_btn');
+const h_myshop_btn = document.querySelector('.h_myshop_btn')
+const h_jctalk_btn = document.querySelector('.h_jctalk_btn')
+
+
 
 //검색 아이콘 클릭 시 
 h_search_btn.addEventListener('click', ()=> {  
@@ -14,6 +19,40 @@ h_search_btn.addEventListener('click', ()=> {
 	}
     location.href = '/items/search/' + h_search.value;
 });
+
+
+// 헤더 검색창 우측부분
+// 판매하기 버튼을 눌렀을 때
+h_sale_btn.onclick = () => {
+	if(toUpdatePage == null){
+		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
+		location.href = "/sign-in-select"
+	} else {
+		location.href = "/items/sale"
+	}
+
+}
+// 내상점 버튼을 눌렀을 때
+h_myshop_btn.onclick = () => {
+	if(toUpdatePage == null){
+		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
+		location.href = "/sign-in-select"
+	} else {
+		location.href = ""
+	}
+
+}
+// jc톡 버튼을 눌렀을 때
+h_jctalk_btn.onclick = () => {
+	if(toUpdatePage == null){
+		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
+		location.href = "/sign-in-select"
+	} else {
+		window.open('/chat')
+	}
+
+}
+
 
 
 

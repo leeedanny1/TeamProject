@@ -67,7 +67,7 @@
 
                             <ul class="page_num_area">
                                 <a
-                                    href="/notice/list/${noticeBean.startPage - 1 eq 0 ? 1 : noticeBean.pageNumber - 1 }">
+                                    href="/notice/list/${noticeBean.startPage - 5 le 0 ? 1 : noticeBean.pageNumber - 5 }">
                                     <li><i class="fas fa-arrow-circle-left"></i></li>
                                 </a>
 
@@ -78,7 +78,7 @@
                                 </c:forEach>
 
                                 <a
-                                    href="/notice/list/${noticeBean.totalPage eq noticeBean.pageNumber ? noticeBean.totalPage : noticeBean.pageNumber + 1 }">
+                                    href="/notice/list/${noticeBean.totalPage ge noticeBean.pageNumber ? noticeBean.totalPage : noticeBean.pageNumber + 5 }">
                                     <li><i class="fas fa-arrow-circle-right"></i></li>
                                 </a>
                             </ul>

@@ -12,13 +12,14 @@
 			pm.item_code AS item_code,
 			pm.item_title AS item_title,
 			pm.item_date AS item_date,
+			pm.item_count AS item_count,
 			pd.like_count AS like_count,
 			pd.item_pirce AS item_price
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
 		ORDER BY
-			like_count DESC;
+			item_count DESC;
 	</select>
   	<!-- 최근상품 -->
   	<select id="getNewProductListAll" resultType="com.springboot.jcmarket.domain.product.Product">
@@ -26,6 +27,8 @@
 			pm.item_code AS item_code,
 			pm.item_title AS item_title,
 			pm.item_date AS item_date,
+			pm.item_count AS item_count,
+			pd.like_count AS like_count,
 			pd.item_pirce AS item_price
 		FROM
 			product_mst AS pm

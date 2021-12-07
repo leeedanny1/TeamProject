@@ -26,19 +26,19 @@ public class ProductBean {
 		return startIndex;
 	}
 	public void setStartIndex() {
-		this.startIndex = (this.pageNumber - 1) * 15;
+		this.startIndex = (this.pageNumber - 1) * 10;
 	}
 	public int getEndIndex() {
 		return endIndex;
 	}
 	public void setEndIndex() {
-		this.endIndex = pageNumber * 15;;
+		this.endIndex = pageNumber * 10;;
 	}
 	public int getTotalPage() {
 		return totalPage;
 	}
 	public void setTotalPage() {
-		this.totalPage = this.noticeTotalCount % 15 == 0 ? this.noticeTotalCount / 15 : this.noticeTotalCount / 15 + 1;
+		this.totalPage = this.noticeTotalCount % 10 == 0 ? this.noticeTotalCount / 10 : this.noticeTotalCount / 10 + 1;
 	}
 	public int getStartPage() {
 		return startPage;
