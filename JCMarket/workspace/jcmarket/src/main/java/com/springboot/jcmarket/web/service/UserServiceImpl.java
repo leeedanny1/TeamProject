@@ -21,17 +21,29 @@ public class UserServiceImpl implements UserService{
 		return userRepository.updateUser(user);
 	}
 	
+    @Override
+	public User findId(findAccountDto findAccountDto) {
+		User user = findAccountDto.toEntity();
+		return userRepository.findId(user);
+	}
+
+
+	@Override
+	public User findPassword(findAccountDto findAccountDto) {
+		User user = findAccountDto.toEntity();
+		return userRepository.findPassword(user);
+	}
+	
 
 	@Override
 	public int withdraw(int id) {
 		return userRepository.withdraw(id);
 	}
 
-
 	@Override
-	public User findId(findAccountDto findAccountDto) {
+	public int updatePassword(findAccountDto findAccountDto) {
 		User user = findAccountDto.toEntity();
-		return userRepository.findId(user);
+		return userRepository.updatePassword(user);
 	}
 
 }

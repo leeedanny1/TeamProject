@@ -36,18 +36,19 @@ public class UserController {
 	@PutMapping("/update")
 	public String update(@RequestBody SignUpDto signUpDto , @AuthenticationPrincipal PrincipalDetails prDetails) {
 		User user = signUpService.getUser(signUpDto.getUser_id());
-		int update=signUpService.socailupdate(signUpDto);
+		int update = 0;
 		if (signUpDto.getUser_password() == "") {
 			signUpDto.setUser_password(user.getUser_password());
 		} else if (signUpDto.getUser_nickname() == "") {
 			signUpDto.setUser_nickname(user.getUser_nickname());
 		}
+		update =userService.updateUser(signUpDto);
 		if(update==1) {
 			
 			  prDetails.getUser().setUser_nickname(signUpDto.getUser_nickname());
 			  prDetails.getUser().setUser_phone(signUpDto.getUser_phone());		
 		}
-		return  Integer.toString(userService.updateUser(signUpDto));
+		return  Integer.toString(update);
 	
 	}
 	
@@ -66,8 +67,23 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/find-id")
 	public Object findId(@RequestBody findAccountDto findAccountDto) {
+		System.out.println("find-id:" + findAccountDto);
 	   return userService.findId(findAccountDto);
 	}
+	
+	@ResponseBody
+	@PostMapping("/find-password")
+	public Object findPassword(@RequestBody findAccountDto findAccountDto) {
+		return userService.findPassword(findAccountDto);
+	}
+	
+	@ResponseBody
+	@PutMapping("/update-password")
+	public String updatePassword(@RequestBody findAccountDto findAccountDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println("findAccountDto: " + findAccountDto);
+	    return Integer.toString(userService.updatePassword(findAccountDto));
+	}
+	
 	
 	@ResponseBody
 	@DeleteMapping("/withdraw")

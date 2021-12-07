@@ -6,6 +6,7 @@ const sign_exp = document.querySelector('.sign_exp');
 const find_id_mag = document.querySelector('.find_id_mag');
 const create_date = document.querySelector('.create_date');
 
+
 var phoneCheckResult = 0;
 var nameCheckResult = 0;
 var tempPhoneValue = '';
@@ -41,6 +42,8 @@ submit_btn.addEventListener('click', () => {
 	if(checkEmpty(inputs[0], 0)) {
 		checkNameFormat(inputs[0]);
 	}
+	
+	
 
 	
 	if(nameCheckResult == 1 && phoneCheckResult == 1) {
