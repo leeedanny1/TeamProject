@@ -1,7 +1,4 @@
 package com.springboot.jcmarket.web.dto.chat;
-
-
-
 import com.springboot.jcmarket.domain.chat.Chat;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +11,6 @@ import lombok.NoArgsConstructor;
 public class ChatDto {
 	private int seller_id;
 	private int buyer_id;
-	private String seller_nickname;
-	private String buyer_nickname;
 	private int item_code;
 
 	private int chat_index;
@@ -28,7 +23,7 @@ public class ChatDto {
 	public Chat toEntity() {
 		return Chat.builder().item_code(item_code).buyer_id(buyer_id).
 				seller_id(seller_id).chat_index(chat_index)
-				.chat_content(chat_content).chat_date(chat_date)
+				.chat_content(chat_content).writer_id(writer_id).chat_date(chat_date)
 				.build();
 		
 	}

@@ -40,7 +40,6 @@ public class ChatController {
 	@PostMapping("/chat-insert")
 	public String chat_insert(@RequestBody ChatDto chatdto) {
 		System.out.println("asdf"+chatdto);
-		chatService.Chattinginput(chatdto);
-		return "";//Integer.toString(chatService.Chattinginput(chatdto.getSeller_id(),chatdto.getBuyer_id(),chatdto.getItem_code(),chatdto.getWriter_nickname(),chatdto.getChat_content()));
+		return Integer.toString(chatService.Chattinginput(chatdto));
 	}
 }

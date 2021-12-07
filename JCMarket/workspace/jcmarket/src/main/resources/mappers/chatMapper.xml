@@ -41,8 +41,8 @@
 		AND cd.seller_id = #{seller_id};
 	</select>
 	
-	<insert id="Chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
-insert into
+	<insert id="chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
+		insert into
 			chat_dtl
 		values(  
 		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_id},#{chat_content},NOW(),NOW()

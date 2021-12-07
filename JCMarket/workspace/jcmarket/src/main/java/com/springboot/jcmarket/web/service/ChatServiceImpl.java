@@ -23,13 +23,14 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public List<Chat> getChatting(ChatDto chatDto) {
 		Chat chat = chatDto.toEntity();
-		
+		System.out.println(chat);
 		return chatRepository.getChatting(chat);
 	}
 
 	@Override
 	public int Chattinginput(ChatDto chatDto) {
-		System.out.println("asdf"+chatDto);
-		return 0;// chatRepository.Chattinginput(chat);
+		Chat chat = chatDto.toEntity();
+		System.out.println(chat);
+		return chatRepository.chattinginput(chat);
 	}
 }
