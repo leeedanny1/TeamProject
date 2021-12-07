@@ -9,4 +9,5 @@ public interface ChatService {
 	public List<Chat> getChatListAll(int id);
 	public List<Chat> getChatting(ChatDto chatDto);
 	public int Chattinginput(ChatDto chatDto);
+	public int listinput(ChatDto chatdto);
 }
