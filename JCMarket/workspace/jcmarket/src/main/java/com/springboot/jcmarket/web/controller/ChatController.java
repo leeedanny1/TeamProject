@@ -42,4 +42,8 @@ public class ChatController {
 		System.out.println("asdf"+chatdto);
 		return Integer.toString(chatService.Chattinginput(chatdto));
 	}
+	@PostMapping("/list-insert")
+	public String list_insert() {
+		return null;
+	}
 }
