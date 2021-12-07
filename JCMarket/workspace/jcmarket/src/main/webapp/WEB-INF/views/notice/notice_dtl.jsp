@@ -68,16 +68,6 @@
                 </ul>
                 <ul class="file_ul_dtl">
                     <li>
-                        <!--
-                        <c:forEach var="fileBean" items="${fileList }" varStatus="st">
-                            <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">
-                                ${fileBean.originFileName }
-                            </a>
-                            <c:if test="${not st.last }">
-                                /
-                            </c:if>
-                        </c:forEach>
-                        -->
                         <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                         <div class="item-file">
                             <a href="file-download/${fileBean.originFileName }?tempFileName=${fileBean.tempFileName }">

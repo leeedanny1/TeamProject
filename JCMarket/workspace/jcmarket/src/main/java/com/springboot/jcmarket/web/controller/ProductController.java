@@ -27,26 +27,36 @@ public class ProductController {
 	
 	private final productService productService;
 
-//	hot-items 연결
+//	hot-items 리스트
 	@GetMapping("/hot/{page_number}")
 	public ModelAndView hotProduct(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("product/hot_product");
 		mav.addObject("productList", productService.getHotProductList(page_number));
-		System.out.println(productService.getHotProductList(page_number));
 		mav.addObject("productBean", productService.getProductBean());
 		return mav;
 	}
 
-//	new-items 연결
+//	new-items 리스트
 	@GetMapping("/new/{page_number}")
 	public ModelAndView newProduct(@PathVariable int page_number) {
 		ModelAndView mav = new ModelAndView("product/new_product");
 		mav.addObject("productList", productService.getNewProductList(page_number));
-		System.out.println(productService.getNewProductList(page_number));
 		mav.addObject("productBean", productService.getProductBean());
 		return mav;
 	}
+	
+	
+	
+//	아이템 디페일 페이지
+	@GetMapping("/{item_code}")
+	public ModelAndView productDtl(@PathVariable int item_code) {
+		ModelAndView mav = new ModelAndView("product/product_dtl");
+		mav.addObject("item", productService.getItemDtl(item_code));
+		return mav;
+	}
 
+	
+	
 //	물건 판매 연결
 	@GetMapping("/sale")
 	public String sale(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {

@@ -36,7 +36,42 @@
 		ORDER BY
 			item_code DESC;
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="plusItemCount">
+		UPDATE
+			product_mst
+		SET
+			item_count = item_count + 1
+		WHERE
+			item_code = #{item_code};
+	</update>
   
+  	<!-- 디테일 페이지 -->
+  	<select id="getItemDtl" resultType="com.springboot.jcmarket.domain.product.Product">
+		SELECT
+			pm.item_code,
+			pm.item_title,
+			pm.item_writer,
+			pm.item_date,
+			pm.item_count,
+			pd.now_sale,
+			pd.like_count,
+			pd.item_pirce AS item_price,
+			pd.item_stat,
+			pd.item_change,
+			pd.item_delivery,
+			pd.item_content,
+			pd.originFileNames,
+			pd.tempFileNames,
+			pd.create_date,
+			pd.update_date
+		FROM
+			product_mst AS pm
+			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
+		WHERE
+			pm.item_code = #{item_code};
+	</select>
   
   
   

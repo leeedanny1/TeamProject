@@ -49,7 +49,7 @@ public class productServiceImpl implements productService{
     public int parseIntPageNumber(int pageNumber) {
     	return pageNumber;
     }
-    
+
 //  인기상품
     // 모든 상품목록 갸져옴
     @Override
@@ -70,6 +70,7 @@ public class productServiceImpl implements productService{
     	}
     	return productList;
     }
+    
 //  최근상품
     // 모든 상품목록 갸져옴
     @Override
@@ -90,6 +91,29 @@ public class productServiceImpl implements productService{
     	}
     	return productList;
     }
+    
+    
+    
+//    조회수 증가
+    @Override
+    public void plusItemCount(int item_code) {
+    	productRepository.plusItemCount(item_code);
+    }
+    
+    
+    
+//    디테일 페이지
+    @Override
+    public Product getItemDtl(int item_code) {
+    	plusItemCount(item_code);
+    	System.out.println(productRepository.getItemDtl(item_code));
+    	return productRepository.getItemDtl(item_code);
+    }
+    
+    
+
+
+    
     
     
     

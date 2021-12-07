@@ -25,6 +25,12 @@ public interface productService {
 	// 원하는 갯수만큼 노출
 	public List<Product> getNewProductList(int pageNumber);
 	
+//	조회수 증가
+	public void plusItemCount(int item_code);
+	
+//	디테일페이지
+	public Product getItemDtl(int item_code);
+	
 	
 	
 	
