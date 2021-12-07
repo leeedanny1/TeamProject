@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -34,7 +35,7 @@
                 <!-- 상품명 -->
                 <article class="t_item_info">
                     <h3>${item.item_title}</h3>
-                    <h4>${item.item_price}<span> 원</span></h4>
+                    <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
                 </article>
                 <!-- 상품간략정보 -->
                 <article class="b_item_info">
@@ -50,11 +51,47 @@
                         <h4>판매자</h4>
                         <span>${item.item_writer}</span>
                         <h4>상품상태</h4>
-                        <span>${item.item_stat}</span>
+                        <c:choose>
+                            <c:when test="${item.item_stat eq 0}">
+                                <span>새상품</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 1}">
+                                <span>S급</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 2}">
+                                <span>A급</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 3}">
+                                <span>B급</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                         <h4>교환여부</h4>
-                        <span>${item.item_change}</span>
+                        <c:choose>
+                            <c:when test="${item.item_change eq 0}">
+                                <span>교환가능</span>
+                            </c:when>
+                            <c:when test="${item.item_change eq 1}">
+                                <span>교환불가</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                         <h4>배송비</h4>
-                        <span>${item.item_delivery}</span>
+                        <c:choose>
+                            <c:when test="${item.item_delivery eq 0}">
+                                <span>판매자 부담</span>
+                            </c:when>
+                            <c:when test="${item.item_delivery eq 1}">
+                                <span>구매자 부담</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
