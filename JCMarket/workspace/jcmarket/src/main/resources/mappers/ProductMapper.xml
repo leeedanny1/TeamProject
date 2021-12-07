@@ -14,7 +14,7 @@
 			pm.item_date AS item_date,
 			pm.item_count AS item_count,
 			pd.like_count AS like_count,
-			pd.item_pirce AS item_price
+			pd.item_price AS item_price
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
@@ -29,7 +29,7 @@
 			pm.item_date AS item_date,
 			pm.item_count AS item_count,
 			pd.like_count AS like_count,
-			pd.item_pirce AS item_price
+			pd.item_price AS item_price
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
@@ -57,7 +57,7 @@
 			pm.item_count AS item_count,
 			pd.now_sale AS now_sale,
 			pd.like_count AS like_count,
-			pd.item_pirce AS item_price,
+			pd.item_price AS item_price,
 			pd.item_stat AS item_stat,
 			pd.item_change AS item_change,
 			pd.item_delivery AS item_delivery,
@@ -72,6 +72,62 @@
 		WHERE
 			pm.item_code = #{item_code};
 	</select>
+  
+  	<!-- 상품등록 -->
+  	<insert id="productMstInsert" parameterType="com.springboot.jcmarket.domain.product.Product">
+		INSERT INTO
+			product_mst(
+				item_title,
+				item_writer,
+				item_date
+			)
+		VALUES(
+			#{item_title},
+			#{item_writer},
+			NOW()
+);
+	</insert>
+	<insert id="productDtlInsert" parameterType="com.springboot.jcmarket.domain.product.Product">
+		INSERT INTO
+			product_dtl(
+				item_price,
+				item_stat,
+				item_change,
+				item_delivery,
+				item_content,
+				originFileNames,
+				tempFileNames,
+				create_date,
+				update_date
+			)
+		VALUES(
+			#{item_price},
+			1,
+			1,
+			1,
+			#{item_content},
+			NULL,
+			NULL,
+			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst)),
+			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst))
+		);
+	</insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

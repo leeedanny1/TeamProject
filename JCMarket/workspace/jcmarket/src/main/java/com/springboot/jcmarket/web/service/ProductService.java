@@ -6,7 +6,7 @@ import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.web.beans.ProductBean;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
-public interface productService {
+public interface ProductService {
 	
 //	전체 상품목록 가져옴
 	// 원하는 갯수만큼 담는 리스트를 위한 bean
@@ -30,6 +30,9 @@ public interface productService {
 	
 //	디테일페이지
 	public Product getItemDtl(int item_code);
+	
+//	상품등록
+	public int itemInsert(Product product);
 	
 	
 	

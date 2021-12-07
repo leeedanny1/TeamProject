@@ -19,6 +19,16 @@ public interface ProductRepository {
 	
 //	상품 디테일 페이지 가져오기
 	public Product getItemDtl(int item_code);
+	// 이전글
+	// 다음글
+	
+//	상품등록
+	// 마스터테이블 insert
+	public int productMstInsert(Product product);
+	// 디테일테이블 insert
+	public int productDtlInsert(Product product);
+	
+	
 	
 	
 	

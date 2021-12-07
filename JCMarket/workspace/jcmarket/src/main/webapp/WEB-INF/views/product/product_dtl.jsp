@@ -110,7 +110,7 @@
             <article class="list_btn_container">
                 <button type="button" class="list_btn" onclick="location.href='/product/product_update.html'">수정</button>
                 <button type="button" class="list_btn">삭제</button>
-                <button type="button" class="list_btn" onclick="location.href='/product/new_product.html'">목록</button>
+                <button type="button" class="list_btn" onclick="location.href='/items/new/1'">목록</button>
             </article>
 
             <article class="notice_pre_next">

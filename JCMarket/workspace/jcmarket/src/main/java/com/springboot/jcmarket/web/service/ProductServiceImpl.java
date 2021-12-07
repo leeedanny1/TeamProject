@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.domain.product.ProductRepository;
-import com.springboot.jcmarket.web.beans.NoticeBean;
 import com.springboot.jcmarket.web.beans.ProductBean;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
@@ -15,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class productServiceImpl implements productService{
+public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
     
@@ -108,6 +107,21 @@ public class productServiceImpl implements productService{
     	plusItemCount(item_code);
     	System.out.println(productRepository.getItemDtl(item_code));
     	return productRepository.getItemDtl(item_code);
+    }
+    
+    
+    
+//    상품등록
+    @Override
+    public int itemInsert(Product product) {
+    	int mstResult = 0, dtlResult = 0;
+    	
+    	mstResult = productRepository.productMstInsert(product);
+    	if(mstResult == 1) {
+    		dtlResult = productRepository.productDtlInsert(product);
+    	}
+    	
+    	return dtlResult;
     }
     
     
