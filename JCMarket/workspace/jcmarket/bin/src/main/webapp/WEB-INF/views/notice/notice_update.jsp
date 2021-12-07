@@ -55,13 +55,16 @@
             </ul>
             <ul class="file_ul_dtl">
                 <li class="file_list">
-                    <c:forEach var="fileBean" items="${fileList }">
+                    <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                         <div class="item-file">
                             <input type="hidden" name="originFileNames" value="${fileBean.originFileName }">
                             <input type="hidden" name="tempFileNames" value="${fileBean.tempFileName }">
                             <label class="file-name">${fileBean.originFileName }</label>
                             <div class="file-dbtn"><i class="far fa-times-circle"></i></div>
                         </div>
+                        <c:if test="${not st.last }">
+                            <hr>
+                        </c:if>
                     </c:forEach>
                 </li>
             </ul>

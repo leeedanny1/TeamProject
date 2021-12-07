@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -55,10 +63,11 @@
                 </li>
             </ul>
             <ul class="info_ul">
-                <li>작성자</li>
-                <li>관리자</li>
-                <li>작성일</li>
-                <li>2021-11-23</li>
+                <li>판매자 닉네임</li>
+                <input type="hidden" name="notice_writer" value="${principal.user.user_nickname }">
+                <li>${principal.user.user_nickname }</li>
+                <li>작성 시작 시간</li>
+                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">사진등록</li>

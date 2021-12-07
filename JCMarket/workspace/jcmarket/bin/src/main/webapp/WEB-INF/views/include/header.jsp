@@ -25,11 +25,11 @@
             <i class="fas fa-search h_search_btn"></i>
             <!-- 인포 -->
             <ul class="h_info">
-                <li><a href="/items/sale">판매하기</a></li>
+                <li class="h_sale_btn h_info_btn">판매하기</li>
                 <li>|</li>
-                <li><a href="">내상점</a></li>
+                <li class="h_myshop_btn h_info_btn">내상점</li>
                 <li>|</li>
-                <li><a href='/chat' target='_blank'>JC톡</a></li>
+                <li class="h_jctalk_btn h_info_btn">JC톡</li>
             </ul>
         </section>
 
@@ -38,8 +38,8 @@
             <!-- 카테고리 -->
             <ul class="h_category">
                 <li><a href="/notice/list/1">Notice</a></li>
-                <li><a href="/items/hot">Hot&nbspItems</a></li>
-                <li><a href="/items/new">New&nbspItems</a></li>
+                <li><a href="/items/hot/1">Hot&nbspItems</a></li>
+                <li><a href="/items/new/1">New&nbspItems</a></li>
             </ul>
             <!-- 로그인, 회원가입 -->
             <c:choose>

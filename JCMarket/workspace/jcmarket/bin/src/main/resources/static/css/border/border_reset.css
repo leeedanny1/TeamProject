@@ -43,7 +43,7 @@
     border: 1px solid black;
     box-sizing: border-box;
     border-collapse: collapse;
-    padding-left: 5px;
+    padding: 0 5px;
 
     /* text-overflow: ellipsis;
     white-space: nowrap;
@@ -101,14 +101,13 @@
 .file_insert input{
     height: 23px;
 }
-/* 디테일페이지 첨부파일 */
+/* 첨부파일 */
 .file_ul_dtl li{
     width: 100%;
 }
-
-
-/* 업데이트 페이지 첨부파일 */
+/* 첨부파일 */
 .item-file{
+    margin: 5px 0;
     display: flex;
     justify-content: space-between;
 }
