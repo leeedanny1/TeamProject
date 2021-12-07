@@ -143,13 +143,13 @@
     
     <select id ="searchProduct" resultType="com.springboot.jcmarket.domain.product.Product">
       select
-         pm.item_writer, pm.item_price, pm.create_date, pm.update_date, pd.item_title, pd.item_content
+         pm.item_writer, pm.item_title, pd.create_date, pd.update_date,  pd.item_price, pd.item_content
       from
        product_mst pm
       left outer join product_dtl pd on(pd.item_code = pm.item_code)
       where
        pm.item_writer like concat('%',#{search_content},'%') or 
-       pd.item_title like concat('%',#{search_content},'%') or 
+       pm.item_title like concat('%',#{search_content},'%') or 
        pd.item_content like concat('%',#{search_content},'%')
   
     </select>
