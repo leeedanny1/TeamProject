@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
 </head>
-
+<script src="/js/product/purchase.js" defer></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
@@ -41,7 +42,7 @@
                     <h3>${item.item_title}</h3>
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
                     <input type="hidden" class="listinfo" value=${item.item_code }>
-                  	 <input type="hidden" class="listinfo" value=${item.item_id }> 
+                  	 <input type="hidden" class="listinfo" value=${item.item_writer }> 
                     <input type="hidden" class="listinfo" value=${principal.user.id }>
                     
                 </article>
