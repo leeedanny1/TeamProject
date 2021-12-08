@@ -43,7 +43,7 @@ public class ChatController {
 		return Integer.toString(chatService.Chattinginput(chatdto));
 	}
 	@PostMapping("/list-insert")
-	public String list_insert() {
-		return null;
+	public String list_insert(@RequestBody ChatDto chatdto) {
+		return Integer.toString(chatService.listinput(chatdto));
 	}
 }

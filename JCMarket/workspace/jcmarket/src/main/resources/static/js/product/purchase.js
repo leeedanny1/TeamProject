@@ -127,6 +127,22 @@ function msgService(content, result) {
 	 }, 2000);
 				
 }
+chatstart.onclick=()=>{
+	$.ajax({
+		type:"post",
+		url:"/list-insert",
+		data:JSON.stringify(list),
+		contentType: "application/json;charset=UTF-8",
+		dataType: "text",
+		success: function(data) {
+			alert(list.buyer_id);
+			alert(list.item_code);
+			alert(list.buyer_id);
+		},error: function(){
+			alert('비동기처리오류');
+		}
+	})
+}
 
 
 			

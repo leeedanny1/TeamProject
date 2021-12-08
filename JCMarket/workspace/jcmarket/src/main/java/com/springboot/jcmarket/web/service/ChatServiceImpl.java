@@ -37,6 +37,6 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int listinput(ChatDto chatdto) {
 		Chat chat = chatdto.toEntity();
-		return 1;
+		return chatRepository.listinput(chat);
 	}
 }
