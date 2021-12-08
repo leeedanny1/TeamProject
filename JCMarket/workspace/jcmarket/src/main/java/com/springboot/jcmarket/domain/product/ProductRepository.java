@@ -28,6 +28,11 @@ public interface ProductRepository {
 	// 디테일테이블 insert
 	public int productDtlInsert(Product product);
 	
+//	상품수정
+	// 마스터테이블 update
+	public int productMstUpdate(Product product);
+	// 디테일테이블 update
+	public int productDtlUpdate(Product product);
 	
 	
 	

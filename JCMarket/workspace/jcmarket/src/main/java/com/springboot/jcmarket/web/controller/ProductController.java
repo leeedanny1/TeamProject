@@ -72,6 +72,23 @@ public class ProductController {
 	
 	
 	
+//	상품 수정페이지
+	@GetMapping("/update/{item_code}")
+	public ModelAndView productUpdate(Model model, @PathVariable int item_code) {
+		Date date = new Date();
+		model.addAttribute("now", date);
+		
+		ModelAndView mav = new ModelAndView("product/product_update");
+		mav.addObject("item", productService.getItemDtl(item_code));
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
