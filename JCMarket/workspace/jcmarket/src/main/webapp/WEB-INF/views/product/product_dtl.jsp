@@ -41,7 +41,7 @@
                     <h3>${item.item_title}</h3>
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
                     <input type="hidden" class="listinfo" value=${item.item_code }>
-                    <%-- <input type="hidden" class="listinfo" value=${item.buyder_nickname }> --%>
+                  	 <input type="hidden" class="listinfo" value=${item.item_id }> 
                     <input type="hidden" class="listinfo" value=${principal.user.id }>
                     
                 </article>
