@@ -34,6 +34,9 @@ public interface ProductService {
 //	상품등록
 	public int itemInsert(Product product);
 	
+//	상품수정
+	public int itemUpdate(Product product);
+	
 	
 	
 	

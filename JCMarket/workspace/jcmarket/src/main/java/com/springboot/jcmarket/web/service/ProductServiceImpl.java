@@ -105,7 +105,6 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product getItemDtl(int item_code) {
     	plusItemCount(item_code);
-    	System.out.println(productRepository.getItemDtl(item_code));
     	return productRepository.getItemDtl(item_code);
     }
     
@@ -126,6 +125,18 @@ public class ProductServiceImpl implements ProductService{
     
     
 
+//    상품수정
+    @Override
+    public int itemUpdate(Product product) {
+    	int mstResult = 0, dtlResult = 0;
+    	
+    	mstResult = productRepository.productMstUpdate(product);
+    	if(mstResult == 1) {
+    		dtlResult = productRepository.productDtlUpdate(product);
+    	}
+    	
+    	return dtlResult;
+    }
 
     
     

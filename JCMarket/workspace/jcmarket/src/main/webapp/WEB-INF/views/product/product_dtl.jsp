@@ -39,10 +39,10 @@
             <section class="item_info">
                 <!-- 상품명 -->
                 <article class="t_item_info">
-                    <h3>${item.item_title}</h3>
+                    <h3 id="item_title_value">${item.item_title}</h3>
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
-                    <input type="hidden" class="listinfo" value=${item.item_code }>
-                  	 <input type="hidden" class="listinfo" value=${item.item_writer }> 
+                    <input type="hidden" class="listinfo item_code" value=${item.item_code }>
+                  	<input type="hidden" class="listinfo" value=${item.item_writer }> 
                     <input type="hidden" class="listinfo" value=${principal.user.id }>
                     
                 </article>
@@ -120,8 +120,8 @@
             <pre class="item_dtl">${item.item_content}</pre>
 
             <article class="list_btn_container">
-                <button type="button" class="list_btn" onclick="location.href='/product/product_update.html'">수정</button>
-                <button type="button" class="list_btn">삭제</button>
+                <button type="button" class="list_btn product_update_btn">수정</button>
+                <button type="button" class="list_btn product_delete_btn">삭제</button>
                 <button type="button" class="list_btn" onclick="location.href='/items/new/1'">목록</button>
             </article>
 
@@ -173,6 +173,8 @@
     </footer>
 
 
+
+<script src="/js/product/product_dtl.js"></script>
 </body>
 
 </html>

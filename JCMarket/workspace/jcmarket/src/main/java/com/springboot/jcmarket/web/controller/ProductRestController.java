@@ -1,6 +1,7 @@
 package com.springboot.jcmarket.web.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,14 @@ public class ProductRestController {
 	@PostMapping("insert")
 	public String itemInsert(Product product) {
 		return Integer.toString(productService.itemInsert(product));
+	}
+	
+	
+	
+//	상품수정
+	@PutMapping("/update")
+	public String itemUpdate(Product product) {
+		return Integer.toString(productService.itemUpdate(product));
 	}
 
 }
