@@ -1,7 +1,6 @@
 package com.springboot.jcmarket.web.dto.auth;
 
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.springboot.jcmarket.domain.user.User;
 
@@ -18,7 +17,7 @@ public class findAccountDto {
 	     return User.builder()
 					.user_name(user_name)
 					.user_phone(user_phone)
-					.user_password(new BCryptPasswordEncoder().encode(user_password))
+					.user_password(user_password)
 					.build();
 		}
 }

@@ -1,6 +1,7 @@
 package com.springboot.jcmarket.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,14 +75,14 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/find-password")
 	public Object findPassword(@RequestBody findAccountDto findAccountDto) {
-		return userService.findPassword(findAccountDto);
+	   return userService.findPassword(findAccountDto);
 	}
 	
 	@ResponseBody
 	@PutMapping("/update-password")
 	public String updatePassword(@RequestBody findAccountDto findAccountDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println("findAccountDto: " + findAccountDto);
-	    return Integer.toString(userService.updatePassword(findAccountDto));
+		findAccountDto.setUser_password(new BCryptPasswordEncoder().encode(findAccountDto.getUser_password()));
+		 return Integer.toString(userService.updatePassword(findAccountDto));
 	}
 	
 	
