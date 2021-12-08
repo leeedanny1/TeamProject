@@ -137,6 +137,14 @@ public class ProductServiceImpl implements ProductService{
     	
     	return dtlResult;
     }
+    
+    
+    
+//    상품삭제
+    @Override
+    public int itemDelete(int item_code) {
+    	return productRepository.productDelete(item_code);
+    }
 
     
     
