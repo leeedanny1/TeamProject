@@ -93,6 +93,7 @@ public class NoticeServiceImpl implements NoticeService {
 	// 파일 업로드
 	@Override
 	public NoticeDto fileUpload(NoticeInsertDto noticeInsertDto) {
+		noticeDto = new NoticeDto();
 		// 경로지정
 		String filePath = context.getRealPath("/static/fileupload");
 
@@ -293,6 +294,7 @@ public class NoticeServiceImpl implements NoticeService {
 //	공지사항 등록
 	@Override
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
+		
 		fileUpload(noticeInsertDto);
 
 		noticeDto.setNotice_title(noticeInsertDto.getNotice_title());
