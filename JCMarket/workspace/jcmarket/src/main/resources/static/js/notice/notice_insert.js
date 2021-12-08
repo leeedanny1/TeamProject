@@ -20,7 +20,7 @@ notice_insert_button.onclick = () => {
                     alert("공지사항 등록이 완료되었습니다.")
                     location.replace("/notice/list/1")
                 } else {
-                    alert("공지사항 등록에 실패하였습니다. (DB오류)")
+                    alert("공지사항 등록을 실패하였습니다. (DB오류)")
                 }
             },
             error: function(){

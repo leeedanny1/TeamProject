@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
-import com.springboot.jcmarket.web.service.productService;
+import com.springboot.jcmarket.web.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class ProductController {
 	
-	private final productService productService;
+	private final ProductService productService;
 
 //	hot-items 리스트
 	@GetMapping("/hot/{page_number}")
@@ -69,6 +69,19 @@ public class ProductController {
 			return "product/product_insert";
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+/////////////////////////////////////////////	
+	
+	
+	
+	
 
 //	@GetMapping("/purchase")
 //	public String purchase() {
@@ -121,6 +134,7 @@ public class ProductController {
 		System.out.println(search_content);
 		ModelAndView mav = new ModelAndView("search/search"); 
 		mav.addObject("products" , productService.searchProduct(search_content));
+		mav.addObject("searchValue", search_content);
 		return mav;
 	}
 	

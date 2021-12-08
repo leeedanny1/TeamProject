@@ -15,7 +15,7 @@
     <main class="wrap">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
-
+         <input type = "hidden" class= "searchValue" value = "${searchValue }">
             <!-- 로고 -->
             <a href="/">
                 <h1 class="h_logo">JC마켓</h1>

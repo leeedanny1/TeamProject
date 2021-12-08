@@ -4,12 +4,13 @@ const toUpdatePage_btn = document.querySelector('.toUpdatePage_btn');
 const input_password = document.querySelector('.input_password');
 const h_search_btn = document.querySelector('.h_search_btn');
 const h_search = document.querySelector('.h_search');
-
 const h_sale_btn = document.querySelector('.h_sale_btn');
-const h_myshop_btn = document.querySelector('.h_myshop_btn')
-const h_jctalk_btn = document.querySelector('.h_jctalk_btn')
+const h_myshop_btn = document.querySelector('.h_myshop_btn');
+const h_jctalk_btn = document.querySelector('.h_jctalk_btn');
+const searchValue = document.querySelector('.searchValue');
 
-
+//검색시 검색input안의 값을 남기기 위해 
+h_search.value = searchValue.value;
 
 //검색 아이콘 클릭 시 
 h_search_btn.addEventListener('click', ()=> {  
@@ -17,7 +18,7 @@ h_search_btn.addEventListener('click', ()=> {
 		alert('검색어를 입력해 주세요!');
 	    return;
 	}
-    location.href = '/items/search/' + h_search.value;
+	location.href = '/items/search/' + h_search.value;
 });
 
 
