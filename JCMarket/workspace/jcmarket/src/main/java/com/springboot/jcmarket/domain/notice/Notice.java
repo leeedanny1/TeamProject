@@ -24,4 +24,8 @@ public class Notice {
 	private String tempFileNames;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
+	
+	// user_mst
+	private String id;
+	private String user_nickname;
 }
