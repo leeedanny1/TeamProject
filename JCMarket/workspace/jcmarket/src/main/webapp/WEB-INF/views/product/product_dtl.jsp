@@ -57,7 +57,7 @@
                     <!-- 상품정보 -->
                     <article class="item_info_dtl">
                         <h4>판매자</h4>
-                        <span>${item.item_writer}</span>
+                        <span>${item.user_nickname}</span>
                         <h4>상품상태</h4>
                         <c:choose>
                             <c:when test="${item.item_stat eq 0}">

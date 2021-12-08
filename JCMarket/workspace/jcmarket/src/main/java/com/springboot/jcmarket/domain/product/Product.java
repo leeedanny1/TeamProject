@@ -18,7 +18,7 @@ public class Product {
 //	mst
 	private int item_code;
 	private String item_title;
-	private String item_writer;
+	private int item_writer;
 	private LocalDateTime item_date;
 	private int item_count;
 	
@@ -38,6 +38,10 @@ public class Product {
 	private String tempFileNames;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
+	
+//	user_mst
+	private String id;
+	private String user_nickname;
 	
 //	like
 	private int user_id;

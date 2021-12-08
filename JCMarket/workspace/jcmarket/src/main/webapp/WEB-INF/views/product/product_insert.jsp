@@ -70,7 +70,7 @@
             </ul>
             <ul class="info_ul">
                 <li>판매자 닉네임</li>
-                <input type="hidden" name="item_writer" value="${principal.user.user_nickname }">
+                <input type="hidden" name="item_writer" value="${principal.user.id }">
                 <li>${principal.user.user_nickname }</li>
                 <li>작성 시작 시간</li>
                 <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
