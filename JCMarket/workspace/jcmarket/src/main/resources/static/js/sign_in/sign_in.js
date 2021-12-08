@@ -27,21 +27,16 @@ item_ip[1].onkeypress = () => {
 		// signInService();
 	}
 }
-for(let i=0;i<item_ip.length;i++){
 
+
+for(let i=0;i<item_ip.length;i++){
+   
     item_ip[i].onblur =()=>{
         msgservice(i);
          if(item_ip[0].value.length!=0&&item_ip[1].value.length!=0){
             submit_btn.style.opacity = 1;
              }
         }
+        
 }
-
-find_id.addEventListener('click', () => {
-	
-});
-
-find_password.addEventListener('click', () => {
-	
-});
 
