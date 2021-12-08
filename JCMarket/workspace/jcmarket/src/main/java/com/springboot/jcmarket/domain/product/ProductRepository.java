@@ -34,6 +34,9 @@ public interface ProductRepository {
 	// 디테일테이블 update
 	public int productDtlUpdate(Product product);
 	
+//	상품삭제
+	public int productDelete(int item_code);
+	
 	
 	
 	

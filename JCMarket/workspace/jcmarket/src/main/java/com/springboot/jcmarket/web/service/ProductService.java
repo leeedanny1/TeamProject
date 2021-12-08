@@ -37,6 +37,9 @@ public interface ProductService {
 //	상품수정
 	public int itemUpdate(Product product);
 	
+//	상품삭제
+	public int itemDelete(int itme_code);
+	
 	
 	
 	

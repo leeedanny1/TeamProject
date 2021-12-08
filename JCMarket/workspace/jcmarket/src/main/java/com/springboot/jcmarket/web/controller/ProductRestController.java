@@ -1,5 +1,7 @@
 package com.springboot.jcmarket.web.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,14 @@ public class ProductRestController {
 	@PutMapping("/update")
 	public String itemUpdate(Product product) {
 		return Integer.toString(productService.itemUpdate(product));
+	}
+	
+	
+	
+//	상품삭제
+	@DeleteMapping("/delete/{item_code}")
+	public String itemDelete(@PathVariable int item_code) {
+		return Integer.toString(productService.itemDelete(item_code));
 	}
 
 }
