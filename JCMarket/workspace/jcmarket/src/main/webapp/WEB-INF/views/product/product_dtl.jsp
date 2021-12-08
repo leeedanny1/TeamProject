@@ -88,6 +88,9 @@
                             <c:when test="${item.item_delivery eq 1}">
                                 <span>구매자 부담</span>
                             </c:when>
+                            <c:when test="${item.item_delivery eq 2}">
+                                <span>직거래</span>
+                            </c:when>
                             <c:otherwise>
                                 <span>DB값 오류</span>
                             </c:otherwise>
