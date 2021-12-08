@@ -41,7 +41,7 @@
                 <input type="password"  id="" class="input" name="id" placeholder="비밀번호 확인">
             
                 <section class="check_section">
-                    <input type="text" name="" id="" class="input"  placeholder="별명">
+                    <input type="text" name="" id="" class="input"  value="${principal.user.user_nickname}" placeholder="별명">
                     <button type="button" class="check_btn">별명 중복 확인</button>
                 </section>
 

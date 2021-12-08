@@ -48,4 +48,11 @@ public class ChatController {
 		System.out.println("asdfasd"+chatdto);
 		return Integer.toString(chatService.listinput(chatdto));
 	}
+	@ResponseBody
+	@PostMapping("/list-select")
+	public String list_select(@RequestBody ChatDto chatdto) {
+		
+		return Integer.toString(chatService.listselect(chatdto));
+	}
+	
 }

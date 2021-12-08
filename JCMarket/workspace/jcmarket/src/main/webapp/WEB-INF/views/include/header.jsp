@@ -13,6 +13,8 @@
 <header>
     <!-- 헤더 내부 wrap -->
     <main class="wrap">
+    
+     <input type = "hidden"  class = "user_id" value = "${principal.user.user_id}">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
          <input type = "hidden" class= "searchValue" value = "${searchValue }">
@@ -93,10 +95,7 @@
 
 </header>
 
-<c:set var="user_id" value="${principal.user.user_id}"></c:set>
-<c:choose>
-    <c:when test="${fn:length(user_id) < 16}">
-        <section class="check_password invisible">
+         <section class="check_password invisible">
             <div class="user_info">
                 <input type="text" value="${principal.user.user_id}" readonly>
                 <input type="hidden" class="user_password" value="${principal.user}" readonly>
@@ -105,21 +104,8 @@
             </div>
             <button type="button" class="toUpdatePage_btn">확인</button>
         </section>
-    </c:when>
-    <c:otherwise>
-        <section class="check_password invisible">
-            <div class="user_info">
-
-                <input type="hidden" class="" value="${principal.user.create_date}" readonly>
-                <input class="input_password" type="password" class="input" name="id" id=""
-                    placeholder="비밀번호확인이 필요합니다. ">
-            </div>
-            <button type="button" class="toUpdatePage_btn">확인</button>
-        </section>
-    </c:otherwise>
-</c:choose>
-
-</html>
+  
+ </html>
 
 
 <script type="text/javascript" src="/js/index/index.js"></script>
