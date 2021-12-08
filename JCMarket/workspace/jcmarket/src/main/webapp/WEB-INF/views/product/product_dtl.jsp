@@ -120,8 +120,10 @@
             <pre class="item_dtl">${item.item_content}</pre>
 
             <article class="list_btn_container">
-                <button type="button" class="list_btn product_update_btn">수정</button>
-                <button type="button" class="list_btn product_delete_btn">삭제</button>
+                <c:if test="${principal.user.role eq 'admin' || principal.user.id eq item.item_writer}">
+                    <button type="button" class="list_btn product_update_btn">수정</button>
+                    <button type="button" class="list_btn product_delete_btn">삭제</button>
+                </c:if>
                 <button type="button" class="list_btn" onclick="location.href='/items/new/1'">목록</button>
             </article>
 
