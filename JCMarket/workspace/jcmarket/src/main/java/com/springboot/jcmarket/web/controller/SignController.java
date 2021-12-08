@@ -86,11 +86,8 @@ public class SignController {
 		System.out.println(signUpdto);
 		int update=signUpService.socailupdate(signUpdto);
 		if(update==1) {
-	
 			  prDetails.getUser().setUser_nickname(signUpdto.getUser_nickname());
 			  prDetails.getUser().setUser_phone(signUpdto.getUser_phone());
-	
-			
 		}
 		return Integer.toString(signUpService.socailupdate(signUpdto));
 	}

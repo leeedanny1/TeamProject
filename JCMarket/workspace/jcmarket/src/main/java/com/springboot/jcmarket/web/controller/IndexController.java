@@ -23,9 +23,14 @@ public class IndexController {
 	private final SignUpService signUpService;
 	
 	@GetMapping({"/","/index"})
-     public String index() {
+     public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if(principalDetails == null) {
+			return "index/index";
+		}else if(principalDetails.getUser().getUser_nickname()==null) {
+			return "sign_up/sign_up_social";
+		}
 		return "index/index";
-	}
+}
 	
 	@ResponseBody
 	@GetMapping("get-password")
