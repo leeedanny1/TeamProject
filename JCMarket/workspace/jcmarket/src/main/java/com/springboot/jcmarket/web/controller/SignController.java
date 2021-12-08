@@ -72,7 +72,7 @@ public class SignController {
         System.out.println("signUpNickname: " + signUpNickname);
 		return Integer.toString(signUpService.nicknameCheck(signUpNickname));
 	}
-
+   
 	@ResponseBody
 	@PostMapping("sign-up")
 	public String signUp(@RequestBody SignUpDto signUpDto, HttpServletRequest request) {
