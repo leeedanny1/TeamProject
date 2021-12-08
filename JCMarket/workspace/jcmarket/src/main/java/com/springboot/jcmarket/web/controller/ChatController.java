@@ -44,6 +44,7 @@ public class ChatController {
 	}
 	@PostMapping("/list-insert")
 	public String list_insert(@RequestBody ChatDto chatdto) {
+		System.out.println("asdfasd"+chatdto);
 		return Integer.toString(chatService.listinput(chatdto));
 	}
 }
