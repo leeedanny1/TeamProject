@@ -5,7 +5,12 @@ const check_btn = document.querySelector('.check_btn');
 const withdraw_btn = document.querySelector('.withdraw_btn');
 const create_date = document.querySelector('.create_date');
 
-console.log(create_date)
+console.log(user_info[0].value);
+if(user_info[0].value == '') {
+	alert('로그인을 먼저 해주세요. ');
+	location.href = '/sign-in';
+}
+
 
 var updateData = {
     user_id: user_info[2].value,
