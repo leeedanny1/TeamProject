@@ -37,6 +37,7 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int listinput(ChatDto chatdto) {
 		Chat chat = chatdto.toEntity();
+		System.out.println("asdfasd"+chat);
 		return chatRepository.listinput(chat);
 	}
 }

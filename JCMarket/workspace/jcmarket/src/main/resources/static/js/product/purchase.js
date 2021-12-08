@@ -7,12 +7,31 @@ const chatstart = document.querySelector('.chatstart');
 const listinfo=  document.querySelectorAll('.listinfo');
 
 var list={
-	item_code=listinfo[0],
-	buyer_id=listinfo[1],
-	seller_id=listinfo[2]
+	item_code:listinfo[0].value,
+	buyer_id:listinfo[1].value,
+	seller_id:listinfo[2].value
 }
 
-console.log('user_id: ' + user_id.value);
+chatstart.onclick=()=>{
+	if(list.buyer_id==list.seller_id){
+		alert('본인이 등록하신 상품입니다');
+	}else if(list.seller_id==0){
+		alert('로그인 후 사용가능한 기능입니다');
+	}
+	else{
+	$.ajax({
+		type:"post",
+		url:"/list-insert",
+		data:JSON.stringify(list),
+		contentType: "application/json;charset=UTF-8",
+		dataType: "text",
+		success: function(data) {
+		
+		},error: function(){
+		}
+	})
+	}
+}
 
 
 //다시 새로고침했을때 하트아이콘색 유지를 위해 
@@ -126,22 +145,6 @@ function msgService(content, result) {
 		 }
 	 }, 2000);
 				
-}
-chatstart.onclick=()=>{
-	$.ajax({
-		type:"post",
-		url:"/list-insert",
-		data:JSON.stringify(list),
-		contentType: "application/json;charset=UTF-8",
-		dataType: "text",
-		success: function(data) {
-			alert(list.buyer_id);
-			alert(list.item_code);
-			alert(list.buyer_id);
-		},error: function(){
-			alert('비동기처리오류');
-		}
-	})
 }
 
 
