@@ -129,6 +129,7 @@ public class ProductController {
 		return productService.deleteLike(productLikeDto);
 	}
 	
+	
 	@GetMapping("/search/{search_content}")
 	public ModelAndView searchProduct(@PathVariable String search_content) {
 		System.out.println(search_content);

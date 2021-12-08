@@ -1,0 +1,25 @@
+.myshop_container {
+   	padding-top:120px;
+    max-width: 1024px;
+    margin:  0 auto;
+    text-align: left;
+}
+
+
+.my_info {
+	
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.my_info span {
+	font-size: 1.8rem;
+	font-weight: 400;
+}
+
+
+.sale_item{
+  margin-top: 55px;
+}

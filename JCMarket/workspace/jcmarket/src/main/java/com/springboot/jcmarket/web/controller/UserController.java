@@ -85,6 +85,13 @@ public class UserController {
 		 return Integer.toString(userService.updatePassword(findAccountDto));
 	}
 	
+	//내상점
+    @GetMapping("my-shop")
+	public String myShop() {
+		return "mypage/my_shop";
+	}
+	
+	
 	
 	@ResponseBody
 	@DeleteMapping("/withdraw")
