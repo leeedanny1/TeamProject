@@ -44,7 +44,7 @@
                                     <ul>
                                         <li class="notice_num">${notice.notice_code }</li>
                                         <li class="notice_title">${notice.notice_title }</li>
-                                        <li class="notice_writer">${notice.notice_writer }</li>
+                                        <li class="notice_writer">${notice.user_nickname }</li>
                                         <fmt:parseDate value="${notice.notice_date }" var="insertDate"
                                             pattern="yyyy-MM-dd'T'HH:mm" />
                                         <li class="notice_date">
