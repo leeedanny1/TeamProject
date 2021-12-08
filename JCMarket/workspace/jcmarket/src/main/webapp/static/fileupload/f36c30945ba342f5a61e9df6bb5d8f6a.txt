@@ -1,0 +1,517 @@
+package com.springboot.jcmarket.web.controller;
+
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.web.dto.chat.ChatDto;
+import com.springboot.jcmarket.web.service.ChatService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Controller
+public class ChatController {
+	private final ChatService chatService;
+
+
+	@GetMapping("/chat")
+	public ModelAndView chatList(@AuthenticationPrincipal PrincipalDetails prDetails) {
+		ModelAndView mav = new ModelAndView("chat/chat");
+		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
+		
+		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping("/chatting/{roomNumber}")
+	public Object chattingList(@RequestBody ChatDto chatdto, @PathVariable int roomNumber) {
+		System.out.println(chatdto);
+		return chatService.getChatting(chatdto);
+	}
+	
+	@ResponseBody
+	@PostMapping("/chat-insert")
+	public String chat_insert(@RequestBody ChatDto chatdto) {
+		System.out.println("asdf"+chatdto);
+		chatService.Chattinginput(chatdto);
+		return "";//Integer.toString(chatService.Chattinginput(chatdto.getSeller_id(),chatdto.getBuyer_id(),chatdto.getItem_code(),chatdto.getWriter_nickname(),chatdto.getChat_content()));
+	}
+}
+
+package com.springboot.jcmarket.domain.chat;
+
+
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
+public class Chat {
+	//chat_mst
+	private int item_code;
+	private int buyer_id;
+	private int seller_id;
+	
+	private String buyer_nickname;
+	private String seller_nickname;
+	
+	private LocalDateTime update_date;
+	
+	//chat_dtl
+	private int chat_index;
+	private String chat_content;
+	private int writer_id;
+	private String writer_nickname;
+	private String chat_date;
+	private String create_date;
+	
+	
+}
+package com.springboot.jcmarket.domain.chat;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+
+@Mapper
+public interface ChatRepository {
+	
+	public List<Chat> getChatListAll(int id);
+	public List<Chat> getChatting(Chat chat);
+	public int Chattinginput(Chat chat);
+}
+package com.springboot.jcmarket.web.dto.chat;
+
+
+
+import com.springboot.jcmarket.domain.chat.Chat;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class ChatDto {
+	private int seller_id;
+	private int buyer_id;
+	private String seller_nickname;
+	private String buyer_nickname;
+	private int item_code;
+
+	private int chat_index;
+	private String chat_content;
+	private int writer_id;
+	private String writer_nickname;
+	private String chat_date;
+	private String create_date;
+	
+	public Chat toEntity() {
+		return Chat.builder().item_code(item_code).buyer_id(buyer_id).
+				seller_id(seller_id).chat_index(chat_index)
+				.chat_content(chat_content).chat_date(chat_date)
+				.build();
+		
+	}
+	
+}
+package com.springboot.jcmarket.web.service;
+
+import java.util.List;
+
+import com.springboot.jcmarket.domain.chat.Chat;
+import com.springboot.jcmarket.web.dto.chat.ChatDto;
+
+public interface ChatService {
+	public List<Chat> getChatListAll(int id);
+	public List<Chat> getChatting(ChatDto chatDto);
+	public int Chattinginput(ChatDto chatDto);
+}
+package com.springboot.jcmarket.web.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.springboot.jcmarket.domain.chat.Chat;
+import com.springboot.jcmarket.domain.chat.ChatRepository;
+import com.springboot.jcmarket.web.dto.chat.ChatDto;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ChatServiceImpl implements ChatService {
+	private final ChatRepository chatRepository;
+
+	public List<Chat> getChatListAll(int id) {
+
+		return chatRepository.getChatListAll(id);
+	}
+
+	@Override
+	public List<Chat> getChatting(ChatDto chatDto) {
+		Chat chat = chatDto.toEntity();
+		
+		return chatRepository.getChatting(chat);
+	}
+
+	@Override
+	public int Chattinginput(ChatDto chatDto) {
+		System.out.println("asdf"+chatDto);
+		return 0;// chatRepository.Chattinginput(chat);
+	}
+}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.jcmarket.domain.chat.ChatRepository">
+	<select id="getChatListAll" 
+			resultType="com.springboot.jcmarket.domain.chat.Chat">
+		SELECT
+			cm.update_date,
+			cm.item_code,
+			cm.buyer_id,
+			um1.user_nickname AS buyer_nickname,
+			cm.seller_id,
+			um2.user_nickname AS seller_nickname
+		FROM
+			chat_mst cm
+			LEFT OUTER JOIN user_mst um1 ON(um1.id = cm.buyer_id)
+			LEFT OUTER JOIN user_mst um2 ON(um2.id = cm.seller_id)
+		WHERE
+			cm.buyer_id = #{id}
+		OR cm.seller_id = #{id}
+		ORDER BY
+			update_date desc;
+	</select>
+	
+	<select id="getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat"	parameterType="com.springboot.jcmarket.domain.chat.Chat">
+		SELECT
+			cd.item_code,
+			cd.buyer_id,
+			cd.seller_id,
+			cd.chat_index,
+			cd.writer_id,
+			um.user_nickname as writer_nickname,
+			cd.chat_content
+		FROM
+			chat_dtl cd
+			LEFT OUTER JOIN user_mst um ON(um.id = cd.writer_id)
+		WHERE
+			cd.item_code = #{item_code}
+		AND cd.buyer_id = #{buyer_id}
+		AND cd.seller_id = #{seller_id};
+	</select>
+	
+	<insert id="Chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
+insert into
+			chat_dtl
+		values(  
+		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_id},#{chat_content},NOW(),NOW()
+		)
+	</insert>
+
+</mapper>
+
+*{
+    margin: 0;
+    padding: 0;
+
+    font-family: "맑은 고딕";
+    font-size: 16px;
+}
+
+
+
+/* 태그 스타일 지정 */
+a{
+    text-decoration: none;
+    color: black;
+}
+ol, ul{
+    list-style: none;
+
+}
+
+input{
+    outline: none;
+    width: 100%;
+}
+
+
+
+/* wrap설정 */
+.wrap{
+    margin: 0 auto;
+    width: 1024px;
+
+    /* background-color: rgba(0, 255, 255, 0.3); */
+}
+.wrap{
+    width: 100%;height: 753px;
+    display: flex;
+    background-color: rgb(175, 175, 175);
+    justify-content: center;
+}
+.chat_title{
+	align-items:center;
+	text-align: center;
+}
+.chat{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(175, 175, 175);; 
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.list li{
+    border: 2px solid   rgba(247, 47, 50) ; 
+    width: 100px; height: 100px;
+    background-color: #fff;
+    flex-direction : column;
+}
+.chatmsg{
+    flex-direction: column;
+    display: flex;
+      margin-left: 30px;
+      margin-right:30px;
+      padding-top:20px;
+    
+}
+.chatting{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.chatting ul{
+background-color: rgb(142, 191, 231);
+    width: 400px; height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.my{
+    width: 100%;
+ 	text-align:left;
+   
+}
+.you{ 
+	width: 100%;
+    padding-right:30px;
+    text-align:right;
+}
+.nickname{
+    color: #fff;
+    font-size: 10px;
+}
+.msgbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding :0;
+    margin: 0;
+    width: 100%;
+    
+    background-color: rgb(142, 191, 231);
+}
+.msginput{
+    width: 80%;height: 40px;
+    padding-top: 5px;
+    padding-left: 5px;
+    resize: none;
+    font-size: 15px;
+}
+.submitbtn{
+    width:18.6%;
+    height: 46px;
+    background-color: rgba(247, 47, 50) ;
+    opacity: 0.8;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+}
+.submitbtn:hover{
+    background-color: rgba(247, 47, 50);
+    opacity: 1;
+}
+const msginput = document.querySelector('.msginput');
+const submitbtn = document.querySelector('.submitbtn');
+const chatlist_btn = document.querySelectorAll('.chatlist_btn');
+const chatinfo= document.querySelectorAll('.chatinfo');
+const chatmsg = document.querySelector('.chatmsg');
+
+var chatObj = {
+	item_code : '',
+	buyer_id :'',
+	seller_id :'',
+	chat_content: '',
+	writer_id : ''
+}
+for(let i = 0; i< chatlist_btn.length; i++){
+	chatlist_btn[i].onclick = () => {
+		EnterInChatRoom(i);
+	}
+}
+
+function clearChatRoom(){
+	while(chatmsg.hasChildNodes()){
+		chatmsg.removeChild(chatmsg.firstChild);
+	}
+}
+
+function chatContentAppend(id, chatRespObj){
+	clearChatRoom();
+	for(let i = 0; i < chatRespObj.length; i++){
+		if(id == chatRespObj[i].writer_id){
+			chatmsg.innerHTML += 
+				`<h2 class="my">
+					<li>${chatRespObj[i].chat_content}</li>
+					<li><h5 class="nickname">${chatRespObj[i].writer_nickname }</h5></li>
+				</h2>`;
+		}else{
+			chatmsg.innerHTML += 
+				`<h2 class="you">
+					<li>${chatRespObj[i].chat_content}</li>
+					<li><h5 class="nickname">${chatRespObj[i].writer_nickname }</h5></li>
+				</h2>`;
+		}
+	}
+	
+}
+
+
+function EnterInChatRoom(i){
+	chatObj.item_code = chatinfo[i * 4].value;
+	chatObj.buyer_id = chatinfo[(i * 4) + 1].value;
+	chatObj.seller_id = chatinfo[(i * 4) + 2].value;
+	chatObj.id = chatinfo[(i * 4) + 3].value;
+	$.ajax({
+		type: "post",
+		url: "/chatting/" + i,
+		data: JSON.stringify(chatObj),
+		contentType: "application/json;charset=UTF-8",
+		dataType: "text",
+		success: function(data){
+			chatRespObj = JSON.parse(data);
+			chatContentAppend(chatObj.id, chatRespObj);
+		},
+		error: function(){
+			alert('비동기 처리 실패');
+		}
+	})
+}
+
+function chatSend(chatObj){
+	$.ajax({
+		type: "POST",
+		url: "/chat-insert",
+		 data: JSON.stringify(chatObj),
+		 contentType: "application/json;charset=UTF-8",
+	 	 dataType: "text",
+		success: function(data) {
+			alert(JSON.stringify(chatObj))
+		},error(){
+		
+		}
+	});
+}
+
+
+msginput.onkeypress = () => {
+	if(window.event.keyCode == 13){
+		window.event.preventDefault();
+		chatinfo1.chat_content=msginput.value;
+		alert(chatObj.value);
+		chatSend();
+	}
+}
+
+
+submitbtn.onclick = () => {
+	chatObj.chat_content=msginput.value;
+	chatSend();
+}
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JC톡</title>
+
+<link rel="stylesheet" href="/css/chat/chat.css">
+<script src="/js/chat/chat.js" defer></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="chat">
+			<div class="list">
+				<c:forEach var="chat" items="${chatList }">
+					<div class="chatlist_btn">
+					<input type="hidden" class="chatinfo" value="${chat.item_code}">
+					<input type="hidden" class="chatinfo" value="${chat.buyer_id}">
+					<input type="hidden" class="chatinfo" value="${chat.seller_id}">
+					<input type="hidden" class="chatinfo" value="${principal.user.id }">
+		
+						<ul>
+							<li class="chat_title"><br>과의 채팅</li>
+						</ul>
+					</div>
+				</c:forEach>
+			</div>
+			<div class="chatting">
+			
+				<ul>
+					<li>
+						<div class="chatmsg">
+							<h2 class="my">
+								<li>${chatmsg1.chat_content}</li>
+								<li><h5 class="nickname">${chatmsg1.writer_nickname }</h5></li>
+							</h2>
+						</div>
+					</li>
+						
+				</ul>
+		
+				<div class="msgbox">
+					<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
+					<button type="button" class="submitbtn">전 송</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
