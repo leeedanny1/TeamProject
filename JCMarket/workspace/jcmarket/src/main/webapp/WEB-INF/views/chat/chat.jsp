@@ -24,16 +24,15 @@
 		<div class="chat">
 			<div class="list">
 				<c:forEach var="chat" items="${chatList }">
+				<i class="far fa-times-circle" id ="exit"></i>
 					<div class="chatlist_btn">
 						<input type="hidden" class="chatinfo" value="${chat.item_code}">
 						<input type="hidden" class="chatinfo" value="${chat.buyer_id}">
 						<input type="hidden" class="chatinfo" value="${chat.seller_id}">
-						<input type="hidden" class="chatinfo"
-							value="${principal.user.id }">
+						<input type="hidden" class="chatinfo" value="${principal.user.id }">
 						<ul>
 						 <c:if test="${principal.user.user_nickname eq chat.buyer_nickname}">  
 							 <li class="chat_title">
-							 	<i class="far fa-times-circle"></i>
 							 <br>${chat.seller_nickname}님<br>과의 대화방</li>
 						 </c:if> 
 						 <c:if test="${principal.user.user_nickname eq chat.seller_nickname}">  
@@ -45,6 +44,7 @@
 						<div class="msgbox">
 							<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
 							<button type="button" class="submitbtn">전 송</button>
+							
 						</div>
 					</div>
 				</c:forEach>

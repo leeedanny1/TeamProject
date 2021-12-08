@@ -23,6 +23,7 @@
 </head>
 <script src="/js/product/purchase.js" defer></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
@@ -41,9 +42,9 @@
                 <article class="t_item_info">
                     <h3 id="item_title_value">${item.item_title}</h3>
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
-                    <input type="hidden" class="listinfo item_code" value=${item.item_code }>
-                  	<input type="hidden" class="listinfo" value=${item.item_writer }> 
-                    <input type="hidden" class="listinfo" value=${principal.user.id }>
+                    <input type="text" class="listinfo item_code" value=${item.item_code }>
+                  	<input type="text" class="listinfo" value=${item.item_writer }> 
+                    <input type="text" class="listinfo" value=${principal.user.id }>
                     
                 </article>
                 <!-- 상품간략정보 -->
@@ -108,7 +109,7 @@
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
-                        <button type="button" class="chatstart" onclick="window.open('/chat')">연락하기</button>
+                        <button type="button" class="chatstart">asdfas연락하기</button>
                         <button type="button">구매하기</button>
                     </article>
                 </article>

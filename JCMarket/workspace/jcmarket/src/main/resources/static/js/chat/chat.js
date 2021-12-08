@@ -4,7 +4,7 @@ const chatlist_btn = document.querySelectorAll('.chatlist_btn');
 const chatinfo = document.querySelectorAll('.chatinfo');
 const chatmsg = document.querySelector('.chatmsg');
 const none = document.querySelectorAll('.none');
-
+const exit = document.querySelectorAll("#exit");
 var chatObj = {
 	item_code: '',
 	buyer_id: '',
@@ -12,6 +12,11 @@ var chatObj = {
 	chat_content: '',
 	writer_id: ''
 }
+
+
+
+
+
 for (let i = 0; i < chatlist_btn.length; i++) {
 	chatlist_btn[i].onclick = () => {
 		for(let i = 0; i < chatlist_btn.length; i++){
@@ -109,4 +114,27 @@ for(let i = 0; i < submitbtn.length; i++){
 	submitbtn[i].onclick = () => {
 		chatSend(i);
 	}
+}
+for(let i=0; exit.length;i++){
+	deletelist(i);
+}
+function deletelist (i) {
+	chatObj.item_code = chatinfo[i * 4].value;
+	chatObj.buyer_id = chatinfo[(i * 4) + 1].value;
+	chatObj.seller_id = chatinfo[(i * 4) + 2].value;
+	exit[i].onclick = () => {
+			$.ajax({
+			type: "delete",
+			url: "/list-delete",
+			data: JSON.stringify(chatObj),
+			contentType: "application/json;charset=UTF-8",
+			dataType: "text",
+			success: function(data) {
+				alert("채팅방에서 나갔습니다");
+			},
+			error: function() {
+				alert('비동기 처리 실패');
+			}
+			})
+}
 }

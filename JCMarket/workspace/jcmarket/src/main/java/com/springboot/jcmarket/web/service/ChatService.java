@@ -11,4 +11,5 @@ public interface ChatService {
 	public int Chattinginput(ChatDto chatDto);
 	public int listinput(ChatDto chatdto);
 	public int listselect(ChatDto chatdto);
+	public int listdelete(ChatDto chatdto);
 }
