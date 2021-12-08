@@ -175,6 +175,7 @@
 
 
 <script src="/js/product/product_dtl.js"></script>
+<script src="/js/product/product_delete.js"></script>
 </body>
 
 </html>

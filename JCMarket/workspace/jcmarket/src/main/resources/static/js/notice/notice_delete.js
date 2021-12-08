@@ -22,7 +22,6 @@ notice_delete_btn.onclick = () => {
                 }
             },
             error: function () {
-                console.log(notice_code.value)
                 alert("삭제 실패! (비동기 처리 오류)")
             }
         })

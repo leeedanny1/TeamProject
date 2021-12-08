@@ -139,6 +139,15 @@
 		WHERE
 			item_code = #{item_code};
 	</update>
+	
+	<!-- 상품삭제 -->
+	<delete id="productDelete">
+		DELETE
+		FROM
+			product_mst
+		WHERE
+			item_code = #{item_code}
+	</delete>
   
   
   
