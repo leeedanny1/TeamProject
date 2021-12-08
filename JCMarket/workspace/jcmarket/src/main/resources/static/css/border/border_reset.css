@@ -67,10 +67,6 @@
     border: none;
     width: 45%;
 }
-.ti_4 button{
-    border: none;
-    width: 20%;
-}
 .title_insert button:hover{
     background-color: rgb(247, 47, 51);
 }

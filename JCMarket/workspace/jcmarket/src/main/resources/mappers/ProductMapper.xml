@@ -102,9 +102,9 @@
 			)
 		VALUES(
 			#{item_price},
-			1,
-			1,
-			1,
+			#{item_stat},
+			#{item_change},
+			#{item_delivery},
 			#{item_content},
 			NULL,
 			NULL,

@@ -32,7 +32,7 @@ public class Product {
 	private int item_change;
 	// 0:교환가능, 1: 교환불가
 	private int item_delivery;
-	// 0: 판매자 부담, 1: 구매자 부담
+	// 0: 판매자 부담, 1: 구매자 부담, 2: 직거래
 	private String item_content;
 	private String originFileNames;
 	private String tempFileNames;

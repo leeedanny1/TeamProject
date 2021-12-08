@@ -35,15 +35,16 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">상품명</li>
-                <li class="title_insert"><input type="text" class="title" name="item_title" placeholder="상품명을 입력하세요."></li>
+                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title" placeholder="상품명을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name select_name">상품가격(숫자만 입력)</li>
-                <li class="title_insert"><input type="number" class="title" name="item_price" placeholder="상품 가격을 입력하세요."></li>
+                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price" placeholder="상품 가격을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">상품상태</li>
-                <select name="item_stat" id="" class="title_insert">
+                <select name="item_stat" id="item_stat" class="title_insert">
+                    <option value=null> ===== 상품 상태를 선택하세요. =====</option>
                     <option value=0>새상품</option>
                     <option value=1>S급</option>
                     <option value=2>A급</option>
@@ -52,17 +53,20 @@
             </ul>
             <ul class="title_ul">
                 <li class="title_name">교환여부</li>
-                <li class="title_insert">
-                    <button>교환 가능</button>
-                    <button>교환 불가</button>
-                </li>
+                <select name="item_change" id="item_change" class="title_insert">
+                    <option value=null> ===== 교환 여부를 선택하세요. =====</option>
+                    <option value=0>교환가능</option>
+                    <option value=1>교환불가</option>
+                </select>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">배송비</li>
-                <li class="title_insert">
-                    <button>판매자 부담</button>
-                    <button>구매자 부담</button>
-                </li>
+                <select name="item_delivery" id="item_delivery" class="title_insert">
+                    <option value=null> ===== 배송비 부담 방법을 선택하세요. =====</option>
+                    <option value=0>판매자 부담</option>
+                    <option value=1>구매자 부담</option>
+                    <option value=2>직거래</option>
+                </select>
             </ul>
             <ul class="info_ul">
                 <li>판매자 닉네임</li>
@@ -73,11 +77,11 @@
             </ul>
             <ul class="file_ul">
                 <li class="file_li">사진등록</li>
-                <li class="file_insert"><input type="file" multiple="multiple" name="file" required></li>
+                <li class="file_insert"><input type="file" multiple="multiple" name="file"></li>
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" name="item_content" placeholder="상품 설명을 입력하세요."></textarea>
+                    <textarea class="notice_content" id="item_content" name="item_content" placeholder="상품 설명을 입력하세요."></textarea>
                 </li>
             </ul>
 
