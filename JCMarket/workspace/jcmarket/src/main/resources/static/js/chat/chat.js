@@ -71,6 +71,7 @@ function EnterInChatRoom(i) {
 		success: function(data) {
 			chatRespObj = JSON.parse(data);
 			chatContentAppend(chatObj.id, chatRespObj);
+		
 
 		},
 		error: function() {
@@ -93,6 +94,7 @@ function chatSend(i) {
 		dataType: "text",
 		success: function(data) {
 			msginput[i].value='';
+			EnterInChatRoom(i);
 		}, error() {
 
 		}
@@ -101,6 +103,11 @@ function chatSend(i) {
 
 
 for(let i = 0; i < msginput.length; i++){
+	setTimeout
+playAlert = setInterval(function() {
+EnterInChatRoom(i);
+}, 3000);
+
 	
 	msginput[i].onkeypress = () => {
 		if (window.event.keyCode == 13) {
@@ -130,6 +137,8 @@ function deletelist (i) {
 			contentType: "application/json;charset=UTF-8",
 			dataType: "text",
 			success: function(data) {
+				location.reload();
+				
 				alert("채팅방에서 나갔습니다");
 			},
 			error: function() {
