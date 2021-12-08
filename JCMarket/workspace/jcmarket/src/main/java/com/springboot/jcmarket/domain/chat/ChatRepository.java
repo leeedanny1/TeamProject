@@ -12,4 +12,5 @@ public interface ChatRepository {
 	public List<Chat> getChatting(Chat chat);
 	public int chattinginput(Chat chat);
 	public int listinput(Chat chat);
+	public int listselect(Chat chat);
 }

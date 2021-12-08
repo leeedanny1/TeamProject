@@ -40,4 +40,11 @@ public class ChatServiceImpl implements ChatService {
 		System.out.println("asdfasd"+chat);
 		return chatRepository.listinput(chat);
 	}
+
+	@Override
+	public int listselect(ChatDto chatdto) {
+		Chat chat = chatdto.toEntity();
+		System.out.println("asdfasdfas"+chat);
+		return chatRepository.listselect(chat);
+	}
 }

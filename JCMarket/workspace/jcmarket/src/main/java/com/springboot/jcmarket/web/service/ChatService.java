@@ -10,4 +10,5 @@ public interface ChatService {
 	public List<Chat> getChatting(ChatDto chatDto);
 	public int Chattinginput(ChatDto chatDto);
 	public int listinput(ChatDto chatdto);
+	public int listselect(ChatDto chatdto);
 }

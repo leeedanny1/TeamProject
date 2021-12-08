@@ -55,4 +55,13 @@
 		    #{item_code},#{buyer_id},#{seller_id},now(),now()
 		)
 	</insert>
+	<select id="listselect" resultType="Integer"	parameterType="com.springboot.jcmarket.domain.chat.Chat">
+		SELECT count (item_code)
+ 			FROM 
+ 		chat_mst
+			 where
+			item_code=#{item_code} and
+			buyer_id=#{buyer_id} and
+			seller_id=#{seller_id};
+</select>
 </mapper>
