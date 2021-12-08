@@ -40,6 +40,9 @@ chatstart.onclick = () => {
 						}
 					})
 				}
+				else{
+					window.open("/chat");
+				}
 			}, error: function() {
 
 				alert('비동기처리에러.');

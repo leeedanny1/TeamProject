@@ -6,6 +6,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,7 +80,7 @@ public class SignController {
 		return Integer.toString(signUpService.signUp(signUpDto));
 	}
 	@ResponseBody
-	@PostMapping("social-sign-update")
+	@PutMapping("social-sign-update")
 	public String SocialsignUpdate(@RequestBody SignUpDto signUpdto, @AuthenticationPrincipal PrincipalDetails prDetails) {
 		signUpdto.setUser_id(prDetails.getUser().getUser_id());
 		System.out.println(signUpdto);
