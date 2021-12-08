@@ -44,7 +44,7 @@
                         <!-- 상품이름 -->
                         <ul class="item_info">
                             <p class="item_name">${items.item_title}</p>
-                            <p><i class="fas fa-eye"></i> ${items.item_count} <i class="fas fa-heart"></i> ${items.like_count}</p>
+                            <p><i class="fas fa-eye"></i> ${items.item_count}</p>
                         </ul>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">

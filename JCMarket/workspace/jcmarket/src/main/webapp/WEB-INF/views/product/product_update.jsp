@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -11,6 +14,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -22,75 +27,62 @@
     <!-- main content -->
     <main class="wrap main">
         <h1 class="page_name">상품수정</h1>
-        <form id="insert_form">
+        <form id="update_form">
+            <input type="hidden" name="item_code" value="${item.item_code}">
             <ul class="title_ul">
                 <li class="title_name">상품명</li>
-                <li class="title_insert"><input type="text" class="title" name="title"></li>
+                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title" placeholder="상품명을 입력하세요." value="${item.item_title}"></li>
             </ul>
             <ul class="title_ul">
-                <li class="title_name">상품가격(숫자만 입력)</li>
-                <li class="title_insert"><input type="number" class="title" name="title"></li>
+                <li class="title_name select_name">상품가격(숫자만 입력)</li>
+                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price" placeholder="상품 가격을 입력하세요." value="${item.item_price}"></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">상품상태</li>
-                <li class="title_insert ti_4">
-                    <button>새상품</button>
-                    <button>S급</button>
-                    <button>A급</button>
-                    <button>B급</button>
-                </li>
+                <select name="item_stat" id="item_stat" class="title_insert">
+                    <option value=null> ===== 상품 상태를 선택하세요. =====</option>
+                    <option value=0 <c:if test="${item.item_stat eq 0}">selected</c:if>>새상품</option>
+                    <option value=1 <c:if test="${item.item_stat eq 1}">selected</c:if>>S급</option>
+                    <option value=2 <c:if test="${item.item_stat eq 2}">selected</c:if>>A급</option>
+                    <option value=3 <c:if test="${item.item_stat eq 3}">selected</c:if>>B급</option>
+                </select>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">교환여부</li>
-                <li class="title_insert">
-                    <button>교환 가능</button>
-                    <button>교환 불가</button>
-                </li>
+                <select name="item_change" id="item_change" class="title_insert">
+                    <option value=null> ===== 교환 여부를 선택하세요. =====</option>
+                    <option value=0 <c:if test="${item.item_change eq 0}">selected</c:if>>교환가능</option>
+                    <option value=1 <c:if test="${item.item_change eq 1}">selected</c:if>>교환불가</option>
+                </select>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">배송비</li>
-                <li class="title_insert">
-                    <button>판매자 부담</button>
-                    <button>구매자 부담</button>
-                </li>
+                <select name="item_delivery" id="item_delivery" class="title_insert">
+                    <option value=null> ===== 배송비 부담 방법을 선택하세요. =====</option>
+                    <option value=0 <c:if test="${item.item_delivery eq 0}">selected</c:if>>판매자 부담</option>
+                    <option value=1 <c:if test="${item.item_delivery eq 1}">selected</c:if>>구매자 부담</option>
+                    <option value=2 <c:if test="${item.item_delivery eq 2}">selected</c:if>>직거래</option>
+                </select>
             </ul>
             <ul class="info_ul">
-                <li>작성자</li>
-                <li>관리자</li>
-                <li>작성일</li>
-                <li>2021-11-23</li>
+                <li>판매자 닉네임</li>
+                <li>${item.user_nickname }</li>
+                <li>작성 시작 시간</li>
+                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
+            </ul>
+            <ul class="file_ul">
+                <li class="file_li">사진등록</li>
+                <li class="file_insert"><input type="file" multiple="multiple" name="file"></li>
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" name="notice_content"></textarea>
-                </li>
-            </ul>
-
-
-            <ul class="file_ul_dtl">
-                <li>사진등록</li>
-            </ul>
-            <ul class="file_ul_dtl">
-                <li>
-                    <input type="file" multiple="multiple" name="notice_file">
-                </li>
-            </ul>
-            <ul class="file_ul_dtl">
-                <li class="file_list">
-                    <c:forEach var="fileBean" items="${fileList }">
-                        <div class="item-file">
-                            <input type="hidden" name="originFileNames" value="${fileBean.originFileName }">
-                            <input type="hidden" name="tempFileNames" value="${fileBean.tempFileName }">
-                            <label class="file-name">${fileBean.originFileName }</label>
-                            <div class="file-dbtn"><i class="far fa-times-circle"></i></div>
-                        </div>
-                    </c:forEach>
+                    <textarea class="notice_content" id="item_content" name="item_content" placeholder="상품 설명을 입력하세요.">${item.item_content}</textarea>
                 </li>
             </ul>
 
             <section class="btn_container">
-                <button type="button" class="submit">수정완료</button>
-                <button type="button">수정취소</button>
+                <button type="button" class="item_update_btn">수정완료</button>
+                <button type="button" class="item_cancel_btn">수정취소</button>
             </section>
         </form>
     </main>
@@ -105,6 +97,8 @@
         </main>
     </footer>
 
+
+<script src="/js/product/product_update.js"></script>
 </body>
 
 </html>

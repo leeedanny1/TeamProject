@@ -2,7 +2,7 @@
 	height: 600px;
 }
 
-/* 인증버튼 */
+/* �攤�ｦ晤ｲ�款 */
 .check_section{
     position: relative;
     width: 100%;
@@ -49,20 +49,15 @@
  color: #006400;
 }
 
-.withdraw_btn_section {
-    text-align: right;
-    width: 500px;
-    height: 30px;
+.withdraw_btn_container {
+	width:500px;
+	margin: 0 auto;
+	text-align: right;
 }
 
 .withdraw_btn {
-    margin-top: 37.5px;
-    outline: none;
-     border: none;
-    font-size: 0.7em;
-    width: 60px;
-    height: 25px;
-}
+   width:100px;
+ }
 
 .withdraw_btn:hover {
     opacity: 0.7;

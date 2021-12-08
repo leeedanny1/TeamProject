@@ -41,16 +41,19 @@
                 <input type="password"  id="" class="input" name="id" placeholder="비밀번호 확인">
             
                 <section class="check_section">
-                    <input type="text" name="" id="" class="input"  placeholder="별명">
+                    <input type="text" name="" id="" class="input"  value="${principal.user.user_nickname}" placeholder="별명">
                     <button type="button" class="check_btn">별명 중복 확인</button>
                 </section>
 
                 <button type="button" class="submit_btn">회원정보수정</button>
-                <div class="withdraw_btn_section">
-                <button type="button" class="withdraw_btn">회원탈퇴</button>
-                </div>
+               
+              
             </form>
+             
     </main>
+     <div class ="withdraw_btn_container" >
+     <button type="button" class="withdraw_btn">회원탈퇴</button>
+     </div>
    
 </body>
 </html>
