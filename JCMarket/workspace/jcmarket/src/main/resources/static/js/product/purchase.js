@@ -3,7 +3,11 @@ const like_icon = document.querySelector('.like_button i');
 const like_count = document.querySelector('.like_count');
 const item_info_btn = document.querySelector('.item_info_btn');
 const user_id = document.querySelector('#user_id');
+const chatstart = document.querySelector('.chatstart');
 
+var list={
+	
+}
 
 console.log('user_id: ' + user_id.value);
 

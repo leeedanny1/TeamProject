@@ -36,6 +36,10 @@
                 <article class="t_item_info">
                     <h3>${item.item_title}</h3>
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
+                    <input type="hidden" class="listinfo" value=${item.item_code }>
+                    <input type="hidden" class="listinfo" value=${item.item_code }>
+                    <input type="hidden" class="listinfo" value=${item.item_code }>
+                    
                 </article>
                 <!-- 상품간략정보 -->
                 <article class="b_item_info">
@@ -96,7 +100,7 @@
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
-                        <button type="button" onclick="window.open('/chat')">연락하기</button>
+                        <button type="button" class="chatstart" onclick="window.open('/chat')">연락하기</button>
                         <button type="button">구매하기</button>
                     </article>
                 </article>
