@@ -57,7 +57,7 @@ public class ProductController {
 			user_id = principalDetails.getUser().getId();
 		}
 		Product product = productService.getItemDtl(item_code, user_id);
-		mav.addObject("item", productService.getItemDtl(item_code, user_id));
+		mav.addObject("item", product);
 		mav.addObject("fileList", productService.getFileList(product));
 		return mav;
 	}
@@ -128,7 +128,6 @@ public class ProductController {
 	//상품가져오기 테스트중  
 	@GetMapping("/purchase/{item_code}")
 	public ModelAndView getProduct(@PathVariable int item_code,  @AuthenticationPrincipal PrincipalDetails principal) {
-		System.out.println("code: " + item_code);
 		ProductLikeDto productLikeDto = new ProductLikeDto();
 		productLikeDto.setItem_code(item_code);
 		if(principal != null) {
@@ -143,12 +142,10 @@ public class ProductController {
 	@ResponseBody
 	@PostMapping("/add-like")
 	public Object addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
-		System.out.println("productId:" + productId);
 		if(principal == null) {
 			return "2";
 		}
 		
-		System.out.println("productId: " + productId);
 		ProductLikeDto productLikeDto = new ProductLikeDto();
 		productLikeDto.setItem_code(productId);
 	    
@@ -169,7 +166,6 @@ public class ProductController {
 	
 	@GetMapping("/search/{search_content}")
 	public ModelAndView searchProduct(@PathVariable String search_content) {
-		System.out.println(search_content);
 		ModelAndView mav = new ModelAndView("search/search"); 
 		mav.addObject("products" , productService.searchProduct(search_content));
 		mav.addObject("searchValue", search_content);
