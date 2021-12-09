@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/search/search.css">
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
      <script src="/js/search/search.js" defer></script>
+     <link rel="stylesheet" href="/css/include/footer.css">
 </head>
 <body>
     <jsp:include page="../include/header.jsp"/> 
@@ -35,6 +36,7 @@
        </c:forEach>
          </ul>   
       </section>   
-       </main>              
+       </main>   
+       <jsp:include page="../include/footer.jsp"/>            
 </body>
 </html>;

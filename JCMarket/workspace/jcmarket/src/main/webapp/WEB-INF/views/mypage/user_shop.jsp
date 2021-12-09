@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/include/footer.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product.css">
 </head>
@@ -147,14 +148,7 @@
 
 
 
-    <!-- footer -->
-    <footer>
-        <main class="wrap">
-            푸터<br>
-            dsfdsfsd <br>
-        </main>
-    </footer>
-
+ <jsp:include page="../include/footer.jsp"/> 
 
 </body>
 
