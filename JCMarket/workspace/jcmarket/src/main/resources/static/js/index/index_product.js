@@ -1,7 +1,8 @@
 const items_time = document.querySelectorAll('.item_time');
 const item_list = document.querySelectorAll('.item_list');
 
-console.log(items_time[0]);
+console.log(items_time[0].textContent);
+
 
 
 //검색 페이지 로드시 로드가 된 후 foreach를 돌려서 시간을 하나씩 설정해준다. 

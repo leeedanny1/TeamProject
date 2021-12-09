@@ -20,9 +20,11 @@
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
+    <script src = "/js/index/index_product.js" defer></script>
 </head>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <link rel="stylesheet" href="/css/include/footer.css">
 <body>
     <!-- header -->
@@ -56,7 +58,7 @@
                     <ul class="item_info_now">
                         <li><i class="fas fa-heart"></i> ${item.like_count}</li>
                         <li><i class="fas fa-eye"></i> ${item.item_count}</li>
-                        <li><i class="fas fa-clock"></i> 1시간 전</li>
+                        <li><i class="fas fa-clock"></i> <span class= "item_time">${item.update_date }</span></li>
                         <li><i class="fas fa-exclamation-triangle"></i> 신고하기</li>
                     </ul>
                     <!-- 상품정보 -->

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product.css">
     <link rel="stylesheet" href="/css/include/footer.css">
+     <script src = "/js/index/index_product.js" defer></script>
 </head>
 
 <body>
@@ -52,7 +53,7 @@
                             <li><span class="item_price">
                                 <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
                             </li>
-                            <li><span class="item_time">1시간 전</span></li>
+                            <li><span class="item_time">${items.update_date }</span></li>
                         </ul>
                     </li>
                 </c:forEach>
