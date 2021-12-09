@@ -35,7 +35,6 @@
         <!-- 상단 아이템 정보 -->
         <section class="t_container">
             <!-- 상품 사진 -->
-            <!-- <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo"> -->
             <c:forEach var="fileBean" items="${fileList }" varStatus="st">
                 <img src="/static/itemfileupload/${fileBean.tempFileName}" alt="상품 사진입니다." class="item_photo">
             </c:forEach>
@@ -62,7 +61,7 @@
                     <!-- 상품정보 -->
                     <article class="item_info_dtl">
                         <h4>판매자</h4>
-                        <span>${item.user_nickname}</span>
+                        <span><a href="/my-shop/${item.item_writer}">${item.user_nickname}</a></span>
                         <h4>상품상태</h4>
                         <c:choose>
                             <c:when test="${item.item_stat eq 0}">

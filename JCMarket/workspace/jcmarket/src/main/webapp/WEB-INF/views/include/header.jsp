@@ -24,7 +24,7 @@
             </a>
             <!-- 검색박스 -->
             <div class = "h_search_btn_container">
-            <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
+            <input type="text" class="h_search" placeholder="상품명, 상품설명 전체 또는 일부 검색">
             <i class="fas fa-search h_search_btn"></i>
             </div>
             <!-- 인포 -->

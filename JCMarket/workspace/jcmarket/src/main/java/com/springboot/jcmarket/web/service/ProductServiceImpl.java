@@ -96,7 +96,6 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> getNewProductList(int pageNumber) {
     	productListAll = getNewProductListAll();
-    	System.out.println(productListAll);
     	productList = new ArrayList<Product>();
     	
     	setProductBean(pageNumber);
@@ -104,7 +103,6 @@ public class ProductServiceImpl implements ProductService{
     	for (int i = productBean.getStartIndex(); i < productBean.getEndIndex() && i < productBean.getNoticeTotalCount(); i++) {
     		productList.add(productListAll.get(i));
     	}
-    	System.out.println(productList);
     	return productList;
     }
     
@@ -207,7 +205,6 @@ public class ProductServiceImpl implements ProductService{
 			fileBean.setTempFileName(tfn.nextToken());
 			fileList.add(fileBean);
 		}
-		System.out.println(fileList);
 		return fileList;
 	}
 //    상품등록
@@ -224,8 +221,6 @@ public class ProductServiceImpl implements ProductService{
     	productDto.setItem_change(productInsertDto.getItem_change());
     	productDto.setItem_delivery(productInsertDto.getItem_delivery());
     	productDto.setItem_content(productInsertDto.getItem_content());
-    	
-    	System.out.println(productDto);
     	
     	Product product = productDto.toEntity();
     	
@@ -343,7 +338,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<Product> getSelectProduct(int id) {
-		System.out.println("getSelectProduct:" + productRepository.getSelectProduct(id));
+		productRepository.getSelectProduct(id);
 		return productRepository.getSelectProduct(id);
 	}
 

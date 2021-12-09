@@ -118,7 +118,8 @@
 		SET
 			notice_content = #{notice_content},
 			originFileNames = #{originFileNames},
-			tempFileNames = #{tempFileNames}
+			tempFileNames = #{tempFileNames},
+			update_date = now()
 		WHERE
 			notice_code = #{notice_code};
 	</update>

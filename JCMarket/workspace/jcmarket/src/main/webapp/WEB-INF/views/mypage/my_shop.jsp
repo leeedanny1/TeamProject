@@ -30,26 +30,40 @@
 
       <div class="myshop_container">
        <section class="my_info">
-          <article class="name">
-            <span>이름: </span>
-            <span>${principal.user.user_name}</span>
+           <article class="title">
+               <span>현재 로그인 한 사용자의 정보</span>
            </article>
-           <article class="phone">
-            <span>전화번호: </span>
-            <span>${principal.user.user_phone}</span>
-           </article> 
-            <article class="id">
-            <span>아이디: </span>
-            <span>${principal.user.user_id}</span>
-           </article>
-            <article class="nickname">
-            <span>닉네임: </span>
-            <span>${principal.user.user_nickname}</span>
-           </article>
+           <hr>
+           <c:choose>
+               <c:when test="${not empty principal}">
+                    <article class="name">
+                    <span>이름: </span>
+                    <a href="/my-shop/${principal.user.id}"><span>${principal.user.user_name}</span></a>
+                   </article>
+                   <article class="phone">
+                    <span>전화번호: </span>
+                    <span>${principal.user.user_phone}</span>
+                   </article> 
+                    <article class="id">
+                    <span>아이디: </span>
+                    <span>${principal.user.user_id}</span>
+                   </article>
+                    <article class="nickname">
+                    <span>닉네임: </span>
+                    <span>${principal.user.user_nickname}</span>
+                   </article>
+               </c:when>
+               <c:otherwise>
+                <article class="title">
+                    <span>로그인이 되어있지 않습니다. 로그인을 진행해 주세요.</span>
+                </article>
+               </c:otherwise>
+           </c:choose>
+          
        
         </section>
         <section class="sale_item">
-            <a href=""><h2 class="section_name">판매 중인 상품</h2></a>
+            <h2 class="section_name">유저가 판매 중인 상품</h2>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var = "mySaleProduct" items ="${mySaleProducts }">
@@ -70,7 +84,7 @@
        
         <section class="sale_item">
        
-            <a href=""><h2 class="section_name">내가 찜한 상품</h2></a>
+            <h2 class="section_name">유저가 찜한 상품</h2>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var = "mySelectProduct" items ="${mySelectProducts }">
@@ -90,8 +104,8 @@
             	</c:forEach>
             </ul>
         </section>  
-       <jsp:include page="../include/footer.jsp"/> 
-
      </div>
+     
+     <jsp:include page="../include/footer.jsp"/> 
 </body>
 </html>

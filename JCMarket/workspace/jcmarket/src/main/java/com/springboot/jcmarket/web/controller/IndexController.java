@@ -28,7 +28,6 @@ public class IndexController {
 			}
 		}
 		ModelAndView mav = new ModelAndView("index/index");
-		System.out.println(productService.getHotProductList10());
 		mav.addObject("hotList", productService.getHotProductList10());
 		mav.addObject("newList", productService.getNewProductList10());
 		return mav;
