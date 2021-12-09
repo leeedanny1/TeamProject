@@ -109,7 +109,7 @@
 			#{item_change},
 			#{item_delivery},
 			#{item_content},
-			NULL,
+			#{tempFileNames},
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst)),
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst))
 		);

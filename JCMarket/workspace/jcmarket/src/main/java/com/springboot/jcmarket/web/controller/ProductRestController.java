@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.jcmarket.domain.product.Product;
+import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
 import com.springboot.jcmarket.web.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,8 @@ public class ProductRestController {
 	
 //	상품등록
 	@PostMapping("insert")
-	public String itemInsert(Product product) {
-		return Integer.toString(productService.itemInsert(product));
+	public String itemInsert(ProductInsertDto productInsertDto) {
+		return Integer.toString(productService.itemInsert(productInsertDto));
 	}
 	
 	
