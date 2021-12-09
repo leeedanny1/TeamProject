@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
+
 
 @Mapper
 public interface ProductRepository {

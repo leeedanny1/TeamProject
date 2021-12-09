@@ -2,8 +2,12 @@ package com.springboot.jcmarket.web.service;
 
 import java.util.List;
 
+import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.product.Product;
+import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.ProductBean;
+import com.springboot.jcmarket.web.dto.product.ProductDto;
+import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
 public interface ProductService {
@@ -31,11 +35,17 @@ public interface ProductService {
 //	디테일페이지
 	public Product getItemDtl(int item_code);
 	
+//	파일
+	//파일업로드
+	public ProductDto fileUpload(ProductInsertDto productInsertDto);
+	// 파일 리스트 가져오기
+	public List<FileBean> getFileList(Product product);
+	// 파일삭제
+	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames);
+	
 //	상품등록
-	// 상품 사진업로드
-	public Product fileUpload(Product product);
 	// 상품 게시글 업로드
-	public int itemInsert(Product product);
+	public int itemInsert(ProductInsertDto productInsertDto);
 	
 //	상품수정
 	public int itemUpdate(Product product);
