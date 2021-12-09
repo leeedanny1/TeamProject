@@ -3,6 +3,7 @@ const submitbtn = document.querySelectorAll('.submitbtn');
 const chatlist_btn = document.querySelectorAll('.chatlist_btn');
 const chatinfo = document.querySelectorAll('.chatinfo');
 const chatmsg = document.querySelector('.chatmsg');
+const chatting = document.querySelector('.chatting');
 const none = document.querySelectorAll('.none');
 const exit = document.querySelectorAll("#exit");
 var chatObj = {
@@ -35,7 +36,7 @@ function chatContentAppend(id, chatRespObj) {
 	for (let i = 0; i < chatRespObj.length; i++) {
 		if (id == chatRespObj[i].writer_id) {
 			chatmsg.innerHTML +=
-				`<h2 class="you">
+				`<h2 class="you" >
 					<li>${chatRespObj[i].chat_content}</li>
 					<li><h5 class="nickname">${chatRespObj[i].writer_nickname}</h5></li>
 				</h2>`;
@@ -47,6 +48,7 @@ function chatContentAppend(id, chatRespObj) {
 				</h2>`;
 		}
 	}
+	chatting.scrollTop = chatting.scrollHeight;
 
 }
 
@@ -143,6 +145,7 @@ function deletelist (i) {
 	chatObj.buyer_id = chatinfo[(i * 4) + 1].value;
 	chatObj.seller_id = chatinfo[(i * 4) + 2].value;
 	exit[i].onclick = () => {
+if(confirm("이 대화방을 나가시겠습니까?\n 나가시면 채팅방의 대화기록이 사라집니다")){
 			$.ajax({
 			type: "delete",
 			url: "/list-delete",
@@ -157,5 +160,6 @@ function deletelist (i) {
 				alert('비동기 처리 실패');
 			}
 			})
+			}
 	}
 }

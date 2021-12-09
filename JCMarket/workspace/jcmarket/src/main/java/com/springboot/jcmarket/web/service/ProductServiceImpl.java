@@ -171,8 +171,6 @@ public class ProductServiceImpl implements ProductService{
 		tempName.delete(tempName.length() - 1, tempName.length());
 //    			파일이름을 저장해서 dto에 저장
 		productDto.setTempFileNames(tempName.toString());
-		
-		System.out.println(productDto);
 
 		return productDto;
     }
@@ -197,7 +195,7 @@ public class ProductServiceImpl implements ProductService{
 			fileBean.setTempFileName(tfn.nextToken());
 			fileList.add(fileBean);
 		}
-
+		System.out.println(fileList);
 		return fileList;
 	}
 //    상품등록
