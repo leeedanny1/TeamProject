@@ -2,7 +2,6 @@ package com.springboot.jcmarket.web.service;
 
 import java.util.List;
 
-import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.ProductBean;
@@ -40,9 +39,7 @@ public interface ProductService {
 	public ProductDto fileUpload(ProductInsertDto productInsertDto);
 	// 파일 리스트 가져오기
 	public List<FileBean> getFileList(Product product);
-	// 파일삭제
-	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames);
-	
+
 //	상품등록
 	// 상품 게시글 업로드
 	public int itemInsert(ProductInsertDto productInsertDto);
@@ -51,7 +48,7 @@ public interface ProductService {
 	public int itemUpdate(Product product);
 	
 //	상품삭제
-	public int itemDelete(int itme_code);
+	public int itemDelete(int itme_code, int user_id);
 	
 	
 	

@@ -2,19 +2,16 @@ package com.springboot.jcmarket.web.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Value;
+import javax.servlet.ServletContext;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.domain.product.ProductRepository;
 import com.springboot.jcmarket.web.beans.FileBean;
@@ -31,11 +28,14 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
     
+    private final ServletContext context;
+    
     private ProductBean productBean;
     private List<Product> productListAll;
     private List<Product> productList;
     
     ProductDto productDto = new ProductDto();
+    Product product = new Product();
     
     
 //  상품목록 가져오기
@@ -126,38 +126,34 @@ public class ProductServiceImpl implements ProductService{
     
 //    파일
     // 파일등록
-    /*
     @Override
     public ProductDto fileUpload(ProductInsertDto productInsertDto) {
     	// 초기화 한 번 해줌
     	productDto = new ProductDto();
 
     	// 경로지정
-		String filePath = context.getRealPath("/static/fileupload");
+		String filePath = context.getRealPath("/static/itemfileupload");
 
-		// insertDto에 있는 notoce_file을 multipartFile로..
-		MultipartFile[] multipartFiles = noticeInsertDto.getNotice_file();
-
-		StringBuilder originName = new StringBuilder();
+		// insertDto에 있는 file을 multipartFile로..
+		MultipartFile[] multipartFiles = productInsertDto.getFile();
+		
 		StringBuilder tempName = new StringBuilder();
 
 		for (MultipartFile multipartFile : multipartFiles) {
 			String originFile = multipartFile.getOriginalFilename();
-			// 파일이름이 없다면 바로 dto 반환
-			if (originFile.equals("")) {
-				return noticeDto;
-			}
-//    				파일의 이름을 변경함.
-//    				중복되는 파일명이 올라오면 하나는 사라지기 때문.
+				// 파일이름이 없다면 바로 dto 반환
+				if (originFile.equals("")) {
+					return productDto;
+				}
+//    		파일의 이름을 변경함.
+//    		중복되는 파일명이 올라오면 하나는 사라지기 때문.
 			String originFileExtention = originFile.substring(originFile.lastIndexOf("."));
 			String tempFile = UUID.randomUUID().toString().replaceAll("-", "") + originFileExtention;
 
-			originName.append(originFile);
-			originName.append(",");
 			tempName.append(tempFile);
 			tempName.append(",");
 
-//    				파일을 지정 경로에 저장
+//    		파일을 지정 경로에 저장
 			File file = new File(filePath, tempFile);
 			// 경로가 없다면 만들어주고
 			if (!file.exists()) {
@@ -172,21 +168,20 @@ public class ProductServiceImpl implements ProductService{
 		}
 
 //    			마지막 파일명의 쉼표 지우기
-		originName.delete(originName.length() - 1, originName.length());
 		tempName.delete(tempName.length() - 1, tempName.length());
 //    			파일이름을 저장해서 dto에 저장
-		noticeDto.setOriginFileNames(originName.toString());
-		noticeDto.setTempFileNames(tempName.toString());
+		productDto.setTempFileNames(tempName.toString());
+		
+		System.out.println(productDto);
 
-		return noticeDto;
+		return productDto;
     }
-    */
-    /*
+    
 	// 파일 리스트 가져오기
 	@Override
 	public List<FileBean> getFileList(Product product) {
 		// dto에 파일리스트가 없다면 null 반환
-		if (notice.getOriginFileNames() == null || notice.getTempFileNames() == null) {
+		if (product.getTempFileNames() == null || product.getTempFileNames() == null) {
 			return null;
 		}
 
@@ -194,46 +189,17 @@ public class ProductServiceImpl implements ProductService{
 		List<FileBean> fileList = new ArrayList<FileBean>();
 
 		// ,기준으로 나눔
-		StringTokenizer ofn = new StringTokenizer(notice.getOriginFileNames(), ",");
-		StringTokenizer tfn = new StringTokenizer(notice.getTempFileNames(), ",");
+		StringTokenizer tfn = new StringTokenizer(product.getTempFileNames(), ",");
 
 		// 오리진 파일 네임이 있다면 fileBean에 넣음
-		while (ofn.hasMoreTokens()) {
+		while (tfn.hasMoreTokens()) {
 			FileBean fileBean = new FileBean();
-			fileBean.setOriginFileName(ofn.nextToken());
 			fileBean.setTempFileName(tfn.nextToken());
 			fileList.add(fileBean);
 		}
 
 		return fileList;
 	}
-	// 파일삭제
-	@Override
-	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames) {
-		StringBuilder buildName = new StringBuilder();
-		
-		for (String fileName : fileNames) {
-			int count = 0;
-			if (deleteFileNames != null) {
-				for (String deleteFileName : deleteFileNames) {
-					if (fileName.equals(deleteFileName)) {
-						count++;
-						break;
-					}
-				}
-			}
-			if (count == 0) {
-				buildName.append(fileName);
-				buildName.append(",");
-			}
-		}
-
-		return buildName;
-	}
-	*/
-    
-    
-    
 //    상품등록
     // 상품 게시글 등록
     @Override
@@ -284,7 +250,23 @@ public class ProductServiceImpl implements ProductService{
     
 //    상품삭제
     @Override
-    public int itemDelete(int item_code) {
+    public int itemDelete(int item_code, int user_id) {
+    	product = productRepository.getItemDtl(item_code, user_id);
+		
+		// 첨부파일 경로
+		String filePath = context.getRealPath("/static/itemfileupload");
+		// 첨부파일을 리스트로 불러옴
+		List<FileBean> fileList = getFileList(product);
+		
+		if (fileList != null) {
+			for (FileBean fileBean : fileList) {
+				File file = new File(filePath, fileBean.getTempFileName());
+				if (file.exists()) {
+					file.delete();
+				}
+			}
+		}
+    	
     	return productRepository.productDelete(item_code);
     }
 

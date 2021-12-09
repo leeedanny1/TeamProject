@@ -44,7 +44,7 @@
                     <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
                     <input type="hidden" class="listinfo item_code" value=${item.item_code }>
                   	<input type="hidden" class="listinfo" value=${item.item_writer }> 
-                    <input type="hidden" class="listinfo" value=${principal.user.id }>
+                    <input type="hidden" class="listinfo user_id" value=${principal.user.id }>
                     
                 </article>
                 <!-- 상품간략정보 -->
