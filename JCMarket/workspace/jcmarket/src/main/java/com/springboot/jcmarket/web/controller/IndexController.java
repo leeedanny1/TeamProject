@@ -6,24 +6,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.web.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
+	
+	private final ProductService productService;
 
 	@GetMapping({ "/", "/index" })
-	public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		
+	public ModelAndView hotProduct( @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		if(principalDetails != null) {
 			if(principalDetails.getUser().getUser_nickname().equals("") || principalDetails.getUser().getUser_nickname() == null ) {
-				return "redirect:/logout";
+				ModelAndView mav = new ModelAndView("redirect:/logout");
+				return mav;
 			}
 		}
-		return "index/index";
+		ModelAndView mav = new ModelAndView("index/index");
+		System.out.println(productService.getHotProductList10());
+		mav.addObject("hotList", productService.getHotProductList10());
+		mav.addObject("newList", productService.getNewProductList10());
+		return mav;
 	}
 
 	@ResponseBody

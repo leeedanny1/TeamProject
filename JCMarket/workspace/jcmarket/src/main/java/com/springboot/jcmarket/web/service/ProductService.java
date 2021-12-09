@@ -27,6 +27,10 @@ public interface ProductService {
 	public List<Product> getNewProductListAll();
 	// 원하는 갯수만큼 노출
 	public List<Product> getNewProductList(int pageNumber);
+//	index에 띄울 10개 리스트
+	public List<Product> getHotProductList10();
+	public List<Product> getNewProductList10();
+	
 	
 //	조회수 증가
 	public void plusItemCount(int item_code);

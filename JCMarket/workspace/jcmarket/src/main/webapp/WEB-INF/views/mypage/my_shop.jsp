@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <sec:authorize access="isAuthenticated()">
@@ -51,16 +52,15 @@
             <a href=""><h2 class="section_name">판매 중인 상품</h2></a>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
-           
                 <c:forEach var = "mySaleProduct" items ="${mySaleProducts }">
                   <li class="item_list"  onclick="location.href = '/items/${mySaleProduct.item_code}'">
                         <!-- 상품사진 -->
-                        <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                        <img class="item_photo" src="/static/itemfileupload/${mySaleProduct.tempFileNames}" alt="상품사진입니다.">
                         <!-- 상품이름 -->
                         <p class="item_name">${mySaleProduct.item_title}</p>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
-                            <li><span class="item_price">${mySaleProduct.item_price}원</span></li>
+                            <li><span class="item_price"><fmt:formatNumber value="${mySaleProduct.item_price}" type="number"/>원</span></li>
                             <li><span class="item_time">${mySaleProduct.update_date}</span></li>
                         </ul>
                     </li>
@@ -76,12 +76,13 @@
                 <c:forEach var = "mySelectProduct" items ="${mySelectProducts }">
                     <li class="item_list"  onclick="location.href = '/items/${mySelectProduct.item_code}'">
                         <!-- 상품사진 -->
-                        <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
+                        <img class="item_photo" src="/static/itemfileupload/${mySelectProduct.tempFileNames}" alt="상품사진입니다.">
                         <!-- 상품이름 -->
                         <p class="item_name">${mySelectProduct.item_title}</p>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
-                            <li><span class="item_price">${mySelectProduct.item_price}원</span></li>
+                            
+                            <li><span class="item_price"><fmt:formatNumber value="${mySelectProduct.item_price}" type="number"/>원</span></li>
                             <li><span class="item_time">${mySelectProduct.update_date}</span></li>
                         </ul> 
                    </li>

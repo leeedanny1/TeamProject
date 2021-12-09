@@ -20,7 +20,8 @@
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
 		ORDER BY
-			like_count DESC;
+			like_count DESC,
+			item_code DESC;
 	</select>
   	<!-- 최근상품 -->
   	<select id="getNewProductListAll" resultType="com.springboot.jcmarket.domain.product.Product">
@@ -37,6 +38,44 @@
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
 		ORDER BY
 			item_code DESC;
+	</select>
+	<!-- index에 보여줄 10개 -->
+	<!-- 인기상품 -->
+  	<select id="getHotProductList10" resultType="com.springboot.jcmarket.domain.product.Product">
+		SELECT
+			pm.item_code AS item_code,
+			pm.item_title AS item_title,
+			pm.item_date AS item_date,
+			pm.item_count AS item_count,
+			pd.like_count AS like_count,
+			pd.item_price AS item_price,
+			pd.tempFileNames AS tempFileNames
+		FROM
+			product_mst AS pm
+			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
+		ORDER BY
+			like_count DESC,
+			item_code DESC
+		LIMIT
+			10;
+	</select>
+  	<!-- 최근상품 -->
+  	<select id="getNewProductList10" resultType="com.springboot.jcmarket.domain.product.Product">
+		SELECT
+			pm.item_code AS item_code,
+			pm.item_title AS item_title,
+			pm.item_date AS item_date,
+			pm.item_count AS item_count,
+			pd.like_count AS like_count,
+			pd.item_price AS item_price,
+			pd.tempFileNames AS tempFileNames
+		FROM
+			product_mst AS pm
+			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
+		ORDER BY
+			item_code DESC
+		LIMIT
+			10;
 	</select>
 	
 	<!-- 조회수 증가 -->
@@ -231,7 +270,7 @@
     
     <select id ="searchProduct" resultType="com.springboot.jcmarket.domain.product.Product">
       select
-        pm.item_code, pm.item_writer, pm.item_title, pd.create_date, pd.update_date,  pd.item_price, pd.item_content
+        pm.item_code, pm.item_writer, pm.item_title, pd.create_date, pd.update_date,  pd.item_price, pd.item_content, pd.tempFileNames
       from
        product_mst pm
       left outer join product_dtl pd on(pd.item_code = pm.item_code)

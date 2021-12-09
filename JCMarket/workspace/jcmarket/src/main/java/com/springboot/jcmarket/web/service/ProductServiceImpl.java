@@ -108,6 +108,16 @@ public class ProductServiceImpl implements ProductService{
     	return productList;
     }
     
+//    index에 띄울 10개
+    @Override
+    public List<Product> getHotProductList10() {
+    	return productRepository.getHotProductList10();
+    }
+    @Override
+    public List<Product> getNewProductList10() {
+    	return productRepository.getNewProductList10();
+    }
+    
     
     
 //    조회수 증가

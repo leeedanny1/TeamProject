@@ -13,6 +13,11 @@ public interface ProductRepository {
 	public List<Product> getHotProductListAll();
 	// 최근상품
 	public List<Product> getNewProductListAll();
+	// index에서 보여줄 상품
+	// 인기상품
+	public List<Product> getHotProductList10();
+	// 최근상품
+	public List<Product> getNewProductList10();
 	
 //	상품 조회수 증가
 	public int plusItemCount(int item_code);
