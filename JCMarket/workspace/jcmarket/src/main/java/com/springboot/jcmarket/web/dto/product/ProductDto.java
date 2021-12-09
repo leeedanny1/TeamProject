@@ -2,6 +2,8 @@ package com.springboot.jcmarket.web.dto.product;
 
 import java.time.LocalDateTime;
 
+import com.springboot.jcmarket.domain.product.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,4 +31,24 @@ public class ProductDto {
 	private String tempFileNames;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
+	
+	public Product toEntity() {
+		return Product.builder()
+				.item_code(item_code)
+				.item_title(item_title)
+				.item_writer(item_writer)
+				.item_date(item_date)
+				.item_count(item_count)
+				.now_sale(now_sale)
+				.like_count(like_count)
+				.item_price(item_price)
+				.item_stat(item_stat)
+				.item_change(item_change)
+				.item_delivery(item_delivery)
+				.item_content(item_content)
+				.tempFileNames(tempFileNames)
+				.create_date(create_date)
+				.update_date(update_date)
+				.build();
+	}
 }

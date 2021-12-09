@@ -66,11 +66,13 @@
 			pd.create_date AS create_date,
 			pd.update_date AS update_date,
 			um.id AS id,
-			um.user_nickname AS user_nickname
+			um.user_nickname AS user_nickname,
+			pl.user_id AS like_id
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
 			LEFT OUTER JOIN user_mst AS um ON(pm.item_writer = um.id)
+			LEFT OUTER JOIN product_like AS pl ON(pl.item_code = pm.item_code and pl.user_id = #{user_id})
 		WHERE
 			pm.item_code = #{item_code};
 	</select>
@@ -107,7 +109,7 @@
 			#{item_change},
 			#{item_delivery},
 			#{item_content},
-			NULL,
+			#{tempFileNames},
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst)),
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst))
 		);
@@ -146,7 +148,33 @@
 	</delete>
   
   
+   <update id="upLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+        UPDATE 
+            product_dtl
+        SET 
+            like_count=like_count + 1 
+        WHERE
+            item_code = #{item_code}
+  </update>
   
+   <update id="downLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
+        UPDATE
+           product_dtl 
+        SET 
+           like_count = like_count- 1 
+        WHERE 
+           item_code = #{item_code}
+        
+   </update>
+   
+    <select id="getLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="Integer">
+        SELECT 
+          like_count 
+        FROM
+          product_dtl
+        WHERE
+          item_code = #{item_code}
+</select>
   
   
   
@@ -186,36 +214,7 @@
     
     </delete>
   
-    <update id = "upLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
-       update
-        product_mst
-       set
-        like_count=like_count + 1
-       where
-        item_code = #{item_code}
-    
-    </update>
-    
-     <update id = "downLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product">
-       update
-        product_mst
-       set
-        like_count = like_count- 1
-       where
-        item_code = #{item_code}
-    
-    </update>
-    
-    <select id = "getLikeCount" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="Integer">
-      select
-        like_count
-      from
-        product_mst
-      where
-        item_code = #{item_code}
-     
-    </select>
-    
+  
      <select id = "getProduct" parameterType="com.springboot.jcmarket.domain.product.Product" resultType="com.springboot.jcmarket.domain.product.Product">
      select
  	  *

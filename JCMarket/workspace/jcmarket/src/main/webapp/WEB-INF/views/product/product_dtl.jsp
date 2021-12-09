@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
 </head>
-<script src="/js/product/purchase.js" defer></script>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/css/include/footer.css">
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
-
+    <input type = "hidden" class="like_id" value = "${item.like_id}">
 
 
     <!-- main content -->
@@ -108,7 +108,7 @@
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
-                        <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
+                        <button type="button" class ="like_button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${item.like_count}</span></button>
                         <button type="button" class="chatstart">연락하기</button>
                         <button type="button">구매하기</button>
                     </article>

@@ -1,14 +1,26 @@
 package com.springboot.jcmarket.web.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.springboot.jcmarket.domain.notice.Notice;
 import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.domain.product.ProductRepository;
+import com.springboot.jcmarket.web.beans.FileBean;
 import com.springboot.jcmarket.web.beans.ProductBean;
+import com.springboot.jcmarket.web.dto.product.ProductDto;
+import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 
 import lombok.RequiredArgsConstructor;
@@ -22,6 +34,8 @@ public class ProductServiceImpl implements ProductService{
     private ProductBean productBean;
     private List<Product> productListAll;
     private List<Product> productList;
+    
+    ProductDto productDto = new ProductDto();
     
     
 //  상품목록 가져오기
@@ -104,61 +118,143 @@ public class ProductServiceImpl implements ProductService{
     
 //    디테일 페이지
     @Override
-    public Product getItemDtl(int item_code) {
+    public Product getItemDtl(int item_code, int user_id) {
     	plusItemCount(item_code);
-    	return productRepository.getItemDtl(item_code);
+    	return productRepository.getItemDtl(item_code, user_id);
     }
+    
+    
+//    파일
+    // 파일등록
+    /*
+    @Override
+    public ProductDto fileUpload(ProductInsertDto productInsertDto) {
+    	// 초기화 한 번 해줌
+    	productDto = new ProductDto();
+
+    	// 경로지정
+		String filePath = context.getRealPath("/static/fileupload");
+
+		// insertDto에 있는 notoce_file을 multipartFile로..
+		MultipartFile[] multipartFiles = noticeInsertDto.getNotice_file();
+
+		StringBuilder originName = new StringBuilder();
+		StringBuilder tempName = new StringBuilder();
+
+		for (MultipartFile multipartFile : multipartFiles) {
+			String originFile = multipartFile.getOriginalFilename();
+			// 파일이름이 없다면 바로 dto 반환
+			if (originFile.equals("")) {
+				return noticeDto;
+			}
+//    				파일의 이름을 변경함.
+//    				중복되는 파일명이 올라오면 하나는 사라지기 때문.
+			String originFileExtention = originFile.substring(originFile.lastIndexOf("."));
+			String tempFile = UUID.randomUUID().toString().replaceAll("-", "") + originFileExtention;
+
+			originName.append(originFile);
+			originName.append(",");
+			tempName.append(tempFile);
+			tempName.append(",");
+
+//    				파일을 지정 경로에 저장
+			File file = new File(filePath, tempFile);
+			// 경로가 없다면 만들어주고
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			// 경로에 저장해라
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+//    			마지막 파일명의 쉼표 지우기
+		originName.delete(originName.length() - 1, originName.length());
+		tempName.delete(tempName.length() - 1, tempName.length());
+//    			파일이름을 저장해서 dto에 저장
+		noticeDto.setOriginFileNames(originName.toString());
+		noticeDto.setTempFileNames(tempName.toString());
+
+		return noticeDto;
+    }
+    */
+    /*
+	// 파일 리스트 가져오기
+	@Override
+	public List<FileBean> getFileList(Product product) {
+		// dto에 파일리스트가 없다면 null 반환
+		if (notice.getOriginFileNames() == null || notice.getTempFileNames() == null) {
+			return null;
+		}
+
+		// 파일 리스트 생성
+		List<FileBean> fileList = new ArrayList<FileBean>();
+
+		// ,기준으로 나눔
+		StringTokenizer ofn = new StringTokenizer(notice.getOriginFileNames(), ",");
+		StringTokenizer tfn = new StringTokenizer(notice.getTempFileNames(), ",");
+
+		// 오리진 파일 네임이 있다면 fileBean에 넣음
+		while (ofn.hasMoreTokens()) {
+			FileBean fileBean = new FileBean();
+			fileBean.setOriginFileName(ofn.nextToken());
+			fileBean.setTempFileName(tfn.nextToken());
+			fileList.add(fileBean);
+		}
+
+		return fileList;
+	}
+	// 파일삭제
+	@Override
+	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames) {
+		StringBuilder buildName = new StringBuilder();
+		
+		for (String fileName : fileNames) {
+			int count = 0;
+			if (deleteFileNames != null) {
+				for (String deleteFileName : deleteFileNames) {
+					if (fileName.equals(deleteFileName)) {
+						count++;
+						break;
+					}
+				}
+			}
+			if (count == 0) {
+				buildName.append(fileName);
+				buildName.append(",");
+			}
+		}
+
+		return buildName;
+	}
+	*/
     
     
     
 //    상품등록
-    @Override
-    public Product fileUpload(Product product) {
-    	// TODO Auto-generated method stub
-    	return null;
-    }
-    /*
-    
-    // 상품 이미지등록
-    //yml에서 지정해준 파일경로
-    @Value("${file.items}")
-	private String uploadFolder;
-    @Override
-    public Product fileUpload(Product product) {
-    	
-
-		StringBuilder tempName = new StringBuilder();
-    	
-    	
-    	String imageFileName = product.getTempFileNames().ge;
-		Path imageFilePath = Paths.get(uploadFolder + imageFileName);
-		
-    	
-    	
-    	
-    	
-    	
-    	return null;
-    	
-    	
-    	
-    	
-    	
-    	String imageFileName = imageDto.getProfileImageFile().getOriginalFilename();
-		Path imageFilePath = Paths.get(uploadFolder + imageFileName);
-		
-		try {
-			Files.write(imageFilePath, imageDto.getProfileImageFile().getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
-    */
-    
-    
     // 상품 게시글 등록
     @Override
-    public int itemInsert(Product product) {
+    public int itemInsert(ProductInsertDto productInsertDto) {
+    	System.out.println(productDto);
+    	fileUpload(productInsertDto);
+    	System.out.println(productDto);
+    	
+    	productDto.setItem_title(productInsertDto.getItem_title());
+    	productDto.setItem_writer(productInsertDto.getItem_writer());
+    	productDto.setLike_count(productInsertDto.getLike_count());
+    	productDto.setItem_price(productInsertDto.getItem_price());
+    	productDto.setItem_stat(productInsertDto.getItem_stat());
+    	productDto.setItem_change(productInsertDto.getItem_change());
+    	productDto.setItem_delivery(productInsertDto.getItem_delivery());
+    	productDto.setItem_content(productInsertDto.getItem_content());
+    	
+    	System.out.println(productDto);
+    	
+    	Product product = productDto.toEntity();
+    	
     	int mstResult = 0, dtlResult = 0;
     	
     	mstResult = productRepository.productMstInsert(product);
@@ -236,7 +332,7 @@ public class ProductServiceImpl implements ProductService{
 		}
 		productLikeDto.setLike_count(count_result);
 		productLikeDto.setLike_result(like_result);
-		  return productLikeDto;
+		  return productLikeDto; 
 	}
 
 	@Override
@@ -244,7 +340,7 @@ public class ProductServiceImpl implements ProductService{
 		  Product product = productLikeDto.toEntity();
 		  return productRepository.getProduct(product); 
 	}
-
+     
 	@Override
 	public List<Product> searchProduct(String search_content) {
 	      return productRepository.searchProduct(search_content);

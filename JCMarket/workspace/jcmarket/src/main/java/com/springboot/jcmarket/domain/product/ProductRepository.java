@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
+
 
 @Mapper
 public interface ProductRepository {
@@ -18,7 +20,7 @@ public interface ProductRepository {
 	public int plusItemCount(int item_code);
 	
 //	상품 디테일 페이지 가져오기
-	public Product getItemDtl(int item_code);
+	public Product getItemDtl(int item_code, int user_id);
 	// 이전글
 	// 다음글
 	

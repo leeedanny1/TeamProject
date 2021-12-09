@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,9 +50,13 @@ public class ProductController {
 	
 //	아이템 디페일 페이지
 	@GetMapping("/{item_code}")
-	public ModelAndView productDtl(@PathVariable int item_code) {
+	public ModelAndView productDtl(@PathVariable int item_code,  @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		ModelAndView mav = new ModelAndView("product/product_dtl");
-		mav.addObject("item", productService.getItemDtl(item_code));
+		int user_id = 0;
+		if(principalDetails != null) {
+			user_id = principalDetails.getUser().getId();
+		}
+		mav.addObject("item", productService.getItemDtl(item_code, user_id));
 		return mav;
 	}
 
@@ -76,11 +81,11 @@ public class ProductController {
 	@GetMapping("/update/{item_code}")
 	public ModelAndView productUpdate(Model model, @PathVariable int item_code, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		// 해당 상품의 작성자 아이디를 변수에 저장
-		int writerId = Integer.parseInt(productService.getItemDtl(item_code).getId());
+		int writerId = Integer.parseInt(productService.getItemDtl(item_code, principalDetails.getUser().getId()).getId());
 		
 		// 상품수정페이지로 연결
 		ModelAndView mav = new ModelAndView("product/product_update");
-		mav.addObject("item", productService.getItemDtl(item_code));
+		mav.addObject("item", productService.getItemDtl(item_code, principalDetails.getUser().getId()));
 		// 권한이 없는 사용자 상품디테일페이지로 연결
 		ModelAndView flaseMav = new ModelAndView("redirect:/items/" + item_code);
 		
@@ -136,6 +141,7 @@ public class ProductController {
 	@ResponseBody
 	@PostMapping("/add-like")
 	public Object addLike(@RequestParam int productId, @AuthenticationPrincipal PrincipalDetails principal) {
+		System.out.println("productId:" + productId);
 		if(principal == null) {
 			return "2";
 		}

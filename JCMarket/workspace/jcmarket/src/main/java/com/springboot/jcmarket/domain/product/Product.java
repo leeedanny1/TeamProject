@@ -44,6 +44,7 @@ public class Product {
 	
 //	like
 	private int user_id;
+	private int like_id;
 	
 	
 	
