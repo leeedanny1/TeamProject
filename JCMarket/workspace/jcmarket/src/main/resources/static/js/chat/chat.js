@@ -13,10 +13,6 @@ var chatObj = {
 	writer_id: ''
 }
 
-
-
-
-
 for (let i = 0; i < chatlist_btn.length; i++) {
 	chatlist_btn[i].onclick = () => {
 		for(let i = 0; i < chatlist_btn.length; i++){
@@ -103,10 +99,11 @@ function chatSend(i) {
 
 
 for(let i = 0; i < msginput.length; i++){
+/*	if(msginput[i].value.length==0){
 	setTimeout
-playAlert = setInterval(function() {
-EnterInChatRoom(i);
-}, 3000);
+	playAlert = setInterval(function() {
+	EnterInChatRoom(i);
+	}, 60000);}*/
 
 	
 	msginput[i].onkeypress = () => {
@@ -138,12 +135,11 @@ function deletelist (i) {
 			dataType: "text",
 			success: function(data) {
 				location.reload();
-				
 				alert("채팅방에서 나갔습니다");
 			},
 			error: function() {
 				alert('비동기 처리 실패');
 			}
 			})
-}
+	}
 }
