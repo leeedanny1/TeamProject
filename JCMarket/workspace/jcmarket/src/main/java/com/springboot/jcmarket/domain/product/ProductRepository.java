@@ -50,6 +50,6 @@ public interface ProductRepository {
    public int getLikeCount(Product product);
    public Product getProduct(Product product); 
    public List<Product> searchProduct(String search_content);
-   public List<Product> getSaleProduct(String user_id);
-   public List<Product> getSelectProduct(String user_id);
+   public List<Product> getSaleProduct(int id);
+   public List<Product> getSelectProduct(int id);
 }

@@ -91,12 +91,16 @@ public class UserController {
 	
 	//내상점
     @GetMapping("my-shop/{id}")
-	public ModelAndView myShop(@PathVariable int id) {
+	public ModelAndView myShop(@PathVariable int id,  @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println(id);
+       
     	ModelAndView mav = new ModelAndView("mypage/my_shop");
     	mav.addObject("mySaleProducts", productService.getSaleProduct(id));
     	mav.addObject("mySelectProducts", productService.getSelectProduct(id));
+    	
+    	System.out.println("mav:" + productService.getSaleProduct(id));
 		return mav;
-	}
+	} 
 	
 	
 	

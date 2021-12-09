@@ -170,7 +170,6 @@ public class ProductController {
 		ModelAndView mav = new ModelAndView("search/search"); 
 		mav.addObject("products" , productService.searchProduct(search_content));
 		mav.addObject("searchValue", search_content);
-		System.out.println(mav);
 		return mav;
 	}
 	

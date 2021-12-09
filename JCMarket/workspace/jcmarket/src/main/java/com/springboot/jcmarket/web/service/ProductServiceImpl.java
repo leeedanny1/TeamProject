@@ -328,4 +328,15 @@ public class ProductServiceImpl implements ProductService{
 	      return productRepository.searchProduct(search_content);
 	}
 
+	@Override
+	public List<Product> getSaleProduct(int id) {
+		return productRepository.getSaleProduct(id);
+	}
+
+	@Override
+	public List<Product> getSelectProduct(int id) {
+		System.out.println("getSelectProduct:" + productRepository.getSelectProduct(id));
+		return productRepository.getSelectProduct(id);
+	}
+
 }
