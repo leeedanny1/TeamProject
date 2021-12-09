@@ -37,7 +37,7 @@ public class NoticeController {
 	@GetMapping("/{notice_code}")
 	public ModelAndView noticeDtl(@PathVariable int notice_code) {
 		Notice notice = noticeService.getNoticeDtl(notice_code);
-		
+
 		ModelAndView mav = new ModelAndView("notice/notice_dtl");
 		mav.addObject("notice_dtl", noticeService.getNoticeDtl(notice_code));
 		mav.addObject("fileList", noticeService.getFileList(notice));
