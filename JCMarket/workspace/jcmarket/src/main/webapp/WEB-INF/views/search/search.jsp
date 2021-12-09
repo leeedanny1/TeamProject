@@ -29,7 +29,7 @@
              <p class="item_name">${product.item_title }</p>
              <!-- 상품 가격과 올린 시간 -->
              <ul class="item_info">
-                 <li><span class="item_price"><strong>${product.item_price }</strong>원</span></li>
+                 <li><span class="item_price">${product.item_price }원</span></li>
                  <li><span class="item_time">${product.update_date }</span></li>
              </ul>
         </li>

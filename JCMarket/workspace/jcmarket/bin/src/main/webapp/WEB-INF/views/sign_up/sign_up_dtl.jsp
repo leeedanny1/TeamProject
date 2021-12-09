@@ -22,17 +22,16 @@
         <span class="sign_exp">회원가입을 위해 전화번호 인증을 진행 해 주세요</span>
 
 
-        <div class="sign_form phone_check invisible">
+        <div class="sign_form ">
           
-           
-            <section class="check_section">
+           <section class="check_section phone_check">
                 <input type="tel" name="" class="input" id="" placeholder="'-'을 빼고 입력해주세요. ">
                 <button type="button" class="check_btn">전화번호 인증</button>
             </section>
        
         </div>
 
-        <div class="sign_form  ">
+        <div class="sign_form  invisible">
              
             <input type="text" name="" id="" class="user_info" value="" readonly>
            

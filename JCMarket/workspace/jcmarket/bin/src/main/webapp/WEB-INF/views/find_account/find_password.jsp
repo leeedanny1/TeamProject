@@ -21,10 +21,9 @@
          <h1 class="sign_name">JC마켓 비밀번호 찾기</h1>
         <span class="sign_exp">비밀번호를 찾고자 하는 아이디를 입력해 주세요. </span>
         
-   <div class="sign_form phone_check find_form ">
+    <div class="sign_form phone_check find_form">
           <input type= "text" class="input" placeholder="아이디를 입력해주세요.">
-          
-          <button type="button"  class="submit_btn">다음</button>   
+           <button type="button"  class="submit_btn">다음</button>   
         </div> 
   
    
@@ -47,4 +46,3 @@
          
     </main>
 </body>
-</html>

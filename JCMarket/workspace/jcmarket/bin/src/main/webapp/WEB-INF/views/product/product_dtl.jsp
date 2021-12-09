@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -16,6 +21,8 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
 </head>
+<script src="/js/product/purchase.js" defer></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <body>
     <!-- header -->
@@ -33,8 +40,12 @@
             <section class="item_info">
                 <!-- 상품명 -->
                 <article class="t_item_info">
-                    <h3>${item.item_title}</h3>
-                    <h4>${item.item_price}<span> 원</span></h4>
+                    <h3 id="item_title_value">${item.item_title}</h3>
+                    <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
+                    <input type="text" class="listinfo item_code" value=${item.item_code }>
+                  	<input type="text" class="listinfo" value=${item.item_writer }> 
+                    <input type="text" class="listinfo" value=${principal.user.id }>
+                    
                 </article>
                 <!-- 상품간략정보 -->
                 <article class="b_item_info">
@@ -48,18 +59,57 @@
                     <!-- 상품정보 -->
                     <article class="item_info_dtl">
                         <h4>판매자</h4>
-                        <span>${item.item_writer}</span>
+                        <span>${item.user_nickname}</span>
                         <h4>상품상태</h4>
-                        <span>${item.item_stat}</span>
+                        <c:choose>
+                            <c:when test="${item.item_stat eq 0}">
+                                <span>새상품</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 1}">
+                                <span>S급</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 2}">
+                                <span>A급</span>
+                            </c:when>
+                            <c:when test="${item.item_stat eq 3}">
+                                <span>B급</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                         <h4>교환여부</h4>
-                        <span>${item.item_change}</span>
+                        <c:choose>
+                            <c:when test="${item.item_change eq 0}">
+                                <span>교환가능</span>
+                            </c:when>
+                            <c:when test="${item.item_change eq 1}">
+                                <span>교환불가</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                         <h4>배송비</h4>
-                        <span>${item.item_delivery}</span>
+                        <c:choose>
+                            <c:when test="${item.item_delivery eq 0}">
+                                <span>판매자 부담</span>
+                            </c:when>
+                            <c:when test="${item.item_delivery eq 1}">
+                                <span>구매자 부담</span>
+                            </c:when>
+                            <c:when test="${item.item_delivery eq 2}">
+                                <span>직거래</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>DB값 오류</span>
+                            </c:otherwise>
+                        </c:choose>
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
-                        <button type="button" onclick="window.open('/chat')">연락하기</button>
+                        <button type="button" class="chatstart">asdfas연락하기</button>
                         <button type="button">구매하기</button>
                     </article>
                 </article>
@@ -71,9 +121,11 @@
             <pre class="item_dtl">${item.item_content}</pre>
 
             <article class="list_btn_container">
-                <button type="button" class="list_btn" onclick="location.href='/product/product_update.html'">수정</button>
-                <button type="button" class="list_btn">삭제</button>
-                <button type="button" class="list_btn" onclick="location.href='/product/new_product.html'">목록</button>
+                <c:if test="${principal.user.role eq 'admin' || principal.user.id eq item.item_writer}">
+                    <button type="button" class="list_btn product_update_btn">수정</button>
+                    <button type="button" class="list_btn product_delete_btn">삭제</button>
+                </c:if>
+                <button type="button" class="list_btn" onclick="location.href='/items/new/1'">목록</button>
             </article>
 
             <article class="notice_pre_next">
@@ -124,6 +176,9 @@
     </footer>
 
 
+
+<script src="/js/product/product_dtl.js"></script>
+<script src="/js/product/product_delete.js"></script>
 </body>
 
 </html>
