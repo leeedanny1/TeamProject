@@ -8,6 +8,7 @@ const item_stat = document.querySelector('#item_stat')
 const item_change = document.querySelector('#item_change')
 const item_delivery = document.querySelector('#item_delivery')
 const item_content = document.querySelector('#item_content')
+const file_upload_btn = document.querySelector('#file_upload_btn')
 
 
 // 상품등록
@@ -35,6 +36,9 @@ insert_btn.onclick = () => {
             alert("배송비 부담 방법을 선택해 주세요.")
             item_delivery.focus();
             return;
+        } else if(file_upload_btn.value == ''){
+            alert("상품사진을 등록해 주세요.")
+            file_upload_btn.focus();
         } else if(item_content.value == ''){
             alert("상품설명을 입력해 주세요.")
             item_content.focus();
@@ -44,7 +48,7 @@ insert_btn.onclick = () => {
                 type: "post",
                 url: "/items/insert",
                 data: formData,
-                enctype: "form-data",
+                enctype: "multipart/form-data",
                 processData: false,
                 contentType: false,
                 success: function(data){

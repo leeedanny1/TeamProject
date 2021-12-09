@@ -148,7 +148,7 @@ function msgService(content, result) {
 			p.classList.add('add_msg');
 			like_icon.classList.add('color--red');
 			like_count.textContent = parseInt(like_count.textContent) + 1;
-
+        
 			//좋아요 삭제 
 		} else if (result == 2) {
 			p.classList.add('delete_msg');

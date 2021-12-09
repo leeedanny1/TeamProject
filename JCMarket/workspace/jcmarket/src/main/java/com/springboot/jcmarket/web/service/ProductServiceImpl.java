@@ -96,6 +96,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> getNewProductList(int pageNumber) {
     	productListAll = getNewProductListAll();
+    	System.out.println(productListAll);
     	productList = new ArrayList<Product>();
     	
     	setProductBean(pageNumber);
@@ -103,7 +104,18 @@ public class ProductServiceImpl implements ProductService{
     	for (int i = productBean.getStartIndex(); i < productBean.getEndIndex() && i < productBean.getNoticeTotalCount(); i++) {
     		productList.add(productListAll.get(i));
     	}
+    	System.out.println(productList);
     	return productList;
+    }
+    
+//    index에 띄울 10개
+    @Override
+    public List<Product> getHotProductList10() {
+    	return productRepository.getHotProductList10();
+    }
+    @Override
+    public List<Product> getNewProductList10() {
+    	return productRepository.getNewProductList10();
     }
     
     
@@ -171,8 +183,6 @@ public class ProductServiceImpl implements ProductService{
 		tempName.delete(tempName.length() - 1, tempName.length());
 //    			파일이름을 저장해서 dto에 저장
 		productDto.setTempFileNames(tempName.toString());
-		
-		System.out.println(productDto);
 
 		return productDto;
     }
@@ -197,16 +207,14 @@ public class ProductServiceImpl implements ProductService{
 			fileBean.setTempFileName(tfn.nextToken());
 			fileList.add(fileBean);
 		}
-
+		System.out.println(fileList);
 		return fileList;
 	}
 //    상품등록
     // 상품 게시글 등록
     @Override
     public int itemInsert(ProductInsertDto productInsertDto) {
-    	System.out.println(productDto);
     	fileUpload(productInsertDto);
-    	System.out.println(productDto);
     	
     	productDto.setItem_title(productInsertDto.getItem_title());
     	productDto.setItem_writer(productInsertDto.getItem_writer());
@@ -326,6 +334,17 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> searchProduct(String search_content) {
 	      return productRepository.searchProduct(search_content);
+	}
+
+	@Override
+	public List<Product> getSaleProduct(int id) {
+		return productRepository.getSaleProduct(id);
+	}
+
+	@Override
+	public List<Product> getSelectProduct(int id) {
+		System.out.println("getSelectProduct:" + productRepository.getSelectProduct(id));
+		return productRepository.getSelectProduct(id);
 	}
 
 }

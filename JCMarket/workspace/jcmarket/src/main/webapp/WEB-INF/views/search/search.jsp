@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,12 +25,12 @@
       <c:forEach var = "product" items ="${products }">
         <li class="item_list"  onclick="location.href = '/items/${product.item_code}'">
              <!-- 상품사진 -->
-             <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
+             <img class="item_photo" src="/static/itemfileupload/${product.tempFileNames}" alt="상품사진입니다.">
              <!-- 상품이름 -->
              <p class="item_name">${product.item_title }</p>
              <!-- 상품 가격과 올린 시간 -->
              <ul class="item_info">
-                 <li><span class="item_price">${product.item_price }원</span></li>
+                 <li><span class="item_price"><fmt:formatNumber value="${product.item_price }" type="number"/>원</span></li>
                  <li><span class="item_time">${product.update_date }</span></li>
              </ul>
         </li>
