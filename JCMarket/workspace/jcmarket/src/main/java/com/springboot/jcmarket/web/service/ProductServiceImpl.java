@@ -104,9 +104,9 @@ public class ProductServiceImpl implements ProductService{
     
 //    디테일 페이지
     @Override
-    public Product getItemDtl(int item_code) {
+    public Product getItemDtl(int item_code, int user_id) {
     	plusItemCount(item_code);
-    	return productRepository.getItemDtl(item_code);
+    	return productRepository.getItemDtl(item_code, user_id);
     }
     
     
@@ -236,7 +236,7 @@ public class ProductServiceImpl implements ProductService{
 		}
 		productLikeDto.setLike_count(count_result);
 		productLikeDto.setLike_result(like_result);
-		  return productLikeDto;
+		  return productLikeDto; 
 	}
 
 	@Override
@@ -244,7 +244,7 @@ public class ProductServiceImpl implements ProductService{
 		  Product product = productLikeDto.toEntity();
 		  return productRepository.getProduct(product); 
 	}
-
+     
 	@Override
 	public List<Product> searchProduct(String search_content) {
 	      return productRepository.searchProduct(search_content);

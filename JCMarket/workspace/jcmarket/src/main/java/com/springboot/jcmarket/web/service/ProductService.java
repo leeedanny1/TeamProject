@@ -29,7 +29,7 @@ public interface ProductService {
 	public void plusItemCount(int item_code);
 	
 //	디테일페이지
-	public Product getItemDtl(int item_code);
+	public Product getItemDtl(int item_code, int user_id);
 	
 //	상품등록
 	// 상품 사진업로드

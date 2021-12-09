@@ -2,7 +2,7 @@ const like_button = document.querySelector('.like_button');
 const like_icon = document.querySelector('.like_button i');
 const like_count = document.querySelector('.like_count');
 const item_info_btn = document.querySelector('.item_info_btn');
-const user_id = document.querySelector('#user_id');
+
 const chatstart = document.querySelector('.chatstart');
 const listinfo = document.querySelectorAll('.listinfo');
 
@@ -52,7 +52,7 @@ chatstart.onclick = () => {
 	}
 }
 
-/*
+
 //다시 새로고침했을때 하트아이콘색 유지를 위해 
 if (user_id.value == 0) {
 	like_icon.classList.remove('color--red');
@@ -67,6 +67,7 @@ if (user_id.value == 0) {
 
 //좋아요 버튼 클릭시 
 like_button.addEventListener('click', () => {
+	console.log(12344)
 	if (user_id.value == 0) {
 		addLike();
 
@@ -74,7 +75,7 @@ like_button.addEventListener('click', () => {
 		deleteLike();
 	}
 });
-*/
+
 
 //좋아요 추가 
 function addLike() {
