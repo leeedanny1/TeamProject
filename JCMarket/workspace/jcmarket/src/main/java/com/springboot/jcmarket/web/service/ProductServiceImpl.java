@@ -3,6 +3,7 @@ package com.springboot.jcmarket.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.springboot.jcmarket.domain.product.Product;
@@ -111,6 +112,51 @@ public class ProductServiceImpl implements ProductService{
     
     
 //    상품등록
+    @Override
+    public Product fileUpload(Product product) {
+    	// TODO Auto-generated method stub
+    	return null;
+    }
+    /*
+    
+    // 상품 이미지등록
+    //yml에서 지정해준 파일경로
+    @Value("${file.items}")
+	private String uploadFolder;
+    @Override
+    public Product fileUpload(Product product) {
+    	
+
+		StringBuilder tempName = new StringBuilder();
+    	
+    	
+    	String imageFileName = product.getTempFileNames().ge;
+		Path imageFilePath = Paths.get(uploadFolder + imageFileName);
+		
+    	
+    	
+    	
+    	
+    	
+    	return null;
+    	
+    	
+    	
+    	
+    	
+    	String imageFileName = imageDto.getProfileImageFile().getOriginalFilename();
+		Path imageFilePath = Paths.get(uploadFolder + imageFileName);
+		
+		try {
+			Files.write(imageFilePath, imageDto.getProfileImageFile().getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    */
+    
+    
+    // 상품 게시글 등록
     @Override
     public int itemInsert(Product product) {
     	int mstResult = 0, dtlResult = 0;

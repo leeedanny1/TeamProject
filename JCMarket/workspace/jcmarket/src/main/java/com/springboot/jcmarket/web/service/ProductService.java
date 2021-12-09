@@ -32,6 +32,9 @@ public interface ProductService {
 	public Product getItemDtl(int item_code);
 	
 //	상품등록
+	// 상품 사진업로드
+	public Product fileUpload(Product product);
+	// 상품 게시글 업로드
 	public int itemInsert(Product product);
 	
 //	상품수정

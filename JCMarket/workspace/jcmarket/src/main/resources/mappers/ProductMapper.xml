@@ -62,7 +62,6 @@
 			pd.item_change AS item_change,
 			pd.item_delivery AS item_delivery,
 			pd.item_content AS item_content,
-			pd.originFileNames AS originFileNames,
 			pd.tempFileNames AS tempFileNames,
 			pd.create_date AS create_date,
 			pd.update_date AS update_date,
@@ -98,7 +97,6 @@
 				item_change,
 				item_delivery,
 				item_content,
-				originFileNames,
 				tempFileNames,
 				create_date,
 				update_date
@@ -109,7 +107,6 @@
 			#{item_change},
 			#{item_delivery},
 			#{item_content},
-			NULL,
 			NULL,
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst)),
 			(SELECT item_date FROM product_mst WHERE item_code = (SELECT MAX(item_code) FROM product_mst))
@@ -134,7 +131,6 @@
 			item_change = #{item_change},
 			item_delivery = #{item_delivery},
 			item_content = #{item_content},
-			originFileNames = #{originFileNames},
 			tempFileNames = #{tempFileNames}
 		WHERE
 			item_code = #{item_code};

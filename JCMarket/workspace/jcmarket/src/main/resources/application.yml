@@ -58,5 +58,4 @@ mybatis:
 #파일경로, 일종의 변수 개념.
 #여려 경로 만들 수 있음.
 file:
-  notice: D:\web\TeamProject\JCMarket\uploadFiles\notice\
   items: D:\web\TeamProject\JCMarket\uploadFiles\items\
