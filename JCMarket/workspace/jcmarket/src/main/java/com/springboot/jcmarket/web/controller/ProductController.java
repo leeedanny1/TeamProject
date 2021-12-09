@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
+import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.web.dto.product.ProductLikeDto;
 import com.springboot.jcmarket.web.service.ProductService;
 
@@ -55,7 +56,9 @@ public class ProductController {
 		if(principalDetails != null) {
 			user_id = principalDetails.getUser().getId();
 		}
+		Product product = productService.getItemDtl(item_code, user_id);
 		mav.addObject("item", productService.getItemDtl(item_code, user_id));
+		mav.addObject("fileList", productService.getFileList(product));
 		return mav;
 	}
 

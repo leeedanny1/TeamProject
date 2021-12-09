@@ -44,7 +44,7 @@ insert_btn.onclick = () => {
                 type: "post",
                 url: "/items/insert",
                 data: formData,
-                enctype: "form-data",
+                enctype: "multipart/form-data",
                 processData: false,
                 contentType: false,
                 success: function(data){

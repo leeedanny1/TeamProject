@@ -35,7 +35,10 @@
         <!-- 상단 아이템 정보 -->
         <section class="t_container">
             <!-- 상품 사진 -->
-            <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo">
+            <!-- <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo"> -->
+            <c:forEach var="fileBean" items="${fileList }" varStatus="st">
+                <img src="/static/itemfileupload/${fileBean.tempFileName}" alt="">
+            </c:forEach>
             <!-- 상품 정보 -->
             <section class="item_info">
                 <!-- 상품명 -->
