@@ -57,7 +57,7 @@ function EnterInChatRoom(i) {
 	chatObj.seller_id = chatinfo[(i * 4) + 2].value;
 	chatObj.id = chatinfo[(i * 4) + 3].value;
 	none[i].style.display = 'block';
-
+	
 	$.ajax({
 		type: "post",
 		url: "/chatting/" + i,
@@ -73,7 +73,27 @@ function EnterInChatRoom(i) {
 		error: function() {
 			alert('비동기 처리 실패');
 		}
-	})
+	});
+	
+	setTimeout
+	playAlert = setInterval(function() {
+	$.ajax({
+		type: "post",
+		url: "/chatting/" + i,
+		data: JSON.stringify(chatObj),
+		contentType: "application/json;charset=UTF-8",
+		dataType: "text",
+		success: function(data) {
+			chatRespObj = JSON.parse(data);
+			chatContentAppend(chatObj.id, chatRespObj);
+		
+
+		},
+		error: function() {
+			alert('비동기 처리 실패');
+		}
+	});
+	}, 3000);
 }
 
 function chatSend(i) {
@@ -99,11 +119,7 @@ function chatSend(i) {
 
 
 for(let i = 0; i < msginput.length; i++){
-/*	if(msginput[i].value.length==0){
-	setTimeout
-	playAlert = setInterval(function() {
-	EnterInChatRoom(i);
-	}, 60000);}*/
+
 
 	
 	msginput[i].onkeypress = () => {
