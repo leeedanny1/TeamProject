@@ -6,7 +6,7 @@
                 <sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal" var="principal" />
                 </sec:authorize>
-
+<link rel="stylesheet" href="/css/include/footer.css">
                 <!DOCTYPE html>
                 <html lang="ko">
 
@@ -87,13 +87,7 @@
 
 
 
-                    <!-- footer -->
-                    <footer>
-                        <main class="wrap">
-                            푸터<br>
-                            dsfdsfsd <br>
-                        </main>
-                    </footer>
+                   <jsp:include page="../include/footer.jsp"/> 
                 </body>
 
                 </html>

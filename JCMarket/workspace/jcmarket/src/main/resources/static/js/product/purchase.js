@@ -11,9 +11,8 @@ var list = {
 	buyer_id: listinfo[1].value,
 	seller_id: listinfo[2].value
 }
-
 chatstart.onclick = () => {
-	
+
 	if (list.buyer_id == list.seller_id) {
 		alert('본인이 등록하신 상품입니다');
 	} else if (list.seller_id == 0) {
@@ -43,9 +42,8 @@ chatstart.onclick = () => {
 				else{
 					window.open("/chat");
 				}
+				window.open("/chat");
 			}, error: function() {
-
-				alert('비동기처리에러.');
 				
 			}
 		})

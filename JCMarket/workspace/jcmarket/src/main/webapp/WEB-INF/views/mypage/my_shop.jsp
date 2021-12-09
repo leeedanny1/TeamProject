@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/myshop/my_shop.css">
+    <link rel="stylesheet" href="/css/include/footer.css">
 </head>
 <body>
       	<jsp:include page="../include/header.jsp"/> 
@@ -229,7 +230,7 @@
             	</c:forEach>
             </ul>
         </section>
-
+<jsp:include page="../include/footer.jsp"/> 
 
      </div>
 </body>

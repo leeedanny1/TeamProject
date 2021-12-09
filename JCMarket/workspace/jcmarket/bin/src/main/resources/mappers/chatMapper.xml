@@ -2,51 +2,79 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.springboot.jcmarket.domain.chat.ChatRepository">
-	<select id="getChatListAll" 
-			resultType="com.springboot.jcmarket.domain.chat.Chat">
+<mapper
+	namespace="com.springboot.jcmarket.domain.chat.ChatRepository">
+	<select id="getChatListAll"
+		resultType="com.springboot.jcmarket.domain.chat.Chat">
 		SELECT
-			cm.update_date,
-			cm.item_code,
-			cm.buyer_id,
-			um1.user_nickname AS buyer_nickname,
-			cm.seller_id,
-			um2.user_nickname AS seller_nickname
+		cm.update_date,
+		cm.item_code,
+		cm.buyer_id,
+		um1.user_nickname AS buyer_nickname,
+		cm.seller_id,
+		um2.user_nickname AS seller_nickname
 		FROM
-			chat_mst cm
-			LEFT OUTER JOIN user_mst um1 ON(um1.id = cm.buyer_id)
-			LEFT OUTER JOIN user_mst um2 ON(um2.id = cm.seller_id)
+		chat_mst cm
+		LEFT OUTER JOIN user_mst um1 ON(um1.id = cm.buyer_id)
+		LEFT OUTER JOIN user_mst um2 ON(um2.id = cm.seller_id)
 		WHERE
-			cm.buyer_id = #{id}
+		cm.buyer_id = #{id}
 		OR cm.seller_id = #{id}
 		ORDER BY
-			update_date desc;
+		update_date desc;
 	</select>
-	
-	<select id="getChatting" resultType="com.springboot.jcmarket.domain.chat.Chat"	parameterType="com.springboot.jcmarket.domain.chat.Chat">
+
+	<select id="getChatting"
+		resultType="com.springboot.jcmarket.domain.chat.Chat"
+		parameterType="com.springboot.jcmarket.domain.chat.Chat">
 		SELECT
-			cd.item_code,
-			cd.buyer_id,
-			cd.seller_id,
-			cd.chat_index,
-			cd.writer_id,
-			um.user_nickname as writer_nickname,
-			cd.chat_content
+		cd.item_code,
+		cd.buyer_id,
+		cd.seller_id,
+		cd.chat_index,
+		cd.writer_id,
+		um.user_nickname as writer_nickname,
+		cd.chat_content
 		FROM
-			chat_dtl cd
-			LEFT OUTER JOIN user_mst um ON(um.id = cd.writer_id)
+		chat_dtl cd
+		LEFT OUTER JOIN user_mst um ON(um.id = cd.writer_id)
 		WHERE
-			cd.item_code = #{item_code}
+		cd.item_code = #{item_code}
 		AND cd.buyer_id = #{buyer_id}
-		AND cd.seller_id = #{seller_id};
+		AND cd.seller_id =
+		#{seller_id};
 	</select>
-	
-	<insert id="chattinginput" parameterType="com.springboot.jcmarket.domain.chat.Chat" >
+
+	<insert id="chattinginput"
+		parameterType="com.springboot.jcmarket.domain.chat.Chat">
 		insert into
-			chat_dtl
-		values(  
-		    #{item_code},#{buyer_id},#{seller_id},0,#{writer_id},#{chat_content},NOW(),NOW()
+		chat_dtl
+		values(
+		#{item_code},#{buyer_id},#{seller_id},0,#{writer_id},#{chat_content},NOW(),NOW()
 		)
 	</insert>
-
+	<insert id="listinput"
+		parameterType="com.springboot.jcmarket.domain.chat.Chat">
+		insert into
+		chat_mst
+		values(
+		#{item_code},#{buyer_id},#{seller_id},now(),now()
+		)
+	</insert>
+	<select id="listselect" resultType="Integer"
+		parameterType="com.springboot.jcmarket.domain.chat.Chat">
+		SELECT count (item_code)
+		FROM
+		chat_mst
+		where
+		item_code=#{item_code} and
+		buyer_id=#{buyer_id} and
+		seller_id=#{seller_id};
+	</select>
+	<delete id="listdelete" parameterType="com.springboot.jcmarket.domain.chat.Chat">
+		DELETE FROM chat_mst WHERE
+		item_code=#{item_code} and
+		buyer_id=#{buyer_id} and
+		seller_id=#{seller_id};
+	</delete>
 </mapper>

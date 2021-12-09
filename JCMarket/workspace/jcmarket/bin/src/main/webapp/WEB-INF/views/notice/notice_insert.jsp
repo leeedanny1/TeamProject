@@ -39,7 +39,7 @@
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <input type="hidden" name="notice_writer" value="${principal.user.user_nickname }">
+                <input type="hidden" name="notice_writer" value="${principal.user.id }">
                 <li name="notice_writer">${principal.user.user_nickname }</li>
                 <li>작성일</li>
                 <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>

@@ -22,7 +22,12 @@ notice_update_button.onclick = () => {
                 if(data == 1){
                     alert("공지사항이 정상적으로 수정되었습니다.")
                     location.replace("/notice/" + formData.get("notice_code"))
+                } else{
+                    alert("공지사항 수정을 실패하였습니다. (Service 오류)")
                 }
+            },
+            error: function(){
+                alert("공지사항 수정을 실패했습니다. (비동기 처리 오류)")
             }
         })
     }

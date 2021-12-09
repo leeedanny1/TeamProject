@@ -43,7 +43,7 @@
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <li>${notice_dtl.notice_writer}</li>
+                <li>${notice_dtl.user_nickname}</li>
                 <li>조회수</li>
                 <li>${notice_dtl.notice_count}</li>
             </ul>

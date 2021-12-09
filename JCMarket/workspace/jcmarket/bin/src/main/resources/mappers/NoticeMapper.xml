@@ -8,10 +8,13 @@
   	<!-- 공지사항 리스트 가져오는것 -->
 	<select id="getNoticeListAll" resultType="com.springboot.jcmarket.domain.notice.Notice">
 		SELECT
-			*
+			nm.*,
+			um.id,
+			um.user_nickname
 		FROM
-			notice_mst
-		ORDER BY notice_code desc
+			notice_mst AS nm
+			LEFT OUTER JOIN user_mst AS um ON(nm.notice_writer = um.id)
+		ORDER BY notice_code desc;
 	</select>
 	
 	<!-- 공지사항 조회수 증가 -->
@@ -35,10 +38,13 @@
 			nd.update_date,
 			nd.notice_content,
 			nd.originFileNames,
-			nd.tempFileNames
+			nd.tempFileNames,
+			um.id AS id,
+			um.user_nickname AS user_nickname
 		FROM
 			notice_mst nm
 			LEFT OUTER JOIN notice_dtl nd ON(nd.notice_code = nm.notice_code)
+			LEFT OUTER JOIN user_mst AS um ON(nm.notice_writer = um.id)
 		WHERE
 			nm.notice_code = #{notice_code}
 		LIMIT

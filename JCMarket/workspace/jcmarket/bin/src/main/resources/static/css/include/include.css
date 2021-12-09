@@ -28,20 +28,24 @@ header{
 }
 
 /* 검색박스 */
-.t_header .h_search{
+.h_search_btn_container {
+	width: 50%;
+	display :flex;
+	justify-content: center;
+    align-items: center;
+}
+
+.h_search_btn_container .h_search{
     padding-left: 20px;
-    width: 50%;
+    width: 80%;
     height: 40px;
     border: 2px solid rgb(247, 47, 51);
     box-sizing: border-box;
+    margin-right: 12px;
+   
 }
-/*검색 버튼*/
-.h_search_btn {
-	cursor: pointer;
-	position: absolute;
-	top: 42px;
-	left: 880px;
-}
+
+
 
 /* 인포 */
 .t_header .h_info > .h_info_btn{

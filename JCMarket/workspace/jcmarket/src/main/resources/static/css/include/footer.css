@@ -1,0 +1,18 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.jeon{
+    text-align: center;
+}
+.lee{
+    text-align: center;
+}
+.kang{
+    text-align: center;
+}
+.image{
+    border-radius: 40px;
+}

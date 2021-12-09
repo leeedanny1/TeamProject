@@ -1,14 +1,13 @@
-/* 로그인, 회원가입 공통 CSS */
+/* �｡懋ｷｸ�攤, �嚮�寳�ｰ��桿 �ｳｵ��ｵ CSS */
 
 body{
     background-color:  rgb(240, 240, 240);
 }
 
-/* 컨테이너 */
+/* �ｻｨ��護擽�ц */
 .sign_container{
     margin: 100px auto;
     width: 500px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,6 +22,12 @@ body{
 	 text-align: right;
 }
 
+.find_id_result {
+	display: flex;
+	flex-direction: column;
+	height: 200px;
+}
+
 
 .find_id:hover {
 	 text-decoration: underline;
@@ -33,7 +38,7 @@ body{
 	 cursor:pointer;
 }
 
-/* 페이지 제목 */
+/* �侍�擽�ｧ� ��罹ｪｩ */
 .sign_name {
     margin: 30px auto;
     font-size: 30px;
@@ -43,7 +48,7 @@ body{
 }
   
 
-/* 폼 */
+/* �松 */
 .sign_form {
     margin: 50px 0 30px;
     margin: 0 auto;
@@ -52,7 +57,7 @@ body{
     justify-content: center;
 }
 
-/* 폼 내부 input과 .submit_btn 공통 */
+/* �松 �ざ�ｶ� input�ｳｼ .submit_btn �ｳｵ��ｵ */
 .sign_form input, .sign_form .submit_btn {
     margin-top: 20px;
     width: 90%;
@@ -61,23 +66,23 @@ body{
     box-sizing: border-box;
 }
 
-/* input박스 디자인 */
+/* input�ｰ菩侃 �粕�梵�攤 */
 .sign_form input {
     padding-left: 10px;
     border: none;
     border-bottom: 1px solid #ccc;
 }
 
-/* 버튼 디자인 */
+/* �ｲ�款 �粕�梵�攤 */
 .sign_form .submit_btn{
     height: 70px;
     color: white;
     border: none;
     background-color: rgba(247, 47, 50);
-    /* js구현 할 때 opacity: 1; 로 바꾸면 됨 */
+    /* js�ｵｬ��� �腹 �阜 opacity: 1; �｡� �ｰ緋ｾｸ�ｩｴ �勢 */
     opacity: 0.3;
 }
-/* input입력이 완료된 경우 */
+/* input�桿��･�擽 �刋�｣誤頗 �ｲｽ�垈 */
 /* .sign_form .submit_btn{
     background-color: rgb(247, 47, 50);
 } */
@@ -85,7 +90,7 @@ body{
 
 
 
-/* 에러메시지 */
+/* �乱�洳�ｩ肥亨�ｧ� */
 .e_msg{
     width: 90%;
     color: red;

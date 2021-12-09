@@ -2,6 +2,7 @@ package com.springboot.jcmarket.web.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,20 +34,17 @@ public class ChatController {
 	@ResponseBody
 	@PostMapping("/chatting/{roomNumber}")
 	public Object chattingList(@RequestBody ChatDto chatdto, @PathVariable int roomNumber) {
-		System.out.println(chatdto);
 		return chatService.getChatting(chatdto);
 	}
 	
 	@ResponseBody
 	@PostMapping("/chat-insert")
 	public String chat_insert(@RequestBody ChatDto chatdto) {
-		System.out.println("asdf"+chatdto);
 		return Integer.toString(chatService.Chattinginput(chatdto));
 	}
 	@ResponseBody
 	@PostMapping("/list-insert")
 	public String list_insert(@RequestBody ChatDto chatdto) {
-		System.out.println("asdfasd"+chatdto);
 		return Integer.toString(chatService.listinput(chatdto));
 	}
 	@ResponseBody
@@ -55,5 +53,10 @@ public class ChatController {
 		
 		return Integer.toString(chatService.listselect(chatdto));
 	}
-	
+	@ResponseBody
+	@DeleteMapping("/list-delete")
+	public String list_delete(@RequestBody ChatDto chatdto) {
+		System.out.println("delete"+chatdto);
+		return Integer.toString(chatService.listdelete(chatdto));
+	}
 }

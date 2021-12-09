@@ -35,7 +35,7 @@
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
-                <li>${notice_update.notice_writer }</li>
+                <li>${notice_update.user_nickname }</li>
                 <li>수정일</li>
                 <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
             </ul>

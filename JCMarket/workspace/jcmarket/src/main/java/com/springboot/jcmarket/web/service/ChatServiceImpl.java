@@ -47,4 +47,11 @@ public class ChatServiceImpl implements ChatService {
 		System.out.println("asdfasdfas"+chat);
 		return chatRepository.listselect(chat);
 	}
+
+	@Override
+	public int listdelete(ChatDto chatdto) {
+		Chat chat = chatdto.toEntity();
+		System.out.println("deleteasdf"+chat);
+		return chatRepository.listdelete(chat);
+	}
 }

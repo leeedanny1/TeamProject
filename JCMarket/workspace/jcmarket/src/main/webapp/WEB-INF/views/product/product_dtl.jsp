@@ -23,6 +23,7 @@
 </head>
 <script src="/js/product/purchase.js" defer></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="/css/include/footer.css">
 <body>
     <!-- header -->
 	<jsp:include page="../include/header.jsp"/> 
@@ -108,7 +109,7 @@
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button type="button"><i class="fas fa-heart"></i> 찜 ${item.like_count}</button>
-                        <button type="button" class="chatstart" onclick="window.open('/chat')">연락하기</button>
+                        <button type="button" class="chatstart">연락하기</button>
                         <button type="button">구매하기</button>
                     </article>
                 </article>
@@ -166,13 +167,7 @@
 
 
 
-    <!-- footer -->
-    <footer>
-        <main class="wrap">
-            푸터<br>
-            dsfdsfsd <br>
-        </main>
-    </footer>
+<jsp:include page="../include/footer.jsp"/> 
 
 
 

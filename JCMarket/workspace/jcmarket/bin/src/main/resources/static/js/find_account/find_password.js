@@ -25,7 +25,7 @@ console.log(userData);
 submit_btns[0].addEventListener('click', () => {
 	 //아이디 
 	 if(checkEmpty(inputs[0], 0)) {
-		checkInputFormat(inputs[0], 0);
+		CheckIdFormat(inputs[0], 0);
 	    
   }
 });
@@ -169,7 +169,7 @@ function findPassword(){
 //전화번호버튼클릭시 
 
 check_btn.addEventListener('click', () => {
-    clearMsg(inputs[2]);
+	clearMsg(inputs[2]);
     
 	 //전화번호 체크버튼 클릭 시 
 	     if(checkEmpty(inputs[2],2)) {
@@ -245,8 +245,9 @@ function checkEmpty(input, inputIndex) {
 		}else if(inputIndex == 2) {
 		 if(phoneCheckResult == 1){
 		msgService(input, '인증번호를 입력해주세요. ', 0);
+		 return;
 		 }
-		msgService(input, '전화번호를 입력해주세요. ', 0);
+	    msgService(input, '전화번호를 입력해주세요. ', 0);
 		}else if(inputIndex == 3) {
 			msgService(input, '비밀번호를 입력해주세요. ', 0);
 		}else if(inputIndex == 4) {
@@ -255,16 +256,6 @@ function checkEmpty(input, inputIndex) {
 		return false;
 	}
 	return true;
-}
-
-function checkInputFormat(input, inputIndex) {
-	if(inputIndex == 0) {
-		CheckIdFormat(input);
-	}else if(inputIndex == 1) {
-		
-	}else if(inputIndex == 2){
-		
-	}
 }
 
 

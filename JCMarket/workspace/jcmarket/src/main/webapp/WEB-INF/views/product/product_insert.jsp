@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
-
+	<link rel="stylesheet" href="/css/include/footer.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -94,13 +94,7 @@
 
 
 
-    <!-- footer -->
-    <footer>
-        <main class="wrap">
-            푸터<br>
-            dsfdsfsd <br>
-        </main>
-    </footer>
+ <jsp:include page="../include/footer.jsp"/> 
 
     <script src="/js/product/product_insert.js"></script>
 </body>

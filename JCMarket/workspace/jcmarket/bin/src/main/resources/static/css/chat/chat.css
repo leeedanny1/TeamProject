@@ -53,6 +53,7 @@ input{
     flex-direction: column;
     background-color: #fff;
     cursor: pointer;
+    overflow:scroll;
 }
 
 .list li{
@@ -71,16 +72,20 @@ input{
     
 }
 .chatting{
-
+ 	overflow:scroll;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
+    background-color: rgb(142, 191, 231);
+  
+
 }
 .chatting ul{
-background-color: rgb(142, 191, 231);
-    width: 400px; height: 100%;
+
+    width: 400px; 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 .my{
     width: 100%;
@@ -97,7 +102,6 @@ background-color: rgb(142, 191, 231);
     font-size: 10px;
 }
 .msgbox{
-
     display: flex;
     align-items: center;
     position: absolute;
@@ -107,10 +111,13 @@ background-color: rgb(142, 191, 231);
     width: 400px;
     right: 515px;
     bottom: 0;
-    background-color: rgb(142, 191, 231);
+
 }
 .none{
 		display:none;
+}
+#exit{
+	font-size:20px
 }
 .msginput{
     width: 80%;height: 40px;
