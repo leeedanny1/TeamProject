@@ -11,6 +11,8 @@ const searchValue = document.querySelector('.searchValue');
 const user_id = document.querySelector('.user_id');
 
 
+
+
 //검색시 검색input안의 값을 남기기 위해 
 h_search.value = searchValue.value;
 

@@ -104,6 +104,7 @@ function chatSend(i) {
 	chatObj.seller_id = chatinfo[(i * 4) + 2].value;
 	chatObj.writer_id = chatinfo[(i * 4) + 3].value;
 	chatObj.chat_content = msginput[i].value;
+	if(msginput[i].value!=''){
 	$.ajax({
 		type: "POST",
 		url: "/chat-insert",
@@ -117,6 +118,7 @@ function chatSend(i) {
 
 		}
 	});
+	}
 }
 
 
