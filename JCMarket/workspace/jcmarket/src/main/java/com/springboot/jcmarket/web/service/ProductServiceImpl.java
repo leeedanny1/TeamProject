@@ -96,6 +96,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> getNewProductList(int pageNumber) {
     	productListAll = getNewProductListAll();
+    	System.out.println(productListAll);
     	productList = new ArrayList<Product>();
     	
     	setProductBean(pageNumber);
@@ -103,6 +104,7 @@ public class ProductServiceImpl implements ProductService{
     	for (int i = productBean.getStartIndex(); i < productBean.getEndIndex() && i < productBean.getNoticeTotalCount(); i++) {
     		productList.add(productListAll.get(i));
     	}
+    	System.out.println(productList);
     	return productList;
     }
     
@@ -202,9 +204,7 @@ public class ProductServiceImpl implements ProductService{
     // 상품 게시글 등록
     @Override
     public int itemInsert(ProductInsertDto productInsertDto) {
-    	System.out.println(productDto);
     	fileUpload(productInsertDto);
-    	System.out.println(productDto);
     	
     	productDto.setItem_title(productInsertDto.getItem_title());
     	productDto.setItem_writer(productInsertDto.getItem_writer());

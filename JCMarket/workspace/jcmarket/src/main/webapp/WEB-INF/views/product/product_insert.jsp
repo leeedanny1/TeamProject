@@ -77,7 +77,7 @@
             </ul>
             <ul class="file_ul">
                 <li class="file_li">사진등록(이미지만 등록)</li>
-                <li class="file_insert"><input type="file" multiple="multiple" name="file" accept="image/*" id="file_upload_btn"></li>
+                <li class="file_insert"><input type="file" name="file" accept="image/*" id="file_upload_btn"></li>
             </ul>
             <ul class="content_ul">
                 <li>

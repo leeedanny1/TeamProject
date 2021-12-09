@@ -37,7 +37,7 @@
             <!-- 상품 사진 -->
             <!-- <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo"> -->
             <c:forEach var="fileBean" items="${fileList }" varStatus="st">
-                <img src="/static/itemfileupload/${fileBean.tempFileName}" alt="">
+                <img src="/static/itemfileupload/${fileBean.tempFileName}" alt="상품 사진입니다." class="item_photo">
             </c:forEach>
             <!-- 상품 정보 -->
             <section class="item_info">

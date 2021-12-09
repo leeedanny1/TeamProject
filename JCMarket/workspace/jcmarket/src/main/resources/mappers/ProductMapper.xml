@@ -14,7 +14,8 @@
 			pm.item_date AS item_date,
 			pm.item_count AS item_count,
 			pd.like_count AS like_count,
-			pd.item_price AS item_price
+			pd.item_price AS item_price,
+			pd.tempFileNames AS tempFileNames
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)
@@ -29,7 +30,8 @@
 			pm.item_date AS item_date,
 			pm.item_count AS item_count,
 			pd.like_count AS like_count,
-			pd.item_price AS item_price
+			pd.item_price AS item_price,
+			pd.tempFileNames AS tempFileNames
 		FROM
 			product_mst AS pm
 			LEFT OUTER JOIN product_dtl AS pd ON(pm.item_code = pd.item_code)

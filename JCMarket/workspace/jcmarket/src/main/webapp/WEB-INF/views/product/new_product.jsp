@@ -41,7 +41,7 @@
                 <c:forEach var="items" items="${productList }">
                     <li class="item_list" onclick="location.href = '/items/${items.item_code}'">
                         <!-- 상품사진 -->
-                        <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
+                            <img src="/static/itemfileupload/${items.tempFileNames}" alt="상품사진입니다." class="item_photo">
                         <!-- 상품이름 -->
                         <ul class="item_info">
                             <p class="item_name">${items.item_title}</p>
