@@ -10,13 +10,22 @@
 	</parent>
 	<groupId>com.springboot.jcmarket</groupId>
 	<artifactId>jcmarket</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
+	<!-- 배포하기위한 설정 -->
+	<packaging>war</packaging>
 	<name>jcmarket</name>
 	<description>jcmarket_project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!-- 배포하기 위한 dependencies -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+			
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>

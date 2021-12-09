@@ -63,8 +63,6 @@ public class NoticeServiceImpl implements NoticeService {
 		return pageNumber;
 	}
 
-	
-	
 	// 모든 공지사항 가져옴
 	@Override
 	public List<Notice> getNoticeListAll() {
@@ -87,8 +85,6 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeList;
 	}
 
-	
-	
 //	파일 업/다운로드
 	// 파일 업로드
 	@Override
@@ -191,7 +187,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public StringBuilder deleteFileName(String[] fileNames, String[] deleteFileNames) {
 		StringBuilder buildName = new StringBuilder();
-		
+
 		for (String fileName : fileNames) {
 			int count = 0;
 			if (deleteFileNames != null) {
@@ -210,12 +206,15 @@ public class NoticeServiceImpl implements NoticeService {
 
 		return buildName;
 	}
+
 	@Override
 	public NoticeDto fileUpdate(NoticeUpdateDto noticeUpdateDto) {
 
-		StringBuilder originNames = deleteFileName(noticeUpdateDto.getOriginFileNames() ,noticeUpdateDto.getDeleteOriginFileNames());
-		StringBuilder tempNames = deleteFileName(noticeUpdateDto.getTempFileNames(), noticeUpdateDto.getDeleteTempFileNames());
-		
+		StringBuilder originNames = deleteFileName(noticeUpdateDto.getOriginFileNames(),
+				noticeUpdateDto.getDeleteOriginFileNames());
+		StringBuilder tempNames = deleteFileName(noticeUpdateDto.getTempFileNames(),
+				noticeUpdateDto.getDeleteTempFileNames());
+
 //	      새로 추가할 파일들
 		MultipartFile[] multipartFiles = noticeUpdateDto.getNotice_file();
 		String filePath = context.getRealPath("/static/fileupload");
@@ -224,8 +223,8 @@ public class NoticeServiceImpl implements NoticeService {
 			String originFile = multipartFile.getOriginalFilename();
 			// 새로 추가할 파일이 없다면 for문 중단
 			if (originFile.equals("") || multipartFile == null) {
-	            break;
-	        }
+				break;
+			}
 			// originFile에서 확장자 제거
 			String originFileExtension = originFile.substring(originFile.lastIndexOf("."));
 			// UUID생성하고 확장자 붙이기
@@ -260,16 +259,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDto;
 	}
 
-	
-	
 //	조회수 증가
 	@Override
 	public void plusNoticeCount(int notice_code) {
 		noticeRepository.plusNoticeCount(notice_code);
+		noticeRepository.plusNoticeCount(notice_code);
+		noticeRepository.plusNoticeCount(notice_code);
 	}
 
-	
-	
 //	디테일 페이지
 	@Override
 	public Notice getNoticeDtl(int notice_code) {
@@ -289,12 +286,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeRepository.getNextNotice(notice_code);
 	}
 
-	
-	
 //	공지사항 등록
 	@Override
 	public int noticeInsert(NoticeInsertDto noticeInsertDto) {
-		
+
 		fileUpload(noticeInsertDto);
 
 		noticeDto.setNotice_title(noticeInsertDto.getNotice_title());
@@ -312,15 +307,13 @@ public class NoticeServiceImpl implements NoticeService {
 		return dtlResult;
 	}
 
-	
-	
 //	공지사항 수정
 	@Override
 	public int noticeUpdate(NoticeDto noticeDto) {
 //		파일 업데이트랑 삭제 구현해야 함.
 //		NoticeInsertDto noticeInsertDto = new NoticeInsertDto();
 //		fileUpload(noticeInsertDto);
-		
+
 //		System.out.println(fileUpdate(noticeUpdateDto));
 
 		Notice notice = noticeDto.toEntity();
@@ -334,18 +327,16 @@ public class NoticeServiceImpl implements NoticeService {
 		return dtlResult;
 	}
 
-	
-	
 //	공지사항 삭제
 	@Override
 	public int noticeDelete(int notice_code) {
 		Notice notice = noticeRepository.getNoticeDtl(notice_code);
-		
+
 		// 첨부파일 경로
 		String filePath = context.getRealPath("/static/fileupload");
 		// 첨부파일을 리스트로 불러옴
 		List<FileBean> fileList = getFileList(notice);
-		
+
 		if (fileList != null) {
 			for (FileBean fileBean : fileList) {
 				File file = new File(filePath, fileBean.getTempFileName());

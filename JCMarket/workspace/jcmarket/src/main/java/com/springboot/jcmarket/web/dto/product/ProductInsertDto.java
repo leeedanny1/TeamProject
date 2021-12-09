@@ -18,5 +18,5 @@ public class ProductInsertDto {
 	private int item_change;
 	private int item_delivery;
 	private String item_content;
-	private MultipartFile file;
+	private MultipartFile[] file;
 }
