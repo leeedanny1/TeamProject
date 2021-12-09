@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/include/footer.css">
     <link rel="stylesheet" href="/css/index.css">
+    <script src = "/js/index/index_product.js" defer></script>
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -55,7 +56,7 @@
                             <li><span class="item_price">
                                 <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
                             </li>
-                            <li><span class="item_time">1시간 전</span></li>
+                            <li><span class="item_time">${items.update_date}</span></li>
                         </ul>
                     </li>
                 </c:forEach>
@@ -67,9 +68,11 @@
             <a href="/items/new/1"><h2 class="section_name">최근상품</h2></a>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
+           
                 <c:forEach var="items" items="${newList }">
                     <li class="item_list" onclick="location.href = '/items/${items.item_code}'">
                         <!-- 상품사진 -->
+                         <h1>${items.update_date }</h1>
                             <img src="/static/itemfileupload/${items.tempFileNames}" alt="상품사진입니다." class="item_photo">
                         <!-- 상품이름 -->
                         <ul class="item_info">
@@ -81,7 +84,7 @@
                             <li><span class="item_price">
                                 <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
                             </li>
-                            <li><span class="item_time">1시간 전</span></li>
+                            <li><span class="item_time">${items.update_date }</span></li>
                         </ul>
                     </li>
                 </c:forEach>
