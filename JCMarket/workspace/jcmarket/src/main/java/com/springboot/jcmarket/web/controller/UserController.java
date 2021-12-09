@@ -5,15 +5,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.domain.user.User;
 import com.springboot.jcmarket.web.dto.auth.SignUpDto;
 import com.springboot.jcmarket.web.dto.auth.findAccountDto;
+import com.springboot.jcmarket.web.service.ProductService;
 import com.springboot.jcmarket.web.service.SignUpService;
 import com.springboot.jcmarket.web.service.UserService;
 
@@ -25,6 +28,7 @@ public class UserController {
 
 	private final UserService userService;
 	private final SignUpService signUpService;
+	private final ProductService productService;
 
 	@GetMapping("/update")
 	public String update() {
@@ -86,9 +90,12 @@ public class UserController {
 	}
 	
 	//내상점
-    @GetMapping("my-shop")
-	public String myShop() {
-		return "mypage/my_shop";
+    @GetMapping("my-shop/{id}")
+	public ModelAndView myShop(@PathVariable int id) {
+    	ModelAndView mav = new ModelAndView("mypage/my_shop");
+    	mav.addObject("mySaleProducts", productService.getSaleProduct(id));
+    	mav.addObject("mySelectProducts", productService.getSelectProduct(id));
+		return mav;
 	}
 	
 	

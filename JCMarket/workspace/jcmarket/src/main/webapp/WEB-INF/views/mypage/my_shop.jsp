@@ -47,11 +47,11 @@
        
         </section>
         <section class="sale_item">
-            <a href="/product/hot_product.html"><h2 class="section_name">판매 중인 상품</h2></a>
+            <a href=""><h2 class="section_name">판매 중인 상품</h2></a>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var="notice" items="${noticeList }" class="item_container">
-                    <li class="item_list">
+                    <li class="item_list"  onclick="location.href = '/items/${items.item_code}'">
                         <!-- 상품사진 -->
                         <img class="item_photo" src="images/items/items.jpg" alt="상품사진입니다.">
                         <!-- 상품이름 -->

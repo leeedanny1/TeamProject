@@ -41,7 +41,7 @@ h_myshop_btn.onclick = () => {
 		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
 		location.href = "/sign-in-select"
 	} else {
-		location.href = "/my-shop"
+		location.href = "/my-shop/" + user_id.value;
 	}
 
 }

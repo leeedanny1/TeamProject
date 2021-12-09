@@ -240,8 +240,26 @@
   
     </select>
     
+    
+     <select id ="getSaleProduct" resultType="com.springboot.jcmarket.domain.product.Product">
+     SELECT
+        *
+     FROM
+        product_mst pm
+     LEFT OUTER JOIN product_dtl pd ON(pm.item_code = pd.item_code)
+     WHERE
+      item_writer = #{id};
+  </select>
   
-  
-  
+    <select id ="getSelectProduct" resultType="com.springboot.jcmarket.domain.product.Product">
+    select 
+    *
+   from 
+    product_mst pm 
+   left outer join product_dtl pd on(pd.item_code = pm.item_code) 
+   left outer join product_like pl on(pl.item_code = pm.item_code)
+   where
+ 	pl.user_id = #{id};
+  </select>
   
   </mapper>
