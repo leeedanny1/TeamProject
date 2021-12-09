@@ -59,4 +59,6 @@ public interface ProductService {
     public ProductLikeDto deleteLike(ProductLikeDto productLikeDto);
     public Product getProduct(ProductLikeDto productLikeDto);
     public List<Product> searchProduct(String search_content);
+    public List<Product> getSaleProduct(int id);
+    public List<Product> getSelectProduct(int id);
 }

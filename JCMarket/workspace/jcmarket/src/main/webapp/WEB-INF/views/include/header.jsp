@@ -14,7 +14,7 @@
     <!-- 헤더 내부 wrap -->
     <main class="wrap">
     
-     <input type = "hidden"  class = "user_id" value = "${principal.user.user_id}">
+     <input type = "hidden"  class = "user_id" value = "${principal.user.id}">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
          <input type = "hidden" class= "searchValue" value = "${searchValue }">
