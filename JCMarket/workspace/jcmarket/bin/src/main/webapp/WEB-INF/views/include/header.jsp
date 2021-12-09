@@ -13,16 +13,20 @@
 <header>
     <!-- 헤더 내부 wrap -->
     <main class="wrap">
+    
+     <input type = "hidden"  class = "user_id" value = "${principal.user.user_id}">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
-
+         <input type = "hidden" class= "searchValue" value = "${searchValue }">
             <!-- 로고 -->
             <a href="/">
                 <h1 class="h_logo">JC마켓</h1>
             </a>
             <!-- 검색박스 -->
+            <div class = "h_search_btn_container">
             <input type="text" class="h_search" placeholder="상품명, 지역명, @상점명 입력">
             <i class="fas fa-search h_search_btn"></i>
+            </div>
             <!-- 인포 -->
             <ul class="h_info">
                 <li class="h_sale_btn h_info_btn">판매하기</li>
@@ -91,10 +95,7 @@
 
 </header>
 
-<c:set var="user_id" value="${principal.user.user_id}"></c:set>
-<c:choose>
-    <c:when test="${fn:length(user_id) < 16}">
-        <section class="check_password invisible">
+         <section class="check_password invisible">
             <div class="user_info">
                 <input type="text" value="${principal.user.user_id}" readonly>
                 <input type="hidden" class="user_password" value="${principal.user}" readonly>
@@ -103,21 +104,8 @@
             </div>
             <button type="button" class="toUpdatePage_btn">확인</button>
         </section>
-    </c:when>
-    <c:otherwise>
-        <section class="check_password invisible">
-            <div class="user_info">
-
-                <input type="hidden" class="" value="${principal.user.create_date}" readonly>
-                <input class="input_password" type="password" class="input" name="id" id=""
-                    placeholder="비밀번호확인이 필요합니다. ">
-            </div>
-            <button type="button" class="toUpdatePage_btn">확인</button>
-        </section>
-    </c:otherwise>
-</c:choose>
-
-</html>
+  
+ </html>
 
 
 <script type="text/javascript" src="/js/index/index.js"></script>

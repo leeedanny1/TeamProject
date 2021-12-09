@@ -60,7 +60,7 @@
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
                         <button class = "like_button" value ="0" type="button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${items.like_count}</span></button>
-                        <button type="button">연락하기</button>
+                        <button type="button" class="chatstart" onclick="window.open('/chat')">연락하기</button>
                     </article>
                 </article>
             </section>

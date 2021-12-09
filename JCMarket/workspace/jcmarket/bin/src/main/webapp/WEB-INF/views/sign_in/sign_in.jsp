@@ -18,7 +18,7 @@
         <h1 class="sign_name">JC마켓 로그인</h1>
 
         <div action="" class="sign_form">
-            <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID"  autofocus>
+            <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID">
 
             <p class="e_msg">아이디를 입력해 주세요</p>
 

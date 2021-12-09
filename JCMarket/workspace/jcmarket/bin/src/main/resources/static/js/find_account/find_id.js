@@ -10,6 +10,7 @@ const create_date = document.querySelector('.create_date');
 var phoneCheckResult = 0;
 var nameCheckResult = 0;
 var tempPhoneValue = '';
+var phoneAuthResult = 0;
 
 var userData = {
 	user_name : '',
@@ -43,10 +44,7 @@ submit_btn.addEventListener('click', () => {
 		checkNameFormat(inputs[0]);
 	}
 	
-	
-
-	
-	if(nameCheckResult == 1 && phoneCheckResult == 1) {
+	if(nameCheckResult == 1 && phoneAuthResult == 1) {
 		findId();
 	}else if(nameCheckResult == 1 && phoneCheckResult == 0) {
 		alert('전화번호 인증을 진행해주세요. ');
@@ -55,6 +53,7 @@ submit_btn.addEventListener('click', () => {
 
 
 function findId(){
+	 
 	$.ajax({
 		type:"post",
 		url: "/find-id",
@@ -88,6 +87,7 @@ function checkAuth(input) {
 	 let authNumber = input.value;
 	 if(authCode == authNumber) {
 		  alert('인증완료하였습니다. ');
+		  phoneAuthResult = 1;
 		  
 	}else {
 		msgService(input, '인증번호가 일치하지 않습니다. ', 0);
