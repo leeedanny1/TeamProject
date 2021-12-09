@@ -44,7 +44,6 @@
 						<div class="msgbox">
 							<textarea class="msginput" placeholder="메세지를 입력해주세요"></textarea>
 							<button type="button" class="submitbtn">전 송</button>
-							
 						</div>
 					</div>
 				</c:forEach>
