@@ -39,7 +39,7 @@ public class NoticeController {
 		Notice notice = noticeService.getNoticeDtl(notice_code);
 
 		ModelAndView mav = new ModelAndView("notice/notice_dtl");
-		mav.addObject("notice_dtl", noticeService.getNoticeDtl(notice_code));
+		mav.addObject("notice_dtl", notice);
 		mav.addObject("fileList", noticeService.getFileList(notice));
 		mav.addObject("pre_notice", noticeService.getPreNotice(notice_code));
 		mav.addObject("next_notice", noticeService.getNextNotice(notice_code));
@@ -75,8 +75,8 @@ public class NoticeController {
 			model.addAttribute("now", date);
 			
 			ModelAndView mav = new ModelAndView("notice/notice_update");
-			mav.addObject("notice_update", noticeService.getNoticeDtl(notice_code));
 			Notice notice = noticeService.getNoticeDtl(notice_code);
+			mav.addObject("notice_update", notice);
 			mav.addObject("fileList", noticeService.getFileList(notice));
 			
 			return mav;

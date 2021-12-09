@@ -57,7 +57,7 @@ public class ProductController {
 			user_id = principalDetails.getUser().getId();
 		}
 		Product product = productService.getItemDtl(item_code, user_id);
-		mav.addObject("item", productService.getItemDtl(item_code, user_id));
+		mav.addObject("item", product);
 		mav.addObject("fileList", productService.getFileList(product));
 		return mav;
 	}

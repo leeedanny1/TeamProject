@@ -263,8 +263,6 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void plusNoticeCount(int notice_code) {
 		noticeRepository.plusNoticeCount(notice_code);
-		noticeRepository.plusNoticeCount(notice_code);
-		noticeRepository.plusNoticeCount(notice_code);
 	}
 
 //	디테일 페이지
