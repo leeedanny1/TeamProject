@@ -1,5 +1,6 @@
 package com.springboot.jcmarket.web.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.jcmarket.config.auth.PrincipalDetails;
 import com.springboot.jcmarket.domain.product.Product;
 import com.springboot.jcmarket.web.dto.product.ProductInsertDto;
 import com.springboot.jcmarket.web.service.ProductService;
@@ -38,8 +40,9 @@ public class ProductRestController {
 	
 //	상품삭제
 	@DeleteMapping("/delete/{item_code}")
-	public String itemDelete(@PathVariable int item_code) {
-		return Integer.toString(productService.itemDelete(item_code));
+	public String itemDelete(@PathVariable int item_code, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		int user_id = principalDetails.getUser().getId();
+		return Integer.toString(productService.itemDelete(item_code, user_id));
 	}
 
 }
