@@ -21,7 +21,7 @@
        <section class="sale_item">
         <ul class="item_container">
       <c:forEach var = "product" items ="${products }">
-        <li class="item_list">
+        <li class="item_list"  onclick="location.href = '/items/${product.item_code}'">
              <!-- 상품사진 -->
              <img class="item_photo" src="/images/items/items.jpg" alt="상품사진입니다.">
              <!-- 상품이름 -->
@@ -37,4 +37,4 @@
       </section>   
        </main>              
 </body>
-</html>
+</html>;
