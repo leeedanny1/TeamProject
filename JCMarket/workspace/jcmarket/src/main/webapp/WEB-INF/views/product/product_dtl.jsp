@@ -132,6 +132,8 @@
                 <button type="button" class="list_btn" onclick="location.href='/items/new/1'">목록</button>
             </article>
 
+            <!-- 이전상품, 다음상품 아직 구현 못 함-->
+            <!--
             <article class="notice_pre_next">
                 <ul>
                     <li class="pn_title pn_title1"><i class="fas fa-arrow-up"></i> 다음 상품</li>
@@ -164,6 +166,7 @@
                     </c:choose>
                 </ul>
             </article>
+            -->
         </section>
         
         
