@@ -26,7 +26,6 @@ public class ChatController {
 	public ModelAndView chatList(@AuthenticationPrincipal PrincipalDetails prDetails) {
 		ModelAndView mav = new ModelAndView("chat/chat");
 		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
-		System.out.println("asdfsad"+mav);
 		
 		return mav;
 	}
@@ -56,7 +55,6 @@ public class ChatController {
 	@ResponseBody
 	@DeleteMapping("/list-delete")
 	public String list_delete(@RequestBody ChatDto chatdto) {
-		System.out.println("delete"+chatdto);
 		return Integer.toString(chatService.listdelete(chatdto));
 	}
 }

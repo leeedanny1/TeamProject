@@ -23,35 +23,30 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public List<Chat> getChatting(ChatDto chatDto) {
 		Chat chat = chatDto.toEntity();
-		System.out.println(chat);
 		return chatRepository.getChatting(chat);
 	}
 
 	@Override
 	public int Chattinginput(ChatDto chatDto) {
 		Chat chat = chatDto.toEntity();
-		System.out.println(chat);
 		return chatRepository.chattinginput(chat);
 	}
 
 	@Override
 	public int listinput(ChatDto chatdto) {
 		Chat chat = chatdto.toEntity();
-		System.out.println("asdfasd"+chat);
 		return chatRepository.listinput(chat);
 	}
 
 	@Override
 	public int listselect(ChatDto chatdto) {
 		Chat chat = chatdto.toEntity();
-		System.out.println("asdfasdfas"+chat);
 		return chatRepository.listselect(chat);
 	}
 
 	@Override
 	public int listdelete(ChatDto chatdto) {
 		Chat chat = chatdto.toEntity();
-		System.out.println("deleteasdf"+chat);
 		return chatRepository.listdelete(chat);
 	}
 }
