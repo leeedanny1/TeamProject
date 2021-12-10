@@ -63,7 +63,7 @@
        
         </section>
         <section class="sale_item">
-            <h2 class="section_name">유저가 판매 중인 상품</h2>
+            <h2 class="section_name">${user_nickname }의 판매 상품</h2>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var = "mySaleProduct" items ="${mySaleProducts }">
@@ -84,7 +84,7 @@
        
         <section class="sale_item">
        
-            <h2 class="section_name">유저가 찜한 상품</h2>
+            <h2 class="section_name">${user_nickname }의 찜한 상품</h2>
             <!-- 개별 아이템 박스컨테이너 -->
             <ul class="item_container">
                 <c:forEach var = "mySelectProduct" items ="${mySelectProducts }">

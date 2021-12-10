@@ -15,6 +15,7 @@ public interface UserRepository {
 	  public User findPassword(User user);
 	  public int updatePassword(User user);
 	  public User getUser(String user_id);
+	  public String getNickname(int id);
 	  public int updateUser(User user);
 	  public int socailupdate(User user);
 	  public int withdraw(int id);

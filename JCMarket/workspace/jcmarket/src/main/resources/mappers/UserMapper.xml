@@ -68,6 +68,15 @@
 	
 	</select>
 	
+	<select id = "getNickname" resultType="String">
+	   	select
+       	 	user_nickname
+ 		from
+  			user_mst
+ 		where
+   			id = #{id};
+   	</select>
+	
 	<select id = "findId" parameterType="com.springboot.jcmarket.domain.user.User" resultType="com.springboot.jcmarket.domain.user.User">
 	    select
 	     user_id, create_date

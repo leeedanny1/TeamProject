@@ -96,6 +96,7 @@ public class UserController {
     	ModelAndView mav = new ModelAndView("mypage/my_shop");
     	mav.addObject("mySaleProducts", productService.getSaleProduct(id));
     	mav.addObject("mySelectProducts", productService.getSelectProduct(id));
+    	mav.addObject("user_nickname", userService.getNickname(id));
 		return mav;
 	} 
 	

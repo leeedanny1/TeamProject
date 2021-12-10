@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService{
 		return userRepository.updatePassword(user);
 	}
 
+	@Override
+	public String getNickname(int id) {
+		return userRepository.getNickname(id);
+	}
+
 }

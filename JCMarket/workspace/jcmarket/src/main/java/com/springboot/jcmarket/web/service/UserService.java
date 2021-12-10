@@ -10,6 +10,7 @@ public interface UserService {
    public User findId(findAccountDto findAccountDto);
    public User findPassword(findAccountDto findAccountDto);
    public int updatePassword(findAccountDto findAccountDto);
+   public String getNickname(int id);
    public int withdraw(int id);
    
 }
