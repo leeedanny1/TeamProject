@@ -114,7 +114,7 @@
                     <article class="item_info_btn">
                         <button type="button" class ="like_button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${item.like_count}</span></button>
                         <button type="button" class="chatstart">연락하기</button>
-                        <button type="button">구매하기</button>
+                        <!-- <button type="button">구매하기</button> -->
                     </article>
                 </article>
             </section>
