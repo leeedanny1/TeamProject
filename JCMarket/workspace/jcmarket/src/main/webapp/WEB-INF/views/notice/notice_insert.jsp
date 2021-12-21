@@ -26,7 +26,7 @@
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
     <!-- main content -->
@@ -35,14 +35,17 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="title" name="notice_title" placeholder="공지사항 제목을 입력하세요"></li>
+                <li class="title_insert"><input type="text" class="title" name="notice_title"
+                        placeholder="공지사항 제목을 입력하세요"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
                 <input type="hidden" name="notice_writer" value="${principal.user.id }">
                 <li name="notice_writer">${principal.user.user_nickname }</li>
                 <li>작성일</li>
-                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
+                <li>
+                    <fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm" />
+                </li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">첨부파일</li>
@@ -63,8 +66,8 @@
 
 
 
-    <jsp:include page="../include/footer.jsp"/> 
-    
+    <jsp:include page="../include/footer.jsp" />
+
     <script src="/js/notice/notice_insert.js"></script>
 </body>
 

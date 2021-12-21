@@ -1,6 +1,5 @@
 package com.springboot.jcmarket.web.dto.product;
 
-
 import java.time.LocalDateTime;
 
 import com.springboot.jcmarket.domain.product.Product;
@@ -13,22 +12,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ProductLikeDto {
-    
+
 	private int id;
 	private int user_id;
 	private int item_code;
 	private int like_count;
 	private int like_result;
 	private LocalDateTime create_date;
-	
+
 	public Product toEntity() {
-		  return Product.builder()
-					
-					.user_id(user_id)
-					.item_code(item_code)
-					.like_count(like_count)
-					.create_date(create_date)
-					.build(); 
-	     
+		return Product.builder()
+
+				.user_id(user_id).item_code(item_code).like_count(like_count).create_date(create_date).build();
+
 	}
 }

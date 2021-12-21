@@ -21,7 +21,7 @@
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
 
@@ -32,11 +32,13 @@
             <input type="hidden" name="item_code" value="${item.item_code}">
             <ul class="title_ul">
                 <li class="title_name">상품명</li>
-                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title" placeholder="상품명을 입력하세요." value="${item.item_title}"></li>
+                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title"
+                        placeholder="상품명을 입력하세요." value="${item.item_title}"></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name select_name">상품가격(숫자만 입력)</li>
-                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price" placeholder="상품 가격을 입력하세요." value="${item.item_price}"></li>
+                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price"
+                        placeholder="상품 가격을 입력하세요." value="${item.item_price}"></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">상품상태</li>
@@ -69,7 +71,9 @@
                 <li>판매자 닉네임</li>
                 <li>${item.user_nickname }</li>
                 <li>작성 시작 시간</li>
-                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
+                <li>
+                    <fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm" />
+                </li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">사진등록</li>
@@ -77,7 +81,8 @@
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" id="item_content" name="item_content" placeholder="상품 설명을 입력하세요.">${item.item_content}</textarea>
+                    <textarea class="notice_content" id="item_content" name="item_content"
+                        placeholder="상품 설명을 입력하세요.">${item.item_content}</textarea>
                 </li>
             </ul>
 
@@ -90,10 +95,10 @@
 
 
 
-   <jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
 
-<script src="/js/product/product_update.js"></script>
+    <script src="/js/product/product_update.js"></script>
 </body>
 
 </html>

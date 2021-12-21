@@ -7,29 +7,30 @@
 </sec:authorize>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JC마켓 : JC마켓 회원가입</title>
 
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/sign/sign.css">
-<link rel="stylesheet" href="../css/sign/sign_up.css">
-     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-     <script src="/js/sign_up/sign_up_social.js" defer></script>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JC마켓 : JC마켓 회원가입</title>
+
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/sign/sign.css">
+	<link rel="stylesheet" href="../css/sign/sign_up.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/js/sign_up/sign_up_social.js" defer></script>
 </head>
+
 <body>
 	<main class="sign_container">
 		<h1 class="sign_name">${principal.user.provider }로 JC마켓 회원가입</h1>
 		<span class="sign_exp">회원가입을 위해 상세 정보를 입력 해 주세요</span>
 		<form action="" class="sign_form">
-			<input type="text" class="user_info" name="" id="" value="${principal.user.user_name} "
-				readonly>
-			
-				
+			<input type="text" class="user_info" name="" id="" value="${principal.user.user_name} " readonly>
+
+
 			<section class="check_section">
-				<input type="tel" name="" class="input" id=""placeholder="'-'을 빼고 입력해주세요. ">
+				<input type="tel" name="" class="input" id="" placeholder="'-'을 빼고 입력해주세요. ">
 				<button type="button" class="check_btn">전화번호 인증</button>
 			</section>
 			<section class="check_section">
@@ -43,4 +44,5 @@
 		</form>
 	</main>
 </body>
+
 </html>

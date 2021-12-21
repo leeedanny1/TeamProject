@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,28 +13,30 @@
     <link rel="stylesheet" href="/css/sign/sign.css">
     <script src="/js/sign_in/sign_in.js" defer></script>
 </head>
+
 <body>
-	<form action="/sign-in" method="post">
-     <main class="sign_container">
-        <h1 class="sign_name">JC마켓 로그인</h1>
+    <form action="/sign-in" method="post">
+        <main class="sign_container">
+            <h1 class="sign_name">JC마켓 로그인</h1>
 
-        <div action="" class="sign_form">
-            <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID">
+            <div action="" class="sign_form">
+                <input type="text" class="item_ip" name="user_id" id="user_id" placeholder="ID">
 
-            <p class="e_msg">아이디를 입력해 주세요</p>
+                <p class="e_msg">아이디를 입력해 주세요</p>
 
-            <input type="password"class="item_ip" name="user_password" id="user_password" placeholder="PASSWORD">
-            <p class="e_msg">비밀번호를 입력해 주세요</p>
+                <input type="password" class="item_ip" name="user_password" id="user_password" placeholder="PASSWORD">
+                <p class="e_msg">비밀번호를 입력해 주세요</p>
 
-             
-            <button type="submit" class="submit_btn">로그인</button>
-            <div class = "find_container">
-             <a href="/find-id" class="find_id">아이디 찾기</a>
-             <a>|</a>
-             <a href="/find-password" class="find_password">비밀번호 찾기</a>
-             </div>
-        </div>
-    </main>
- 
+
+                <button type="submit" class="submit_btn">로그인</button>
+                <div class="find_container">
+                    <a href="/find-id" class="find_id">아이디 찾기</a>
+                    <a>|</a>
+                    <a href="/find-password" class="find_password">비밀번호 찾기</a>
+                </div>
+            </div>
+        </main>
+
 </body>
+
 </html>

@@ -11,29 +11,27 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
-	
+
 	@Override
 	public int updateUser(SignUpDto signUpDto) {
 		User user = signUpDto.toEntity();
 		return userRepository.updateUser(user);
 	}
-	
-    @Override
+
+	@Override
 	public User findId(findAccountDto findAccountDto) {
 		User user = findAccountDto.toEntity();
 		return userRepository.findId(user);
 	}
-
 
 	@Override
 	public User findPassword(findAccountDto findAccountDto) {
 		User user = findAccountDto.toEntity();
 		return userRepository.findPassword(user);
 	}
-	
 
 	@Override
 	public int withdraw(int id) {

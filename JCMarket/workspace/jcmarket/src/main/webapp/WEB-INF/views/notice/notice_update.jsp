@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
-	<link rel="stylesheet" href="/css/include/footer.css">
+    <link rel="stylesheet" href="/css/include/footer.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
 
@@ -31,13 +31,16 @@
             <input type="hidden" name="notice_code" id="notice_code" value="${notice_update.notice_code }">
             <ul class="title_ul">
                 <li class="title_name">제목</li>
-                <li class="title_insert"><input type="text" class="notice_title" name="notice_title" value="${notice_update.notice_title }"></li>
+                <li class="title_insert"><input type="text" class="notice_title" name="notice_title"
+                        value="${notice_update.notice_title }"></li>
             </ul>
             <ul class="info_ul">
                 <li>작성자</li>
                 <li>${notice_update.user_nickname }</li>
                 <li>수정일</li>
-                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
+                <li>
+                    <fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm" />
+                </li>
             </ul>
             <ul class="content_ul">
                 <li>
@@ -77,7 +80,7 @@
     </main>
 
 
-<jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
     <script src="/js/notice/notice_update.js"></script>
 </body>

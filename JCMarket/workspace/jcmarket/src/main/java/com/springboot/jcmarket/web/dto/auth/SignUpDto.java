@@ -8,22 +8,16 @@ import lombok.Data;
 
 @Data
 public class SignUpDto {
-	    private String user_id;
-	    private String user_password;
-	    private String user_name;
-	    private String user_phone;
-	    private String user_nickname;
-	    
-	    
-	 public User toEntity() {
-	     return User.builder()
-					.user_id(user_id)
-					.user_password(new BCryptPasswordEncoder().encode(user_password))
-					.user_name(user_name)
-					.user_phone(user_phone) 
-					.user_nickname(user_nickname)
-					.build(); 
-	     
+	private String user_id;
+	private String user_password;
+	private String user_name;
+	private String user_phone;
+	private String user_nickname;
+
+	public User toEntity() {
+		return User.builder().user_id(user_id).user_password(new BCryptPasswordEncoder().encode(user_password))
+				.user_name(user_name).user_phone(user_phone).user_nickname(user_nickname).build();
+
 	}
 
 }

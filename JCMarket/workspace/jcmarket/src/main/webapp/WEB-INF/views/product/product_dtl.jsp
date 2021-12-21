@@ -20,16 +20,17 @@
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
-    <script src = "/js/index/index_product.js" defer></script>
+    <script src="/js/index/index_product.js" defer></script>
 </head>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <link rel="stylesheet" href="/css/include/footer.css">
+
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
-    <input type = "hidden" class="like_id" value = "${item.like_id}">
+    <jsp:include page="../include/header.jsp" />
+    <input type="hidden" class="like_id" value="${item.like_id}">
 
 
     <!-- main content -->
@@ -45,11 +46,13 @@
                 <!-- 상품명 -->
                 <article class="t_item_info">
                     <h3 id="item_title_value">${item.item_title}</h3>
-                    <h4><fmt:formatNumber value="${item.item_price}" type="number"/><span> 원</span></h4>
+                    <h4>
+                        <fmt:formatNumber value="${item.item_price}" type="number" /><span> 원</span>
+                    </h4>
                     <input type="hidden" class="listinfo item_code" value=${item.item_code }>
-                  	<input type="hidden" class="listinfo" value=${item.item_writer }> 
+                    <input type="hidden" class="listinfo" value=${item.item_writer }>
                     <input type="hidden" class="listinfo user_id" value=${principal.user.id }>
-                    
+
                 </article>
                 <!-- 상품간략정보 -->
                 <article class="b_item_info">
@@ -57,7 +60,7 @@
                     <ul class="item_info_now">
                         <li><i class="fas fa-heart"></i> ${item.like_count}</li>
                         <li><i class="fas fa-eye"></i> ${item.item_count}</li>
-                        <li><i class="fas fa-clock"></i> <span class= "item_time">${item.update_date }</span></li>
+                        <li><i class="fas fa-clock"></i> <span class="item_time">${item.update_date }</span></li>
                         <li><i class="fas fa-exclamation-triangle"></i> 신고하기</li>
                     </ul>
                     <!-- 상품정보 -->
@@ -112,7 +115,8 @@
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
-                        <button type="button" class ="like_button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${item.like_count}</span></button>
+                        <button type="button" class="like_button"><i class="fas fa-heart"></i> 찜 <span
+                                class="like_count">${item.like_count}</span></button>
                         <button type="button" class="chatstart">연락하기</button>
                         <!-- <button type="button">구매하기</button> -->
                     </article>
@@ -168,18 +172,18 @@
             </article>
             -->
         </section>
-        
-        
+
+
     </main>
 
 
 
-<jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
 
 
-<script src="/js/product/product_dtl.js"></script>
-<script src="/js/product/product_delete.js"></script>
+    <script src="/js/product/product_dtl.js"></script>
+    <script src="/js/product/product_delete.js"></script>
 </body>
 
 </html>

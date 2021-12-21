@@ -19,25 +19,21 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/items")
 @RestController
 public class ProductRestController {
-	
+
 	private final ProductService productService;
-	
+
 //	상품등록
 	@PostMapping("insert")
 	public String itemInsert(ProductInsertDto productInsertDto) {
 		return Integer.toString(productService.itemInsert(productInsertDto));
 	}
-	
-	
-	
+
 //	상품수정
 	@PutMapping("/update")
 	public String itemUpdate(Product product) {
 		return Integer.toString(productService.itemUpdate(product));
 	}
-	
-	
-	
+
 //	상품삭제
 	@DeleteMapping("/delete/{item_code}")
 	public String itemDelete(@PathVariable int item_code, @AuthenticationPrincipal PrincipalDetails principalDetails) {
