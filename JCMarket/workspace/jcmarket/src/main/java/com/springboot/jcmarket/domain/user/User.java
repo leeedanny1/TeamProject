@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class User {
-	    
-	    private int id;
-	    private String user_id;
-		private String user_password;
-		private String user_name;
-		private String user_phone;
-		private String user_nickname;
-		private int buy_count;
-		private int sell_count;
-		private String role;
-		private String provider;
-		private LocalDate create_date;
-		private LocalDate update_date;
+
+	private int id;
+	private String user_id;
+	private String user_password;
+	private String user_name;
+	private String user_phone;
+	private String user_nickname;
+	private int buy_count;
+	private int sell_count;
+	private String role;
+	private String provider;
+	private LocalDate create_date;
+	private LocalDate update_date;
 }

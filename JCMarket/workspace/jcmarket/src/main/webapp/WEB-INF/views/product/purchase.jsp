@@ -14,19 +14,19 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product_dtl.css">
     <link rel="stylesheet" href="/css/product/product.css">
-      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src = "/js/product/purchase.js" defer></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/product/purchase.js" defer></script>
 </head>
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
-	
-    <input type = "hidden" id = "user_id" value ="${items.user_id }">
+    <jsp:include page="../include/header.jsp" />
+
+    <input type="hidden" id="user_id" value="${items.user_id }">
 
     <!-- main content -->
     <main class="wrap main">
-    <!-- 상단 아이템 정보 -->
+        <!-- 상단 아이템 정보 -->
         <section class="t_container">
             <!-- 상품 사진 -->
             <img src="../images/items/items.jpg" alt="상품 사진입니다." class="item_photo">
@@ -59,7 +59,8 @@
                     </article>
                     <!-- 연락버튼 -->
                     <article class="item_info_btn">
-                        <button class = "like_button" value ="0" type="button"><i class="fas fa-heart"></i> 찜 <span class="like_count">${items.like_count}</span></button>
+                        <button class="like_button" value="0" type="button"><i class="fas fa-heart"></i> 찜 <span
+                                class="like_count">${items.like_count}</span></button>
                         <button type="button" class="chatstart" onclick="window.open('/chat')">연락하기</button>
                     </article>
                 </article>
@@ -68,8 +69,7 @@
 
         <section class="b_container">
             <h2 class="item_dtl_name">상품정보</h2>
-            <pre
-                class="item_dtl">김준일강사님수업 1시간 이용권입니다.<br>유효기간은 2021년 12월 31일 까지입니다.<br>유효기간이 얼마 남지 않아서 100만원에 급처합니다.
+            <pre class="item_dtl">김준일강사님수업 1시간 이용권입니다.<br>유효기간은 2021년 12월 31일 까지입니다.<br>유효기간이 얼마 남지 않아서 100만원에 급처합니다.
             </pre>
         </section>
 

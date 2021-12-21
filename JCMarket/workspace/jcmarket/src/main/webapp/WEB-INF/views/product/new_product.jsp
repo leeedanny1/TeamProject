@@ -23,12 +23,12 @@
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product.css">
     <link rel="stylesheet" href="/css/include/footer.css">
-     <script src = "/js/index/index_product.js" defer></script>
+    <script src="/js/index/index_product.js" defer></script>
 </head>
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
 
@@ -42,16 +42,23 @@
                 <c:forEach var="items" items="${productList }">
                     <li class="item_list" onclick="location.href = '/items/${items.item_code}'">
                         <!-- 상품사진 -->
-                            <img src="/static/itemfileupload/${items.tempFileNames}" alt="상품사진입니다." class="item_photo">
+                        <img src="/static/itemfileupload/${items.tempFileNames}" alt="상품사진입니다." class="item_photo">
                         <!-- 상품이름 -->
-                        <ul class="item_info">
+                        <ul class="item_info item_info_over">
                             <p class="item_name">${items.item_title}</p>
-                            <p><i class="fas fa-eye"></i> ${items.item_count}</p>
+                            <p class="item_name_sub"><i class="fas fa-eye"></i>
+                                <c:choose>
+                                    <c:when test="${items.item_count gt 100}">99+</c:when>
+                                    <c:otherwise>${items.item_count}</c:otherwise>
+                                </c:choose>
+                            </p>
                         </ul>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
                             <li><span class="item_price">
-                                <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
+                                    <strong>
+                                        <fmt:formatNumber value="${items.item_price}" type="number" />
+                                    </strong>원</span>
                             </li>
                             <li><span class="item_time">${items.update_date }</span></li>
                         </ul>
@@ -90,7 +97,7 @@
 
 
     <!-- footer -->
-<jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
 </body>
 

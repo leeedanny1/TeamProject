@@ -28,33 +28,31 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		System.out.println(userRequest.getClientRegistration());
 		System.out.println(userRequest.getAccessToken());
 		System.out.println(super.loadUser(userRequest).getAttributes());
-		OAuth2User oauth2user=super.loadUser(userRequest);
-		Map<String,Object> attributes = oauth2user.getAttributes();
+		OAuth2User oauth2user = super.loadUser(userRequest);
+		Map<String, Object> attributes = oauth2user.getAttributes();
 		String provider = userRequest.getClientRegistration().getRegistrationId();
-		String providerId=null;
-		if(provider.equals("google")) {
-			providerId=(String)attributes.get("sub");
-		}else  if(provider.equals("naver")) {
+		String providerId = null;
+		if (provider.equals("google")) {
+			providerId = (String) attributes.get("sub");
+		} else if (provider.equals("naver")) {
 			attributes = (Map<String, Object>) attributes.get("response");
-			providerId= (String)attributes.get("id");
-		}else {
-			providerId=UUID.randomUUID().toString().replaceAll("-", "");
+			providerId = (String) attributes.get("id");
+		} else {
+			providerId = UUID.randomUUID().toString().replaceAll("-", "");
 		}
-		String user_id= provider+"_"+providerId;
+		String user_id = provider + "_" + providerId;
 		System.out.println(user_id);
 		System.out.println(provider);
 		User userEntity = userrepository.getUser(user_id);
-		if(userEntity==null) {
-			OAuth2UserDto oauth2userdto= OAuth2UserDto.builder().id(0).user_id(user_id).user_password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
-				.user_name((String)attributes.get("name")).role("ROLE_USER").provider(provider).build();
+		if (userEntity == null) {
+			OAuth2UserDto oauth2userdto = OAuth2UserDto.builder().id(0).user_id(user_id)
+					.user_password(new BCryptPasswordEncoder().encode(UUID.randomUUID().toString()))
+					.user_name((String) attributes.get("name")).role("ROLE_USER").provider(provider).build();
 			userEntity = oauth2userdto.toEntity();
 			System.out.println(userEntity.getProvider());
 			userrepository.signUp(userEntity);
 		}
-		return new PrincipalDetails(userEntity,attributes);
+		return new PrincipalDetails(userEntity, attributes);
 	}
 
 }
-
-
-

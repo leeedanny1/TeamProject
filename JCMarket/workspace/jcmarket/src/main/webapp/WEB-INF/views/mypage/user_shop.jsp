@@ -20,7 +20,7 @@
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
     <!-- main content -->
@@ -148,7 +148,7 @@
 
 
 
- <jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
 </body>
 
