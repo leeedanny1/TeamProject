@@ -32,14 +32,13 @@ public class UserController {
 
 	@GetMapping("/update")
 	public String update() {
-		
+
 		return "mypage/user_update";
 	}
 
-	 
 	@ResponseBody
 	@PutMapping("/update")
-	public String update(@RequestBody SignUpDto signUpDto , @AuthenticationPrincipal PrincipalDetails prDetails) {
+	public String update(@RequestBody SignUpDto signUpDto, @AuthenticationPrincipal PrincipalDetails prDetails) {
 		User user = signUpService.getUser(signUpDto.getUser_id());
 		int update = 0;
 		if (signUpDto.getUser_password() == "") {
@@ -47,61 +46,59 @@ public class UserController {
 		} else if (signUpDto.getUser_nickname() == "") {
 			signUpDto.setUser_nickname(user.getUser_nickname());
 		}
-		update =userService.updateUser(signUpDto);
-		if(update==1) {
-			
-			  prDetails.getUser().setUser_nickname(signUpDto.getUser_nickname());
-			  prDetails.getUser().setUser_phone(signUpDto.getUser_phone());		
+		update = userService.updateUser(signUpDto);
+		if (update == 1) {
+
+			prDetails.getUser().setUser_nickname(signUpDto.getUser_nickname());
+			prDetails.getUser().setUser_phone(signUpDto.getUser_phone());
 		}
-		return  Integer.toString(update);
-	
+		return Integer.toString(update);
+
 	}
-	
-	
+
 	@GetMapping("/find-id")
 	public String findId() {
 		System.out.println(123);
 		return "find_account/find_id";
 	}
-	
+
 	@GetMapping("/find-password")
 	public String findPassword() {
 		return "find_account/find_password";
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/find-id")
 	public Object findId(@RequestBody findAccountDto findAccountDto) {
 		System.out.println("find-id:" + findAccountDto);
-	   return userService.findId(findAccountDto);
+		return userService.findId(findAccountDto);
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/find-password")
 	public Object findPassword(@RequestBody findAccountDto findAccountDto) {
-	   return userService.findPassword(findAccountDto);
+		return userService.findPassword(findAccountDto);
 	}
-	
+
 	@ResponseBody
 	@PutMapping("/update-password")
-	public String updatePassword(@RequestBody findAccountDto findAccountDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String updatePassword(@RequestBody findAccountDto findAccountDto,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		findAccountDto.setUser_password(new BCryptPasswordEncoder().encode(findAccountDto.getUser_password()));
-		 return Integer.toString(userService.updatePassword(findAccountDto));
+		return Integer.toString(userService.updatePassword(findAccountDto));
 	}
-	
-	//내상점
-    @GetMapping("my-shop/{id}")
-	public ModelAndView myShop(@PathVariable int id,  @AuthenticationPrincipal PrincipalDetails principalDetails) {
-       
-    	ModelAndView mav = new ModelAndView("mypage/my_shop");
-    	mav.addObject("mySaleProducts", productService.getSaleProduct(id));
-    	mav.addObject("mySelectProducts", productService.getSelectProduct(id));
-    	mav.addObject("user_nickname", userService.getNickname(id));
+
+	// 내상점
+	@GetMapping("my-shop/{id}")
+	public ModelAndView myShop(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+		ModelAndView mav = new ModelAndView("mypage/my_shop");
+		mav.addObject("mySaleProducts", productService.getSaleProduct(id));
+		mav.addObject("mySelectProducts", productService.getSelectProduct(id));
+		mav.addObject("user_nickname", userService.getNickname(id));
 		return mav;
-	} 
-	
-	
-	
+	}
+
 	@ResponseBody
 	@DeleteMapping("/withdraw")
 	public String withdraw(@AuthenticationPrincipal PrincipalDetails principalDetails) {

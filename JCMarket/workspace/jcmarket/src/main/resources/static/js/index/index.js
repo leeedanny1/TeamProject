@@ -17,10 +17,10 @@ const user_id = document.querySelector('.user_id');
 h_search.value = searchValue.value;
 
 //검색 아이콘 클릭 시 
-h_search_btn.addEventListener('click', ()=> {  
-	if(h_search.value.length == 0) {
+h_search_btn.addEventListener('click', () => {
+	if (h_search.value.length == 0) {
 		alert('검색어를 입력해 주세요!');
-	    return;
+		return;
 	}
 	location.href = '/items/search/' + h_search.value;
 });
@@ -29,7 +29,7 @@ h_search_btn.addEventListener('click', ()=> {
 // 헤더 검색창 우측부분
 // 판매하기 버튼을 눌렀을 때
 h_sale_btn.onclick = () => {
-	if(toUpdatePage == null){
+	if (toUpdatePage == null) {
 		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
 		location.href = "/sign-in-select"
 	} else {
@@ -39,7 +39,7 @@ h_sale_btn.onclick = () => {
 }
 // 내상점 버튼을 눌렀을 때
 h_myshop_btn.onclick = () => {
-	if(toUpdatePage == null){
+	if (toUpdatePage == null) {
 		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
 		location.href = "/sign-in-select"
 	} else {
@@ -49,7 +49,7 @@ h_myshop_btn.onclick = () => {
 }
 // jc톡 버튼을 눌렀을 때
 h_jctalk_btn.onclick = () => {
-	if(toUpdatePage == null){
+	if (toUpdatePage == null) {
 		alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.")
 		location.href = "/sign-in-select"
 	} else {
@@ -62,17 +62,17 @@ h_jctalk_btn.onclick = () => {
 
 
 
-toUpdatePage.addEventListener('click' , () => {
+toUpdatePage.addEventListener('click', () => {
 
-	if(user_id.value.length < 16 ) {
-	check_password.classList.toggle('invisible');
-	}else {
+	if (user_id.value.length < 16) {
+		check_password.classList.toggle('invisible');
+	} else {
 		location.href = '/update';
 	}
 });
 
 toUpdatePage_btn.addEventListener('click', () => {
-    getUserPassword();
+	getUserPassword();
 });
 
 
@@ -84,18 +84,18 @@ function getUserPassword() {
 			input_password: input_password.value
 		},
 		dataType: "text",
-		success: function(data) {
-			console.log('data: '+ data);
-			if(data == 1) {
+		success: function (data) {
+			console.log('data: ' + data);
+			if (data == 1) {
 				location.replace('/update');
-			}else if(data == 2 ){
+			} else if (data == 2) {
 				alert('비밀번호가 일치하지 않습니다.');
 			}
 		},
-		error: function() {
-			
+		error: function () {
+
 		}
-		
+
 	});
 }
 

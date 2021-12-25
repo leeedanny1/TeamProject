@@ -16,13 +16,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
-	
+
 	private final ProductService productService;
 
 	@GetMapping({ "/", "/index" })
-	public ModelAndView hotProduct( @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		if(principalDetails != null) {
-			if(principalDetails.getUser().getUser_nickname().equals("") || principalDetails.getUser().getUser_nickname() == null ) {
+	public ModelAndView hotProduct(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		if (principalDetails != null) {
+			if (principalDetails.getUser().getUser_nickname().equals("")
+					|| principalDetails.getUser().getUser_nickname() == null) {
 				ModelAndView mav = new ModelAndView("redirect:/logout");
 				return mav;
 			}

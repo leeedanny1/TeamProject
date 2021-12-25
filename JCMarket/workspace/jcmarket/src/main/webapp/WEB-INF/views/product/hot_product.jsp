@@ -9,6 +9,7 @@
 </sec:authorize>
 
 <!DOCTYPE html>
+
 <html lang="ko">
 
 <head>
@@ -16,18 +17,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC마켓 : 인기상품</title>
+
+
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
     <link rel="stylesheet" href="/css/product/product.css">
     <link rel="stylesheet" href="/css/include/footer.css">
-     <script src = "/js/index/index_product.js" defer></script>
+
+    <script src="/js/index/index_product.js" defer></script>
 </head>
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
 
@@ -44,14 +48,21 @@
                         <!-- 상품사진 -->
                         <img src="/static/itemfileupload/${items.tempFileNames}" alt="상품사진입니다." class="item_photo">
                         <!-- 상품이름 -->
-                        <ul class="item_info">
+                        <ul class="item_info item_info_over">
                             <p class="item_name">${items.item_title}</p>
-                            <p><i class="fas fa-heart"></i> ${items.like_count}</p>
+                            <p class="item_name_sub"><i class="fas fa-heart"></i>
+                                <c:choose>
+                                    <c:when test="${items.like_count gt 100}">99+</c:when>
+                                    <c:otherwise>${items.like_count}</c:otherwise>
+                                </c:choose>
+                            </p>
                         </ul>
                         <!-- 상품 가격과 올린 시간 -->
                         <ul class="item_info">
                             <li><span class="item_price">
-                                <strong><fmt:formatNumber value="${items.item_price}" type="number"/></strong>원</span>
+                                    <strong>
+                                        <fmt:formatNumber value="${items.item_price}" type="number" />
+                                    </strong>원</span>
                             </li>
                             <li><span class="item_time">${items.update_date }</span></li>
                         </ul>
@@ -90,7 +101,7 @@
 
 
     <!-- footer -->
-   <jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
 
 </body>

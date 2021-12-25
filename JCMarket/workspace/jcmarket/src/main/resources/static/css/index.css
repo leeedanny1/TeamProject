@@ -84,6 +84,14 @@ header{
     white-space: nowrap;
     overflow: hidden;
 }
+/* 상품이름 넘치는거 해결 */
+.item_list .item_info_over{
+    /* display: flex; */
+}
+.item_list .item_name{
+    width: 70%;
+}
+
 /* 상품가격 */
 .item_list .item_info .item_price strong{
     font-size: 18px;

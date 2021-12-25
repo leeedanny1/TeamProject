@@ -21,37 +21,39 @@ import lombok.RequiredArgsConstructor;
 public class ChatController {
 	private final ChatService chatService;
 
-
 	@GetMapping("/chat")
 	public ModelAndView chatList(@AuthenticationPrincipal PrincipalDetails prDetails) {
 		ModelAndView mav = new ModelAndView("chat/chat");
 		mav.addObject("chatList", chatService.getChatListAll(prDetails.getUser().getId()));
-		
+
 		return mav;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/chatting/{roomNumber}")
 	public Object chattingList(@RequestBody ChatDto chatdto, @PathVariable int roomNumber) {
 		return chatService.getChatting(chatdto);
 	}
-	
+
 	@ResponseBody
 	@PostMapping("/chat-insert")
 	public String chat_insert(@RequestBody ChatDto chatdto) {
 		return Integer.toString(chatService.Chattinginput(chatdto));
 	}
+
 	@ResponseBody
 	@PostMapping("/list-insert")
 	public String list_insert(@RequestBody ChatDto chatdto) {
 		return Integer.toString(chatService.listinput(chatdto));
 	}
+
 	@ResponseBody
 	@PostMapping("/list-select")
 	public String list_select(@RequestBody ChatDto chatdto) {
-		
+
 		return Integer.toString(chatService.listselect(chatdto));
 	}
+
 	@ResponseBody
 	@DeleteMapping("/list-delete")
 	public String list_delete(@RequestBody ChatDto chatdto) {

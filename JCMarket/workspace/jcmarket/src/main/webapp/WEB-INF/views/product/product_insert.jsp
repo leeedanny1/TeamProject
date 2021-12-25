@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/include/include.css">
     <link rel="stylesheet" href="/css/border/border_reset.css">
-	<link rel="stylesheet" href="/css/include/footer.css">
+    <link rel="stylesheet" href="/css/include/footer.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
     <!-- header -->
-	<jsp:include page="../include/header.jsp"/> 
+    <jsp:include page="../include/header.jsp" />
 
 
 
@@ -35,11 +35,13 @@
         <form id="insert_form">
             <ul class="title_ul">
                 <li class="title_name">상품명</li>
-                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title" placeholder="상품명을 입력하세요."></li>
+                <li class="title_insert"><input type="text" id="item_title" class="title" name="item_title"
+                        placeholder="상품명을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name select_name">상품가격(숫자만 입력)</li>
-                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price" placeholder="상품 가격을 입력하세요."></li>
+                <li class="title_insert"><input type="number" id="item_price" class="title" name="item_price"
+                        placeholder="상품 가격을 입력하세요."></li>
             </ul>
             <ul class="title_ul">
                 <li class="title_name">상품상태</li>
@@ -73,7 +75,9 @@
                 <input type="hidden" name="item_writer" value="${principal.user.id }">
                 <li>${principal.user.user_nickname }</li>
                 <li>작성 시작 시간</li>
-                <li><fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm"/></li>
+                <li>
+                    <fmt:formatDate value="${now }" pattern="yyyy-MM-dd HH:mm" />
+                </li>
             </ul>
             <ul class="file_ul">
                 <li class="file_li">사진등록(이미지만 등록)</li>
@@ -81,7 +85,8 @@
             </ul>
             <ul class="content_ul">
                 <li>
-                    <textarea class="notice_content" id="item_content" name="item_content" placeholder="상품 설명을 입력하세요."></textarea>
+                    <textarea class="notice_content" id="item_content" name="item_content"
+                        placeholder="상품 설명을 입력하세요."></textarea>
                 </li>
             </ul>
 
@@ -94,7 +99,7 @@
 
 
 
- <jsp:include page="../include/footer.jsp"/> 
+    <jsp:include page="../include/footer.jsp" />
 
     <script src="/js/product/product_insert.js"></script>
 </body>

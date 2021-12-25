@@ -13,19 +13,19 @@
 <header>
     <!-- 헤더 내부 wrap -->
     <main class="wrap">
-    
-     <input type = "hidden"  class = "user_id" value = "${principal.user.id}">
+
+        <input type="hidden" class="user_id" value="${principal.user.id}">
         <!-- 로고와 검색창 들어가는 부분 -->
         <section class="t_header">
-         <input type = "hidden" class= "searchValue" value = "${searchValue }">
+            <input type="hidden" class="searchValue" value="${searchValue }">
             <!-- 로고 -->
             <a href="/">
                 <h1 class="h_logo">JC마켓</h1>
             </a>
             <!-- 검색박스 -->
-            <div class = "h_search_btn_container">
-            <input type="text" class="h_search" placeholder="상품명, 상품설명 전체 또는 일부 검색">
-            <i class="fas fa-search h_search_btn"></i>
+            <div class="h_search_btn_container">
+                <input type="text" class="h_search" placeholder="상품명, 상품설명 전체 또는 일부 검색">
+                <i class="fas fa-search h_search_btn"></i>
             </div>
             <!-- 인포 -->
             <ul class="h_info">
@@ -95,17 +95,16 @@
 
 </header>
 
-         <section class="check_password invisible">
-            <div class="user_info">
-                <input type="text" value="${principal.user.user_id}" readonly>
-                <input type="hidden" class="user_password" value="${principal.user}" readonly>
-                <input class="input_password" type="password" class="input" name="id" id=""
-                    placeholder="비밀번호확인이 필요합니다. ">
-            </div>
-            <button type="button" class="toUpdatePage_btn">확인</button>
-        </section>
-  
- </html>
+<section class="check_password invisible">
+    <div class="user_info">
+        <input type="text" value="${principal.user.user_id}" readonly>
+        <input type="hidden" class="user_password" value="${principal.user}" readonly>
+        <input class="input_password" type="password" class="input" name="id" id="" placeholder="비밀번호확인이 필요합니다. ">
+    </div>
+    <button type="button" class="toUpdatePage_btn">확인</button>
+</section>
+
+</html>
 
 
 <script type="text/javascript" src="/js/index/index.js"></script>
