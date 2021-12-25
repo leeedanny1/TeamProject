@@ -96,9 +96,8 @@ function addLike() {
 				msgService('찜하기가 완료되었습니다', 1);
 				like_id.value = productLikeData.user_id;
 			} else if (data == 2) {
-				alert('로그인이 필요합니다.');  //여기까지 왔다는 건 찜하기 버튼을 한번 누른상태이다.(지금 LikeServiceFlag은 1인상태)
-				//그래서 다시 버튼을 누르면 2가되고 2는 delete이다.(insert도 되지않은 상태에서 delete를 하려고하니 오류가난다.)
-			}                              //그러므로 다시 flag값을 0으로 리셋시켜주어야한다. 
+				alert('로그인이 필요합니다.'); 
+			}                             
 		},
 		error: function() {
 

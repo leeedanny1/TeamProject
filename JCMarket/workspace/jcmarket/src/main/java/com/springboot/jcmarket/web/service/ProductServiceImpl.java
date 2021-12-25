@@ -307,7 +307,7 @@ public class ProductServiceImpl implements ProductService{
 		int count_result = 0; 
 		int like_result = 0;
 		like_result = productRepository.deleteLike(product);
-				
+				 
 		if(like_result == 1) {
 			count_result = productRepository.downLikeCount(product);
 			if(count_result == 1) {
