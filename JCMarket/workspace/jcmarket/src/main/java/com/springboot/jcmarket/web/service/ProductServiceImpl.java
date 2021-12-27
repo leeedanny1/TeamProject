@@ -263,8 +263,7 @@ public class ProductServiceImpl implements ProductService {
 				}
 			}
 		}
-
-		return productRepository.productDelete(item_code);
+		return productRepository.productDelete(item_code); 
 	}
 
 	@Override
@@ -291,13 +290,10 @@ public class ProductServiceImpl implements ProductService {
 		int count_result = 0;
 		int like_result = 0;
 		like_result = productRepository.deleteLike(product);
-<<<<<<< HEAD
-				 
-		if(like_result == 1) {
-=======
 
+				 
 		if (like_result == 1) {
->>>>>>> a816ecd59833efd03d573d5d903d59d7ee9013f0
+
 			count_result = productRepository.downLikeCount(product);
 			if (count_result == 1) {
 				productRepository.getLikeCount(product);
@@ -307,6 +303,7 @@ public class ProductServiceImpl implements ProductService {
 		productLikeDto.setLike_count(count_result);
 		productLikeDto.setLike_result(like_result);
 		return productLikeDto;
+		
 	}
 
 	@Override
