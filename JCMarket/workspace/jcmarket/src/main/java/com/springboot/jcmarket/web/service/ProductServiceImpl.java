@@ -265,8 +265,7 @@ public class ProductServiceImpl implements ProductService {
 				}
 			}
 		}
-
-		return productRepository.productDelete(item_code);
+		return productRepository.productDelete(item_code); 
 	}
 
 	@Override
@@ -294,7 +293,9 @@ public class ProductServiceImpl implements ProductService {
 		int like_result = 0;
 		like_result = productRepository.deleteLike(product);
 
+				 
 		if (like_result == 1) {
+
 			count_result = productRepository.downLikeCount(product);
 			if (count_result == 1) {
 				productRepository.getLikeCount(product);
@@ -304,6 +305,7 @@ public class ProductServiceImpl implements ProductService {
 		productLikeDto.setLike_count(count_result);
 		productLikeDto.setLike_result(like_result);
 		return productLikeDto;
+		
 	}
 
 	@Override

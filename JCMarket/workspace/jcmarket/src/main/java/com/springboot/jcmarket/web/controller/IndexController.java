@@ -32,7 +32,7 @@ public class IndexController {
 		mav.addObject("hotList", productService.getHotProductList10());
 		mav.addObject("newList", productService.getNewProductList10());
 		return mav;
-	}
+	} 
 
 	@ResponseBody
 	@GetMapping("get-password")
