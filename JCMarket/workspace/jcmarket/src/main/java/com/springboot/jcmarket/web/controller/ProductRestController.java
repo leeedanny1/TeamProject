@@ -31,6 +31,7 @@ public class ProductRestController {
 //	상품수정
 	@PutMapping("/update")
 	public String itemUpdate(Product product) {
+		System.out.println("컨트롤러: " + product);
 		return Integer.toString(productService.itemUpdate(product));
 	}
 

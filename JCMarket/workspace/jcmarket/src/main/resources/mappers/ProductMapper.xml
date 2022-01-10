@@ -179,7 +179,7 @@
 			item_delivery = #{item_delivery},
 			item_content = #{item_content},
 			tempFileNames = #{tempFileNames},
-			update_date = now();
+			update_date = now()
 		WHERE
 			item_code = #{item_code};
 	</update>
